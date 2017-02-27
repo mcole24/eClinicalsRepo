@@ -108,18 +108,24 @@ CREATE TABLE visit_symptom (
 );
 
 CREATE TABLE lab_test (
-  testID INT PRIMARY KEY IDENTITY NOT NULL,
+  testCode INT PRIMARY KEY IDENTITY NOT NULL,
   testType VARCHAR(45) NOT NULL,
 );
 
 CREATE TABLE visit_lab_test (
-  testID INT NOT NULL,
+  testID INT PRIMARY KEY IDENTITY,
+  testCode INT NOT NULL,
   visitID INT NOT NULL,
-  testDate DATETIME NOT NULL,
-  testResult BIT NOT NULL,
-  PRIMARY KEY (testID, visitID),
-  FOREIGN KEY (testID) REFERENCES lab_test(testID),
+  testDateOrdered DATETIME NOT NULL,
+  FOREIGN KEY (testCode) REFERENCES lab_test(testCode),
   FOREIGN KEY (visitID) REFERENCES visit(visitID)
+);
+
+CREATE TABLE test_result (
+	testID INT NOT NULL,
+	result BIT NULL,
+	testDateCompleted DATE NULL,
+	FOREIGN KEY (testID) REFERENCES visit_lab_test (testID)
 );
 
 CREATE TABLE diagnosis (
@@ -262,20 +268,36 @@ INSERT INTO lab_test VALUES
 ('Hepatitis C');
 
 INSERT INTO visit_lab_test VALUES
-(1, 1, '2016-11-29', 0),
-(1, 2, '2016-11-29', 0),
-(1, 3, '2016-12-02', 0),
-(2, 4, '2016-12-02', 0),
-(2, 5, '2016-12-02', 0),
-(2, 6, '2016-12-02', 0),
-(3, 7, '2016-12-02', 1),
-(3, 8, '2016-12-03', 1),
-(3, 9, '2016-12-03', 1),
-(4, 1, '2016-11-29', 1),
-(5, 2, '2016-11-29', 0),
-(5, 3, '2016-12-02', 0),
-(6, 4, '2016-12-02', 0),
-(6, 5, '2016-12-02', 0);
+(1, 1, '2016-11-29'),
+(1, 2, '2016-11-29'),
+(1, 3, '2016-12-02'),
+(2, 4, '2016-12-02'),
+(2, 5, '2016-12-02'),
+(2, 6, '2016-12-02'),
+(3, 7, '2016-12-02'),
+(3, 8, '2016-12-03'),
+(3, 9, '2016-12-03'),
+(4, 1, '2016-11-29'),
+(5, 2, '2016-11-29'),
+(5, 3, '2016-12-02'),
+(6, 4, '2016-12-02'),
+(6, 5, '2016-12-02');
+
+INSERT INTO test_result VALUES 
+(1, 0, '2016-11-30'),
+(2, 0, '2016-11-30'),
+(3, 0, '2016-12-03'),
+(4, 0, '2016-12-03'),
+(5, 0, '2016-12-03'),
+(6, 0, '2016-12-03'),
+(7, 1, '2016-12-03'),
+(8, 1, '2016-12-04'),
+(9, 1, '2016-12-04'),
+(10, 1, '2016-11-30'),
+(11, 0, '2016-11-30'),
+(12, 0, '2016-12-03'),
+(13, 0, '2016-12-03'),
+(14, 0, '2016-12-03');
 
 
 INSERT INTO diagnosis VALUES
