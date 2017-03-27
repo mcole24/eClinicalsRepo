@@ -1,7 +1,7 @@
--- DROP DATABASE clinic;
--- CREATE DATABASE clinic;
+-- DROP DATABASE [CS6232-g5];
+-- CREATE DATABASE [CS6232-g5];
 
-USE clinic;
+USE [CS6232-g5];
 
 CREATE TABLE contact (
 	contactID INT PRIMARY KEY IDENTITY,
@@ -12,7 +12,9 @@ CREATE TABLE contact (
 	mailingAddressCity VARCHAR(100) NOT NULL,
 	mailingAddressState CHAR(2) NOT NULL,
 	mailingAddressZip CHAR(5) NOT NULL,
-	phoneNumber VARCHAR(20) NOT NULL
+	phoneNumber VARCHAR(20) NOT NULL,
+	gender CHAR(1),
+	SSN CHAR(9) NOT NULL UNIQUE
 );
 
 CREATE TABLE logins (
@@ -116,17 +118,12 @@ CREATE TABLE visit_lab_test (
   testID INT PRIMARY KEY IDENTITY,
   testCode INT NOT NULL,
   visitID INT NOT NULL,
-  testDateOrdered DATETIME NOT NULL,
+  result BIT NULL,
+  testDateCompleted DATE NULL,
   FOREIGN KEY (testCode) REFERENCES lab_test(testCode),
   FOREIGN KEY (visitID) REFERENCES visit(visitID)
 );
 
-CREATE TABLE test_result (
-	testID INT NOT NULL,
-	result BIT NULL,
-	testDateCompleted DATE NULL,
-	FOREIGN KEY (testID) REFERENCES visit_lab_test (testID)
-);
 
 CREATE TABLE diagnosis (
   diagnosisID INT PRIMARY KEY IDENTITY NOT NULL,
@@ -137,24 +134,25 @@ CREATE TABLE visit_has_diagnosis (
   visitID INT NOT NULL,
   diagnosisID INT NOT NULL,
   initialDiagnosis BIT NOT NULL,
+  finalDiagnosis BIT,
   PRIMARY KEY (visitID, diagnosisID),
   FOREIGN KEY (visitID) REFERENCES visit(visitID),
   FOREIGN KEY (diagnosisID) REFERENCES diagnosis(diagnosisID)
 );
 
 INSERT INTO contact VALUES
-('Syed', 'Amber', '1979-01-16', '123 Main Street', 'Atlanta', 'GA', '30308', '678-770-1234'), 
-('Carter', 'Maya', '1977-10-10', '500 Self Street', 'Marietta', 'GA', '30068', '770-679-9900'), 
-('Simon', 'Timothy', '1965-07-29', '15 Maine Lane', 'Atlanta', 'GA', '30909', '470-674-6759'), 
-('Wynn', 'Jasmine', '1990-10-19', '15 Antler Dr', 'Norcross', 'GA', '30092', '770-404-0076'),
-('Woods', 'Courtney', '1990-11-28', '25 Ashley  Circle', 'Norcross', 'GA', '30092', '404-388-3729'), 
-('DeWalt', 'DeAndra', '1990-02-02', '50 Graves Road', 'Doraville', 'GA', '30096', '404-470-6789'),
-('Robinson', 'Bianca', '1990-12-09', '2309 Ashley Club Circle', 'Norcross', 'GA', '30092', '678-895-5648'),
-('Williams', 'Jeffrey', '1970-09-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846'),
-('Williams', 'Nicki', '1960-05-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846'),
-('Graham', 'Lamar', '1983-02-15', '123 Main Circle', 'Norcross', 'GA', '30092', '770-678-4040'),
-('Gasque', 'Xzavia', '1991-10-09', '123 Story Circle', 'Atlanta', 'GA', '30308', '404-678-3030'),
-('Mitchell', 'Marvin', '1981-09-04', '123 Story Circle', 'Atlanta', 'GA', '30308', '470-678-3456');
+('Syed', 'Amber', '1979-01-16', '123 Main Street', 'Atlanta', 'GA', '30308', '678-770-1234', 'F', '123456789'), 
+('Carter', 'Maya', '1977-10-10', '500 Self Street', 'Marietta', 'GA', '30068', '770-679-9900', 'F', '234567891'), 
+('Simon', 'Timothy', '1965-07-29', '15 Maine Lane', 'Atlanta', 'GA', '30909', '470-674-6759', 'M', '345678912'), 
+('Wynn', 'Jasmine', '1990-10-19', '15 Antler Dr', 'Norcross', 'GA', '30092', '770-404-0076', 'F', '456789123'),
+('Woods', 'Courtney', '1990-11-28', '25 Ashley  Circle', 'Norcross', 'GA', '30092', '404-388-3729', 'F', '567891234'), 
+('DeWalt', 'DeAndra', '1990-02-02', '50 Graves Road', 'Doraville', 'GA', '30096', '404-470-6789', 'F', '678912345'),
+('Robinson', 'Bianca', '1990-12-09', '2309 Ashley Club Circle', 'Norcross', 'GA', '30092', '678-895-5648', 'F', '789123456'),
+('Williams', 'Jeffrey', '1970-09-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'M', '891234567'),
+('Williams', 'Nicki', '1960-05-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'F', '912345678'),
+('Graham', 'Lamar', '1983-02-15', '123 Main Circle', 'Norcross', 'GA', '30092', '770-678-4040', 'M', '012345678'),
+('Gasque', 'Xzavia', '1991-10-09', '123 Story Circle', 'Atlanta', 'GA', '30308', '404-678-3030', 'F', '147258369'),
+('Mitchell', 'Marvin', '1981-09-04', '123 Story Circle', 'Atlanta', 'GA', '30308', '470-678-3456', 'M', '369258147');
 
 INSERT INTO logins VALUES
 (1, 'asyed1', 'testpassword123'),
@@ -268,36 +266,20 @@ INSERT INTO lab_test VALUES
 ('Hepatitis C');
 
 INSERT INTO visit_lab_test VALUES
-(1, 1, '2016-11-29'),
-(1, 2, '2016-11-29'),
-(1, 3, '2016-12-02'),
-(2, 4, '2016-12-02'),
-(2, 5, '2016-12-02'),
-(2, 6, '2016-12-02'),
-(3, 7, '2016-12-02'),
-(3, 8, '2016-12-03'),
-(3, 9, '2016-12-03'),
-(4, 1, '2016-11-29'),
-(5, 2, '2016-11-29'),
-(5, 3, '2016-12-02'),
-(6, 4, '2016-12-02'),
-(6, 5, '2016-12-02');
-
-INSERT INTO test_result VALUES 
-(1, 0, '2016-11-30'),
-(2, 0, '2016-11-30'),
-(3, 0, '2016-12-03'),
-(4, 0, '2016-12-03'),
-(5, 0, '2016-12-03'),
-(6, 0, '2016-12-03'),
-(7, 1, '2016-12-03'),
-(8, 1, '2016-12-04'),
-(9, 1, '2016-12-04'),
-(10, 1, '2016-11-30'),
-(11, 0, '2016-11-30'),
-(12, 0, '2016-12-03'),
-(13, 0, '2016-12-03'),
-(14, 0, '2016-12-03');
+(1, 1, 0, '2016-11-30'),
+(1, 2, 0, '2016-11-30'),
+(1, 3, 0, '2016-12-03'),
+(2, 4, 0, '2016-12-03'),
+(2, 5, 0, '2016-12-03'),
+(2, 6, 0, '2016-12-03'),
+(3, 7, 1, '2016-12-03'),
+(3, 8, 1, '2016-12-04'),
+(3, 9, 1, '2016-12-04'),
+(4, 1, 1, '2016-11-30'),
+(5, 2, 0, '2016-11-30'),
+(5, 3, 0, '2016-12-03'),
+(6, 4, 0, '2016-12-03'),
+(6, 5, 0, '2016-12-03');
 
 
 INSERT INTO diagnosis VALUES
@@ -310,18 +292,18 @@ INSERT INTO diagnosis VALUES
 ('Pharyngitis');
 
 INSERT INTO visit_has_diagnosis VALUES
-(1, '1', '1'),
-(1, '7', '0'),
-(2, '2', '1'),
-(3, '3', '1'),
-(4, '5', '1'),
-(4,  '7', '0'),
-(5, '4', '1'),
-(6, '6', '1'),
-(7, '1', '1'), 
-(7, '7', '0'),
-(8, '5', '1'),
-(9, '3', '1'),
-(9, '2', '0');
+(1, 1, 1, 1),
+(1, 7, 0, 0),
+(2, 2, 1, 1),
+(3, 3, 1, 1),
+(4, 5, 1, 1),
+(4, 7, 0, 1),
+(5, 4, 1, 0),
+(6, 6, 1, 1),
+(7, 1, 1, 1), 
+(7, 7, 0, 0),
+(8, 5, 1, 1),
+(9, 3, 1, 1),
+(9, 2, 0, 0);
 
 

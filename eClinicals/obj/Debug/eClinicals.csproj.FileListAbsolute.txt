@@ -1,0 +1,2 @@
+c:\users\mcole\documents\visual studio 2015\Projects\eClinicals\eClinicals\bin\Debug\eClinicals.exe.config
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe.config
