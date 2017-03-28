@@ -46,16 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\DBConnection.cs" />
-    <Compile Include="DAL\NurseDAL.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Controller\eClinicalsController.cs" />
+    <Compile Include="View\frmLoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Controller\Program.cs" />
+    <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="DAL\NurseDAL.cs" />
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\LabTest.cs" />
+    <Compile Include="Model\Nurse.cs" />
+    <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\SimpleAES.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +70,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\frmLoginPage.resx">
+      <DependentUpon>frmLoginPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -80,8 +87,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="View\" />
+    <Folder Include="DB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FileStructure.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

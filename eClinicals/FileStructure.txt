@@ -1,0 +1,47 @@
+﻿Controller
+Program.cs -- entry point for the application, runs the eClinicalsLoginPage form
+eClinicalsController.cs -- delegates work (methods) from the view to the DAL methods
+
+DAL
+DBConnection.cs -- this class allows for connection to the database
+NurseDAL.cs -- this class will be used for retrieving nurse login and contact information
+AdminDAL.cs -- this class will be used for retrieving administrator login and contact information
+PatientDAL.cs -- this class will be used for searching for patients, retrieving patient information, updating patient information
+AppointmentDAL.cs -- this class will be used for creating or editing future appointments and viewing past visit information from past appointments
+LabTestDAL.cs -- this class will be used to update lab test results, ordering lab tests, and pulling data for admin report
+VisitDAL.cs -- this class will be used to enter routine checkup information for current appointment
+
+DB
+CS6232-g5.sql -- database script to create/populate the database
+
+Model
+SimpleAES.cs -- encryption for user passwords
+Nurse.cs -- contains declaration of Nurse properties
+Admin.cs -- contains declaration of Admin properties
+Patient.cs -- contains declaration of Patient properties
+Appointment.cs -- contains declaration of Appointment properties
+LabTest.cs -- contains declaration of LabTest properties
+Visit.cs -- contains declaration of Visit properties
+
+
+View
+frmeClinicalsLoginPage.cs -- login page form, first page to be displayed in program
+frmNurseHomepage.cs -- this is the default form that displays once nurse is logged in, includes nurse contact info, login status, logout option, register patient button, find patient record button
+(re: Nurse_Logged_in_View.png)
+frmSearchPatientByDOBAndName.cs -- this form displays the option to search for patient by name and DOB combination (re: Search_For_Patient_By_DOB_Name_View.png)
+frmSearchPatientByDOB.cs -- this form displays the option to search for patient by DOB (re: Search_For_Patient_By_DOB_View.png)
+frmSearchPatientByName.cs -- this form displays the option to search for patient by name (re: Search_For_Patient_By_Name_View.png)
+frmPatientSearchResults.cs -- this form displays the results of the patients found from the search and allows one to be selected
+frmViewPatient.cs -- this form loads when patient is selected and displays the patient information and contains a button to edit patient information (re: View-Edit_Patient_Info_View.png)
+frmEditPatient.cs -- this form displays the patient information and contains a button to save changes made to patient information (re: View-Edit_Patient_Info_View.png)
+frmRegisterPatient.cs -- this form displays the fields for patient name, dob, and address for patient registration (re: register_patient_View.png)
+frmSetAppointment.cs -- this form allows an appointment to be created (re: set_appointment_view.png)
+frmViewAppointment.cs -- this form allows the user to view the list of appointments and start view details or edit the appointment depending on the date (re: View_Appointment_View.png)
+frmAppointmentDetails.cs -- this form lists the details for a particular appointment and allows for editing of details if it is in the future
+frmRoutineCheck.cs -- this form loads once the appointment is started, allows vitals to be entered along with initial diagnosis, lists previous values (re: Routine_check_view.png)
+frmOrderTest.cs -- this form allows user to order test, lists all tests ordered in current visit (re: Order_test_View.png)
+frmTestResults.cs -- this form lists tests and corresponding results, allows results and final diagnosis to be entered and completed date (re: Test_results_View.png)
+frmAdminHomepage.cs -- this is the default form that displays once the admin is logged in, includes admin contact info, login status, logout option, generate report button (re: admin_logged_in_view.png)
+frmGenerateReport.cs -- this form allows the admin to generate a report (re: generate_report_view.png)
+
+

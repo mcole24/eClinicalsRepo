@@ -13,9 +13,7 @@ namespace eClinicals.DAL
 {
     class NurseDAL
     {
-
-
-
+/**
         public static NurseDAL NurseLogin(string userName, string password)
         {
 
@@ -23,9 +21,7 @@ namespace eClinicals.DAL
 
 
         }
-
-
-
+    **/
 
     }
 }
