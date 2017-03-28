@@ -1,5 +1,5 @@
 ﻿Controller
-Program.cs -- entry point for the application, runs the eClinicalsLoginPage form
+Program.cs -- entry point for the application, runs the frmLoginPage form
 eClinicalsController.cs -- delegates work (methods) from the view to the DAL methods
 
 DAL
@@ -25,7 +25,7 @@ Visit.cs -- contains declaration of Visit properties
 
 
 View
-frmeClinicalsLoginPage.cs -- login page form, first page to be displayed in program
+frmLoginPage.cs -- login page form, first page to be displayed in program
 frmNurseHomepage.cs -- this is the default form that displays once nurse is logged in, includes nurse contact info, login status, logout option, register patient button, find patient record button
 (re: Nurse_Logged_in_View.png)
 frmSearchPatientByDOBAndName.cs -- this form displays the option to search for patient by name and DOB combination (re: Search_For_Patient_By_DOB_Name_View.png)
