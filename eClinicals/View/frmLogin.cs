@@ -1,5 +1,4 @@
-﻿using eClinicals.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,22 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace eClinicals.View
 {
-    public partial class frmMain : Form
-    {
-        public frmMain()
+    partial class frmLogin : Form
+    {      
+
+        public frmLogin()
         {
             InitializeComponent();
+          
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private void frmLogin_Load(object sender, EventArgs e)
         {
-
-            LoginController loginController = new LoginController(this, new frmLogin());
-           // loginController.Show();
-
 
         }
     }

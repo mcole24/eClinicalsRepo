@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
-            this.lblMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,19 +40,20 @@
             // statusStripMain
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblMessage});
+            this.lblStatus});
             this.statusStripMain.Location = new System.Drawing.Point(0, 405);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(642, 22);
             this.statusStripMain.TabIndex = 7;
             // 
-            // lblMessage
+            // lblStatus
             // 
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(0, 17);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // menuStripMain
             // 
+            this.menuStripMain.Enabled = false;
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
@@ -85,10 +86,12 @@
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStripMain);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "frmMain";
             this.Text = "eClinicals";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
             this.menuStripMain.ResumeLayout(false);
@@ -101,9 +104,9 @@
         #endregion
 
         public System.Windows.Forms.StatusStrip statusStripMain;
-        public System.Windows.Forms.ToolStripStatusLabel lblMessage;
-        private System.Windows.Forms.MenuStrip menuStripMain;
+        public System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        public System.Windows.Forms.MenuStrip menuStripMain;
     }
 }
