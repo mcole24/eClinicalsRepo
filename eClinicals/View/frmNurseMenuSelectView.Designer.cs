@@ -1,6 +1,6 @@
 ﻿namespace eClinicals.View
 {
-    partial class frmNurseLoggedInView
+    partial class frmNurseMenuSelectView
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 262);
             this.Name = "frmNurseLoggedInView";
-            this.Text = "frmNurseLoggedInView";
+            this.Text = "Nurse Logged In View";
             this.Load += new System.EventHandler(this.frmNurseLoggedInView_Load);
             this.ResumeLayout(false);
 

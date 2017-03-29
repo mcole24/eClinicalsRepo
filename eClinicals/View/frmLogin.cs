@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace eClinicals.View
 {
-    partial class frmLogin : Form
+    partial class frmLogin : frmBaseView
     {      
 
         public frmLogin()

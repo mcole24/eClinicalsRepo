@@ -14,6 +14,8 @@ namespace eClinicals.View
 {
     public partial class frmMain : Form
     {
+        LoginController loginController;
+        NurseLoggedInViewController nurseLoggedInViewController;
         public frmMain()
         {
             InitializeComponent();
@@ -22,10 +24,17 @@ namespace eClinicals.View
         private void frmMain_Load(object sender, EventArgs e)
         {
 
-            LoginController loginController = new LoginController(this, new frmLogin());
-           // loginController.Show();
-
+            loginController = new LoginController(this, new frmLogin());
+            loginController.LoggedIn += this.OnLoggedIn;
+            loginController.Show();
 
         }
+        public void OnLoggedIn(object source, EventArgs e) {
+
+            nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
+            nurseLoggedInViewController.Show();
+        }
+
+
     }
 }

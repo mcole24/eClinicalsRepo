@@ -1,30 +1,57 @@
-﻿using eClinicals;
+﻿using eClinicals.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eClinicals.View;
-using System.Windows.Forms;
 
 namespace eClinicals.Controllers
 {
     class LoginController : ControllerBase
     {
-
-        public LoginController(frmMain mainForm, Form frmLogin) :
-            base(mainForm, frmLogin)
+        public bool isLoggedIn { get; set; }
+        public LoginController(frmMain mainForm, frmBaseView thisView) :
+            base(mainForm, thisView)
         {
-            // Manually register the event-handling method for
-            // the Click event of the Button control.
-            // base.mainForm.t   .btnOK.Click += new EventHandler(this.GreetingBtn_Click);
-
-
             //CREAT NEW DATABASE CONNECTION OBJECT
-            //Give status to main window
-            base.mainForm.lblStatus.Text = "You must login to us this application . . .";
+            //send status to main window
+            isLoggedIn = false;
+            frmLogin frmLoginView = (frmLogin)base.thisView;
+            frmLoginView.btnOk.Click += new EventHandler(this.OkBtn_Click);
+
+            mainForm.lblStatus.Text = "You must login to us this application . . .";
+        }
+       
+        void OkBtn_Click(Object sender, EventArgs e)
+        {
+            //Database access Here USER ID
+            //CHECK PASSWORD
+            //If logged in returns true
+            isLoggedIn = true;
+
+            if (isLoggedIn)
+            {
+                OnLogIn();
+                thisView.Close();
+            }
+            else {
+
+                //Incorrct login please check your user Id and Password
+                mainForm.lblStatus.Text = "Incorrct login please check your user Id and Password.";
+            }           
+        }
+        //define delegate
+        public delegate void LogInEventHandler(object sender, EventArgs e);
+        // Define event
+        public event LogInEventHandler LoggedIn;
+        //define event
+        protected virtual void OnLogIn() {
+            if (LoggedIn != null) {
+                LoggedIn(this, EventArgs.Empty);
+
+            }
+
+
         }
 
-  
+
+
     }
+
 }

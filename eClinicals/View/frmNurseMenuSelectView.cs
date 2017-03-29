@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace eClinicals.View
 {
-    public partial class frmNurseLoggedInView : Form
+    public partial class frmNurseMenuSelectView : frmBaseView
     {
-        public frmNurseLoggedInView()
+        public frmNurseMenuSelectView()
         {
             InitializeComponent();
         }
