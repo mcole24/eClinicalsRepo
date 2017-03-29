@@ -1,24 +1,20 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace eClinicals
+namespace eClinicals.View
 {
-    internal class frmLoginPage : Form
+    public partial class frmMain : Form
     {
-        private void InitializeComponent()
+        public frmMain()
         {
-            this.SuspendLayout();
-            // 
-            // frmLoginPage
-            // 
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(941, 462);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "frmLoginPage";
-            this.Text = "eClinicals Login";
-            this.ResumeLayout(false);
-
+            InitializeComponent();
         }
     }
 }

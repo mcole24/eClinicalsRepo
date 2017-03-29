@@ -16,7 +16,7 @@ namespace eClinicals
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLoginPage());
+            Application.Run(new View.frmMain());
         }
     }
 
