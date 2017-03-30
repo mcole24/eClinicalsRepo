@@ -85,6 +85,12 @@
     <Compile Include="View\frmNurseMenuSelectView.Designer.cs">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucUserRibbon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucUserRibbon.Designer.cs">
+      <DependentUpon>ucUserRibbon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmNurseMenuSelectView.resx">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ucUserRibbon.resx">
+      <DependentUpon>ucUserRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,7 +134,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="FileStructure.txt" />
-    <None Include="Resources\eclinicalLogo.png" />
+    <None Include="Resources\footer-image.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\eclinicalLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -52,6 +52,7 @@ namespace eClinicals.Controllers
                 thisView.FormClosed += ThisView_FormClosed;
               //  thisView.Height = thisView.MdiParent.Height;               
                 thisView.Show();
+                thisView.BringToFront();
                 mainForm.lblStatus.Text = message;
             }
             else

@@ -41,9 +41,9 @@
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 405);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 540);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(642, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(1026, 22);
             this.statusStripMain.TabIndex = 7;
             // 
             // lblStatus
@@ -59,7 +59,7 @@
             this.editToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(642, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1026, 24);
             this.menuStripMain.TabIndex = 8;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -82,13 +82,15 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(642, 427);
+            this.ClientSize = new System.Drawing.Size(1026, 562);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStripMain);
             this.DoubleBuffered = true;
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
+            this.MaximumSize = new System.Drawing.Size(1042, 800);
+            this.MinimumSize = new System.Drawing.Size(1042, 600);
             this.Name = "frmMain";
             this.Text = "eClinicals";
             this.Load += new System.EventHandler(this.frmMain_Load);
