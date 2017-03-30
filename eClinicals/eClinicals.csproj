@@ -55,6 +55,7 @@
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
+    <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Appointment.cs" />

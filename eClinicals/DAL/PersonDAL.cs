@@ -8,25 +8,27 @@ using System.Security.Cryptography;
 using System.IO;
 using eClinicals.Model;
 
-
 namespace eClinicals.DAL
 {
-    class NurseDAL
+    class PersonDAL
     {
-        private SimpleAES encrypt = new SimpleAES();
 
 
-        public static bool createNurse(int contactID)
+        
+
+        public static bool createLogin(int contactID, string username, string password)
         {
 
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    string insertStmt = "INSERT INTO nurse (contactID) VALUES (@contact);";
+                    string insertStmt = "INSERT INTO logins (contactID, userName, password) VALUES (@contact, @user, @password);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contact", contactID);
+                        cmd.Parameters.AddWithValue("@user", username);
+                        cmd.Parameters.AddWithValue("@password", password);
                         connect.Open();
                         cmd.ExecuteNonQuery();
                         return true;
@@ -41,7 +43,13 @@ namespace eClinicals.DAL
         }
 
 
-        
+
+        public static bool createContactInfo()
+        {
+
+
+
+        }
 
 
 
