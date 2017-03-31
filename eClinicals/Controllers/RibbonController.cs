@@ -15,15 +15,27 @@ namespace eClinicals.Controllers
             ribbon = (frmRibbon)base.thisView;
             mainForm.lblStatus.Text = "Ribbon Active";
         }
-        public void UserInfo(string name, string uid) {
-
+        public void AddUserInfo(string name, string uid, string userType) {
 
             ribbon.lblUserName.Text = name;
             ribbon.lblId.Text = uid;
+            ribbon.lblUserType.Text = userType;
 
         }
 
+        public void AddContactInfo(string phone, string Address)
+        {
 
+            ribbon.lblPhone.Text = phone;
+            ribbon.lblAddress.Text = Address;
 
+        }
+        public void AddStatusInfo(string status)
+        {
+
+            ribbon.lblStatus.Text = status;
+          
+
+        }
     }
 }

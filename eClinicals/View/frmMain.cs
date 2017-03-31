@@ -40,9 +40,10 @@ namespace eClinicals.View
             
             
             // This will Come from Database ////
-            ribbonController.AddUserInfo("Stalbert, Malik", "12548");
-
-
+            ribbonController.AddUserInfo("Stalbert, Malik", "12548", "Admin");
+            ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
+            ribbonController.AddStatusInfo("Looged in");
+            //===============================================
         }
 
         private void  AddToContainer(ControllerBase thisController, int level) {
