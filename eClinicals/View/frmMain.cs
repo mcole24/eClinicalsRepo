@@ -27,24 +27,24 @@ namespace eClinicals.View
             loginController = new LoginController(this, new frmLogin());
             loginController.LoggedIn += this.OnLoggedIn;
             AddToContainer(loginController, MIDDLE);
-
-
-
         }
-        public void OnLoggedIn(object source, EventArgs e) {
 
+
+        public void OnLoggedIn(object source, EventArgs e) {
             nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
             AddToContainer(nurseLoggedInViewController,MIDDLE);
 
             ribbonController = new RibbonController(this, new frmRibbon());
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
+            
+            
+            // This will Come from Database ////
+            ribbonController.AddUserInfo("Stalbert, Malik", "12548");
+
+
         }
 
-        private void pMiddle_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void  AddToContainer(ControllerBase thisController, int level) {
             switch (level)
             {

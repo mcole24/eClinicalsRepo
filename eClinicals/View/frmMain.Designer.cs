@@ -83,7 +83,7 @@
             this.pTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTop.Location = new System.Drawing.Point(0, 24);
             this.pTop.Name = "pTop";
-            this.pTop.Size = new System.Drawing.Size(1026, 87);
+            this.pTop.Size = new System.Drawing.Size(1026, 104);
             this.pTop.TabIndex = 10;
             this.pTop.Visible = false;
             // 
@@ -93,11 +93,11 @@
             this.pMiddle.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.pMiddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pMiddle.Location = new System.Drawing.Point(0, 111);
+            this.pMiddle.Location = new System.Drawing.Point(0, 128);
             this.pMiddle.Name = "pMiddle";
-            this.pMiddle.Size = new System.Drawing.Size(1026, 429);
+            this.pMiddle.Size = new System.Drawing.Size(1026, 412);
             this.pMiddle.TabIndex = 12;
-            this.pMiddle.Paint += new System.Windows.Forms.PaintEventHandler(this.pMiddle_Paint);
+          
             // 
             // frmMain
             // 

@@ -29,7 +29,7 @@ namespace eClinicals.Controllers
            // this.thisView.Show();
         }
       
-        public void GetView(frmBaseView thisView) {
+        private void GetView(frmBaseView thisView) {
 
             if (thisView is frmLogin)
             {
