@@ -63,6 +63,7 @@
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Model\SimpleAES.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace eClinicals.Model
 {
-    class Nurse
+
+    /// <summary>
+    /// Extends the Person class
+    /// </summary>
+    class Nurse : Person
     {
+        
     }
 }

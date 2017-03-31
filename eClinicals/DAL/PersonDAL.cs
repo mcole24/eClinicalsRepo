@@ -79,37 +79,7 @@ namespace eClinicals.DAL
         }
         public static bool checkPassword(string username, string password)
         {
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-
-                    try
-                    {
-                        connect.Open();
-                    }
-                    catch (SqlException e)
-                    {
-                        throw e;
-                    }
-
-                    string selectStmt = "SELECT password FROM logins WHERE userName = @user";
-                    using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@user", username);
-                        
-                    }
-                }
-                return true;
-            }
-            catch (SqlException sqlex)
-            {
-                throw sqlex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            
         }
 
 

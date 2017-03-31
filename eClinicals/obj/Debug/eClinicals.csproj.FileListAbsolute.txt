@@ -26,3 +26,5 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb

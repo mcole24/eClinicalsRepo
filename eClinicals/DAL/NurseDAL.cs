@@ -16,7 +16,7 @@ namespace eClinicals.DAL
         private SimpleAES encrypt = new SimpleAES();
 
 
-        public static bool createNurse(int contactID)
+        public static bool CreateNurse(int contactID)
         {
 
             try
@@ -41,7 +41,74 @@ namespace eClinicals.DAL
         }
 
 
-        
+        public static bool DeleteNurse(int contactID)
+        {
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    string delStmt = "DELETE FROM nurse WHERE contactID = @id";
+                    using (SqlCommand cmd = new SqlCommand(delStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@id", contactID);
+                        connect.Open();
+                        cmd.ExecuteNonQuery();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        public static Nurse GetNurseByID(int contactID)
+        {
+            Nurse nurse = new Nurse();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    string selStmt = "SELECT * FROM contact INNER JOIN nurse ON contact.contactID = nurse.contactID WHERE nurse.contactID = @contactID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@contactID", contactID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                nurse.ContactID = (int)reader["contactID"];
+                                nurse.LastName = reader["lName"].ToString();
+                                nurse.FirstName = reader["fName"].ToString();
+                                nurse.Dob = (DateTime)reader["dob"];
+                                nurse.Gender = reader["gender"].ToString();
+                                nurse.Address = reader["mailingAddressStreet"].ToString();
+                                nurse.City = reader["mailingAddressCity"].ToString();
+                                nurse.State = reader["mailingAddressState"].ToString();
+                                nurse.Zip = reader["mailingAddressZip"].ToString();
+                                nurse.Phone = reader["phone"].ToString();
+                                nurse.Ssn = reader["ssn"].ToString();
+                                nurse.UserName = reader["username"].ToString();
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nurse;
+        }
 
 
 
