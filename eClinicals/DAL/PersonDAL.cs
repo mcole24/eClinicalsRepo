@@ -77,8 +77,6 @@ namespace eClinicals.DAL
             }
 
         }
-
-
         public static bool checkPassword(string username, string password)
         {
             try
@@ -102,6 +100,7 @@ namespace eClinicals.DAL
                         
                     }
                 }
+                return true;
             }
             catch (SqlException sqlex)
             {

@@ -53,6 +53,7 @@
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Program.cs" />
+    <Compile Include="Controllers\RibbonController.cs" />
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
@@ -86,11 +87,11 @@
     <Compile Include="View\frmNurseMenuSelectView.Designer.cs">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ucUserRibbon.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\frmRibbon.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ucUserRibbon.Designer.cs">
-      <DependentUpon>ucUserRibbon.cs</DependentUpon>
+    <Compile Include="View\frmRibbon.Designer.cs">
+      <DependentUpon>frmRibbon.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,8 +112,8 @@
     <EmbeddedResource Include="View\frmNurseMenuSelectView.resx">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ucUserRibbon.resx">
-      <DependentUpon>ucUserRibbon.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmRibbon.resx">
+      <DependentUpon>frmRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,6 +136,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="FileStructure.txt" />
+    <None Include="Resources\user.png" />
     <None Include="Resources\footer-image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

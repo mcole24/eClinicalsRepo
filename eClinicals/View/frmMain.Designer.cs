@@ -33,6 +33,8 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pTop = new System.Windows.Forms.Panel();
+            this.pMiddle = new System.Windows.Forms.Panel();
             this.statusStripMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +77,28 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
+            // pTop
+            // 
+            this.pTop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pTop.Location = new System.Drawing.Point(0, 24);
+            this.pTop.Name = "pTop";
+            this.pTop.Size = new System.Drawing.Size(1026, 87);
+            this.pTop.TabIndex = 10;
+            this.pTop.Visible = false;
+            // 
+            // pMiddle
+            // 
+            this.pMiddle.BackColor = System.Drawing.Color.Transparent;
+            this.pMiddle.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
+            this.pMiddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pMiddle.Location = new System.Drawing.Point(0, 111);
+            this.pMiddle.Name = "pMiddle";
+            this.pMiddle.Size = new System.Drawing.Size(1026, 429);
+            this.pMiddle.TabIndex = 12;
+            this.pMiddle.Paint += new System.Windows.Forms.PaintEventHandler(this.pMiddle_Paint);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,6 +107,8 @@
             this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1026, 562);
+            this.Controls.Add(this.pMiddle);
+            this.Controls.Add(this.pTop);
             this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.menuStripMain);
             this.DoubleBuffered = true;
@@ -110,5 +136,8 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStripMain;
+        private System.Windows.Forms.Panel pMain;
+        public System.Windows.Forms.Panel pMiddle;
+        public System.Windows.Forms.Panel pTop;
     }
 }

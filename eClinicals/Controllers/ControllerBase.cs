@@ -31,13 +31,17 @@ namespace eClinicals.Controllers
       
         public void GetView(frmBaseView thisView) {
 
-            if (thisView is frmBaseView)
+            if (thisView is frmLogin)
             {
                 thisView = new frmLogin();
             }
             if (thisView is frmNurseMenuSelectView)
             {
-                thisView = new frmLogin();
+                thisView = new frmNurseMenuSelectView();
+            }
+            if (thisView is frmRibbon)
+            {
+                thisView = new frmRibbon();
             }
         }
 

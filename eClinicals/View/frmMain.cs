@@ -1,12 +1,6 @@
 ﻿using eClinicals.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -14,8 +8,12 @@ namespace eClinicals.View
 {
     public partial class frmMain : Form
     {
+
+        const int MIDDLE =0;
+        const int TOP = 1;
+        const int BOTTOM = 2;
         LoginController loginController;
-        private ucUserRibbon userRibbon;
+        RibbonController ribbonController;      
         NurseLoggedInViewController nurseLoggedInViewController;
         public frmMain()
         {
@@ -23,27 +21,43 @@ namespace eClinicals.View
         }
 
         private void frmMain_Load(object sender, EventArgs e)
-        {          
-            userRibbon = new ucUserRibbon();
-            userRibbon.Location = new Point(0, 0);
-            this.Controls.Add(userRibbon);           
-        
-            loginController = new LoginController(this, new frmLogin());
+        {
 
+
+            loginController = new LoginController(this, new frmLogin());
             loginController.LoggedIn += this.OnLoggedIn;
-            loginController.Show();
-            loginController.thisView.BringToFront();
+            AddToContainer(loginController, MIDDLE);
+
+
+
         }
         public void OnLoggedIn(object source, EventArgs e) {
 
             nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
-            nurseLoggedInViewController.Show();
-           
-            nurseLoggedInViewController.thisView.Location = new Point(0, 80);
-            nurseLoggedInViewController.mainForm.Height = nurseLoggedInViewController.thisView.Height + 100;
-            nurseLoggedInViewController.mainForm.Width = nurseLoggedInViewController.thisView.Width + 125;
+            AddToContainer(nurseLoggedInViewController,MIDDLE);
+
+            ribbonController = new RibbonController(this, new frmRibbon());
+            AddToContainer(ribbonController, TOP);
+            this.pTop.Visible = true;
         }
 
+        private void pMiddle_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+        private void  AddToContainer(ControllerBase thisController, int level) {
+            switch (level)
+            {
+                case MIDDLE :
+                    thisController.mainForm.pMiddle.Controls.Add(thisController.thisView);
+                    thisController.Show();    
+                    break;
+                case TOP:
+                    thisController.mainForm.pTop.Controls.Add(thisController.thisView);
+                    thisController.Show();              
+                    break;
+            }
+
+        }
     }
 }

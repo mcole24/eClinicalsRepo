@@ -17,7 +17,7 @@ namespace eClinicals.Controllers
 
             mainForm.lblStatus.Text = "You must login to us this application . . .";
         }
-       
+
         void OkBtn_Click(Object sender, EventArgs e)
         {
             //Database access Here USER ID
@@ -30,19 +30,22 @@ namespace eClinicals.Controllers
                 OnLogIn();
                 thisView.Close();
             }
-            else {
+            else
+            {
 
                 //Incorrct login please check your user Id and Password
                 mainForm.lblStatus.Text = "Incorrct login please check your user Id and Password.";
-            }           
+            }
         }
         //define delegate
         public delegate void LogInEventHandler(object sender, EventArgs e);
         // Define event
         public event LogInEventHandler LoggedIn;
         //define event
-        protected virtual void OnLogIn() {
-            if (LoggedIn != null) {
+        protected virtual void OnLogIn()
+        {
+            if (LoggedIn != null)
+            {
                 LoggedIn(this, EventArgs.Empty);
 
             }
