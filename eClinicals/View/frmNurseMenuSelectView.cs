@@ -10,10 +10,7 @@ namespace eClinicals.View
             InitializeComponent();
         }
 
-        private void frmNurseLoggedInView_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {

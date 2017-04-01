@@ -21,10 +21,12 @@ Admin.cs -- contains declaration of Admin properties
 Patient.cs -- contains declaration of Patient properties
 Appointment.cs -- contains declaration of Appointment properties
 LabTest.cs -- contains declaration of LabTest properties
+Person.cs -- contains declaration of Person properties
 Visit.cs -- contains declaration of Visit properties
 
 
 View
+frmMain.cs -- the main page that loads when the program is runn
 frmLoginPage.cs -- login page form, first page to be displayed in program
 frmNurseHomepage.cs -- this is the default form that displays once nurse is logged in, includes nurse contact info, login status, logout option, register patient button, find patient record button
 (re: Nurse_Logged_in_View.png)

@@ -45,7 +45,7 @@
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 740);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 720);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(1026, 22);
             this.statusStripMain.TabIndex = 7;
@@ -98,7 +98,7 @@
             this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMiddle.Location = new System.Drawing.Point(0, 128);
             this.pMiddle.Name = "pMiddle";
-            this.pMiddle.Size = new System.Drawing.Size(1026, 612);
+            this.pMiddle.Size = new System.Drawing.Size(1026, 592);
             this.pMiddle.TabIndex = 12;
             // 
             // pRight
@@ -107,7 +107,7 @@
             this.pRight.Location = new System.Drawing.Point(826, 0);
             this.pRight.Margin = new System.Windows.Forms.Padding(0);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(200, 612);
+            this.pRight.Size = new System.Drawing.Size(200, 592);
             this.pRight.TabIndex = 0;
             // 
             // frmMain
@@ -117,7 +117,7 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1026, 762);
+            this.ClientSize = new System.Drawing.Size(1026, 742);
             this.Controls.Add(this.pMiddle);
             this.Controls.Add(this.pTop);
             this.Controls.Add(this.statusStripMain);
