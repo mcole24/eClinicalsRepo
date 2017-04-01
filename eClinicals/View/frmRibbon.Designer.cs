@@ -111,8 +111,7 @@
             this.tableLayoutPanel7.SetColumnSpan(this.button1, 2);
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::eClinicals.Properties.Resources.user;
-            this.button1.Location = new System.Drawing.Point(124, 40);
+           this.button1.Location = new System.Drawing.Point(124, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(191, 26);
             this.button1.TabIndex = 5;
@@ -383,7 +382,6 @@
             // pbUserImage
             // 
             this.pbUserImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbUserImage.BackgroundImage = global::eClinicals.Properties.Resources.user;
             this.pbUserImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbUserImage.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbUserImage.Location = new System.Drawing.Point(5, 5);
@@ -396,7 +394,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1047, 105);
             this.Controls.Add(this.tableLayoutPanel7);

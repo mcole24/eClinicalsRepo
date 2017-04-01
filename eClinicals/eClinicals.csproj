@@ -159,6 +159,14 @@
     <EmbeddedResource Include="View\frmRibbon.resx">
       <DependentUpon>frmRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\eClinicals.Model.Admin.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Appointment.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.LabTest.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Nurse.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Patient.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Person.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.SimpleAES.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Visit.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
