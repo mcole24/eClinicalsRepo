@@ -14,8 +14,19 @@ CREATE TABLE contact (
 	mailingAddressZip CHAR(5) NOT NULL,
 	phoneNumber VARCHAR(20) NOT NULL,
 	gender CHAR(1),
-	SSN CHAR(9) NOT NULL UNIQUE
+	SSN CHAR(9) NOT NULL UNIQUE,
+	userType INT NOT NULL
 );
+
+/*
+
+userType definitions -- 
+1. Doctor
+2. Clinic Administrator
+3. Nurse
+4. Patient
+
+*/
 
 CREATE TABLE logins (
 	contactID INT NOT NULL,
@@ -141,18 +152,18 @@ CREATE TABLE visit_has_diagnosis (
 );
 
 INSERT INTO contact VALUES
-('Syed', 'Amber', '1979-01-16', '123 Main Street', 'Atlanta', 'GA', '30308', '678-770-1234', 'F', '123456789'), 
-('Carter', 'Maya', '1977-10-10', '500 Self Street', 'Marietta', 'GA', '30068', '770-679-9900', 'F', '234567891'), 
-('Simon', 'Timothy', '1965-07-29', '15 Maine Lane', 'Atlanta', 'GA', '30909', '470-674-6759', 'M', '345678912'), 
-('Wynn', 'Jasmine', '1990-10-19', '15 Antler Dr', 'Norcross', 'GA', '30092', '770-404-0076', 'F', '456789123'),
-('Woods', 'Courtney', '1990-11-28', '25 Ashley  Circle', 'Norcross', 'GA', '30092', '404-388-3729', 'F', '567891234'), 
-('DeWalt', 'DeAndra', '1990-02-02', '50 Graves Road', 'Doraville', 'GA', '30096', '404-470-6789', 'F', '678912345'),
-('Robinson', 'Bianca', '1990-12-09', '2309 Ashley Club Circle', 'Norcross', 'GA', '30092', '678-895-5648', 'F', '789123456'),
-('Williams', 'Jeffrey', '1970-09-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'M', '891234567'),
-('Williams', 'Nicki', '1960-05-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'F', '912345678'),
-('Graham', 'Lamar', '1983-02-15', '123 Main Circle', 'Norcross', 'GA', '30092', '770-678-4040', 'M', '012345678'),
-('Gasque', 'Xzavia', '1991-10-09', '123 Story Circle', 'Atlanta', 'GA', '30308', '404-678-3030', 'F', '147258369'),
-('Mitchell', 'Marvin', '1981-09-04', '123 Story Circle', 'Atlanta', 'GA', '30308', '470-678-3456', 'M', '369258147');
+('Syed', 'Amber', '1979-01-16', '123 Main Street', 'Atlanta', 'GA', '30308', '678-770-1234', 'F', '123456789', 1), 
+('Carter', 'Maya', '1977-10-10', '500 Self Street', 'Marietta', 'GA', '30068', '770-679-9900', 'F', '234567891', 1), 
+('Simon', 'Timothy', '1965-07-29', '15 Maine Lane', 'Atlanta', 'GA', '30909', '470-674-6759', 'M', '345678912', 1), 
+('Wynn', 'Jasmine', '1990-10-19', '15 Antler Dr', 'Norcross', 'GA', '30092', '770-404-0076', 'F', '456789123', 2),
+('Woods', 'Courtney', '1990-11-28', '25 Ashley  Circle', 'Norcross', 'GA', '30092', '404-388-3729', 'F', '567891234', 3), 
+('DeWalt', 'DeAndra', '1990-02-02', '50 Graves Road', 'Doraville', 'GA', '30096', '404-470-6789', 'F', '678912345', 3),
+('Robinson', 'Bianca', '1990-12-09', '2309 Ashley Club Circle', 'Norcross', 'GA', '30092', '678-895-5648', 'F', '789123456', 4),
+('Williams', 'Jeffrey', '1970-09-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'M', '891234567', 4),
+('Williams', 'Nicki', '1960-05-18', '50 Bellwood Circle', 'Morrow', 'GA', '30260', '678-895-9846', 'F', '912345678', 4),
+('Graham', 'Lamar', '1983-02-15', '123 Main Circle', 'Norcross', 'GA', '30092', '770-678-4040', 'M', '012345678', 4),
+('Gasque', 'Xzavia', '1991-10-09', '123 Story Circle', 'Atlanta', 'GA', '30308', '404-678-3030', 'F', '147258369', 4),
+('Mitchell', 'Marvin', '1981-09-04', '123 Story Circle', 'Atlanta', 'GA', '30308', '470-678-3456', 'M', '369258147', 4);
 
 INSERT INTO logins VALUES
 (1, 'asyed1', 'testpassword123'),

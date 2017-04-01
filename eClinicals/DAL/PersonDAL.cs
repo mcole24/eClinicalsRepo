@@ -44,15 +44,15 @@ namespace eClinicals.DAL
 
 
 
-        public static bool createContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
+        public static bool createContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
 
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    string insertStmt = "INSERT INTO contact (lName, fName, dob, mailingAddressStreet, mailingAddressCity, mailingAddressState, mailingAddressZip, phoneNumber, gender, SSN) " +
-                        "VALUES (@last, @first, @dob, @street, @city, @state, @zip, @phone, @gender, @ssn)";
+                    string insertStmt = "INSERT INTO contact (lName, fName, dob, mailingAddressStreet, mailingAddressCity, mailingAddressState, mailingAddressZip, phoneNumber, gender, SSN, userType) " +
+                        "VALUES (@last, @first, @dob, @street, @city, @state, @zip, @phone, @gender, @ssn, @userType)";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@last", lName);
@@ -65,6 +65,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@phone", phone);
                         cmd.Parameters.AddWithValue("@gender", gender);
                         cmd.Parameters.AddWithValue("@ssn", ssn);
+                        cmd.Parameters.AddWithValue("@userType", userType);
                         connect.Open();
                         cmd.ExecuteNonQuery();
                         return true;
@@ -77,9 +78,40 @@ namespace eClinicals.DAL
             }
 
         }
-        public static bool checkPassword(string username, string password)
+        public static bool checkPassword(string username, string enteredPassword)
         {
-            return false;
+            bool isMatch = false;
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    string selectStmt = "SELECT password FROM logins WHERE userName = @user";
+                    using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string storedPassword = reader["password"].ToString();
+                                if (enteredPassword == storedPassword)
+                                {
+                                    isMatch = true;
+                                }
+                                else
+                                {
+                                    isMatch = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                isMatch = false;
+                return isMatch;
+            }
+            return isMatch;
         }
 
 

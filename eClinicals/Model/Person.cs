@@ -21,6 +21,7 @@ namespace eClinicals.Model
         public string Ssn { get; set; }
         public DateTime Dob { get; set; }
         public string UserName { get; set; }
+        public int UserType { get; set; }
 
     }
 }

@@ -8,5 +8,14 @@ namespace eClinicals.Model
 {
     class Appointment
     {
+
+        public int AppointmentID { get; set; }
+        public DateTime AppointmentDate { get; set; }
+
+        // May need to remove the below properties later
+
+        public int PatientID { get; set; }
+        public int DoctorID { get; set; }
+
     }
 }

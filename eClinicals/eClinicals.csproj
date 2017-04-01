@@ -58,8 +58,10 @@
     <Compile Include="Controllers\RegistrationViewController.cs" />
     <Compile Include="Controllers\PatientInfoRibbonController.cs" />
     <Compile Include="Controllers\RibbonController.cs" />
+    <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
+    <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />

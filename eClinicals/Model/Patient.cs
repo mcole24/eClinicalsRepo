@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eClinicals.Model
 {
-    class Patient
+    class Patient : Person
     {
     }
 }
