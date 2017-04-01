@@ -11,17 +11,23 @@ using System.Windows.Forms;
 namespace eClinicals.View
 {
     partial class frmLogin : frmBaseView
-    {      
-
+    {
+        public bool isLoggedIn { get; set; }
         public frmLogin()
         {
             InitializeComponent();
-          
+            mainForm.lblStatus.Text = "You must login to us this application . . .";
+
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            isLoggedIn = false;
         }
     }
 }
