@@ -172,13 +172,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\images\logo\eclinicalLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="DB\CS6232-g5.sql" />
     <Content Include="FileStructure.txt" />
     <None Include="Resources\user.png" />
     <None Include="Resources\footer-image.jpg">
