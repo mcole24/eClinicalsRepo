@@ -41,6 +41,7 @@
             this.btnFindPatientRecord.TabIndex = 0;
             this.btnFindPatientRecord.Text = "Find Patient Record";
             this.btnFindPatientRecord.UseVisualStyleBackColor = true;
+            this.btnFindPatientRecord.Click += new System.EventHandler(this.btnFindPatientRecord_Click);
             // 
             // btnRegisterAPatient
             // 
@@ -73,7 +74,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnFindPatientRecord;
-        private System.Windows.Forms.Button btnRegisterAPatient;
+        public System.Windows.Forms.Button btnFindPatientRecord;
+        public System.Windows.Forms.Button btnRegisterAPatient;
     }
 }

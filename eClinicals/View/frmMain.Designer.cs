@@ -135,8 +135,7 @@
         public System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        public System.Windows.Forms.MenuStrip menuStripMain;
-        private System.Windows.Forms.Panel pMain;
+        public System.Windows.Forms.MenuStrip menuStripMain;      
         public System.Windows.Forms.Panel pMiddle;
         public System.Windows.Forms.Panel pTop;
     }

@@ -52,7 +52,9 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PatientSearchViewController.cs" />
     <Compile Include="Controllers\Program.cs" />
+    <Compile Include="Controllers\RegistrationViewController.cs" />
     <Compile Include="Controllers\RibbonController.cs" />
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
@@ -88,6 +90,18 @@
     <Compile Include="View\frmNurseMenuSelectView.Designer.cs">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmPatientSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPatientSearch.Designer.cs">
+      <DependentUpon>frmPatientSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmRegistration.Designer.cs">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmRibbon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmNurseMenuSelectView.resx">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPatientSearch.resx">
+      <DependentUpon>frmPatientSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmRegistration.resx">
+      <DependentUpon>frmRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmRibbon.resx">
       <DependentUpon>frmRibbon.cs</DependentUpon>

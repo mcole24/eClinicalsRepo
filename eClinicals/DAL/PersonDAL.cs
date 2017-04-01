@@ -79,7 +79,7 @@ namespace eClinicals.DAL
         }
         public static bool checkPassword(string username, string password)
         {
-            
+            return false;
         }
 
 

@@ -43,6 +43,10 @@ namespace eClinicals.Controllers
             {
                 thisView = new frmRibbon();
             }
+            if (thisView is frmPatientSearch)
+            {
+                thisView = new frmPatientSearch();
+            }
         }
 
         public void Show()
