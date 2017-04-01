@@ -302,7 +302,7 @@
         private System.Windows.Forms.TextBox txtZip;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListBox lbCountry;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnRegister;
+        public System.Windows.Forms.Button btnCancel;
     }
 }

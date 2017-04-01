@@ -9,10 +9,11 @@ namespace eClinicals.Controllers
 {
     class PatientSearchViewController : ControllerBase
     {
+        public frmPatientSearch frmPatientSearch;
         public PatientSearchViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
 
-            frmPatientSearch frmPatientSearch = (frmPatientSearch)base.thisView;
+             frmPatientSearch = (frmPatientSearch)base.thisView;
 
             mainForm.lblStatus.Text = "Patient Search active . . .";
 

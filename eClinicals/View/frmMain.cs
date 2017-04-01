@@ -12,19 +12,21 @@ namespace eClinicals.View
         const int MIDDLE =0;
         const int TOP = 1;
         const int BOTTOM = 2;
+        const int RIGHT = 3;
         LoginController loginController;
-        RibbonController ribbonController;      
+        RibbonController ribbonController;
+        PatientInfoRibbonController patientInfoRibbonController;
         NurseLoggedInViewController nurseLoggedInViewController;
         PatientSearchViewController patientSearchViewController;
         RegistrationViewController registrationViewController;
         public frmMain()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            pRight.Visible = false;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
 
             loginController = new LoginController(this, new frmLogin());
             loginController.LoggedIn += this.OnLoggedIn;
@@ -56,6 +58,16 @@ namespace eClinicals.View
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
             AddToContainer(registrationViewController, MIDDLE);
             nurseLoggedInViewController.thisView.Close();
+            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+
+            //Add Patient to database
+            //Open Patient Record
+            this.lblStatus.Text = (" Open Patient Record : With Registered Patient");
+
 
         }
 
@@ -64,8 +76,19 @@ namespace eClinicals.View
             patientSearchViewController = new PatientSearchViewController(this, new frmPatientSearch());
             AddToContainer(patientSearchViewController, MIDDLE);
             this.lblStatus.Text = ("Patient Appointment Search View");
-           
+            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);   
+        }       
 
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            //TODO:   Open Patient Record
+            this.lblStatus.Text = "  Open Patient Record";
+            patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
+            AddToContainer(patientInfoRibbonController, RIGHT);
+            patientInfoRibbonController.AddContactInfo("909-656-6589","100 pine street \n Colton Ca 92324");
+            patientInfoRibbonController.AddAppointmentInfo("Annual Visit","Headache \n Cough");
+            patientInfoRibbonController.AddUserInfo("35", "M", "12546");
+            patientSearchViewController.frmPatientSearch.Close();
         }
 
         private void  AddToContainer(ControllerBase thisController, int level) {
@@ -78,6 +101,11 @@ namespace eClinicals.View
                 case TOP:
                     thisController.mainForm.pTop.Controls.Add(thisController.thisView);
                     thisController.Show();              
+                    break;
+                case RIGHT:
+                    thisController.mainForm.pRight.Controls.Add(thisController.thisView);
+                    pRight.Visible = true;
+                    thisController.Show();
                     break;
             }
 
