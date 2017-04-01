@@ -65,7 +65,7 @@
             this.lblLastName.Location = new System.Drawing.Point(394, 25);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(94, 13);
-            this.lblLastName.TabIndex = 7;
+            this.lblLastName.TabIndex = 101;
             this.lblLastName.Text = "Patient Last Name";
             // 
             // btnOpen
@@ -73,7 +73,7 @@
             this.btnOpen.Location = new System.Drawing.Point(531, 331);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(106, 23);
-            this.btnOpen.TabIndex = 6;
+            this.btnOpen.TabIndex = 4;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
@@ -83,14 +83,14 @@
             this.dgvSearchResults.Location = new System.Drawing.Point(15, 94);
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.Size = new System.Drawing.Size(622, 227);
-            this.dgvSearchResults.TabIndex = 5;
+            this.dgvSearchResults.TabIndex = 100;
             // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(531, 25);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(106, 48);
-            this.btnSearch.TabIndex = 4;
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -99,7 +99,7 @@
             this.txtLastName.Location = new System.Drawing.Point(381, 51);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(144, 20);
-            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TabIndex = 2;
             // 
             // dtpDate
             // 
@@ -118,7 +118,7 @@
             this.cbSearch.Location = new System.Drawing.Point(15, 51);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(119, 21);
-            this.cbSearch.TabIndex = 1;
+            this.cbSearch.TabIndex = 0;
             this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
             // 
             // txtFirstName
@@ -126,7 +126,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(167, 52);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(200, 20);
-            this.txtFirstName.TabIndex = 9;
+            this.txtFirstName.TabIndex = 1;
             this.txtFirstName.Visible = false;
             // 
             // frmPatientSearch
