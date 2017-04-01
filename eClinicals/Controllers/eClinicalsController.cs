@@ -47,7 +47,7 @@ namespace eClinicals.Controllers
         {
             return DAL.PatientDAL.CreatePatient(contactID);
         }
-     
+
         public bool DeletePatient(int contactID)
         {
             return DAL.PatientDAL.DeletePatient(contactID);
@@ -58,10 +58,21 @@ namespace eClinicals.Controllers
             return DAL.PatientDAL.GetPatientByID(contactID);
         }
 
+        public bool CreateLogin(int contactID, string username, string password)
+        {
+            return DAL.PersonDAL.createLogin(contactID, username, password);
+        }
 
+        public bool CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
+        {
+            return DAL.PersonDAL.createContactInfo(lName, fName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
+        }
+
+        public bool CheckPassword(string username, string enteredPassword)
+        {
+            return DAL.PersonDAL.checkPassword(username, enteredPassword);
+        }
 
     }
-
-   
 
 }
