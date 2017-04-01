@@ -10,8 +10,7 @@ namespace eClinicals.Controllers
         public frmNurseMenuSelectView frmNurseMenuSelectView;
         public NurseLoggedInViewController(frmMain mainForm, frmBaseView thisView) :
             base(mainForm, thisView)
-        {
-         
+        {         
 
             frmNurseMenuSelectView = (frmNurseMenuSelectView)base.thisView; 
 

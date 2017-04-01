@@ -64,12 +64,9 @@ namespace eClinicals.View
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
             //Add Patient to database
-            //Open Patient Record
+            //Open Patient Record          
             this.lblStatus.Text = (" Open Patient Record : With Registered Patient");
-
-
         }
 
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
@@ -77,7 +74,8 @@ namespace eClinicals.View
             patientSearchViewController = new PatientSearchViewController(this, new frmPatientSearch());
             AddToContainer(patientSearchViewController, MIDDLE);
             this.lblStatus.Text = ("Patient Appointment Search View");
-            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);   
+            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
+            nurseLoggedInViewController.thisView.Close();
         }       
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -94,12 +92,7 @@ namespace eClinicals.View
             patientInfoRibbonController.AddAppointmentInfo("Annual Visit","Headache \n Cough");
             patientInfoRibbonController.AddUserInfo("35", "M", "12546");
             patientSearchViewController.frmPatientSearch.Close();
-
-
-
-
-
-
+            
 
         }
 

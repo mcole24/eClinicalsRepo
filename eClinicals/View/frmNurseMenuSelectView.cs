@@ -14,7 +14,12 @@ namespace eClinicals.View
 
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {
-            this.Close();
+    
+        }
+
+        private void frmNurseMenuSelectView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
