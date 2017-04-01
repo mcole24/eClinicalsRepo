@@ -19,6 +19,7 @@ namespace eClinicals.View
         NurseLoggedInViewController nurseLoggedInViewController;
         PatientSearchViewController patientSearchViewController;
         RegistrationViewController registrationViewController;
+        PatientRecordTabsViewController patientRecordTabsViewController;
         public frmMain()
         {
             InitializeComponent();
@@ -84,11 +85,22 @@ namespace eClinicals.View
             //TODO:   Open Patient Record
             this.lblStatus.Text = "  Open Patient Record";
             patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
+            patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
+
+            
+            AddToContainer(patientRecordTabsViewController, MIDDLE);
             AddToContainer(patientInfoRibbonController, RIGHT);
             patientInfoRibbonController.AddContactInfo("909-656-6589","100 pine street \n Colton Ca 92324");
             patientInfoRibbonController.AddAppointmentInfo("Annual Visit","Headache \n Cough");
             patientInfoRibbonController.AddUserInfo("35", "M", "12546");
             patientSearchViewController.frmPatientSearch.Close();
+
+
+
+
+
+
+
         }
 
         private void  AddToContainer(ControllerBase thisController, int level) {

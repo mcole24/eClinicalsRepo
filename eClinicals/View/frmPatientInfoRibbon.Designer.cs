@@ -421,7 +421,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(66, 26);
+            this.label3.Location = new System.Drawing.Point(65, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 28);
             this.label3.TabIndex = 9;
@@ -433,7 +433,7 @@
             this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAge.Location = new System.Drawing.Point(35, 26);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(25, 28);
+            this.lblAge.Size = new System.Drawing.Size(24, 28);
             this.lblAge.TabIndex = 9;
             this.lblAge.Text = "-";
             // 
@@ -441,9 +441,9 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGender.Location = new System.Drawing.Point(116, 26);
+            this.lblGender.Location = new System.Drawing.Point(115, 26);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(49, 28);
+            this.lblGender.Size = new System.Drawing.Size(50, 28);
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "-";
             // 
@@ -464,7 +464,7 @@
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblId.Location = new System.Drawing.Point(35, 54);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(75, 23);
+            this.lblId.Size = new System.Drawing.Size(74, 23);
             this.lblId.TabIndex = 9;
             this.lblId.Text = "-";
             // 
@@ -474,7 +474,7 @@
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.pNameAgeGenderId.Controls.Add(this.lblId, 1, 2);
             this.pNameAgeGenderId.Controls.Add(this.label6, 0, 2);
             this.pNameAgeGenderId.Controls.Add(this.lblGender, 3, 1);

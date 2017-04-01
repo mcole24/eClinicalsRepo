@@ -91,7 +91,7 @@
             // 
             // pMiddle
             // 
-            this.pMiddle.BackColor = System.Drawing.Color.Transparent;
+            this.pMiddle.BackColor = System.Drawing.Color.White;
             this.pMiddle.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.pMiddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pMiddle.Controls.Add(this.pRight);

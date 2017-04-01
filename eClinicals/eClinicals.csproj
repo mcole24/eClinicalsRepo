@@ -52,6 +52,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PatientRecordTabsViewController.cs" />
     <Compile Include="Controllers\PatientSearchViewController.cs" />
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="Controllers\RegistrationViewController.cs" />
@@ -97,6 +98,12 @@
     <Compile Include="View\frmPatientInfoRibbon.Designer.cs">
       <DependentUpon>frmPatientInfoRibbon.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmPatientRecordTabs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmPatientRecordTabs.Designer.cs">
+      <DependentUpon>frmPatientRecordTabs.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmPatientSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPatientInfoRibbon.resx">
       <DependentUpon>frmPatientInfoRibbon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmPatientRecordTabs.resx">
+      <DependentUpon>frmPatientRecordTabs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmPatientSearch.resx">
       <DependentUpon>frmPatientSearch.cs</DependentUpon>
