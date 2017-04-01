@@ -43,6 +43,22 @@ namespace eClinicals.Controllers
             return DAL.NurseDAL.GetNurseByID(contactID);
         }
 
+        public bool CreatePatient(int contactID)
+        {
+            return DAL.PatientDAL.CreatePatient(contactID);
+        }
+     
+        public bool DeletePatient(int contactID)
+        {
+            return DAL.PatientDAL.DeletePatient(contactID);
+        }
+
+        public Patient GetPatientByID(int contactID)
+        {
+            return DAL.PatientDAL.GetPatientByID(contactID);
+        }
+
+
 
     }
 
