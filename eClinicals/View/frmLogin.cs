@@ -13,6 +13,9 @@ namespace eClinicals.View
     partial class frmLogin : frmBaseView
     {
         public bool isLoggedIn { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+
         public frmLogin()
         {
             InitializeComponent();
@@ -23,11 +26,6 @@ namespace eClinicals.View
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-            isLoggedIn = false;
         }
     }
 }

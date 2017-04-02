@@ -1,12 +1,12 @@
 ﻿using eClinicals.View;
-
+using eClinicals.Controllers;
 namespace eClinicals.Controllers
 {
    public abstract class ControllerBase : IController
     {
         public frmMain mainForm { get; set; }
         public frmBaseView thisView { get; set; }
-
+       
         public string status { get; set; }
 
         public ControllerBase(frmMain mainForm, frmBaseView thisView)
@@ -29,6 +29,8 @@ namespace eClinicals.Controllers
         }
       
         private void GetView(frmBaseView thisView) {
+
+          
 
             if (thisView is frmLogin)
             {
