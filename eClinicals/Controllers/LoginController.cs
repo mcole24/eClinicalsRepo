@@ -29,33 +29,21 @@ namespace eClinicals.Controllers
             frmLoginView.username = frmLoginView.txtUserName.Text;
             frmLoginView.password = frmLoginView.txtPassword.Text;
             //Database access Here USER ID
-            //CHECK PASSWORD
-            //If logged in returns true
-            isLoggedIn = eClinicalsController.CheckPassword("cwoods6", "testpassword123");
-
-            // ======================== !!!!!  for now TRUE TESTING !!!!!!!!!!!!!!!! 
-
-          // isLoggedIn = true;
-
-            // isLoggedIn = true;
-
+                          
+            isLoggedIn = eClinicalsController.CheckPassword(frmLoginView.username, frmLoginView.password);         
             if (isLoggedIn)
             {
                //raise the event OnLOggedIn
                 OnLogIn();
                 thisView.Close();
                 this.mainForm.isLoggedIn = true;
-
-
             }
             else
             {
-                this.mainForm.status = "logged Out";
-                //Incorrect login please check your user Id and Password
+                this.mainForm.status = "logged Out";               
                 mainForm.lblStatus.BackColor = System.Drawing.Color.Red;
                 mainForm.lblStatus.Text = "There seems to be a problem with your User Name or Password. Please try again.";
-                frmLoginView.lblError.Text = "Login failed :\n Check your username and password.";
-           
+                frmLoginView.lblError.Text = "Login failed :\n Check your username and password.";           
             }
         }
         //define delegate
@@ -65,13 +53,11 @@ namespace eClinicals.Controllers
         //raise event : Event publisher methods
         protected virtual void OnLogIn()
         {
-
             if (LoggedIn != null)
             {
                 this.mainForm.status = "logged In";
                 this.mainForm.isLoggedIn = true;
-                LoggedIn(this, EventArgs.Empty);
-               
+                LoggedIn(this, EventArgs.Empty);               
             }
 
 
