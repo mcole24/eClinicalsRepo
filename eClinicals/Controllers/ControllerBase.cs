@@ -25,27 +25,30 @@ namespace eClinicals.Controllers
 
             this.thisView = thisView;
             thisView.MdiParent = this.mainForm;
-            thisView.FormClosed += ThisView_FormClosed;
-           // this.thisView.Show();
+            thisView.FormClosed += ThisView_FormClosed;          
         }
       
         private void GetView(frmBaseView thisView) {
 
             if (thisView is frmLogin)
             {
-                thisView = new frmLogin();
+                this.thisView = new frmLogin();
             }
             if (thisView is frmNurseMenuSelectView)
             {
-                thisView = new frmNurseMenuSelectView();
+                this.thisView = new frmNurseMenuSelectView();
             }
             if (thisView is frmRibbon)
             {
-                thisView = new frmRibbon();
+                this.thisView = new frmRibbon();
             }
             if (thisView is frmPatientSearch)
             {
-                thisView = new frmPatientSearch();
+                this.thisView = new frmPatientSearch();
+            }
+            if (thisView is frmPatientRecordTabs)
+            {
+                this.thisView = new frmPatientRecordTabs();
             }
         }
 
@@ -56,15 +59,11 @@ namespace eClinicals.Controllers
             // After Connection to database
             if (thisView == null) {               
 
-                thisView.MdiParent = this.mainForm;
-                thisView.FormClosed += ThisView_FormClosed;
-              //  thisView.Height = thisView.MdiParent.Height;               
-                thisView.Show();
-                thisView.BringToFront();
-                mainForm.lblStatus.Text = message;
+                mainForm.lblStatus.Text = "ALL ready active";
             }
             else
             {
+                thisView.FormClosed += ThisView_FormClosed;
                 thisView.Show();
                 thisView.Activate();
                 message = "Message: Login form  is active. ";
@@ -75,7 +74,7 @@ namespace eClinicals.Controllers
         private void ThisView_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             frmBaseView frm = (frmBaseView)sender;
-            thisView = null;         
+          //  thisView = null;         
             mainForm.lblStatus.Text = frm.Text + " has been closed. Use the menu above to reopen the form. ";
         }
 

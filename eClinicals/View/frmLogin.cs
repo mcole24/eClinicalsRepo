@@ -16,7 +16,7 @@ namespace eClinicals.View
         public frmLogin()
         {
             InitializeComponent();
-            mainForm.lblStatus.Text = "You must login to us this application . . .";
+          
 
         }
 

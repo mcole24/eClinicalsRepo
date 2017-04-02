@@ -67,10 +67,9 @@
             this.Text = "Nurse Logged In View";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-<<<<<<< HEAD
+
             this.Load += new System.EventHandler(this.frmNurseMenuSelectView_Load);
-=======
->>>>>>> 1b30112174f365a7c1ca7d4719e0810e49ccde4b
+
             this.ResumeLayout(false);
 
         }

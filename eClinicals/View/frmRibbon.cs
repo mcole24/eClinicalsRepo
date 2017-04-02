@@ -8,10 +8,5 @@ namespace eClinicals.View
         {
             InitializeComponent();
         }
-
-        private void frmRibbon_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
