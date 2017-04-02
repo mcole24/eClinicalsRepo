@@ -30,7 +30,7 @@ namespace eClinicals.Controllers
             //Database access Here USER ID
             //CHECK PASSWORD
             //If logged in returns true
-            isLoggedIn = eClinicalsController.CheckPassword(frmLoginView.username, frmLoginView.password);
+            isLoggedIn = eClinicalsController.CheckPassword("cwoods6", "testpassword123");
 
             // ======================== !!!!!  for now TRUE TESTING !!!!!!!!!!!!!!!! 
            // isLoggedIn = true;

@@ -31,7 +31,6 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Resources\eclinical
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe.config
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.pdb
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources

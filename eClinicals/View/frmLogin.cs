@@ -23,14 +23,6 @@ namespace eClinicals.View
 
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnOk_Click(object sender, EventArgs e)
-        {
-
-        }
+   
     }
 }

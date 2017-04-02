@@ -360,7 +360,7 @@
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.pNameAgeGenderId.Controls.Add(this.lblId, 1, 2);
             this.pNameAgeGenderId.Controls.Add(this.label6, 0, 2);
             this.pNameAgeGenderId.Controls.Add(this.lblGender, 3, 1);
@@ -385,7 +385,7 @@
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblId.Location = new System.Drawing.Point(49, 54);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(88, 23);
+            this.lblId.Size = new System.Drawing.Size(87, 23);
             this.lblId.TabIndex = 9;
             this.lblId.Text = "-";
             // 
@@ -403,9 +403,9 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGender.Location = new System.Drawing.Point(143, 26);
+            this.lblGender.Location = new System.Drawing.Point(142, 26);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(55, 28);
+            this.lblGender.Size = new System.Drawing.Size(56, 28);
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "-";
             // 
@@ -415,7 +415,7 @@
             this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAge.Location = new System.Drawing.Point(49, 26);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(38, 28);
+            this.lblAge.Size = new System.Drawing.Size(37, 28);
             this.lblAge.TabIndex = 9;
             this.lblAge.Text = "-";
             // 
@@ -423,7 +423,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(93, 26);
+            this.label3.Location = new System.Drawing.Point(92, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 28);
             this.label3.TabIndex = 9;
