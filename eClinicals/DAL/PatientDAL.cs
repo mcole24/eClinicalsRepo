@@ -114,7 +114,7 @@ namespace eClinicals.DAL
         {
             List<Patient> patientList = new List<Patient>();
              string selectStatement = "SELECT * FROM contact INNER JOIN patient ON contact.contactID = patient.contactID " 
-                + "WHERE patient.fName = @fName AND patient.lName = @lName";
+                + "WHERE contact.fName = @fName AND contact.lName = @lName";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
