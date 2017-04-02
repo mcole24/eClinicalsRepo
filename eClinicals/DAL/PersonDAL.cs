@@ -23,6 +23,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string insertStmt = "INSERT INTO logins (contactID, userName, password) VALUES (@contact, @user, @password);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
@@ -51,6 +52,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string insertStmt = "INSERT INTO contact (lName, fName, dob, mailingAddressStreet, mailingAddressCity, mailingAddressState, mailingAddressZip, phoneNumber, gender, SSN, userType) " +
                         "VALUES (@last, @first, @dob, @street, @city, @state, @zip, @phone, @gender, @ssn, @userType)";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
@@ -85,8 +87,13 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+<<<<<<< HEAD
                     string selectStmt = "SELECT password FROM logins WHERE userName = @username";
                     connect.Open();
+=======
+                    connect.Open();
+                    string selectStmt = "SELECT password FROM logins WHERE userName = @user";
+>>>>>>> 98086e77b17e0c5ead05f59a6cab8334ea9f5968
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
