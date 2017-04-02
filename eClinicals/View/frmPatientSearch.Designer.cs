@@ -43,7 +43,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(167, 52);
+            this.txtFirstName.Location = new System.Drawing.Point(167, 51);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(200, 20);
             this.txtFirstName.TabIndex = 1;
@@ -154,15 +154,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbSearch;
-        private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.DataGridView dgvSearchResults;
         public System.Windows.Forms.Button btnOpen;
         public System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblLastName;
         private System.Windows.Forms.Label lblDate_FirstName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtFirstName;
+        public System.Windows.Forms.ComboBox cbSearch;
+        public System.Windows.Forms.TextBox txtLastName;
+        public System.Windows.Forms.TextBox txtFirstName;
+        public System.Windows.Forms.DateTimePicker dtpDate;
     }
 }

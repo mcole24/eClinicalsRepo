@@ -1,5 +1,7 @@
 ﻿using eClinicals.Controllers;
+using eClinicals.Model;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -21,6 +23,9 @@ namespace eClinicals.View
         PatientSearchViewController patientSearchViewController;
         RegistrationViewController registrationViewController;
         PatientRecordTabsViewController patientRecordTabsViewController;
+        private const int BY_DOB_NAME = 0;
+        private const int BY_DOB = 1;
+        private const int BY_NAME = 2;
         frmBaseView currentViewOpened;
         public string status { get; set; }
         public bool isLoggedIn { get; set; }
@@ -115,10 +120,48 @@ namespace eClinicals.View
             AddToContainer(patientSearchViewController, MIDDLE);
 
             this.lblStatus.Text = ("Patient Appointment Search View");
-            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);         
-          
+            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
+            patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
+
         }
-      
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+                List<Patient> myPatientsList;
+            switch (patientSearchViewController.frmPatientSearch.cbSearch.SelectedIndex)
+            {
+              
+                case BY_DOB_NAME:
+                    string lastName = patientSearchViewController.frmPatientSearch.txtLastName.Text;
+                  // DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
+
+                    DateTime DOB = DateTime.Parse("9/4/1981");
+
+                    myPatientsList =  eClinicalsController.SearchPatientByLastNameAndDOB("Mitchell", DOB);
+
+                    foreach (Patient patient in myPatientsList){
+                      lblStatus.Text += patient.UserName;
+                        lblStatus.Text += "search by DOB_NAME";
+                    }
+
+
+                    break;
+                case BY_DOB:
+                    lblStatus.Text = "search by BY_DOB";
+                    break;
+                case BY_NAME:
+                    lblStatus.Text = "search by BY_NAME";
+                    break;
+
+                default:
+                    break;
+            }
+
+          
+
+
+
+        }
 
         private void OpenRegistrationView()
         {
