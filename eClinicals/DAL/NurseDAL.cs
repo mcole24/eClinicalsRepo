@@ -87,7 +87,7 @@ namespace eClinicals.DAL
                                 nurse.ContactID = (int)reader["contactID"];
                                 nurse.LastName = reader["lName"].ToString();
                                 nurse.FirstName = reader["fName"].ToString();
-                                nurse.Dob = (DateTime)reader["dob"];
+                                nurse.Dob = reader["dob"].ToString();
                                 nurse.Gender = reader["gender"].ToString();
                                 nurse.Address = reader["mailingAddressStreet"].ToString();
                                 nurse.City = reader["mailingAddressCity"].ToString();

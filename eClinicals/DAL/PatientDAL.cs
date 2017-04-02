@@ -87,13 +87,13 @@ namespace eClinicals.DAL
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
-                                patient.Dob = (DateTime)reader["dob"];
-                                patient.Gender = reader["gender"].ToString();
+                                patient.Dob = reader["dob"].ToString();
                                 patient.Address = reader["mailingAddressStreet"].ToString();
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
                                 patient.Phone = reader["phone"].ToString();
+                                patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 // Patients will not have user names
                             
@@ -132,18 +132,18 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                             Patient patient = new Patient();
-                            patient.ContactID = (int)reader["contactID"];
-                            patient.LastName = reader["lName"].ToString();
-                            patient.FirstName = reader["fName"].ToString();
-                            patient.Dob = (DateTime)reader["dob"];
-                            patient.Gender = reader["gender"].ToString();
-                            patient.Address = reader["mailingAddressStreet"].ToString();
-                            patient.City = reader["mailingAddressCity"].ToString();
-                            patient.State = reader["mailingAddressState"].ToString();
-                            patient.Zip = reader["mailingAddressZip"].ToString();
-                            patient.Phone = reader["phone"].ToString();
-                            patient.Ssn = reader["ssn"].ToString();
-                            patientList.Add(patient);
+                                patient.ContactID = (int)reader["contactID"];
+                                patient.LastName = reader["lName"].ToString();
+                                patient.FirstName = reader["fName"].ToString();
+                                patient.Dob = reader["dob"].ToString();
+                                patient.Address = reader["mailingAddressStreet"].ToString();
+                                patient.City = reader["mailingAddressCity"].ToString();
+                                patient.State = reader["mailingAddressState"].ToString();
+                                patient.Zip = reader["mailingAddressZip"].ToString();
+                                patient.Phone = reader["phone"].ToString();
+                                patient.Gender = reader["gender"].ToString();
+                                patient.Ssn = reader["ssn"].ToString();
+                                patientList.Add(patient);
                             }
                         }
                     }
@@ -181,13 +181,13 @@ namespace eClinicals.DAL
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
-                                patient.Dob = (DateTime)reader["dob"];
-                                patient.Gender = reader["gender"].ToString();
+                                patient.Dob = reader["dob"].ToString();
                                 patient.Address = reader["mailingAddressStreet"].ToString();
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
                                 patient.Phone = reader["phone"].ToString();
+                                patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
                             }
@@ -228,13 +228,13 @@ namespace eClinicals.DAL
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
-                                patient.Dob = (DateTime)reader["dob"];
-                                patient.Gender = reader["gender"].ToString();
+                                patient.Dob = reader["dob"].ToString();
                                 patient.Address = reader["mailingAddressStreet"].ToString();
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
                                 patient.Phone = reader["phone"].ToString();
+                                patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
                             }
