@@ -34,11 +34,11 @@ namespace eClinicals.Controllers
             isLoggedIn = eClinicalsController.CheckPassword("cwoods6", "testpassword123");
 
             // ======================== !!!!!  for now TRUE TESTING !!!!!!!!!!!!!!!! 
-<<<<<<< HEAD
+
           // isLoggedIn = true;
-=======
+
             // isLoggedIn = true;
->>>>>>> 98086e77b17e0c5ead05f59a6cab8334ea9f5968
+
             if (isLoggedIn)
             {
                //raise the event OnLOggedIn

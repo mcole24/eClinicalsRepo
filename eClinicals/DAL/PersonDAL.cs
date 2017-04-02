@@ -87,13 +87,13 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-<<<<<<< HEAD
+
                     string selectStmt = "SELECT password FROM logins WHERE userName = @username";
                     connect.Open();
-=======
-                    connect.Open();
-                    string selectStmt = "SELECT password FROM logins WHERE userName = @user";
->>>>>>> 98086e77b17e0c5ead05f59a6cab8334ea9f5968
+
+                   // connect.Open();
+                  //  string selectStmt = "SELECT password FROM logins WHERE userName = @user";
+
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
