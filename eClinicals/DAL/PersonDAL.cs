@@ -87,7 +87,8 @@ namespace eClinicals.DAL
                 {
                     string selectStmt = "SELECT password FROM logins WHERE userName = @user";
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
-                    {
+                    {                       
+
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())

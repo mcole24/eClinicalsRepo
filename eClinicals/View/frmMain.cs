@@ -37,6 +37,8 @@ namespace eClinicals.View
         }
         public void OnLoggedIn(object source, EventArgs e)
         {
+            lblStatus.BackColor = System.Drawing.Color.Transparent;
+            lblStatus.Text = "Logged in successfully.";
             OpenStartMenuView();
 
             ribbonController = new RibbonController(this, new frmRibbon());

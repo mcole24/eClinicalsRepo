@@ -31,6 +31,10 @@ namespace eClinicals.Controllers
             //If logged in returns true
             isLoggedIn = eClinicalsController.CheckPassword(frmLoginView.username, frmLoginView.password);
 
+            // ======================== !!!!!  for now TRUE TESTING !!!!!!!!!!!!!!!! 
+            isLoggedIn = true;
+
+
             if (isLoggedIn)
             {
                 OnLogIn();

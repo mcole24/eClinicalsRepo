@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDate_FirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -37,9 +38,16 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.cbSearch = new System.Windows.Forms.ComboBox();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.SuspendLayout();
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(167, 52);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(200, 20);
+            this.txtFirstName.TabIndex = 1;
+            this.txtFirstName.Visible = false;
             // 
             // label4
             // 
@@ -120,14 +128,6 @@
             this.cbSearch.Size = new System.Drawing.Size(119, 21);
             this.cbSearch.TabIndex = 0;
             this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Location = new System.Drawing.Point(167, 52);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(200, 20);
-            this.txtFirstName.TabIndex = 1;
-            this.txtFirstName.Visible = false;
             // 
             // frmPatientSearch
             // 
