@@ -13,8 +13,20 @@ namespace eClinicals.Controllers
         public RibbonController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
             ribbon = (frmRibbon)base.thisView;
+            ribbon.btnLogout.Click += new EventHandler(this.LogoutBtn_Click);
+
+
             mainForm.lblStatus.Text = "Ribbon Active";
         }
+
+        private void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            OnLoggedOut();        
+            this.mainForm.isLoggedIn = false;
+
+
+        }
+
         public void AddUserInfo(string name, string uid, string userType)
         {
 
@@ -47,6 +59,8 @@ namespace eClinicals.Controllers
         {
             if (LoggedOut != null)
             {
+                this.mainForm.status = "logged Out";
+                this.mainForm.isLoggedIn = false;
                 LoggedOut(this, EventArgs.Empty);
 
             }

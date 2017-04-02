@@ -14,7 +14,9 @@ namespace eClinicals.DAL
         {
             try
             {
-                string connectString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=[CS6232-g5];Integrated Security=True";
+               // string connectString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=[CS6232-g5];Integrated Security=True";
+                string connectString = " Data Source = localhost;Initial Catalog=CS6232-g5;" +
+               "Integrated Security=True";
                 SqlConnection connect = new SqlConnection(connectString);
                 return connect;
             }

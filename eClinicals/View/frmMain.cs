@@ -22,6 +22,8 @@ namespace eClinicals.View
         RegistrationViewController registrationViewController;
         PatientRecordTabsViewController patientRecordTabsViewController;
         frmBaseView currentViewOpened;
+        public string status { get; set; }
+        public bool isLoggedIn { get; set; }
         public frmMain()
         {
             InitializeComponent();
@@ -31,15 +33,9 @@ namespace eClinicals.View
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-           
-            loginController = new LoginController(this, new frmLogin());
+            OpenLoginView();
+        }       
 
-            //register the handler for logged on event
-            loginController.LoggedIn += this.OnLoggedIn;
-
-            AddToContainer(loginController, MIDDLE);
-            currentViewOpened = null;
-        }
         public void OnLoggedIn(object source, EventArgs e)
         {
             lblStatus.BackColor = System.Drawing.Color.Transparent;
@@ -47,24 +43,31 @@ namespace eClinicals.View
             OpenStartMenuView();
 
             ribbonController = new RibbonController(this, new frmRibbon());
-            AddToContainer(ribbonController, TOP);
-            this.pTop.Visible = true;
+
             //register the handler for logged on event
             ribbonController.LoggedOut += this.OnLoggedOut;
 
+            AddToContainer(ribbonController, TOP);
+            this.pTop.Visible = true;
+          
+
             // This will Come from datasource ////
-            ribbonController.AddUserInfo("Stalbert, Malik", "12548", "Admin");
+            ribbonController.AddUserInfo("Last Name, First Name", "12548", "Nurse");
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
-            ribbonController.AddStatusInfo("Looged in");
+            ribbonController.AddStatusInfo(this.status);
             //===============================================
             this.menuStripMain.Enabled = true;
+
             currentViewOpened = nurseLoggedInViewController.thisView;
         }
         public void OnLoggedOut(object source, EventArgs e)
         {
-
+            lblStatus.Text = "LoogedOut in successfully.";
             CloseCurrentOpenView(currentViewOpened);
-
+            this.pTop.Visible = false;
+           
+            lblStatus.Text = "Logged out successfully.";
+            OpenLoginView();
 
         }
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
@@ -124,6 +127,18 @@ namespace eClinicals.View
             AddToContainer(registrationViewController, MIDDLE);        
           
             registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);  
+        }
+
+
+        private void OpenLoginView()
+        {
+            loginController = new LoginController(this, new frmLogin());
+
+            //register the handler for logged on event
+            loginController.LoggedIn += this.OnLoggedIn;
+
+            AddToContainer(loginController, MIDDLE);
+            currentViewOpened = null;
         }
         // ===========================
         private void startMenuToolStripMenuItem_Click(object sender, EventArgs e)

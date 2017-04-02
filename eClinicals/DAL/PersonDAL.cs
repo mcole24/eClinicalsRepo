@@ -85,10 +85,11 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    string selectStmt = "SELECT password FROM logins WHERE userName = @user";
+                    string selectStmt = "SELECT password FROM logins WHERE userName = @username";
+                    connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
-                    {                       
-
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())

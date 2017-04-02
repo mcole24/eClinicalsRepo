@@ -31,7 +31,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.lblStatus, 2, 0);
-            this.tableLayoutPanel7.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanel7.Controls.Add(this.btnLogout, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(680, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -105,18 +105,18 @@
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "-";
             // 
-            // button1
+            // btnLogout
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tableLayoutPanel7.SetColumnSpan(this.button1, 2);
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(124, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 26);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Log Out";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tableLayoutPanel7.SetColumnSpan(this.btnLogout, 2);
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(124, 40);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(191, 26);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel6
             // 
@@ -448,6 +448,6 @@
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label lblStatus;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btnLogout;
     }
 }
