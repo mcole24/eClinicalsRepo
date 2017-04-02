@@ -45,59 +45,59 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
-            this.tabRoutineCheck = new System.Windows.Forms.TabPage();
-            this.tabOrderTests = new System.Windows.Forms.TabPage();
-            this.tabTestsResults = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgViewAppointments_ViewAppointments = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.tabRoutineCheck = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCancel_RoutineCheck = new System.Windows.Forms.Button();
+            this.btnOk_RoutineCheck = new System.Windows.Forms.Button();
+            this.clbSymptoms_RoutineCheck = new System.Windows.Forms.CheckedListBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tabOrderTests = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnCancel_OrderTest = new System.Windows.Forms.Button();
+            this.btnOrderTest = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpPerformedDate_OrderTest = new System.Windows.Forms.DateTimePicker();
             this.lblSelectDoctor_OrderTest = new System.Windows.Forms.ListBox();
             this.lbSelectTest_OrderTest = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.dtpPerformedDate_OrderTest = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnCancel_OrderTest = new System.Windows.Forms.Button();
-            this.btnOrderTest = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.clbSymptoms_RoutineCheck = new System.Windows.Forms.CheckedListBox();
-            this.btnOk_RoutineCheck = new System.Windows.Forms.Button();
-            this.btnCancel_RoutineCheck = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPatientRecord.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabViewAppointments.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).BeginInit();
             this.tabRoutineCheck.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).BeginInit();
             this.tabOrderTests.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.tabTestsResults.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).BeginInit();
-            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPatientRecord
@@ -113,7 +113,7 @@
             this.tabPatientRecord.Location = new System.Drawing.Point(0, 0);
             this.tabPatientRecord.Name = "tabPatientRecord";
             this.tabPatientRecord.SelectedIndex = 0;
-            this.tabPatientRecord.Size = new System.Drawing.Size(1091, 647);
+            this.tabPatientRecord.Size = new System.Drawing.Size(1091, 606);
             this.tabPatientRecord.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabPatientRecord.TabIndex = 0;
             // 
@@ -274,68 +274,6 @@
             this.tabViewAppointments.Text = "View Appointment";
             this.tabViewAppointments.UseVisualStyleBackColor = true;
             // 
-            // tabRoutineCheck
-            // 
-            this.tabRoutineCheck.Controls.Add(this.groupBox7);
-            this.tabRoutineCheck.Controls.Add(this.groupBox5);
-            this.tabRoutineCheck.Location = new System.Drawing.Point(4, 34);
-            this.tabRoutineCheck.Name = "tabRoutineCheck";
-            this.tabRoutineCheck.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRoutineCheck.Size = new System.Drawing.Size(1083, 609);
-            this.tabRoutineCheck.TabIndex = 3;
-            this.tabRoutineCheck.Text = "Routine Check";
-            this.tabRoutineCheck.UseVisualStyleBackColor = true;
-            // 
-            // tabOrderTests
-            // 
-            this.tabOrderTests.Controls.Add(this.groupBox6);
-            this.tabOrderTests.Location = new System.Drawing.Point(4, 34);
-            this.tabOrderTests.Name = "tabOrderTests";
-            this.tabOrderTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOrderTests.Size = new System.Drawing.Size(1083, 609);
-            this.tabOrderTests.TabIndex = 4;
-            this.tabOrderTests.Text = "Order Tests";
-            this.tabOrderTests.UseVisualStyleBackColor = true;
-            // 
-            // tabTestsResults
-            // 
-            this.tabTestsResults.Controls.Add(this.groupBox3);
-            this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
-            this.tabTestsResults.Name = "tabTestsResults";
-            this.tabTestsResults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTestsResults.Size = new System.Drawing.Size(1083, 609);
-            this.tabTestsResults.TabIndex = 5;
-            this.tabTestsResults.Text = "Test Results";
-            this.tabTestsResults.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dgTestResults_TestResults);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(42, 69);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(481, 462);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(15, -4);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 24);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Test Results";
-            // 
-            // dgTestResults_TestResults
-            // 
-            this.dgTestResults_TestResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTestResults_TestResults.Location = new System.Drawing.Point(19, 34);
-            this.dgTestResults_TestResults.Name = "dgTestResults_TestResults";
-            this.dgTestResults_TestResults.Size = new System.Drawing.Size(447, 410);
-            this.dgTestResults_TestResults.TabIndex = 1;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgViewAppointments_ViewAppointments);
@@ -364,6 +302,207 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "View Appointments";
             // 
+            // tabRoutineCheck
+            // 
+            this.tabRoutineCheck.Controls.Add(this.groupBox7);
+            this.tabRoutineCheck.Controls.Add(this.groupBox5);
+            this.tabRoutineCheck.Location = new System.Drawing.Point(4, 34);
+            this.tabRoutineCheck.Name = "tabRoutineCheck";
+            this.tabRoutineCheck.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRoutineCheck.Size = new System.Drawing.Size(1083, 568);
+            this.tabRoutineCheck.TabIndex = 3;
+            this.tabRoutineCheck.Text = "Routine Check";
+            this.tabRoutineCheck.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBox4);
+            this.groupBox7.Controls.Add(this.textBox3);
+            this.groupBox7.Controls.Add(this.textBox2);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.btnCancel_RoutineCheck);
+            this.groupBox7.Controls.Add(this.btnOk_RoutineCheck);
+            this.groupBox7.Controls.Add(this.clbSymptoms_RoutineCheck);
+            this.groupBox7.Controls.Add(this.label19);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Location = new System.Drawing.Point(39, 58);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(755, 251);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(235, 175);
+            this.textBox4.MaxLength = 5;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 21;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(235, 141);
+            this.textBox3.MaxLength = 5;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 20;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(235, 111);
+            this.textBox2.MaxLength = 5;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 19;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(235, 77);
+            this.textBox1.MaxLength = 5;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // btnCancel_RoutineCheck
+            // 
+            this.btnCancel_RoutineCheck.Location = new System.Drawing.Point(408, 222);
+            this.btnCancel_RoutineCheck.Name = "btnCancel_RoutineCheck";
+            this.btnCancel_RoutineCheck.Size = new System.Drawing.Size(150, 25);
+            this.btnCancel_RoutineCheck.TabIndex = 17;
+            this.btnCancel_RoutineCheck.Text = "Cancel";
+            this.btnCancel_RoutineCheck.UseVisualStyleBackColor = true;
+            // 
+            // btnOk_RoutineCheck
+            // 
+            this.btnOk_RoutineCheck.Location = new System.Drawing.Point(235, 222);
+            this.btnOk_RoutineCheck.Name = "btnOk_RoutineCheck";
+            this.btnOk_RoutineCheck.Size = new System.Drawing.Size(150, 25);
+            this.btnOk_RoutineCheck.TabIndex = 16;
+            this.btnOk_RoutineCheck.Text = "&OK";
+            this.btnOk_RoutineCheck.UseVisualStyleBackColor = true;
+            // 
+            // clbSymptoms_RoutineCheck
+            // 
+            this.clbSymptoms_RoutineCheck.FormattingEnabled = true;
+            this.clbSymptoms_RoutineCheck.Location = new System.Drawing.Point(484, 77);
+            this.clbSymptoms_RoutineCheck.Name = "clbSymptoms_RoutineCheck";
+            this.clbSymptoms_RoutineCheck.Size = new System.Drawing.Size(219, 139);
+            this.clbSymptoms_RoutineCheck.TabIndex = 8;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(480, 42);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(106, 24);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Symptoms";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(79, 173);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(93, 20);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "Pulse (bpm)";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(79, 141);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(140, 20);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Body Temperature";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(79, 109);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 20);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Diastolic BP";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(79, 77);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(88, 20);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Systolic BP";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(37, 42);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(101, 24);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Check Up";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(15, -4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(221, 24);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Routine Check Results";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dgPreviousReadings__RoutineCheck);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Location = new System.Drawing.Point(39, 315);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(755, 244);
+            this.groupBox5.TabIndex = 14;
+            this.groupBox5.TabStop = false;
+            // 
+            // dgPreviousReadings__RoutineCheck
+            // 
+            this.dgPreviousReadings__RoutineCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPreviousReadings__RoutineCheck.Location = new System.Drawing.Point(19, 23);
+            this.dgPreviousReadings__RoutineCheck.Name = "dgPreviousReadings__RoutineCheck";
+            this.dgPreviousReadings__RoutineCheck.Size = new System.Drawing.Size(684, 204);
+            this.dgPreviousReadings__RoutineCheck.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(15, -4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(197, 24);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Previouse Readings";
+            // 
+            // tabOrderTests
+            // 
+            this.tabOrderTests.Controls.Add(this.groupBox6);
+            this.tabOrderTests.Location = new System.Drawing.Point(4, 34);
+            this.tabOrderTests.Name = "tabOrderTests";
+            this.tabOrderTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOrderTests.Size = new System.Drawing.Size(1083, 609);
+            this.tabOrderTests.TabIndex = 4;
+            this.tabOrderTests.Text = "Order Tests";
+            this.tabOrderTests.UseVisualStyleBackColor = true;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.btnCancel_OrderTest);
@@ -380,6 +519,40 @@
             this.groupBox6.Size = new System.Drawing.Size(524, 187);
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
+            // 
+            // btnCancel_OrderTest
+            // 
+            this.btnCancel_OrderTest.Location = new System.Drawing.Point(278, 146);
+            this.btnCancel_OrderTest.Name = "btnCancel_OrderTest";
+            this.btnCancel_OrderTest.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel_OrderTest.TabIndex = 4;
+            this.btnCancel_OrderTest.Text = "Cancel";
+            this.btnCancel_OrderTest.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderTest
+            // 
+            this.btnOrderTest.Location = new System.Drawing.Point(148, 146);
+            this.btnOrderTest.Name = "btnOrderTest";
+            this.btnOrderTest.Size = new System.Drawing.Size(75, 23);
+            this.btnOrderTest.TabIndex = 3;
+            this.btnOrderTest.Text = "Order Test";
+            this.btnOrderTest.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(275, 28);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(81, 13);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Performed Date";
+            // 
+            // dtpPerformedDate_OrderTest
+            // 
+            this.dtpPerformedDate_OrderTest.Location = new System.Drawing.Point(278, 44);
+            this.dtpPerformedDate_OrderTest.Name = "dtpPerformedDate_OrderTest";
+            this.dtpPerformedDate_OrderTest.Size = new System.Drawing.Size(200, 20);
+            this.dtpPerformedDate_OrderTest.TabIndex = 1;
             // 
             // lblSelectDoctor_OrderTest
             // 
@@ -425,223 +598,50 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Order Test";
             // 
-            // dtpPerformedDate_OrderTest
+            // tabTestsResults
             // 
-            this.dtpPerformedDate_OrderTest.Location = new System.Drawing.Point(278, 44);
-            this.dtpPerformedDate_OrderTest.Name = "dtpPerformedDate_OrderTest";
-            this.dtpPerformedDate_OrderTest.Size = new System.Drawing.Size(200, 20);
-            this.dtpPerformedDate_OrderTest.TabIndex = 1;
+            this.tabTestsResults.Controls.Add(this.groupBox3);
+            this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
+            this.tabTestsResults.Name = "tabTestsResults";
+            this.tabTestsResults.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTestsResults.Size = new System.Drawing.Size(1083, 609);
+            this.tabTestsResults.TabIndex = 5;
+            this.tabTestsResults.Text = "Test Results";
+            this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // groupBox3
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(275, 28);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 13);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Performed Date";
+            this.groupBox3.Controls.Add(this.dgTestResults_TestResults);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Location = new System.Drawing.Point(42, 69);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(481, 462);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
             // 
-            // btnCancel_OrderTest
+            // dgTestResults_TestResults
             // 
-            this.btnCancel_OrderTest.Location = new System.Drawing.Point(278, 146);
-            this.btnCancel_OrderTest.Name = "btnCancel_OrderTest";
-            this.btnCancel_OrderTest.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel_OrderTest.TabIndex = 4;
-            this.btnCancel_OrderTest.Text = "Cancel";
-            this.btnCancel_OrderTest.UseVisualStyleBackColor = true;
+            this.dgTestResults_TestResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTestResults_TestResults.Location = new System.Drawing.Point(19, 34);
+            this.dgTestResults_TestResults.Name = "dgTestResults_TestResults";
+            this.dgTestResults_TestResults.Size = new System.Drawing.Size(447, 410);
+            this.dgTestResults_TestResults.TabIndex = 1;
             // 
-            // btnOrderTest
+            // label8
             // 
-            this.btnOrderTest.Location = new System.Drawing.Point(148, 146);
-            this.btnOrderTest.Name = "btnOrderTest";
-            this.btnOrderTest.Size = new System.Drawing.Size(75, 23);
-            this.btnOrderTest.TabIndex = 3;
-            this.btnOrderTest.Text = "Order Test";
-            this.btnOrderTest.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dgPreviousReadings__RoutineCheck);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Location = new System.Drawing.Point(48, 357);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(936, 244);
-            this.groupBox5.TabIndex = 14;
-            this.groupBox5.TabStop = false;
-            // 
-            // dgPreviousReadings__RoutineCheck
-            // 
-            this.dgPreviousReadings__RoutineCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPreviousReadings__RoutineCheck.Location = new System.Drawing.Point(19, 23);
-            this.dgPreviousReadings__RoutineCheck.Name = "dgPreviousReadings__RoutineCheck";
-            this.dgPreviousReadings__RoutineCheck.Size = new System.Drawing.Size(892, 204);
-            this.dgPreviousReadings__RoutineCheck.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(15, -4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(197, 24);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Previouse Readings";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.textBox4);
-            this.groupBox7.Controls.Add(this.textBox3);
-            this.groupBox7.Controls.Add(this.textBox2);
-            this.groupBox7.Controls.Add(this.textBox1);
-            this.groupBox7.Controls.Add(this.btnCancel_RoutineCheck);
-            this.groupBox7.Controls.Add(this.btnOk_RoutineCheck);
-            this.groupBox7.Controls.Add(this.clbSymptoms_RoutineCheck);
-            this.groupBox7.Controls.Add(this.label19);
-            this.groupBox7.Controls.Add(this.label17);
-            this.groupBox7.Controls.Add(this.label18);
-            this.groupBox7.Controls.Add(this.label16);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Controls.Add(this.label14);
-            this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Location = new System.Drawing.Point(39, 58);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(936, 266);
-            this.groupBox7.TabIndex = 15;
-            this.groupBox7.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(15, -4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(221, 24);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Routine Check Results";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(37, 42);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(101, 24);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Check Up";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(79, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 20);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Systolic BP";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(79, 109);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 20);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Diastolic BP";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(79, 173);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(93, 20);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "Pulse (bpm)";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(79, 141);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(140, 20);
-            this.label18.TabIndex = 4;
-            this.label18.Text = "Body Temperature";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(480, 42);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 24);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Symptoms";
-            // 
-            // clbSymptoms_RoutineCheck
-            // 
-            this.clbSymptoms_RoutineCheck.FormattingEnabled = true;
-            this.clbSymptoms_RoutineCheck.Location = new System.Drawing.Point(484, 77);
-            this.clbSymptoms_RoutineCheck.Name = "clbSymptoms_RoutineCheck";
-            this.clbSymptoms_RoutineCheck.Size = new System.Drawing.Size(219, 139);
-            this.clbSymptoms_RoutineCheck.TabIndex = 8;
-            // 
-            // btnOk_RoutineCheck
-            // 
-            this.btnOk_RoutineCheck.Location = new System.Drawing.Point(235, 235);
-            this.btnOk_RoutineCheck.Name = "btnOk_RoutineCheck";
-            this.btnOk_RoutineCheck.Size = new System.Drawing.Size(150, 25);
-            this.btnOk_RoutineCheck.TabIndex = 16;
-            this.btnOk_RoutineCheck.Text = "&OK";
-            this.btnOk_RoutineCheck.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel_RoutineCheck
-            // 
-            this.btnCancel_RoutineCheck.Location = new System.Drawing.Point(408, 235);
-            this.btnCancel_RoutineCheck.Name = "btnCancel_RoutineCheck";
-            this.btnCancel_RoutineCheck.Size = new System.Drawing.Size(150, 25);
-            this.btnCancel_RoutineCheck.TabIndex = 17;
-            this.btnCancel_RoutineCheck.Text = "Cancel";
-            this.btnCancel_RoutineCheck.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(235, 77);
-            this.textBox1.MaxLength = 5;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 18;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(235, 111);
-            this.textBox2.MaxLength = 5;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 19;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(235, 141);
-            this.textBox3.MaxLength = 5;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 20;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(235, 175);
-            this.textBox4.MaxLength = 5;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 21;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(15, -4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 24);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Test Results";
             // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 647);
+            this.ClientSize = new System.Drawing.Size(1091, 606);
             this.Controls.Add(this.tabPatientRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPatientRecordTabs";
@@ -653,22 +653,22 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabViewAppointments.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).EndInit();
             this.tabRoutineCheck.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).EndInit();
             this.tabOrderTests.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.tabTestsResults.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }

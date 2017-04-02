@@ -13,6 +13,7 @@ namespace eClinicals.View
         const int TOP = 1;
         const int BOTTOM = 2;
         const int RIGHT = 3;
+        eClinicalsController eClinicalsController;
         LoginController loginController;
         RibbonController ribbonController;
         PatientInfoRibbonController patientInfoRibbonController;
@@ -25,13 +26,17 @@ namespace eClinicals.View
         {
             InitializeComponent();
             pRight.Visible = false;
+            eClinicalsController = new eClinicalsController();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+           
             loginController = new LoginController(this, new frmLogin());
+
+            //register the handler for logged on event
             loginController.LoggedIn += this.OnLoggedIn;
+
             AddToContainer(loginController, MIDDLE);
             currentViewOpened = null;
         }
@@ -44,16 +49,24 @@ namespace eClinicals.View
             ribbonController = new RibbonController(this, new frmRibbon());
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
+            //register the handler for logged on event
+            ribbonController.LoggedOut += this.OnLoggedOut;
 
-            // This will Come from Database ////
+            // This will Come from datasource ////
             ribbonController.AddUserInfo("Stalbert, Malik", "12548", "Admin");
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
             ribbonController.AddStatusInfo("Looged in");
             //===============================================
             this.menuStripMain.Enabled = true;
             currentViewOpened = nurseLoggedInViewController.thisView;
-        }       
+        }
+        public void OnLoggedOut(object source, EventArgs e)
+        {
 
+            CloseCurrentOpenView(currentViewOpened);
+
+
+        }
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
         {
 
@@ -64,7 +77,7 @@ namespace eClinicals.View
         {
             //Add Patient to database
             //Open Patient Record          
-            this.lblStatus.Text = (" Open Patient Record : With Registered Patient");
+            this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
         }
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {            
@@ -108,15 +121,11 @@ namespace eClinicals.View
         {
             CloseCurrentOpenView(currentViewOpened);
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
-            AddToContainer(registrationViewController, MIDDLE);
-           
+            AddToContainer(registrationViewController, MIDDLE);        
           
-            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);        
-          
+            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);  
         }
-      
         // ===========================
-
         private void startMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenStartMenuView();

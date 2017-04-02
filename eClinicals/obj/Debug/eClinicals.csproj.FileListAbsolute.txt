@@ -32,6 +32,7 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe.conf
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmMain.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmNurseMenuSelectView.resources
