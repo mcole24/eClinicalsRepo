@@ -19,7 +19,7 @@ namespace eClinicals.Model
         public string Gender { get; set; }
         public string Phone { get; set; }
         public string Ssn { get; set; }
-        public string Dob { get; set; }
+        public DateTime Dob { get; set; }
         public string UserName { get; set; }
         public int UserType { get; set; }
 
