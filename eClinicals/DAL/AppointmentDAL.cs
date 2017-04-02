@@ -20,6 +20,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string insertStmt = "INSERT INTO appointment (appointmentDate, patientID, doctorID) " + 
                         "VALUES (@appDate, @pID, @dID);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
@@ -37,6 +38,7 @@ namespace eClinicals.DAL
             {
                 return false;
             }
+            
 
         }
 
@@ -48,6 +50,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string delStmt = "DELETE FROM appointment WHERE appointmentID = @id";
                     using (SqlCommand cmd = new SqlCommand(delStmt, connect))
                     {
@@ -72,6 +75,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string selStmt = "SELECT * FROM appointment WHERE appointmentID = @appointmentID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {

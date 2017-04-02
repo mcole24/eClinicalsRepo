@@ -23,6 +23,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string insertStmt = "INSERT INTO nurse (contactID) VALUES (@contact);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
@@ -47,6 +48,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string delStmt = "DELETE FROM nurse WHERE contactID = @id";
                     using (SqlCommand cmd = new SqlCommand(delStmt, connect))
                     {
@@ -71,6 +73,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
+                    connect.Open();
                     string selStmt = "SELECT * FROM contact INNER JOIN nurse ON contact.contactID = nurse.contactID WHERE nurse.contactID = @contactID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
