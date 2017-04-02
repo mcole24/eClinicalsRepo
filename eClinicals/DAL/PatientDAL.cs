@@ -157,7 +157,51 @@ namespace eClinicals.DAL
             return patientList;
         }
 
-
+        public static List<Patient> SearchPatientByDOB(DateTime dob)
+        {
+            List<Patient> patientList = new List<Patient>();
+            string selectStatement = "SELECT * FROM contact INNER JOIN patient ON contact.contactID = patient.contactID "
+               + "WHERE contact.dob = @dob";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@fName", dob);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Patient patient = new Patient();
+                                patient.ContactID = (int)reader["contactID"];
+                                patient.LastName = reader["lName"].ToString();
+                                patient.FirstName = reader["fName"].ToString();
+                                patient.Dob = (DateTime)reader["dob"];
+                                patient.Gender = reader["gender"].ToString();
+                                patient.Address = reader["mailingAddressStreet"].ToString();
+                                patient.City = reader["mailingAddressCity"].ToString();
+                                patient.State = reader["mailingAddressState"].ToString();
+                                patient.Zip = reader["mailingAddressZip"].ToString();
+                                patient.Phone = reader["phone"].ToString();
+                                patient.Ssn = reader["ssn"].ToString();
+                                patientList.Add(patient);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return patientList;
+        }
 
     }
 }
