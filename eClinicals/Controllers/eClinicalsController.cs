@@ -65,6 +65,11 @@ namespace eClinicals.Controllers
              return DAL.PatientDAL.SearchPatientByFirstAndLastName(fName, lName);
         }
 
+        public List<Patient> SearchPatientByDOB(DateTime dob)
+        {
+            return DAL.PatientDAL.SearchPatientByDOB(dob);
+        }
+
         public bool CreateLogin(int contactID, string username, string password)
         {
             return DAL.PersonDAL.createLogin(contactID, username, password);
