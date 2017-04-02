@@ -134,14 +134,13 @@ namespace eClinicals.View
                 case BY_DOB_NAME:
                     string lastName = patientSearchViewController.frmPatientSearch.txtLastName.Text;
                   // DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
-
+                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING !!!!!!!!!!!!!!!!!!!!!!!!!
                     DateTime DOB = DateTime.Parse("9/4/1981");
-
                     myPatientsList =  eClinicalsController.SearchPatientByLastNameAndDOB("Mitchell", DOB);
 
                     foreach (Patient patient in myPatientsList){
-                      lblStatus.Text += patient.UserName;
-                        lblStatus.Text += "search by DOB_NAME";
+                      lblStatus.Text += patient.LastName + "++++";
+                       // lblStatus.Text += "search by DOB_NAME";
                     }
 
 
