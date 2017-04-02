@@ -15,7 +15,8 @@ namespace eClinicals.Controllers
             ribbon = (frmRibbon)base.thisView;
             mainForm.lblStatus.Text = "Ribbon Active";
         }
-        public void AddUserInfo(string name, string uid, string userType) {
+        public void AddUserInfo(string name, string uid, string userType)
+        {
 
             ribbon.lblUserName.Text = name;
             ribbon.lblId.Text = uid;
@@ -34,8 +35,21 @@ namespace eClinicals.Controllers
         {
 
             ribbon.lblStatus.Text = status;
-          
 
+
+        }
+        //define delegate
+        public delegate void LogOutEventHandler(object sender, EventArgs e);
+        // Define event
+        public event LogOutEventHandler LoggedOut;
+        //raise event : Event publisher methods
+        protected virtual void OnLoggedOut()
+        {
+            if (LoggedOut != null)
+            {
+                LoggedOut(this, EventArgs.Empty);
+
+            }
         }
     }
 }

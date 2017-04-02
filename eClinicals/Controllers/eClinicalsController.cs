@@ -11,7 +11,9 @@ namespace eClinicals.Controllers
 {
     class eClinicalsController
     {
+        public eClinicalsController() {
 
+        }
         public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
         {
             return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID);

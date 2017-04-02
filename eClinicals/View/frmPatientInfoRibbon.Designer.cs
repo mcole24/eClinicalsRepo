@@ -53,12 +53,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pNameAgeGenderId = new System.Windows.Forms.TableLayoutPanel();
-            this.lblUserName = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -360,7 +360,7 @@
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.pNameAgeGenderId.Controls.Add(this.lblId, 1, 2);
             this.pNameAgeGenderId.Controls.Add(this.label6, 0, 2);
             this.pNameAgeGenderId.Controls.Add(this.lblGender, 3, 1);
@@ -378,6 +378,57 @@
             this.pNameAgeGenderId.Size = new System.Drawing.Size(201, 77);
             this.pNameAgeGenderId.TabIndex = 7;
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.pNameAgeGenderId.SetColumnSpan(this.lblId, 2);
+            this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblId.Location = new System.Drawing.Point(49, 54);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(88, 23);
+            this.lblId.TabIndex = 9;
+            this.lblId.Text = "-";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Location = new System.Drawing.Point(3, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 23);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "ID:";
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblGender.Location = new System.Drawing.Point(143, 26);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(55, 28);
+            this.lblGender.TabIndex = 9;
+            this.lblGender.Text = "-";
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblAge.Location = new System.Drawing.Point(49, 26);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(38, 28);
+            this.lblAge.TabIndex = 9;
+            this.lblAge.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(93, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 28);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Gender";
+            // 
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
@@ -389,64 +440,13 @@
             this.lblUserName.TabIndex = 0;
             this.lblUserName.Text = "-";
             // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.pNameAgeGenderId.SetColumnSpan(this.lblId, 2);
-            this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblId.Location = new System.Drawing.Point(50, 54);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(89, 23);
-            this.lblId.TabIndex = 9;
-            this.lblId.Text = "-";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(3, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 23);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "ID:";
-            // 
-            // lblGender
-            // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGender.Location = new System.Drawing.Point(145, 26);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(53, 28);
-            this.lblGender.TabIndex = 9;
-            this.lblGender.Text = "-";
-            // 
-            // lblAge
-            // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAge.Location = new System.Drawing.Point(50, 26);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(39, 28);
-            this.lblAge.TabIndex = 9;
-            this.lblAge.Text = "-";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(95, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 28);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Gender";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 28);
+            this.label2.Size = new System.Drawing.Size(40, 28);
             this.label2.TabIndex = 8;
             this.label2.Text = "Age:";
             // 

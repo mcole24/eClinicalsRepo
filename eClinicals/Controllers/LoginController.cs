@@ -15,6 +15,7 @@ namespace eClinicals.Controllers
             //CREAT NEW DATABASE CONNECTION OBJECT
             //send status to main window
             isLoggedIn = false;
+            this.status = "loggedOut";
             frmLoginView = (frmLogin)base.thisView;
             frmLoginView.btnOk.Click += new EventHandler(this.OkBtn_Click);
             mainForm.lblStatus.Text = "You must login to us this application . . .";
@@ -32,18 +33,18 @@ namespace eClinicals.Controllers
             isLoggedIn = eClinicalsController.CheckPassword(frmLoginView.username, frmLoginView.password);
 
             // ======================== !!!!!  for now TRUE TESTING !!!!!!!!!!!!!!!! 
-            isLoggedIn = true;
-
-
+           // isLoggedIn = true;
             if (isLoggedIn)
             {
+               //raise the event OnLOggedIn
                 OnLogIn();
                 thisView.Close();
+                this.status = "loggedIn";
             }
             else
             {
-
-                //Incorrct login please check your user Id and Password
+                this.status = "loggedOut";
+                //Incorrect login please check your user Id and Password
                 mainForm.lblStatus.BackColor = System.Drawing.Color.Red;
                 mainForm.lblStatus.Text = "There seems to be a problem with your User Name or Password. Please try again.";
                 frmLoginView.lblError.Text = "Login failed :\n Check your username and password.";
@@ -54,7 +55,7 @@ namespace eClinicals.Controllers
         public delegate void LogInEventHandler(object sender, EventArgs e);
         // Define event
         public event LogInEventHandler LoggedIn;
-        //define event
+        //raise event : Event publisher methods
         protected virtual void OnLogIn()
         {
             if (LoggedIn != null)
