@@ -83,20 +83,18 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-
                                 nurse.ContactID = (int)reader["contactID"];
                                 nurse.LastName = reader["lName"].ToString();
                                 nurse.FirstName = reader["fName"].ToString();
-                                nurse.Dob = (DateTime)reader["dob"];
-                                nurse.Gender = reader["gender"].ToString();
+                                nurse.Dob = reader["dob"].ToString();
                                 nurse.Address = reader["mailingAddressStreet"].ToString();
                                 nurse.City = reader["mailingAddressCity"].ToString();
                                 nurse.State = reader["mailingAddressState"].ToString();
                                 nurse.Zip = reader["mailingAddressZip"].ToString();
                                 nurse.Phone = reader["phone"].ToString();
+                                nurse.Gender = reader["gender"].ToString();
                                 nurse.Ssn = reader["ssn"].ToString();
                                 nurse.UserName = reader["username"].ToString();
-
                             }
                         }
                     }
