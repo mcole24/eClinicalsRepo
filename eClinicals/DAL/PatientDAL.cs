@@ -78,7 +78,6 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contactID", contactID);
-                        connect.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -187,7 +186,7 @@ namespace eClinicals.DAL
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
-                                patient.Phone = reader["phone"].ToString();
+                                patient.Phone = reader["phoneNumber"].ToString();
                                 patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
@@ -230,13 +229,11 @@ namespace eClinicals.DAL
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
                                 patient.Dob = (DateTime)reader["dob"];                             
-
                                 patient.Address = reader["mailingAddressStreet"].ToString();
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
                                 patient.Phone = reader["phoneNumber"].ToString();
-
                                 patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);

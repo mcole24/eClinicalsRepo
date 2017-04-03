@@ -90,6 +90,11 @@ namespace eClinicals.Controllers
             return DAL.PersonDAL.checkPassword(username, enteredPassword);
         }
 
+        public Person GetLoggedInUserDetails(string username, string password)
+        {
+            return DAL.PersonDAL.GetLoggedInUserDetails(username, password);
+        }
+
     }
 
 }

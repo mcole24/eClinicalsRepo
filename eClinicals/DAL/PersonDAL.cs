@@ -123,6 +123,50 @@ namespace eClinicals.DAL
             return isMatch;
         }
 
+        public static Person GetLoggedInUserDetails (string username, string password)
+        {
+            Person user = new Person();
+            string selectStatement = "SELECT logins.contactID, lName, fName, phoneNumber, mailingAddressStreet, "
+                + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType "
+                + "FROM logins LEFT JOIN contact ON logins.contactID = contact.contactID "
+                + "WHERE userName = @username AND password = @password";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@username", username);
+                        selectCommand.Parameters.AddWithValue("@password", password);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                user.ContactID = (int)reader["contactID"];
+                                user.LastName = reader["lName"].ToString();
+                                user.FirstName = reader["fName"].ToString();
+                                user.Phone = reader["phoneNumber"].ToString();
+                                user.Address = reader["mailingAddressStreet"].ToString();
+                                user.City = reader["mailingAddressCity"].ToString();
+                                user.State = reader["mailingAddressState"].ToString();
+                                user.Zip = reader["mailingAddressZip"].ToString();
+                                user.UserType = (int)reader["userType"];
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return user;
+        }
 
 
 
