@@ -66,10 +66,10 @@ namespace eClinicals.View
             if (cbSearch.SelectedIndex == -1)
             {
                 lblDate_FirstName.Text = "Select Appointment Date";
-            }
-           
+            }          
 
         }
-      
+
+       
     }
 }

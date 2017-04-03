@@ -34,7 +34,8 @@ namespace eClinicals.Controllers
             if (isLoggedIn)
             {
                //raise the event OnLOggedIn
-                OnLogIn();
+
+                OnLogIn(); // OnLogIn(Nurse); Needed GetA  Nurse by Username and Password
                 thisView.Close();
                 this.mainForm.isLoggedIn = true;
             }
@@ -47,7 +48,7 @@ namespace eClinicals.Controllers
             }
         }
         //define delegate
-        public delegate void LogInEventHandler(object sender, EventArgs e);
+        public delegate void LogInEventHandler(object sender, UserLoggedInArgs args);
         // Define event
         public event LogInEventHandler LoggedIn;
         //raise event : Event publisher methods
@@ -57,7 +58,7 @@ namespace eClinicals.Controllers
             {
                 this.mainForm.status = "logged In";
                 this.mainForm.isLoggedIn = true;
-                LoggedIn(this, EventArgs.Empty);               
+                LoggedIn(this, new UserLoggedInArgs());               
             }
 
 
@@ -66,5 +67,11 @@ namespace eClinicals.Controllers
 
 
     }
+
+}
+public class UserLoggedInArgs : EventArgs {
+    public int Person { get; set; }
+
+
 
 }

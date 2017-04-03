@@ -2,6 +2,7 @@
 using eClinicals.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -23,12 +24,15 @@ namespace eClinicals.View
         PatientSearchViewController patientSearchViewController;
         RegistrationViewController registrationViewController;
         PatientRecordTabsViewController patientRecordTabsViewController;
+  
         private const int BY_DOB_NAME = 0;
         private const int BY_DOB = 1;
         private const int BY_NAME = 2;
         frmBaseView currentViewOpened;
         public string status { get; set; }
-        public bool isLoggedIn { get; set; }
+        public bool isLoggedIn { get; set; }      
+        private Patient selectedPatient;
+        private Nurse selectedNurse;
         public frmMain()
         {
             InitializeComponent();
@@ -54,9 +58,10 @@ namespace eClinicals.View
 
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-          
 
-            // This will Come from datasource ////
+
+           // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD
+
             ribbonController.AddUserInfo("Last Name, First Name", "12548", "Nurse");
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
             ribbonController.AddStatusInfo(this.status);
@@ -67,11 +72,12 @@ namespace eClinicals.View
         }
         public void OnLoggedOut(object source, EventArgs e)
         {
-            lblStatus.Text = "LoogedOut in successfully.";
+            lblStatus.Text = "LoggedOut in successfully.";
             CloseCurrentOpenView(currentViewOpened);
             this.pTop.Visible = false;
-           
+            this.pRight.Visible = false;
             lblStatus.Text = "Logged out successfully.";
+            selectedPatient = null;
             OpenLoginView();
 
         }
@@ -91,26 +97,7 @@ namespace eClinicals.View
         {            
             OpenPatientSearch();
         }       
-
-        private void btnOpen_Click(object sender, EventArgs e)
-        {
-
-            CloseCurrentOpenView(currentViewOpened);
-            //TODO:   Open Patient Record
-            this.lblStatus.Text = "  Open Patient Record";
-            patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
-            patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
-            
-            AddToContainer(patientRecordTabsViewController, MIDDLE);
-
-            AddToContainer(patientInfoRibbonController, RIGHT);
-            patientInfoRibbonController.AddContactInfo("909-656-6589","100 pine street \n Colton Ca 92324");
-            patientInfoRibbonController.AddAppointmentInfo("Annual Visit","Headache \n Cough");
-            patientInfoRibbonController.AddUserInfo("35", "M", "12546");
-           // patientSearchViewController.frmPatientSearch.Close();
-            
-
-        }
+     
        // ===========================OPEN VIEWS
 
         private void OpenPatientSearch()
@@ -120,58 +107,106 @@ namespace eClinicals.View
             AddToContainer(patientSearchViewController, MIDDLE);
 
             this.lblStatus.Text = ("Patient Appointment Search View");
+
+
             patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
             patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
-
+            patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new  DataGridViewCellEventHandler(dgvSearchResults_CellClick);
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnOpen_Click(object sender, EventArgs e)
         {
-                List<Patient> myPatientsList;
-            switch (patientSearchViewController.frmPatientSearch.cbSearch.SelectedIndex)
+            if (selectedPatient != null)
             {
-              
-                case BY_DOB_NAME:
-                    string lastName = patientSearchViewController.frmPatientSearch.txtLastName.Text;
-                  // DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
-                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING !!!!!!!!!!!!!!!!!!!!!!!!!
-                    DateTime DOB = DateTime.Parse("9/4/1981");
-                    myPatientsList =  eClinicalsController.SearchPatientByLastNameAndDOB("Mitchell", DOB);
+                CloseCurrentOpenView(currentViewOpened);
+                //TODO:   Open Patient Record !!!!!!!!!!!!!!!!!!!!!!!!!NEED VISIT METHOD
+               string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open.";
+                Status(message, Color.Transparent);
+                patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
+                patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
 
-                    foreach (Patient patient in myPatientsList){
-                      lblStatus.Text += patient.LastName + "++++";
-                       // lblStatus.Text += "search by DOB_NAME";
-                    }
+                AddToContainer(patientRecordTabsViewController, MIDDLE);
 
+                AddToContainer(patientInfoRibbonController, RIGHT);
+                string mailingAddres = selectedPatient.Address + "\n" + selectedPatient.City + " , " + selectedPatient.State + " " + selectedPatient.Zip;
 
-                    break;
-                case BY_DOB:
-                    lblStatus.Text = "search by BY_DOB";
-                    break;
-                case BY_NAME:
-                    lblStatus.Text = "search by BY_NAME";
-                    break;
+                patientInfoRibbonController.AddContactInfo(selectedPatient.Phone, mailingAddres);
+                patientInfoRibbonController.AddAppointmentInfo("Annual Visit", "Headache \n Cough");
+                patientInfoRibbonController.AddUserInfo((DateTime.Now.Year - selectedPatient.Dob.Year).ToString(),
+                                            selectedPatient.Gender, selectedPatient.ContactID.ToString());
+               
 
-                default:
-                    break;
             }
-
+            else {
+               
+                Status("No Patient Selected", Color.Yellow);
+            }
           
 
 
+        }
+        private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+         
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
 
+                    selectedPatient = (Patient)patientSearchViewController.frmPatientSearch.dgvSearchResults.CurrentRow.DataBoundItem;
+                    string message  = "|Patient Selected: " + selectedPatient.FirstName +
+                        "  " + selectedPatient.LastName +
+                        "...Pressing the open Button will open the patient's record.";    
+                    Status(message, Color.Transparent);
+                }
+                else
+                {
+                    Status("No records are listed for selection.",Color.Yellow);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }   
+        }      
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            lblStatus.BackColor = Color.Transparent;
+            List<Patient> myPatientsList = null;
+            DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());         
+            string FirstName = patientSearchViewController.frmPatientSearch.txtFirstName.Text;
+            string LastName = patientSearchViewController.frmPatientSearch.txtLastName.Text;
+            switch (patientSearchViewController.frmPatientSearch.cbSearch.SelectedIndex)
+            {              
+
+                case BY_DOB_NAME:                 
+                  // DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
+                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING !!!!!!!!!!!!!!!!!!!!!!!!!                   
+                    myPatientsList =  eClinicalsController.SearchPatientByLastNameAndDOB(LastName, DOB);                   
+                     lblStatus.Text = "DOB and Last Name Selected for search"; 
+                    break;
+                case BY_DOB:
+                    Console.Write(DOB);
+                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SearchPatientByDOB  NOT WORKING !!!!!!!!!!!!!!!!!!!!!!!!!
+                    lblStatus.Text = "DOB Selected for search";
+                    myPatientsList = eClinicalsController.SearchPatientByDOB(DOB);                 
+                    break;
+                case BY_NAME:
+                    lblStatus.Text = "First and Last name Selected for search";
+                    myPatientsList = eClinicalsController.SearchPatientByFirstAndLastName(FirstName, LastName);                  
+                    break;
+                default:
+                    break;
+            }  
+            patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = myPatientsList;
         }
 
         private void OpenRegistrationView()
         {
             CloseCurrentOpenView(currentViewOpened);
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
-            AddToContainer(registrationViewController, MIDDLE);        
-          
+            AddToContainer(registrationViewController, MIDDLE);                  
             registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);  
         }
-
-
         private void OpenLoginView()
         {
             loginController = new LoginController(this, new frmLogin());
@@ -195,6 +230,8 @@ namespace eClinicals.View
 
             nurseLoggedInViewController.frmNurseMenuSelectView.btnFindPatientRecord.Click += new EventHandler(btnFindPatientRecord_Click);
             nurseLoggedInViewController.frmNurseMenuSelectView.btnRegisterAPatient.Click += new EventHandler(btnRegisterAPatient_Click);
+         
+
         }
 
         private void AddToContainer(ControllerBase thisController, int level)
@@ -218,6 +255,12 @@ namespace eClinicals.View
                     break;
             }           
         }
+
+        private void Status(string message, Color color)
+        {
+            lblStatus.BackColor = color;
+            lblStatus.Text = message;
+        }
         private void CloseCurrentOpenView(frmBaseView currentViewOpenToClose)
         {
             if (currentViewOpenToClose != null)
@@ -225,6 +268,8 @@ namespace eClinicals.View
                 currentViewOpenToClose.Close();
             }
            
-        }
+        }  
+
+
     }
 }
