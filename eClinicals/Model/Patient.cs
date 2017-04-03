@@ -8,5 +8,6 @@ namespace eClinicals.Model
 {
     class Patient : Person
     {
+        public int PatientID { get; set; }
     }
 }
