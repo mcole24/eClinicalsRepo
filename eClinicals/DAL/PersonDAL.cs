@@ -123,7 +123,7 @@ namespace eClinicals.DAL
         {
             Person user = new Person();
             string selectStatement = "SELECT logins.contactID, lName, fName, phoneNumber, mailingAddressStreet, "
-                + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType, "
+                + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType "
                 + "FROM logins LEFT JOIN contact ON logins.contactID = contact.contactID "
                 + "WHERE userName = @username AND password = @password";
             try
