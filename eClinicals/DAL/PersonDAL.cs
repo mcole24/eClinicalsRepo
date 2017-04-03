@@ -91,9 +91,6 @@ namespace eClinicals.DAL
                     string selectStmt = "SELECT password FROM logins WHERE userName = @username";
                     connect.Open();
 
-                   // connect.Open();
-                  //  string selectStmt = "SELECT password FROM logins WHERE userName = @user";
-
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@username", username);
@@ -127,7 +124,7 @@ namespace eClinicals.DAL
         {
             Person user = new Person();
             string selectStatement = "SELECT logins.contactID, lName, fName, phoneNumber, mailingAddressStreet, "
-                + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType "
+                + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType, "
                 + "FROM logins LEFT JOIN contact ON logins.contactID = contact.contactID "
                 + "WHERE userName = @username AND password = @password";
             try
@@ -167,6 +164,43 @@ namespace eClinicals.DAL
             }
             return user;
         }
+
+
+        public static int GetContactIDWithSsn(string ssn)
+        {
+            int contact = 0;
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    string selStmt = "SELECT contactID FROM logins WHERE SSN = @social";
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@social", ssn);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                contact = (int)reader["SSN"];
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return contact;
+        }
+
+
+
 
 
 

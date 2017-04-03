@@ -47,3 +47,21 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.G
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Assets\images\logo\eclinicalLogo.png
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\View\frmBaseView.cs
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Resources\footer-image.jpg
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Resources\eclinicalLogo.png
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.pdb
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmMain.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmNurseMenuSelectView.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientInfoRibbon.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientRecordTabs.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientSearch.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRegistration.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRibbon.resources
+C:\Users\MCole\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache

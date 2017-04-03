@@ -30,8 +30,6 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.lbCountry = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtZip = new System.Windows.Forms.TextBox();
@@ -54,7 +52,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(526, 319);
+            this.btnCancel.Location = new System.Drawing.Point(362, 319);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
             this.btnCancel.TabIndex = 11;
@@ -64,29 +62,12 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(343, 319);
+            this.btnRegister.Location = new System.Drawing.Point(124, 319);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(163, 23);
             this.btnRegister.TabIndex = 10;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
-            // 
-            // lbCountry
-            // 
-            this.lbCountry.FormattingEnabled = true;
-            this.lbCountry.Location = new System.Drawing.Point(184, 205);
-            this.lbCountry.Name = "lbCountry";
-            this.lbCountry.Size = new System.Drawing.Size(120, 82);
-            this.lbCountry.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(122, 205);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Country";
             // 
             // cbState
             // 
@@ -98,7 +79,7 @@
             "FL",
             "NY",
             "SC"});
-            this.cbState.Location = new System.Drawing.Point(184, 145);
+            this.cbState.Location = new System.Drawing.Point(183, 183);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
             this.cbState.TabIndex = 7;
@@ -106,7 +87,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(122, 149);
+            this.label8.Location = new System.Drawing.Point(121, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 12;
@@ -114,15 +95,15 @@
             // 
             // txtZip
             // 
-            this.txtZip.Location = new System.Drawing.Point(183, 172);
+            this.txtZip.Location = new System.Drawing.Point(183, 224);
             this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(63, 20);
+            this.txtZip.Size = new System.Drawing.Size(74, 20);
             this.txtZip.TabIndex = 8;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(121, 177);
+            this.label9.Location = new System.Drawing.Point(122, 227);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 10;
@@ -130,15 +111,15 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(184, 117);
+            this.txtCity.Location = new System.Drawing.Point(184, 139);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(144, 20);
+            this.txtCity.Size = new System.Drawing.Size(182, 20);
             this.txtCity.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 122);
+            this.label7.Location = new System.Drawing.Point(121, 142);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 10;
@@ -215,15 +196,15 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(184, 91);
+            this.txtAddress.Location = new System.Drawing.Point(184, 95);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(144, 20);
+            this.txtAddress.Size = new System.Drawing.Size(314, 20);
             this.txtAddress.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(122, 96);
+            this.label6.Location = new System.Drawing.Point(121, 98);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 0;
@@ -252,8 +233,6 @@
             this.ClientSize = new System.Drawing.Size(831, 363);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.lbCountry);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtZip);
@@ -300,8 +279,6 @@
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtZip;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ListBox lbCountry;
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
     }
