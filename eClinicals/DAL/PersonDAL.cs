@@ -27,8 +27,8 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@contact", contactID);
                         cmd.Parameters.AddWithValue("@user", username);
                         cmd.Parameters.AddWithValue("@password", password);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -65,8 +65,8 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@gender", gender);
                         cmd.Parameters.AddWithValue("@ssn", ssn);
                         cmd.Parameters.AddWithValue("@userType", userType);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -105,8 +105,10 @@ namespace eClinicals.DAL
                                     isMatch = false;
                                 }
                             }
+                            reader.Close();
                         }
                     }
+                    connect.Close();
                 }
             }
             catch
@@ -147,8 +149,10 @@ namespace eClinicals.DAL
                                 user.Zip = reader["mailingAddressZip"].ToString();
                                 user.UserType = (int)reader["userType"];
                             }
+                            reader.Close();
                         }
                     }
+                    connection.Close();
                 }
             }
             catch (SqlException ex)
@@ -181,8 +185,10 @@ namespace eClinicals.DAL
                             {
                                 contact = (int)reader["SSN"];
                             }
+                            reader.Close();
                         }
                     }
+                    connect.Close();
                 }
             }
             catch (SqlException sqlex)

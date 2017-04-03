@@ -28,8 +28,8 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contact", contactID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -53,8 +53,8 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(delStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@id", contactID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -82,23 +82,25 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-
-                                patient.ContactID = (int)reader["contactID"];
-                                patient.LastName = reader["lName"].ToString();
-                                patient.FirstName = reader["fName"].ToString();
-                                patient.Dob = (DateTime)reader["dob"];
-                                patient.Address = reader["mailingAddressStreet"].ToString();
-                                patient.City = reader["mailingAddressCity"].ToString();
-                                patient.State = reader["mailingAddressState"].ToString();
-                                patient.Zip = reader["mailingAddressZip"].ToString();
-                                patient.Phone = reader["phone"].ToString();
-                                patient.Gender = reader["gender"].ToString();
-                                patient.Ssn = reader["ssn"].ToString();
+                                patient.PatientID = (int)reader["patient.patientID"];
+                                patient.ContactID = (int)reader["contact.contactID"];
+                                patient.LastName = reader["contact.lName"].ToString();
+                                patient.FirstName = reader["contact.fName"].ToString();
+                                patient.Dob = (DateTime)reader["contact.dob"];
+                                patient.Address = reader["contact.mailingAddressStreet"].ToString();
+                                patient.City = reader["contact.mailingAddressCity"].ToString();
+                                patient.State = reader["contact.mailingAddressState"].ToString();
+                                patient.Zip = reader["contact.mailingAddressZip"].ToString();
+                                patient.Phone = reader["contact.phone"].ToString();
+                                patient.Gender = reader["contact.gender"].ToString();
+                                patient.Ssn = reader["contact.ssn"].ToString();
                                 // Patients will not have user names
                             
                             }
+                            reader.Close();
                         }
                     }
+                    connect.Close();
                 }
             }
             catch (SqlException sqlex)
@@ -144,8 +146,11 @@ namespace eClinicals.DAL
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
                             }
+                            reader.Close();
                         }
+                        
                     }
+                    connection.Close();
                 }
             }
 
@@ -191,8 +196,10 @@ namespace eClinicals.DAL
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
                             }
+                            reader.Close();
                         }
                     }
+                    connection.Close();
                 }
             }
             catch (SqlException ex)
@@ -238,8 +245,10 @@ namespace eClinicals.DAL
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
                             }
+                            reader.Close();
                         }
                     }
+                    connection.Close();
                 }
             }
             catch (SqlException ex)

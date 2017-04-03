@@ -28,8 +28,8 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contact", contactID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -53,8 +53,8 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(delStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@id", contactID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
@@ -76,7 +76,6 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contactID", contactID);
-                        connect.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -94,8 +93,10 @@ namespace eClinicals.DAL
                                 nurse.Ssn = reader["ssn"].ToString();
                                 nurse.UserName = reader["username"].ToString();
                             }
+                            reader.Close();
                         }
                     }
+                    connect.Close();
                 }
             }
             catch (SqlException sqlex)
