@@ -33,7 +33,7 @@ namespace eClinicals.View
         public string status { get; set; }
         public bool isLoggedIn { get; set; }      
         private Patient selectedPatient;
-        private Nurse selectedUser;
+        private Person selectedUser;
         public frmMain()
         {
             InitializeComponent();
@@ -45,8 +45,6 @@ namespace eClinicals.View
         {
             OpenLoginView();
         }
-
-
        
         public void OnLoggedIn(object source, UserLoggedInArgs e)
         {
@@ -65,18 +63,18 @@ namespace eClinicals.View
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD
            
-            selectedUser = (Nurse)e.Person;
+            selectedUser = e.Person;
             Console.WriteLine(selectedUser.FirstName);
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
 
-            ribbonController.AddUserInfo("Last Name, First Name", "12548", "Nurse");
+            ribbonController.AddUserInfo(selectedUser.LastName + ", "+ selectedUser.FirstName , selectedUser.ContactID, selectedUser.UserType);
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
             ribbonController.AddStatusInfo(this.status);
             //===============================================
             this.menuStripMain.Enabled = true;
-
             currentViewOpened = nurseLoggedInViewController.thisView;
         }
+
         private void OpenLoginView()
         {
             loginController = new LoginController(this, new frmLogin());
@@ -97,21 +95,17 @@ namespace eClinicals.View
             lblStatus.Text = "Logged out successfully.";
             selectedPatient = null;
             OpenLoginView();
-
         }
 
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
         {
 
             OpenRegistrationView();
-        }     
-
-      
+        }           
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {            
             OpenPatientSearch();
-        }       
-     
+        }            
        // ===========================OPEN VIEWS
 
         private void OpenPatientSearch()
@@ -124,6 +118,7 @@ namespace eClinicals.View
             patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
             patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new  DataGridViewCellEventHandler(dgvSearchResults_CellClick);
         }
+        // Open Patient information
         private void btnOpen_Click(object sender, EventArgs e)
         {
             if (selectedPatient != null)
@@ -153,6 +148,7 @@ namespace eClinicals.View
             }         
 
         }
+        //Select a patient from grid
         private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {         
             try
@@ -174,7 +170,8 @@ namespace eClinicals.View
             {
                 throw;
             }   
-        }      
+        }    
+        // Search for patient  
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lblStatus.BackColor = Color.Transparent;
@@ -209,11 +206,9 @@ namespace eClinicals.View
             CloseCurrentOpenView(currentViewOpened);
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
             AddToContainer(registrationViewController, MIDDLE);                  
-            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);  
-                   
+            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);                     
                  
         }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
 

@@ -23,32 +23,55 @@ namespace eClinicals.Controllers
         {
             OnLoggedOut();        
             this.mainForm.isLoggedIn = false;
+        }
 
+        public void AddUserInfo(string name, int uid, int userType)
+        {
+           String  typeToString =  getUidString(userType);
+            ribbon.lblUserName.Text = name;
+            ribbon.lblId.Text = uid.ToString();
+            ribbon.lblUserType.Text = typeToString;
 
         }
 
-        public void AddUserInfo(string name, string uid, string userType)
+        private string getUidString(int uid)
         {
-
-            ribbon.lblUserName.Text = name;
-            ribbon.lblId.Text = uid;
-            ribbon.lblUserType.Text = userType;
-
+            /*
+userType definitions -- 
+1. Doctor
+2. Clinic Administrator
+3. Nurse
+4. Patient
+*/          string userType = "";
+            switch (uid)
+            {
+               case 1:
+                userType = "Doctor";
+                break;
+                case 2:
+                    userType = "Administrator";
+                    break;
+                case 3:
+                    userType = "Nurse";
+                    break;
+                case 4:
+                    userType = "Patient";
+                    break;
+                default:
+                    break;
+            }
+            return userType;
         }
 
         public void AddContactInfo(string phone, string Address)
         {
-
             ribbon.lblPhone.Text = phone;
             ribbon.lblAddress.Text = Address;
 
         }
         public void AddStatusInfo(string status)
         {
-
             ribbon.lblStatus.Text = status;
-
-
         }
         //define delegate
         public delegate void LogOutEventHandler(object sender, EventArgs e);

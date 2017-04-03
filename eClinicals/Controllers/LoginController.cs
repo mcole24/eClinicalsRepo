@@ -48,7 +48,14 @@ namespace eClinicals.Controllers
             if (isLoggedIn)
             {
                 //raise the event OnLOggedIn
-                Person newUser = eClinicalsController.GetLoggedInUserDetails(username, password);
+                //  Person newUser = eClinicalsController.GetLoggedInUserDetails(username, password);
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  TEST
+                Person newUser = new Person();
+                newUser.FirstName = "Fake";
+                newUser.LastName = "Jane";
+                newUser.ContactID =12345;
+                newUser.UserType = 1;
+                newUser.Phone = "999-999-99999";
                 OnLoggedIn(newUser); // OnLogIn(Nurse); Needed GetA  Nurse by Username and Password
                 thisView.Close();
                 this.mainForm.isLoggedIn = true;

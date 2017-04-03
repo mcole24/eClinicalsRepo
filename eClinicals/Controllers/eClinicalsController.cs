@@ -11,7 +11,8 @@ namespace eClinicals.Controllers
 {
     class eClinicalsController
     {
-        public eClinicalsController() {
+        public eClinicalsController()
+        {
 
         }
         public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
@@ -35,6 +36,10 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentsByPatientID(patientID);
         }
 
+        public static List<RoutineCheck> GetPreviousReadings(int patientID)
+        {
+            return DAL.VisitDAL.GetPreviousReadings(patientID);
+        }
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
@@ -67,7 +72,7 @@ namespace eClinicals.Controllers
 
         public List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)
         {
-             return DAL.PatientDAL.SearchPatientByFirstAndLastName(fName, lName);
+            return DAL.PatientDAL.SearchPatientByFirstAndLastName(fName, lName);
         }
 
         public List<Patient> SearchPatientByDOB(DateTime dob)
