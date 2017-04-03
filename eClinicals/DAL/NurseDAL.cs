@@ -64,8 +64,6 @@ namespace eClinicals.DAL
                 return false;
             }
         }
-
-
         public static Nurse GetNurseByID(int contactID)
         {
             Nurse nurse = new Nurse();
