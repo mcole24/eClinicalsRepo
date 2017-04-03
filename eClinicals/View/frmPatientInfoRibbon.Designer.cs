@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.groupSearch = new System.Windows.Forms.GroupBox();
-            this.btnDOBLastName = new System.Windows.Forms.Button();
-            this.btnName = new System.Windows.Forms.Button();
-            this.btnDOB = new System.Windows.Forms.Button();
+            this.btnSearchPatient = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnEditPatient = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -81,9 +79,7 @@
             // 
             // groupSearch
             // 
-            this.groupSearch.Controls.Add(this.btnDOBLastName);
-            this.groupSearch.Controls.Add(this.btnName);
-            this.groupSearch.Controls.Add(this.btnDOB);
+            this.groupSearch.Controls.Add(this.btnSearchPatient);
             this.groupSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupSearch.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -94,35 +90,16 @@
             this.groupSearch.TabStop = false;
             this.groupSearch.Text = "Patient Search";
             // 
-            // btnDOBLastName
+            // btnSearchPatient
             // 
-            this.btnDOBLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDOBLastName.Location = new System.Drawing.Point(9, 74);
-            this.btnDOBLastName.Name = "btnDOBLastName";
-            this.btnDOBLastName.Size = new System.Drawing.Size(150, 25);
-            this.btnDOBLastName.TabIndex = 3;
-            this.btnDOBLastName.Text = "By DOB & Last Name";
-            this.btnDOBLastName.UseVisualStyleBackColor = true;
-            // 
-            // btnName
-            // 
-            this.btnName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnName.Location = new System.Drawing.Point(9, 47);
-            this.btnName.Name = "btnName";
-            this.btnName.Size = new System.Drawing.Size(150, 25);
-            this.btnName.TabIndex = 2;
-            this.btnName.Text = "By Name";
-            this.btnName.UseVisualStyleBackColor = true;
-            // 
-            // btnDOB
-            // 
-            this.btnDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDOB.Location = new System.Drawing.Point(9, 20);
-            this.btnDOB.Name = "btnDOB";
-            this.btnDOB.Size = new System.Drawing.Size(150, 25);
-            this.btnDOB.TabIndex = 1;
-            this.btnDOB.Text = "By date of birth";
-            this.btnDOB.UseVisualStyleBackColor = true;
+            this.btnSearchPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchPatient.Location = new System.Drawing.Point(9, 20);
+            this.btnSearchPatient.Name = "btnSearchPatient";
+            this.btnSearchPatient.Size = new System.Drawing.Size(180, 68);
+            this.btnSearchPatient.TabIndex = 1;
+            this.btnSearchPatient.Text = "Search for a patient";
+            this.btnSearchPatient.UseVisualStyleBackColor = true;
+            this.btnSearchPatient.Click += new System.EventHandler(this.btnDOB_Click);
             // 
             // panel6
             // 
@@ -139,7 +116,7 @@
             this.btnEditPatient.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.btnEditPatient.Location = new System.Drawing.Point(9, 6);
             this.btnEditPatient.Name = "btnEditPatient";
-            this.btnEditPatient.Size = new System.Drawing.Size(150, 24);
+            this.btnEditPatient.Size = new System.Drawing.Size(180, 24);
             this.btnEditPatient.TabIndex = 2;
             this.btnEditPatient.Text = "Edit Patient";
             this.btnEditPatient.UseVisualStyleBackColor = true;
@@ -360,7 +337,7 @@
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.pNameAgeGenderId.Controls.Add(this.lblId, 1, 2);
             this.pNameAgeGenderId.Controls.Add(this.label6, 0, 2);
             this.pNameAgeGenderId.Controls.Add(this.lblGender, 3, 1);
@@ -383,7 +360,7 @@
             this.lblId.AutoSize = true;
             this.pNameAgeGenderId.SetColumnSpan(this.lblId, 2);
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblId.Location = new System.Drawing.Point(49, 54);
+            this.lblId.Location = new System.Drawing.Point(48, 54);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(87, 23);
             this.lblId.TabIndex = 9;
@@ -395,7 +372,7 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Location = new System.Drawing.Point(3, 54);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 23);
+            this.label6.Size = new System.Drawing.Size(39, 23);
             this.label6.TabIndex = 9;
             this.label6.Text = "ID:";
             // 
@@ -403,9 +380,9 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGender.Location = new System.Drawing.Point(142, 26);
+            this.lblGender.Location = new System.Drawing.Point(141, 26);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(56, 28);
+            this.lblGender.Size = new System.Drawing.Size(57, 28);
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "-";
             // 
@@ -413,7 +390,7 @@
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAge.Location = new System.Drawing.Point(49, 26);
+            this.lblAge.Location = new System.Drawing.Point(48, 26);
             this.lblAge.Name = "lblAge";
             this.lblAge.Size = new System.Drawing.Size(37, 28);
             this.lblAge.TabIndex = 9;
@@ -423,7 +400,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(92, 26);
+            this.label3.Location = new System.Drawing.Point(91, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 28);
             this.label3.TabIndex = 9;
@@ -446,7 +423,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(3, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 28);
+            this.label2.Size = new System.Drawing.Size(39, 28);
             this.label2.TabIndex = 8;
             this.label2.Text = "Age:";
             // 
@@ -576,9 +553,7 @@
         public System.Windows.Forms.Label lblAddress;
         public System.Windows.Forms.Label lblReason;
         public System.Windows.Forms.Label lblSymptom;
-        public System.Windows.Forms.Button btnDOBLastName;
-        public System.Windows.Forms.Button btnName;
-        public System.Windows.Forms.Button btnDOB;
+        public System.Windows.Forms.Button btnSearchPatient;
         public System.Windows.Forms.Button btnEditPatient;
         public System.Windows.Forms.Label lblId;
         public System.Windows.Forms.Label lblGender;

@@ -47,9 +47,9 @@
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 720);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 740);
             this.statusStripMain.Name = "statusStripMain";
-            this.statusStripMain.Size = new System.Drawing.Size(1026, 22);
+            this.statusStripMain.Size = new System.Drawing.Size(1184, 22);
             this.statusStripMain.TabIndex = 7;
             // 
             // lblStatus
@@ -65,7 +65,7 @@
             this.editToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(1026, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1184, 24);
             this.menuStripMain.TabIndex = 8;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -81,14 +81,14 @@
             // startMenuToolStripMenuItem
             // 
             this.startMenuToolStripMenuItem.Name = "startMenuToolStripMenuItem";
-            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.startMenuToolStripMenuItem.Text = "&Start Menu";
             this.startMenuToolStripMenuItem.Click += new System.EventHandler(this.startMenuToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             // 
             // editToolStripMenuItem
@@ -104,7 +104,7 @@
             this.pTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTop.Location = new System.Drawing.Point(0, 24);
             this.pTop.Name = "pTop";
-            this.pTop.Size = new System.Drawing.Size(1026, 104);
+            this.pTop.Size = new System.Drawing.Size(1184, 104);
             this.pTop.TabIndex = 10;
             this.pTop.Visible = false;
             // 
@@ -117,16 +117,16 @@
             this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMiddle.Location = new System.Drawing.Point(0, 128);
             this.pMiddle.Name = "pMiddle";
-            this.pMiddle.Size = new System.Drawing.Size(1026, 592);
+            this.pMiddle.Size = new System.Drawing.Size(1184, 612);
             this.pMiddle.TabIndex = 12;
             // 
             // pRight
             // 
             this.pRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pRight.Location = new System.Drawing.Point(826, 0);
+            this.pRight.Location = new System.Drawing.Point(984, 0);
             this.pRight.Margin = new System.Windows.Forms.Padding(0);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(200, 592);
+            this.pRight.Size = new System.Drawing.Size(200, 612);
             this.pRight.TabIndex = 0;
             // 
             // frmMain
@@ -136,7 +136,7 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1026, 742);
+            this.ClientSize = new System.Drawing.Size(1184, 762);
             this.Controls.Add(this.pMiddle);
             this.Controls.Add(this.pTop);
             this.Controls.Add(this.statusStripMain);
@@ -145,8 +145,8 @@
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
-            this.MaximumSize = new System.Drawing.Size(1042, 800);
-            this.MinimumSize = new System.Drawing.Size(1042, 600);
+            this.MaximumSize = new System.Drawing.Size(1200, 800);
+            this.MinimumSize = new System.Drawing.Size(1042, 800);
             this.Name = "frmMain";
             this.Text = "eClinicals";
             this.Load += new System.EventHandler(this.frmMain_Load);

@@ -9,7 +9,7 @@ namespace eClinicals.Controllers
 {
     class PatientInfoRibbonController : ControllerBase
     {
-        frmPatientInfoRibbon ribbon;
+       public  frmPatientInfoRibbon ribbon;
         public PatientInfoRibbonController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
             ribbon = (frmPatientInfoRibbon)base.thisView;

@@ -31,11 +31,7 @@ namespace eClinicals.Controllers
 
             frmLoginView.username = frmLoginView.txtUserName.Text;
             frmLoginView.password = frmLoginView.txtPassword.Text;
-
-            LogIn(frmLoginView.username, frmLoginView.password);
-        
-
-
+            LogIn(frmLoginView.username, frmLoginView.password);   
         }
         //define delegate
         public delegate void LogInEventHandler(object sender, UserLoggedInArgs args);

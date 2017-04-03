@@ -21,5 +21,10 @@ namespace eClinicals.View
         {
 
         }
+
+        private void btnDOB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

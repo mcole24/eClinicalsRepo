@@ -133,22 +133,26 @@ namespace eClinicals.View
 
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
+                frmPatientInfoRibbon patienRibbon = patientInfoRibbonController.ribbon;
                 frmPatientRecordTabs frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
                 AddPatientRibonInfo(selectedPatient);
-               int selectedPatientID = 12;// selectedPatient.id
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  FIX NEEDED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //Add Tab Appointments NEED PatientID
-                //frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
-
-                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
-
-                
+               int selectedPatientID = selectedPatient.PatientID;// selectedPatient.id NEEDED
+                patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
+                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);                
             }
             else {               
                 Status("No Patient Selected", Color.Yellow);
             }         
         }
-        
+
+        private void btnSearchPatient_Click(object sender, EventArgs e)
+        {
+           //when a view is opened it automatically closes the previous view in center panel
+            OpenPatientSearch();
+
+
+        }
+
         private void AddPatientRibonInfo(Person selectedPatient)
         {
             // ADD Patient Side bar
