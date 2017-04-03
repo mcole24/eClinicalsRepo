@@ -49,7 +49,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cbUserType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtZip = new System.Windows.Forms.TextBox();
+           // this.txtZip = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtSSN = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -126,65 +126,10 @@
             "WV",
             "WI",
             "WY"});
-            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbState.FormattingEnabled = true;
-            this.cbState.Items.AddRange(new object[] {
-            "AK",
-            "AL",
-            "AR",
-            "AZ",
-            "CA",
-            "CO",
-            "CT",
-            "DE",
-            "FL",
-            "GA",
-            "HI",
-            "IA",
-            "ID",
-            "IL",
-            "IN",
-            "KS",
-            "KY",
-            "LA",
-            "MA",
-            "MD",
-            "ME",
-            "MI",
-            "MN",
-            "MO",
-            "MS",
-            "MT",
-            "NC",
-            "ND",
-            "NE",
-            "NH",
-            "NJ",
-            "NM",
-            "NV",
-            "NY",
-<<<<<<< HEAD
-            "OH",
-            "OK",
-            "OR",
-            "PA",
-            "RI",
-            "SC",
-            "SD",
-            "TN",
-            "TX",
-            "UT",
-            "VA",
-            "VT",
-            "WA",
-            "WI",
-            "WV",
-            "WY"});
-            this.cbState.Location = new System.Drawing.Point(184, 145);
-=======
-            "SC"});
+            
+            this.cbState.Location = new System.Drawing.Point(184, 145);           
             this.cbState.Location = new System.Drawing.Point(183, 183);
->>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
+
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
             this.cbState.Sorted = true;
@@ -199,8 +144,6 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "State";
             // 
-<<<<<<< HEAD
-=======
             // txtZip
             // 
             this.txtZip.Location = new System.Drawing.Point(183, 224);
@@ -208,7 +151,6 @@
             this.txtZip.Size = new System.Drawing.Size(74, 20);
             this.txtZip.TabIndex = 8;
             // 
->>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
             // label9
             // 
             this.label9.AutoSize = true;
@@ -434,10 +376,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-<<<<<<< HEAD
-=======
+
         private System.Windows.Forms.TextBox txtZip;
->>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtFirstName;
@@ -450,7 +390,7 @@
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.ComboBox cbUserType;
         private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.TextBox txtZip;
+       // public System.Windows.Forms.TextBox txtZip;
         public System.Windows.Forms.TextBox txtPhone;
         public System.Windows.Forms.TextBox txtSSN;
     }
