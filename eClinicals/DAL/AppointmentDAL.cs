@@ -28,7 +28,6 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@appDate", appointmentDate);
                         cmd.Parameters.AddWithValue("@pID", patientID);
                         cmd.Parameters.AddWithValue("@dID", doctorID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
                         return true;
                     }
@@ -89,9 +88,9 @@ namespace eClinicals.DAL
                                 appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
                                 appointment.PatientID = (int)reader["patientID"];
                                 appointment.DoctorID = (int)reader["doctorID"];
-
                             }
                         }
+                        connect.Close();
                     }
                 }
             }
@@ -135,10 +134,14 @@ namespace eClinicals.DAL
                                 appointment.AppointmentDoctor = reader["lName"].ToString();
                                 appointmentList.Add(appointment);
                             }
+                            reader.Close();
                         }
+
                     }
+                    connection.Close();
                 }
             }
+
             catch (SqlException ex)
             {
                 throw;

@@ -39,10 +39,14 @@ namespace eClinicals.DAL
                                 checkResults.Symptom = reader["symptomType"].ToString();
                                 checkResultList.Add(checkResults);
                             }
+                            reader.Close();
                         }
+
                     }
+                    connection.Close();
                 }
             }
+
             catch (SqlException ex)
             {
                 throw;
