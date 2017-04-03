@@ -12,6 +12,10 @@ namespace eClinicals.Model
         public int AppointmentID { get; set; }
         public DateTime AppointmentDate { get; set; }
 
+        public string AppointmentDoctor { get; set; }
+
+        public string AppointmentReason { get; set; }
+
         // May need to remove the below properties later
 
         public int PatientID { get; set; }

@@ -106,12 +106,49 @@ namespace eClinicals.DAL
             return appointment;
         }
 
-
-
-
-
-
-
+        public static List<Appointment> GetAppointmentsByPatientID(int patientID)
+        {
+            List<Appointment> appointmentList = new List<Appointment>();
+            string selectStatement = "SELECT appointmentDate, appointment_reason.appointmentReason, contact.lName "
+                + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID " 
+                + "JOIN appointment_reason_for_visit ON Appointment.appointmentID = appointment_reason_for_visit.appointmentID "
+                + "JOIN appointment_reason ON appointment_reason_for_visit.appointmentReasonID = appointment_reason.appointmentReasonID "
+                + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
+                + "JOIN contact ON doctor.contactID = contact.contactID "
+                + "WHERE Patient.patientID = @patientID";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@patientID", patientID);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                
+                                Appointment appointment = new Appointment();
+                                appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
+                                appointment.AppointmentReason = reader["appointmentReason"].ToString();
+                                appointment.AppointmentDoctor = reader["lName"].ToString();
+                                appointmentList.Add(appointment);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return appointmentList;
+        }
 
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace eClinicals.Model
 {
     class Visit
-    {
+    { 
+
     }
 }

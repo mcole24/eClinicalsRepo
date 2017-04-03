@@ -56,7 +56,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(526, 319);
+            this.btnCancel.Location = new System.Drawing.Point(362, 319);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
             this.btnCancel.TabIndex = 11;
@@ -66,7 +66,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(343, 319);
+            this.btnRegister.Location = new System.Drawing.Point(124, 319);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(163, 23);
             this.btnRegister.TabIndex = 10;
@@ -163,6 +163,7 @@
             "NM",
             "NV",
             "NY",
+<<<<<<< HEAD
             "OH",
             "OK",
             "OR",
@@ -180,6 +181,10 @@
             "WV",
             "WY"});
             this.cbState.Location = new System.Drawing.Point(184, 145);
+=======
+            "SC"});
+            this.cbState.Location = new System.Drawing.Point(183, 183);
+>>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
             this.cbState.Sorted = true;
@@ -188,16 +193,26 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(122, 149);
+            this.label8.Location = new System.Drawing.Point(121, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "State";
             // 
+<<<<<<< HEAD
+=======
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(183, 224);
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(74, 20);
+            this.txtZip.TabIndex = 8;
+            // 
+>>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(121, 177);
+            this.label9.Location = new System.Drawing.Point(122, 227);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 10;
@@ -205,15 +220,15 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(184, 117);
+            this.txtCity.Location = new System.Drawing.Point(184, 139);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(144, 20);
+            this.txtCity.Size = new System.Drawing.Size(182, 20);
             this.txtCity.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 122);
+            this.label7.Location = new System.Drawing.Point(121, 142);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 10;
@@ -285,15 +300,15 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(184, 91);
+            this.txtAddress.Location = new System.Drawing.Point(184, 95);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(144, 20);
+            this.txtAddress.Size = new System.Drawing.Size(314, 20);
             this.txtAddress.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(122, 96);
+            this.label6.Location = new System.Drawing.Point(121, 98);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 0;
@@ -419,6 +434,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.TextBox txtZip;
+>>>>>>> 8cb921492b5ea03901ac17710d114c0ec28d3da5
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtFirstName;
