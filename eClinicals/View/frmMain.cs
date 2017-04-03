@@ -214,7 +214,7 @@ namespace eClinicals.View
             string streetAddress = registrationViewController.frmRegistration.txtAddress.Text;
             string city = registrationViewController.frmRegistration.txtCity.Text;
             string state = registrationViewController.frmRegistration.cbState.Text;
-            string zip = registrationViewController.frmRegistration.txtZip.Text;
+            string zip = registrationViewController.frmRegistration.txtZipcode.Text;
             string phone = registrationViewController.frmRegistration.txtPhone.Text;
             string gender = registrationViewController.frmRegistration.cbGender.Text;
             string ssn = registrationViewController.frmRegistration.txtSSN.Text;

@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtZipcode = new System.Windows.Forms.TextBox();
+            this.txtSSN = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.cbUserType = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.cbState = new System.Windows.Forms.ComboBox();
@@ -46,20 +52,70 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbUserType = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-           // this.txtZip = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtSSN = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // txtZipcode
+            // 
+            this.txtZipcode.Location = new System.Drawing.Point(184, 227);
+            this.txtZipcode.MaxLength = 15;
+            this.txtZipcode.Name = "txtZipcode";
+            this.txtZipcode.Size = new System.Drawing.Size(68, 20);
+            this.txtZipcode.TabIndex = 8;
+            // 
+            // txtSSN
+            // 
+            this.txtSSN.Location = new System.Drawing.Point(336, 48);
+            this.txtSSN.MaxLength = 9;
+            this.txtSSN.Name = "txtSSN";
+            this.txtSSN.Size = new System.Drawing.Size(144, 20);
+            this.txtSSN.TabIndex = 2;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(577, 98);
+            this.txtPhone.MaxLength = 12;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(144, 20);
+            this.txtPhone.TabIndex = 9;
+            // 
+            // cbUserType
+            // 
+            this.cbUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserType.FormattingEnabled = true;
+            this.cbUserType.Items.AddRange(new object[] {
+            "Doctor",
+            "Administrator",
+            "Nurse",
+            "Patient"});
+            this.cbUserType.Location = new System.Drawing.Point(577, 142);
+            this.cbUserType.Name = "cbUserType";
+            this.cbUserType.Size = new System.Drawing.Size(97, 21);
+            this.cbUserType.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(515, 146);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "User Type";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(515, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Phone";
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(362, 319);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
-            this.btnCancel.TabIndex = 11;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -69,17 +125,17 @@
             this.btnRegister.Location = new System.Drawing.Point(124, 319);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(163, 23);
-            this.btnRegister.TabIndex = 10;
+            this.btnRegister.TabIndex = 11;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             // 
             // cbState
             // 
-            this.cbState.AutoCompleteCustomSource.AddRange(new string[] {
+            this.cbState.Items.AddRange(new object[] {
             "AK",
             "AL",
-            "AZ",
             "AR",
+            "AZ",
             "CA",
             "CO",
             "CT",
@@ -87,29 +143,29 @@
             "FL",
             "GA",
             "HI",
+            "IA",
             "ID",
             "IL",
             "IN",
-            "IA",
             "KS",
             "KY",
             "LA",
-            "ME",
-            "MD",
             "MA",
+            "MD",
+            "ME",
             "MI",
             "MN",
-            "MS",
             "MO",
+            "MS",
             "MT",
+            "NC",
+            "ND",
             "NE",
-            "NV",
             "NH",
             "NJ",
             "NM",
+            "NV",
             "NY",
-            "NC",
-            "ND",
             "OH",
             "OK",
             "OR",
@@ -120,16 +176,13 @@
             "TN",
             "TX",
             "UT",
-            "VT",
             "VA",
+            "VT",
             "WA",
-            "WV",
             "WI",
+            "WV",
             "WY"});
-            
-            this.cbState.Location = new System.Drawing.Point(184, 145);           
             this.cbState.Location = new System.Drawing.Point(183, 183);
-
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
             this.cbState.Sorted = true;
@@ -143,13 +196,6 @@
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "State";
-            // 
-            // txtZip
-            // 
-            this.txtZip.Location = new System.Drawing.Point(183, 224);
-            this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(74, 20);
-            this.txtZip.TabIndex = 8;
             // 
             // label9
             // 
@@ -272,70 +318,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(483, 98);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Phone";
-            // 
-            // cbUserType
-            // 
-            this.cbUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUserType.FormattingEnabled = true;
-            this.cbUserType.Items.AddRange(new object[] {
-            "Doctor",
-            "Administrator",
-            "Nurse",
-            "Patient"});
-            this.cbUserType.Location = new System.Drawing.Point(545, 141);
-            this.cbUserType.Name = "cbUserType";
-            this.cbUserType.Size = new System.Drawing.Size(97, 21);
-            this.cbUserType.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(483, 145);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "User Type";
-            // 
-            // txtZip
-            // 
-            this.txtZip.Location = new System.Drawing.Point(183, 177);
-            this.txtZip.MaxLength = 5;
-            this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(100, 20);
-            this.txtZip.TabIndex = 8;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Location = new System.Drawing.Point(545, 98);
-            this.txtPhone.MaxLength = 12;
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(144, 20);
-            this.txtPhone.TabIndex = 8;
-            // 
-            // txtSSN
-            // 
-            this.txtSSN.Location = new System.Drawing.Point(336, 48);
-            this.txtSSN.MaxLength = 9;
-            this.txtSSN.Name = "txtSSN";
-            this.txtSSN.Size = new System.Drawing.Size(144, 20);
-            this.txtSSN.TabIndex = 2;
-            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 363);
+            this.Controls.Add(this.txtZipcode);
             this.Controls.Add(this.txtSSN);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.txtZip);
             this.Controls.Add(this.cbUserType);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -393,5 +383,6 @@
        // public System.Windows.Forms.TextBox txtZip;
         public System.Windows.Forms.TextBox txtPhone;
         public System.Windows.Forms.TextBox txtSSN;
+        public System.Windows.Forms.TextBox txtZipcode;
     }
 }
