@@ -227,13 +227,9 @@ namespace eClinicals.View
             CloseCurrentOpenView(currentViewOpened);
             nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
             AddToContainer(nurseLoggedInViewController, MIDDLE);
-
             nurseLoggedInViewController.frmNurseMenuSelectView.btnFindPatientRecord.Click += new EventHandler(btnFindPatientRecord_Click);
-            nurseLoggedInViewController.frmNurseMenuSelectView.btnRegisterAPatient.Click += new EventHandler(btnRegisterAPatient_Click);
-         
-
+            nurseLoggedInViewController.frmNurseMenuSelectView.btnRegisterAPatient.Click += new EventHandler(btnRegisterAPatient_Click);         
         }
-
         private void AddToContainer(ControllerBase thisController, int level)
         {
            
