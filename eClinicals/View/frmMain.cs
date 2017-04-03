@@ -1,11 +1,12 @@
 ﻿using eClinicals.Controllers;
+using eClinicals.Events;
 using eClinicals.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-
+using static eClinicals.Controllers.LoginController;
 
 namespace eClinicals.View
 {
@@ -32,7 +33,7 @@ namespace eClinicals.View
         public string status { get; set; }
         public bool isLoggedIn { get; set; }      
         private Patient selectedPatient;
-        private Nurse selectedNurse;
+        private Nurse selectedUser;
         public frmMain()
         {
             InitializeComponent();
@@ -43,9 +44,11 @@ namespace eClinicals.View
         private void frmMain_Load(object sender, EventArgs e)
         {
             OpenLoginView();
-        }       
+        }
 
-        public void OnLoggedIn(object source, EventArgs e)
+
+       
+        public void OnLoggedIn(object source, UserLoggedInArgs e)
         {
             lblStatus.BackColor = System.Drawing.Color.Transparent;
             lblStatus.Text = "Logged in successfully.";
@@ -60,8 +63,11 @@ namespace eClinicals.View
             this.pTop.Visible = true;
 
 
-           // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD
-
+            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD
+           
+            selectedUser = (Nurse)e.Person;
+            Console.WriteLine(selectedUser.FirstName);
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
             ribbonController.AddUserInfo("Last Name, First Name", "12548", "Nurse");
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
             ribbonController.AddStatusInfo(this.status);
@@ -70,6 +76,17 @@ namespace eClinicals.View
 
             currentViewOpened = nurseLoggedInViewController.thisView;
         }
+        private void OpenLoginView()
+        {
+            loginController = new LoginController(this, new frmLogin());
+
+            //register the handler for logged on event
+            loginController.LoggedIn += this.OnLoggedIn;
+
+            AddToContainer(loginController, MIDDLE);
+            currentViewOpened = null;
+        }
+        // ===========================
         public void OnLoggedOut(object source, EventArgs e)
         {
             lblStatus.Text = "LoggedOut in successfully.";
@@ -81,6 +98,7 @@ namespace eClinicals.View
             OpenLoginView();
 
         }
+
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
         {
 
@@ -194,17 +212,7 @@ namespace eClinicals.View
                    
                  
         }
-        private void OpenLoginView()
-        {
-            loginController = new LoginController(this, new frmLogin());
 
-            //register the handler for logged on event
-            loginController.LoggedIn += this.OnLoggedIn;
-
-            AddToContainer(loginController, MIDDLE);
-            currentViewOpened = null;
-        }
-        // ===========================
         private void btnRegister_Click(object sender, EventArgs e)
         {
 
@@ -220,7 +228,7 @@ namespace eClinicals.View
             string ssn = registrationViewController.frmRegistration.txtSSN.Text;
             int userType = registrationViewController.frmRegistration.cbUserType.SelectedIndex + 1;
 
-          
+           // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NEED FIX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             try
             {
                 if (lastName != "" & firstName != "" & dob != null & streetAddress != "" & city != "" & state != "" & zip != "" & phone != "" & gender != "" & ssn != "" & userType > -1)
@@ -237,7 +245,7 @@ namespace eClinicals.View
             }
             catch (Exception)
             {
-
+             
                
             }
 

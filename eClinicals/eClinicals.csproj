@@ -65,6 +65,7 @@
     <Compile Include="DAL\PatientDAL.cs" />
     <Compile Include="DAL\PersonDAL.cs" />
     <Compile Include="DAL\VisitDAL.cs" />
+    <Compile Include="Events\UserLoggedInArgs.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Appointment.cs" />

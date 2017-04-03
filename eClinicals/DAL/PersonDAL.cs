@@ -11,10 +11,7 @@ using eClinicals.Model;
 namespace eClinicals.DAL
 {
     class PersonDAL
-    {
-
-
-        
+    {       
 
         public static bool createLogin(int contactID, string username, string password)
         {
