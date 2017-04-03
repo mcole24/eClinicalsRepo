@@ -68,6 +68,7 @@ namespace eClinicals.View
             selectedUser = (Nurse)e.Person;
             Console.WriteLine(selectedUser.FirstName);
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
+
             ribbonController.AddUserInfo("Last Name, First Name", "12548", "Nurse");
             ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
             ribbonController.AddStatusInfo(this.status);
