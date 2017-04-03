@@ -30,11 +30,8 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.lbCountry = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtZip = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -42,7 +39,6 @@
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cbGender = new System.Windows.Forms.ComboBox();
-            this.txtSSN = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +46,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbUserType = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtZip = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtSSN = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -71,36 +73,116 @@
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             // 
-            // lbCountry
-            // 
-            this.lbCountry.FormattingEnabled = true;
-            this.lbCountry.Location = new System.Drawing.Point(184, 205);
-            this.lbCountry.Name = "lbCountry";
-            this.lbCountry.Size = new System.Drawing.Size(120, 82);
-            this.lbCountry.TabIndex = 9;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(122, 205);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Country";
-            // 
             // cbState
             // 
+            this.cbState.AutoCompleteCustomSource.AddRange(new string[] {
+            "AK",
+            "AL",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbState.FormattingEnabled = true;
             this.cbState.Items.AddRange(new object[] {
+            "AK",
+            "AL",
+            "AR",
+            "AZ",
             "CA",
-            "GA",
-            "ME",
+            "CO",
+            "CT",
+            "DE",
             "FL",
+            "GA",
+            "HI",
+            "IA",
+            "ID",
+            "IL",
+            "IN",
+            "KS",
+            "KY",
+            "LA",
+            "MA",
+            "MD",
+            "ME",
+            "MI",
+            "MN",
+            "MO",
+            "MS",
+            "MT",
+            "NC",
+            "ND",
+            "NE",
+            "NH",
+            "NJ",
+            "NM",
+            "NV",
             "NY",
-            "SC"});
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
+            "VT",
+            "WA",
+            "WI",
+            "WV",
+            "WY"});
             this.cbState.Location = new System.Drawing.Point(184, 145);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
+            this.cbState.Sorted = true;
             this.cbState.TabIndex = 7;
             // 
             // label8
@@ -111,13 +193,6 @@
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "State";
-            // 
-            // txtZip
-            // 
-            this.txtZip.Location = new System.Drawing.Point(183, 172);
-            this.txtZip.Name = "txtZip";
-            this.txtZip.Size = new System.Drawing.Size(63, 20);
-            this.txtZip.TabIndex = 8;
             // 
             // label9
             // 
@@ -155,9 +230,10 @@
             // 
             // dtpDOB
             // 
+            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDOB.Location = new System.Drawing.Point(577, 45);
             this.dtpDOB.Name = "dtpDOB";
-            this.dtpDOB.Size = new System.Drawing.Size(200, 20);
+            this.dtpDOB.Size = new System.Drawing.Size(112, 20);
             this.dtpDOB.TabIndex = 4;
             // 
             // label4
@@ -171,22 +247,16 @@
             // 
             // cbGender
             // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female",
+            "M",
+            "F",
             "Other"});
             this.cbGender.Location = new System.Drawing.Point(486, 46);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(64, 21);
             this.cbGender.TabIndex = 3;
-            // 
-            // txtSSN
-            // 
-            this.txtSSN.Location = new System.Drawing.Point(333, 48);
-            this.txtSSN.Name = "txtSSN";
-            this.txtSSN.Size = new System.Drawing.Size(147, 20);
-            this.txtSSN.TabIndex = 2;
             // 
             // label3
             // 
@@ -245,18 +315,77 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(483, 98);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Phone";
+            // 
+            // cbUserType
+            // 
+            this.cbUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUserType.FormattingEnabled = true;
+            this.cbUserType.Items.AddRange(new object[] {
+            "Doctor",
+            "Administrator",
+            "Nurse",
+            "Patient"});
+            this.cbUserType.Location = new System.Drawing.Point(545, 141);
+            this.cbUserType.Name = "cbUserType";
+            this.cbUserType.Size = new System.Drawing.Size(97, 21);
+            this.cbUserType.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(483, 145);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "User Type";
+            // 
+            // txtZip
+            // 
+            this.txtZip.Location = new System.Drawing.Point(183, 177);
+            this.txtZip.MaxLength = 5;
+            this.txtZip.Name = "txtZip";
+            this.txtZip.Size = new System.Drawing.Size(100, 20);
+            this.txtZip.TabIndex = 8;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(545, 98);
+            this.txtPhone.MaxLength = 12;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(144, 20);
+            this.txtPhone.TabIndex = 8;
+            // 
+            // txtSSN
+            // 
+            this.txtSSN.Location = new System.Drawing.Point(336, 48);
+            this.txtSSN.MaxLength = 9;
+            this.txtSSN.Name = "txtSSN";
+            this.txtSSN.Size = new System.Drawing.Size(144, 20);
+            this.txtSSN.TabIndex = 2;
+            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 363);
+            this.Controls.Add(this.txtSSN);
+            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.txtZip);
+            this.Controls.Add(this.cbUserType);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.lbCountry);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.cbState);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtZip);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.label7);
@@ -264,7 +393,6 @@
             this.Controls.Add(this.dtpDOB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbGender);
-            this.Controls.Add(this.txtSSN);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.label2);
@@ -283,26 +411,28 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSSN;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtZip;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ListBox lbCountry;
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.TextBox txtFirstName;
+        public System.Windows.Forms.TextBox txtLastName;
+        public System.Windows.Forms.ComboBox cbGender;
+        public System.Windows.Forms.DateTimePicker dtpDOB;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtCity;
+        public System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.ComboBox cbUserType;
+        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.TextBox txtZip;
+        public System.Windows.Forms.TextBox txtPhone;
+        public System.Windows.Forms.TextBox txtSSN;
     }
 }

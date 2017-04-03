@@ -87,12 +87,7 @@ namespace eClinicals.View
             OpenRegistrationView();
         }     
 
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            //Add Patient to database
-            //Open Patient Record          
-            this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
-        }
+      
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {            
             OpenPatientSearch();
@@ -105,10 +100,7 @@ namespace eClinicals.View
             CloseCurrentOpenView(currentViewOpened);
             patientSearchViewController = new PatientSearchViewController(this, new frmPatientSearch());
             AddToContainer(patientSearchViewController, MIDDLE);
-
             this.lblStatus.Text = ("Patient Appointment Search View");
-
-
             patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
             patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
             patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new  DataGridViewCellEventHandler(dgvSearchResults_CellClick);
@@ -139,19 +131,15 @@ namespace eClinicals.View
             else {
                
                 Status("No Patient Selected", Color.Yellow);
-            }
-          
-
+            }         
 
         }
         private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-         
+        {         
             try
             {
                 if (e.RowIndex >= 0)
                 {
-
                     selectedPatient = (Patient)patientSearchViewController.frmPatientSearch.dgvSearchResults.CurrentRow.DataBoundItem;
                     string message  = "|Patient Selected: " + selectedPatient.FirstName +
                         "  " + selectedPatient.LastName +
@@ -178,15 +166,11 @@ namespace eClinicals.View
             switch (patientSearchViewController.frmPatientSearch.cbSearch.SelectedIndex)
             {              
 
-                case BY_DOB_NAME:                 
-                  // DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
-                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING !!!!!!!!!!!!!!!!!!!!!!!!!                   
+                case BY_DOB_NAME:                                               
                     myPatientsList =  eClinicalsController.SearchPatientByLastNameAndDOB(LastName, DOB);                   
                      lblStatus.Text = "DOB and Last Name Selected for search"; 
                     break;
-                case BY_DOB:
-                    Console.Write(DOB);
-                    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!SearchPatientByDOB  NOT WORKING !!!!!!!!!!!!!!!!!!!!!!!!!
+                case BY_DOB:                            
                     lblStatus.Text = "DOB Selected for search";
                     myPatientsList = eClinicalsController.SearchPatientByDOB(DOB);                 
                     break;
@@ -202,10 +186,13 @@ namespace eClinicals.View
 
         private void OpenRegistrationView()
         {
+
             CloseCurrentOpenView(currentViewOpened);
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
             AddToContainer(registrationViewController, MIDDLE);                  
             registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);  
+                   
+                 
         }
         private void OpenLoginView()
         {
@@ -218,6 +205,51 @@ namespace eClinicals.View
             currentViewOpened = null;
         }
         // ===========================
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+
+            string lastName = registrationViewController.frmRegistration.txtLastName.Text;
+            string firstName = registrationViewController.frmRegistration.txtFirstName.Text;
+            DateTime dob = registrationViewController.frmRegistration.dtpDOB.Value;
+            string streetAddress = registrationViewController.frmRegistration.txtAddress.Text;
+            string city = registrationViewController.frmRegistration.txtCity.Text;
+            string state = registrationViewController.frmRegistration.cbState.Text;
+            string zip = registrationViewController.frmRegistration.txtZip.Text;
+            string phone = registrationViewController.frmRegistration.txtPhone.Text;
+            string gender = registrationViewController.frmRegistration.cbGender.Text;
+            string ssn = registrationViewController.frmRegistration.txtSSN.Text;
+            int userType = registrationViewController.frmRegistration.cbUserType.SelectedIndex + 1;
+
+          
+            try
+            {
+                if (lastName != "" & firstName != "" & dob != null & streetAddress != "" & city != "" & state != "" & zip != "" & phone != "" & gender != "" & ssn != "" & userType > -1)
+                {
+                    eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
+
+                }
+                else
+                {
+
+                    Status("Form has an error please check that all fields are filled in : ", Color.Red);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+               
+            }
+
+            lblStatus.BackColor = Color.Transparent;
+
+
+            this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
+        }
+
+
+
+
         private void startMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenStartMenuView();

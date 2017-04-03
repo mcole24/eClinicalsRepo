@@ -22,6 +22,9 @@ namespace eClinicals.View
 
         private void frmRegistration_Load(object sender, EventArgs e)
         {
+            cbGender.SelectedIndex = 0;
+            cbState.SelectedIndex = 0;
+            cbUserType.SelectedIndex = 0;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
