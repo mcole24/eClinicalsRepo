@@ -187,7 +187,7 @@ namespace eClinicals.DAL
                                 patient.City = reader["mailingAddressCity"].ToString();
                                 patient.State = reader["mailingAddressState"].ToString();
                                 patient.Zip = reader["mailingAddressZip"].ToString();
-                                patient.Phone = reader["phone"].ToString();
+                                patient.Phone = reader["phoneNumber"].ToString();
                                 patient.Gender = reader["gender"].ToString();
                                 patient.Ssn = reader["ssn"].ToString();
                                 patientList.Add(patient);
