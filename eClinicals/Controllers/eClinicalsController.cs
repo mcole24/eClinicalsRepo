@@ -30,6 +30,11 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentByID(appointmentID);
         }
 
+        public static List<Appointment> GetAppointmentsByPatientID(int patientID)
+        {
+            return DAL.AppointmentDAL.GetAppointmentsByPatientID(patientID);
+        }
+
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
