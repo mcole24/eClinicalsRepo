@@ -63,8 +63,7 @@ namespace eClinicals.View
 
             // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD
            
-            selectedUser = e.Person;
-            Console.WriteLine(selectedUser.FirstName);
+            selectedUser = e.Person;          
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
 
             ribbonController.AddUserInfo(selectedUser.LastName + ", "+ selectedUser.FirstName , selectedUser.ContactID, selectedUser.UserType);
@@ -88,12 +87,14 @@ namespace eClinicals.View
         // ===========================
         public void OnLoggedOut(object source, EventArgs e)
         {
-            lblStatus.Text = "LoggedOut in successfully.";
+            Status("LoggedOut in successfully.", Color.Transparent);
+           
             CloseCurrentOpenView(currentViewOpened);
             this.pTop.Visible = false;
             this.pRight.Visible = false;
-            lblStatus.Text = "Logged out successfully.";
+          
             selectedPatient = null;
+            selectedUser = null;
             OpenLoginView();
         }
 
@@ -218,9 +219,17 @@ namespace eClinicals.View
             CloseCurrentOpenView(currentViewOpened);
             registrationViewController = new RegistrationViewController(this, new frmRegistration());
             AddToContainer(registrationViewController, MIDDLE);                  
-            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);                     
-                 
+            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);
+            registrationViewController.frmRegistration.btnCancel.Click += new EventHandler(btnRegisterCancel_Click);
+
         }
+
+        private void btnRegisterCancel_Click(object sender, EventArgs e)
+        {
+            registrationViewController.frmRegistration.Close();
+            OpenStartMenuView();
+        }
+
         private void btnRegister_Click(object sender, EventArgs e)
         {
 
@@ -261,6 +270,9 @@ namespace eClinicals.View
 
 
             this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
+            registrationViewController.frmRegistration.Close();
+            OpenStartMenuView();
+            Status(lastName+ ","+ firstName + " is now registered", Color.Yellow);
         }
 
 
