@@ -57,7 +57,7 @@
             // txtZipcode
             // 
             this.txtZipcode.Location = new System.Drawing.Point(184, 227);
-            this.txtZipcode.MaxLength = 15;
+            this.txtZipcode.MaxLength = 5;
             this.txtZipcode.Name = "txtZipcode";
             this.txtZipcode.Size = new System.Drawing.Size(68, 20);
             this.txtZipcode.TabIndex = 8;
@@ -73,7 +73,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(577, 98);
-            this.txtPhone.MaxLength = 12;
+            this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(144, 20);
             this.txtPhone.TabIndex = 9;
@@ -209,6 +209,7 @@
             // txtCity
             // 
             this.txtCity.Location = new System.Drawing.Point(184, 139);
+            this.txtCity.MaxLength = 100;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(182, 20);
             this.txtCity.TabIndex = 6;
@@ -255,7 +256,7 @@
             this.cbGender.Items.AddRange(new object[] {
             "M",
             "F",
-            "Other"});
+            "O"});
             this.cbGender.Location = new System.Drawing.Point(486, 46);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(64, 21);
@@ -273,6 +274,7 @@
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(183, 48);
+            this.txtLastName.MaxLength = 45;
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(144, 20);
             this.txtLastName.TabIndex = 1;
@@ -305,6 +307,7 @@
             // txtFirstName
             // 
             this.txtFirstName.Location = new System.Drawing.Point(34, 48);
+            this.txtFirstName.MaxLength = 45;
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(143, 20);
             this.txtFirstName.TabIndex = 0;
