@@ -40,6 +40,11 @@ namespace eClinicals.Controllers
         {
             return DAL.VisitDAL.GetPreviousReadings(patientID);
         }
+
+        public static List<LabTest> GetTestResults(int patientID)
+        {
+            return DAL.VisitDAL.GetTestResults(patientID);
+        }
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
