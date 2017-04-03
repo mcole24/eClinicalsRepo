@@ -15,6 +15,22 @@ namespace eClinicals.View
         public frmPatientRecordTabs()
         {
             InitializeComponent();
+            cbReason_SetAppointment.SelectedIndex = 0;
+             cbDoctor_SetAppointment.SelectedIndex = 0;
+            clbSymptoms_RoutineCheck.SelectedIndex = clbSymptoms_RoutineCheck.SelectedItems.Count;
+             cbSelectDoctor_OrderTest.SelectedIndex = 0;        
+            cbSelectTest_OrderTest.SelectedIndex = 0;
+
+        }
+
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_OrderTest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

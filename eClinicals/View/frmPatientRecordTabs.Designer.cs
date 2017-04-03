@@ -39,8 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lbDoctor_SetAppointment = new System.Windows.Forms.ListBox();
-            this.lbReason_SetAppointment = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,8 +71,6 @@
             this.btnOrderTest = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpPerformedDate_OrderTest = new System.Windows.Forms.DateTimePicker();
-            this.lblSelectDoctor_OrderTest = new System.Windows.Forms.ListBox();
-            this.lbSelectTest_OrderTest = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -82,6 +78,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbSelectDoctor_OrderTest = new System.Windows.Forms.ComboBox();
+            this.cbSelectTest_OrderTest = new System.Windows.Forms.ComboBox();
+            this.cbReason_SetAppointment = new System.Windows.Forms.ComboBox();
+            this.cbDoctor_SetAppointment = new System.Windows.Forms.ComboBox();
             this.tabPatientRecord.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -122,7 +122,7 @@
             this.tabPersonal.Location = new System.Drawing.Point(4, 34);
             this.tabPersonal.Name = "tabPersonal";
             this.tabPersonal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPersonal.Size = new System.Drawing.Size(1083, 609);
+            this.tabPersonal.Size = new System.Drawing.Size(1083, 568);
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             this.tabSetAppointments.Location = new System.Drawing.Point(4, 34);
             this.tabSetAppointments.Name = "tabSetAppointments";
             this.tabSetAppointments.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSetAppointments.Size = new System.Drawing.Size(1083, 609);
+            this.tabSetAppointments.Size = new System.Drawing.Size(1083, 568);
             this.tabSetAppointments.TabIndex = 1;
             this.tabSetAppointments.Text = "Set Appointment";
             this.tabSetAppointments.UseVisualStyleBackColor = true;
@@ -183,9 +183,10 @@
             // 
             // dtpAppointmentDate_SetAppointment
             // 
+            this.dtpAppointmentDate_SetAppointment.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpAppointmentDate_SetAppointment.Location = new System.Drawing.Point(141, 27);
             this.dtpAppointmentDate_SetAppointment.Name = "dtpAppointmentDate_SetAppointment";
-            this.dtpAppointmentDate_SetAppointment.Size = new System.Drawing.Size(200, 20);
+            this.dtpAppointmentDate_SetAppointment.Size = new System.Drawing.Size(103, 20);
             this.dtpAppointmentDate_SetAppointment.TabIndex = 2;
             // 
             // label5
@@ -208,8 +209,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lbDoctor_SetAppointment);
-            this.groupBox1.Controls.Add(this.lbReason_SetAppointment);
+            this.groupBox1.Controls.Add(this.cbDoctor_SetAppointment);
+            this.groupBox1.Controls.Add(this.cbReason_SetAppointment);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -218,22 +219,6 @@
             this.groupBox1.Size = new System.Drawing.Size(524, 123);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            // 
-            // lbDoctor_SetAppointment
-            // 
-            this.lbDoctor_SetAppointment.FormattingEnabled = true;
-            this.lbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 67);
-            this.lbDoctor_SetAppointment.Name = "lbDoctor_SetAppointment";
-            this.lbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 17);
-            this.lbDoctor_SetAppointment.TabIndex = 1;
-            // 
-            // lbReason_SetAppointment
-            // 
-            this.lbReason_SetAppointment.FormattingEnabled = true;
-            this.lbReason_SetAppointment.Location = new System.Drawing.Point(141, 26);
-            this.lbReason_SetAppointment.Name = "lbReason_SetAppointment";
-            this.lbReason_SetAppointment.Size = new System.Drawing.Size(368, 17);
-            this.lbReason_SetAppointment.TabIndex = 0;
             // 
             // label3
             // 
@@ -269,7 +254,7 @@
             this.tabViewAppointments.Location = new System.Drawing.Point(4, 34);
             this.tabViewAppointments.Name = "tabViewAppointments";
             this.tabViewAppointments.Padding = new System.Windows.Forms.Padding(3);
-            this.tabViewAppointments.Size = new System.Drawing.Size(1083, 609);
+            this.tabViewAppointments.Size = new System.Drawing.Size(1083, 568);
             this.tabViewAppointments.TabIndex = 2;
             this.tabViewAppointments.Text = "View Appointment";
             this.tabViewAppointments.UseVisualStyleBackColor = true;
@@ -389,6 +374,14 @@
             // clbSymptoms_RoutineCheck
             // 
             this.clbSymptoms_RoutineCheck.FormattingEnabled = true;
+            this.clbSymptoms_RoutineCheck.Items.AddRange(new object[] {
+            "Headache",
+            "Discharge",
+            "Back Pain",
+            "Cough",
+            "Fatigue",
+            "Night Sweats",
+            "No symptoms"});
             this.clbSymptoms_RoutineCheck.Location = new System.Drawing.Point(484, 77);
             this.clbSymptoms_RoutineCheck.Name = "clbSymptoms_RoutineCheck";
             this.clbSymptoms_RoutineCheck.Size = new System.Drawing.Size(219, 139);
@@ -498,19 +491,19 @@
             this.tabOrderTests.Location = new System.Drawing.Point(4, 34);
             this.tabOrderTests.Name = "tabOrderTests";
             this.tabOrderTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOrderTests.Size = new System.Drawing.Size(1083, 609);
+            this.tabOrderTests.Size = new System.Drawing.Size(1083, 568);
             this.tabOrderTests.TabIndex = 4;
             this.tabOrderTests.Text = "Order Tests";
             this.tabOrderTests.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cbSelectTest_OrderTest);
+            this.groupBox6.Controls.Add(this.cbSelectDoctor_OrderTest);
             this.groupBox6.Controls.Add(this.btnCancel_OrderTest);
             this.groupBox6.Controls.Add(this.btnOrderTest);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.dtpPerformedDate_OrderTest);
-            this.groupBox6.Controls.Add(this.lblSelectDoctor_OrderTest);
-            this.groupBox6.Controls.Add(this.lbSelectTest_OrderTest);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.label12);
@@ -522,21 +515,23 @@
             // 
             // btnCancel_OrderTest
             // 
-            this.btnCancel_OrderTest.Location = new System.Drawing.Point(278, 146);
+            this.btnCancel_OrderTest.Location = new System.Drawing.Point(340, 143);
             this.btnCancel_OrderTest.Name = "btnCancel_OrderTest";
             this.btnCancel_OrderTest.Size = new System.Drawing.Size(75, 23);
             this.btnCancel_OrderTest.TabIndex = 4;
             this.btnCancel_OrderTest.Text = "Cancel";
             this.btnCancel_OrderTest.UseVisualStyleBackColor = true;
+            this.btnCancel_OrderTest.Click += new System.EventHandler(this.btnCancel_OrderTest_Click);
             // 
             // btnOrderTest
             // 
-            this.btnOrderTest.Location = new System.Drawing.Point(148, 146);
+            this.btnOrderTest.Location = new System.Drawing.Point(210, 143);
             this.btnOrderTest.Name = "btnOrderTest";
             this.btnOrderTest.Size = new System.Drawing.Size(75, 23);
             this.btnOrderTest.TabIndex = 3;
             this.btnOrderTest.Text = "Order Test";
             this.btnOrderTest.UseVisualStyleBackColor = true;
+            this.btnOrderTest.Click += new System.EventHandler(this.btnOrderTest_Click);
             // 
             // label13
             // 
@@ -549,31 +544,16 @@
             // 
             // dtpPerformedDate_OrderTest
             // 
+            this.dtpPerformedDate_OrderTest.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpPerformedDate_OrderTest.Location = new System.Drawing.Point(278, 44);
             this.dtpPerformedDate_OrderTest.Name = "dtpPerformedDate_OrderTest";
-            this.dtpPerformedDate_OrderTest.Size = new System.Drawing.Size(200, 20);
+            this.dtpPerformedDate_OrderTest.Size = new System.Drawing.Size(137, 20);
             this.dtpPerformedDate_OrderTest.TabIndex = 1;
-            // 
-            // lblSelectDoctor_OrderTest
-            // 
-            this.lblSelectDoctor_OrderTest.FormattingEnabled = true;
-            this.lblSelectDoctor_OrderTest.Location = new System.Drawing.Point(19, 93);
-            this.lblSelectDoctor_OrderTest.Name = "lblSelectDoctor_OrderTest";
-            this.lblSelectDoctor_OrderTest.Size = new System.Drawing.Size(185, 17);
-            this.lblSelectDoctor_OrderTest.TabIndex = 2;
-            // 
-            // lbSelectTest_OrderTest
-            // 
-            this.lbSelectTest_OrderTest.FormattingEnabled = true;
-            this.lbSelectTest_OrderTest.Location = new System.Drawing.Point(19, 47);
-            this.lbSelectTest_OrderTest.Name = "lbSelectTest_OrderTest";
-            this.lbSelectTest_OrderTest.Size = new System.Drawing.Size(185, 17);
-            this.lbSelectTest_OrderTest.TabIndex = 0;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 77);
+            this.label10.Location = new System.Drawing.Point(16, 81);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 13);
             this.label10.TabIndex = 8;
@@ -604,7 +584,7 @@
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
             this.tabTestsResults.Name = "tabTestsResults";
             this.tabTestsResults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTestsResults.Size = new System.Drawing.Size(1083, 609);
+            this.tabTestsResults.Size = new System.Drawing.Size(1083, 568);
             this.tabTestsResults.TabIndex = 5;
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
@@ -636,6 +616,61 @@
             this.label8.Size = new System.Drawing.Size(124, 24);
             this.label8.TabIndex = 0;
             this.label8.Text = "Test Results";
+            // 
+            // cbSelectDoctor_OrderTest
+            // 
+            this.cbSelectDoctor_OrderTest.FormattingEnabled = true;
+            this.cbSelectDoctor_OrderTest.Items.AddRange(new object[] {
+            "DOC 1",
+            "DOC 2",
+            "DOC 3",
+            "DOC 4",
+            "DOC 5"});
+            this.cbSelectDoctor_OrderTest.Location = new System.Drawing.Point(19, 97);
+            this.cbSelectDoctor_OrderTest.Name = "cbSelectDoctor_OrderTest";
+            this.cbSelectDoctor_OrderTest.Size = new System.Drawing.Size(183, 21);
+            this.cbSelectDoctor_OrderTest.TabIndex = 14;
+            // 
+            // cbSelectTest_OrderTest
+            // 
+            this.cbSelectTest_OrderTest.FormattingEnabled = true;
+            this.cbSelectTest_OrderTest.Items.AddRange(new object[] {
+            "WBC",
+            "LDL",
+            "Flu test",
+            "Hepatitis A",
+            "Hepatitis B",
+            "Hepatitis C"});
+            this.cbSelectTest_OrderTest.Location = new System.Drawing.Point(19, 47);
+            this.cbSelectTest_OrderTest.Name = "cbSelectTest_OrderTest";
+            this.cbSelectTest_OrderTest.Size = new System.Drawing.Size(183, 21);
+            this.cbSelectTest_OrderTest.TabIndex = 15;
+            // 
+            // cbReason_SetAppointment
+            // 
+            this.cbReason_SetAppointment.FormattingEnabled = true;
+            this.cbReason_SetAppointment.Items.AddRange(new object[] {
+            "New Patient",
+            "Annual Visit",
+            "Follow-Up",
+            "Sick Visit"});
+            this.cbReason_SetAppointment.Location = new System.Drawing.Point(141, 24);
+            this.cbReason_SetAppointment.Name = "cbReason_SetAppointment";
+            this.cbReason_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbReason_SetAppointment.TabIndex = 16;
+            // 
+            // cbDoctor_SetAppointment
+            // 
+            this.cbDoctor_SetAppointment.FormattingEnabled = true;
+            this.cbDoctor_SetAppointment.Items.AddRange(new object[] {
+            "DOC 1",
+            "DOC 2",
+            "DOC 3",
+            "DOC 4"});
+            this.cbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 63);
+            this.cbDoctor_SetAppointment.Name = "cbDoctor_SetAppointment";
+            this.cbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbDoctor_SetAppointment.TabIndex = 17;
             // 
             // frmPatientRecordTabs
             // 
@@ -690,8 +725,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.ListBox lbDoctor_SetAppointment;
-        public System.Windows.Forms.ListBox lbReason_SetAppointment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -699,13 +732,10 @@
         private System.Windows.Forms.DataGridView dgTestResults_TestResults;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DataGridView dgViewAppointments_ViewAppointments;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label13;
         public System.Windows.Forms.DateTimePicker dtpPerformedDate_OrderTest;
-        public System.Windows.Forms.ListBox lblSelectDoctor_OrderTest;
-        public System.Windows.Forms.ListBox lbSelectTest_OrderTest;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -729,5 +759,10 @@
         public System.Windows.Forms.TextBox textBox3;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.DataGridView dgViewAppointments_ViewAppointments;
+        public System.Windows.Forms.ComboBox cbSelectDoctor_OrderTest;
+        public System.Windows.Forms.ComboBox cbSelectTest_OrderTest;
+        public System.Windows.Forms.ComboBox cbDoctor_SetAppointment;
+        public System.Windows.Forms.ComboBox cbReason_SetAppointment;
     }
 }

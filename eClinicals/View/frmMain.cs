@@ -125,31 +125,41 @@ namespace eClinicals.View
             {
                 CloseCurrentOpenView(currentViewOpened);
                 //TODO:   Open Patient Record !!!!!!!!!!!!!!!!!!!!!!!!!NEED VISIT METHOD
-               string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open.";
+                string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open.";
                 Status(message, Color.Transparent);
                 patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
                 patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
 
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
-
                 AddToContainer(patientInfoRibbonController, RIGHT);
-                string mailingAddres = selectedPatient.Address + "\n" + selectedPatient.City + " , " + selectedPatient.State + " " + selectedPatient.Zip;
+                frmPatientRecordTabs frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
+                AddPatientRibonInfo(selectedPatient);
+               int selectedPatientID = 12;// selectedPatient.id
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  FIX NEEDED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //Add Tab Appointments NEED PatientID
+                //frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
 
-                patientInfoRibbonController.AddContactInfo(selectedPatient.Phone, mailingAddres);
+                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
 
-
-                patientInfoRibbonController.AddAppointmentInfo("Annual Visit", "Headache \n Cough");
-                patientInfoRibbonController.AddUserInfo((DateTime.Now.Year - selectedPatient.Dob.Year).ToString(),
-                                            selectedPatient.Gender, selectedPatient.ContactID.ToString());
-               
-
+                
             }
-            else {
-               
+            else {               
                 Status("No Patient Selected", Color.Yellow);
             }         
-
         }
+        
+        private void AddPatientRibonInfo(Person selectedPatient)
+        {
+            // ADD Patient Side bar
+            string mailingAddres = selectedPatient.Address + "\n" + selectedPatient.City +
+                                " , " + selectedPatient.State + " " + selectedPatient.Zip;
+            patientInfoRibbonController.AddContactInfo(selectedPatient.Phone, mailingAddres);
+
+            patientInfoRibbonController.AddAppointmentInfo("Annual Visit", "Headache \n Cough");
+            patientInfoRibbonController.AddUserInfo((DateTime.Now.Year - selectedPatient.Dob.Year).ToString(),
+                                        selectedPatient.Gender, selectedPatient.ContactID.ToString());
+        }
+
         //Select a patient from grid
         private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {         
