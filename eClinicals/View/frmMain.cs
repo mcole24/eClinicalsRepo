@@ -136,6 +136,8 @@ namespace eClinicals.View
                 string mailingAddres = selectedPatient.Address + "\n" + selectedPatient.City + " , " + selectedPatient.State + " " + selectedPatient.Zip;
 
                 patientInfoRibbonController.AddContactInfo(selectedPatient.Phone, mailingAddres);
+
+
                 patientInfoRibbonController.AddAppointmentInfo("Annual Visit", "Headache \n Cough");
                 patientInfoRibbonController.AddUserInfo((DateTime.Now.Year - selectedPatient.Dob.Year).ToString(),
                                             selectedPatient.Gender, selectedPatient.ContactID.ToString());
