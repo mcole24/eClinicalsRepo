@@ -133,6 +133,7 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                             Patient patient = new Patient();
+                                patient.PatientID = (int)reader["patientID"];
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
@@ -183,6 +184,7 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 Patient patient = new Patient();
+                                patient.PatientID = (int)reader["patientID"];
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();
@@ -232,6 +234,7 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 Patient patient = new Patient();
+                                patient.PatientID = (int)reader["patientID"];
                                 patient.ContactID = (int)reader["contactID"];
                                 patient.LastName = reader["lName"].ToString();
                                 patient.FirstName = reader["fName"].ToString();

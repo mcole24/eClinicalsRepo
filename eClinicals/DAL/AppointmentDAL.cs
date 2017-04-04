@@ -30,6 +30,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@doctorID", doctorID);
                         cmd.Parameters.AddWithValue("@appointmentReasonID", appointmentReasonID);
                         cmd.ExecuteNonQuery();
+                        connect.Close();
                         return true;
                     }
                 }
