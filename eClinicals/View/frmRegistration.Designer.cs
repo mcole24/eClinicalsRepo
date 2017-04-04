@@ -370,7 +370,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
 
-        private System.Windows.Forms.TextBox txtZip;
+      
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtFirstName;
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.ComboBox cbUserType;
         private System.Windows.Forms.Label label11;
-       // public System.Windows.Forms.TextBox txtZip;
+    
         public System.Windows.Forms.TextBox txtPhone;
         public System.Windows.Forms.TextBox txtSSN;
         public System.Windows.Forms.TextBox txtZipcode;

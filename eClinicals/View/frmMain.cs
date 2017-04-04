@@ -138,6 +138,8 @@ namespace eClinicals.View
                 AddPatientRibonInfo(selectedPatient);
                int selectedPatientID = selectedPatient.PatientID;// selectedPatient.id NEEDED
                 patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
+
+                //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
 
                 //  public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
@@ -152,7 +154,7 @@ namespace eClinicals.View
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            FIX   // eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
+           // FIX   // eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
 
                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
