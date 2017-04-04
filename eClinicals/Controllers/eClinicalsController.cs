@@ -150,6 +150,11 @@ namespace eClinicals.Controllers
             return DAL.PersonDAL.GetContactIDWithSsn(ssn);
         }
 
+        public  Admin GetAdminByID(int contactID)
+        {
+            return DAL.AdminDAL.GetAdminByID(contactID);
+        }
+
 
 
     }

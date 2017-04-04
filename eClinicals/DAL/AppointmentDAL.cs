@@ -43,9 +43,8 @@ namespace eClinicals.DAL
         public static bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
         {
             bool isUpdated = false;
-            string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
-                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " +
-                "WHERE patientID = @patientID";
+            string updateStmt = "UPDATE appointment SET appointmentDate = @appointmentDate, doctorID = @doctorID, appointmentReasonID = @appointmentReasonID "
+            + "WHERE patientID = @patientID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -83,7 +82,6 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(delStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@id", appointmentID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
                         return true;
                     }
@@ -117,6 +115,7 @@ namespace eClinicals.DAL
                                 appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
                                 appointment.PatientID = (int)reader["patientID"];
                                 appointment.DoctorID = (int)reader["doctorID"];
+                                appointment.AppointmentReasonID = (int)reader["appointmentReasonID"];
                             }
                         }
                         connect.Close();
