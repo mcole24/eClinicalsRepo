@@ -144,7 +144,7 @@ namespace eClinicals.View
                 string reason = frmPatientTabs.cbReason_SetAppointment.Text;
 
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                Doctor doctor = frmPatientTabs.cbSelectDoctor_OrderTest.Text;
+               // Doctor doctor = frmPatientTabs.cbSelectDoctor_OrderTest.Text;
 
 
                 DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
@@ -152,7 +152,7 @@ namespace eClinicals.View
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor.ID); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
+            FIX   // eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
 
                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
