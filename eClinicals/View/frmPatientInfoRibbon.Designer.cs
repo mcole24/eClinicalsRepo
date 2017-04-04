@@ -120,6 +120,7 @@
             this.btnEditPatient.TabIndex = 2;
             this.btnEditPatient.Text = "Edit Patient";
             this.btnEditPatient.UseVisualStyleBackColor = true;
+            this.btnEditPatient.Visible = false;
             // 
             // panel1
             // 
@@ -142,6 +143,7 @@
             this.label9.Size = new System.Drawing.Size(81, 15);
             this.label9.TabIndex = 5;
             this.label9.Text = "Edit Patient";
+            this.label9.Visible = false;
             // 
             // tableLayoutPanel1
             // 
@@ -337,7 +339,7 @@
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.35135F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.64865F));
             this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.pNameAgeGenderId.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.pNameAgeGenderId.Controls.Add(this.lblId, 1, 2);
             this.pNameAgeGenderId.Controls.Add(this.label6, 0, 2);
             this.pNameAgeGenderId.Controls.Add(this.lblGender, 3, 1);
@@ -362,7 +364,7 @@
             this.lblId.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblId.Location = new System.Drawing.Point(48, 54);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(87, 23);
+            this.lblId.Size = new System.Drawing.Size(86, 23);
             this.lblId.TabIndex = 9;
             this.lblId.Text = "-";
             // 
@@ -380,9 +382,9 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblGender.Location = new System.Drawing.Point(141, 26);
+            this.lblGender.Location = new System.Drawing.Point(140, 26);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(57, 28);
+            this.lblGender.Size = new System.Drawing.Size(58, 28);
             this.lblGender.TabIndex = 9;
             this.lblGender.Text = "-";
             // 
@@ -392,7 +394,7 @@
             this.lblAge.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAge.Location = new System.Drawing.Point(48, 26);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(37, 28);
+            this.lblAge.Size = new System.Drawing.Size(36, 28);
             this.lblAge.TabIndex = 9;
             this.lblAge.Text = "-";
             // 
@@ -400,7 +402,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(91, 26);
+            this.label3.Location = new System.Drawing.Point(90, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 28);
             this.label3.TabIndex = 9;
@@ -545,7 +547,6 @@
         private System.Windows.Forms.GroupBox groupSearch;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.TableLayoutPanel pNameAgeGenderId;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -558,5 +559,6 @@
         public System.Windows.Forms.Label lblId;
         public System.Windows.Forms.Label lblGender;
         public System.Windows.Forms.Label lblAge;
+        public System.Windows.Forms.Label lblUserName;
     }
 }

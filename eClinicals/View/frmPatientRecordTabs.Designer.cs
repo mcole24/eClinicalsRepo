@@ -28,8 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label addressLabel;
+            System.Windows.Forms.Label cityLabel;
+            System.Windows.Forms.Label contactIDLabel;
+            System.Windows.Forms.Label dobLabel;
+            System.Windows.Forms.Label firstNameLabel;
+            System.Windows.Forms.Label genderLabel;
+            System.Windows.Forms.Label lastNameLabel;
+            System.Windows.Forms.Label phoneLabel;
+            System.Windows.Forms.Label ssnLabel;
+            System.Windows.Forms.Label stateLabel;
+            System.Windows.Forms.Label userNameLabel;
+            System.Windows.Forms.Label userTypeLabel;
+            System.Windows.Forms.Label zipLabel;
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cityTextBox = new System.Windows.Forms.TextBox();
+            this.contactIDTextBox = new System.Windows.Forms.TextBox();
+            this.dobDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.genderTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.ssnTextBox = new System.Windows.Forms.TextBox();
+            this.stateTextBox = new System.Windows.Forms.TextBox();
+            this.userNameTextBox = new System.Windows.Forms.TextBox();
+            this.userTypeTextBox = new System.Windows.Forms.TextBox();
+            this.zipTextBox = new System.Windows.Forms.TextBox();
             this.tabSetAppointments = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel_SetAppointment = new System.Windows.Forms.Button();
@@ -46,14 +74,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnSelectAppointment = new System.Windows.Forms.Button();
             this.dgViewAppointments_ViewAppointments = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.tabRoutineCheck = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPulse = new System.Windows.Forms.TextBox();
+            this.txtBodyTemp = new System.Windows.Forms.TextBox();
+            this.txtDiastolic = new System.Windows.Forms.TextBox();
+            this.txtSystolic = new System.Windows.Forms.TextBox();
             this.btnCancel_RoutineCheck = new System.Windows.Forms.Button();
             this.btnOk_RoutineCheck = new System.Windows.Forms.Button();
             this.clbSymptoms_RoutineCheck = new System.Windows.Forms.CheckedListBox();
@@ -82,7 +112,23 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnUpdatePatient = new System.Windows.Forms.Button();
+            addressLabel = new System.Windows.Forms.Label();
+            cityLabel = new System.Windows.Forms.Label();
+            contactIDLabel = new System.Windows.Forms.Label();
+            dobLabel = new System.Windows.Forms.Label();
+            firstNameLabel = new System.Windows.Forms.Label();
+            genderLabel = new System.Windows.Forms.Label();
+            lastNameLabel = new System.Windows.Forms.Label();
+            phoneLabel = new System.Windows.Forms.Label();
+            ssnLabel = new System.Windows.Forms.Label();
+            stateLabel = new System.Windows.Forms.Label();
+            userNameLabel = new System.Windows.Forms.Label();
+            userTypeLabel = new System.Windows.Forms.Label();
+            zipLabel = new System.Windows.Forms.Label();
             this.tabPatientRecord.SuspendLayout();
+            this.tabPersonal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,6 +145,130 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.SuspendLayout();
+            // 
+            // addressLabel
+            // 
+            addressLabel.AutoSize = true;
+            addressLabel.Location = new System.Drawing.Point(78, 143);
+            addressLabel.Name = "addressLabel";
+            addressLabel.Size = new System.Drawing.Size(48, 13);
+            addressLabel.TabIndex = 0;
+            addressLabel.Text = "Address:";
+            addressLabel.Click += new System.EventHandler(this.addressLabel_Click);
+            // 
+            // cityLabel
+            // 
+            cityLabel.AutoSize = true;
+            cityLabel.Location = new System.Drawing.Point(78, 169);
+            cityLabel.Name = "cityLabel";
+            cityLabel.Size = new System.Drawing.Size(27, 13);
+            cityLabel.TabIndex = 2;
+            cityLabel.Text = "City:";
+            cityLabel.Click += new System.EventHandler(this.cityLabel_Click);
+            // 
+            // contactIDLabel
+            // 
+            contactIDLabel.AutoSize = true;
+            contactIDLabel.Location = new System.Drawing.Point(78, 195);
+            contactIDLabel.Name = "contactIDLabel";
+            contactIDLabel.Size = new System.Drawing.Size(61, 13);
+            contactIDLabel.TabIndex = 4;
+            contactIDLabel.Text = "Contact ID:";
+            contactIDLabel.Click += new System.EventHandler(this.contactIDLabel_Click);
+            // 
+            // dobLabel
+            // 
+            dobLabel.AutoSize = true;
+            dobLabel.Location = new System.Drawing.Point(78, 222);
+            dobLabel.Name = "dobLabel";
+            dobLabel.Size = new System.Drawing.Size(30, 13);
+            dobLabel.TabIndex = 6;
+            dobLabel.Text = "Dob:";
+            dobLabel.Click += new System.EventHandler(this.dobLabel_Click);
+            // 
+            // firstNameLabel
+            // 
+            firstNameLabel.AutoSize = true;
+            firstNameLabel.Location = new System.Drawing.Point(78, 76);
+            firstNameLabel.Name = "firstNameLabel";
+            firstNameLabel.Size = new System.Drawing.Size(60, 13);
+            firstNameLabel.TabIndex = 8;
+            firstNameLabel.Text = "First Name:";
+            // 
+            // genderLabel
+            // 
+            genderLabel.AutoSize = true;
+            genderLabel.Location = new System.Drawing.Point(377, 76);
+            genderLabel.Name = "genderLabel";
+            genderLabel.Size = new System.Drawing.Size(45, 13);
+            genderLabel.TabIndex = 10;
+            genderLabel.Text = "Gender:";
+            genderLabel.Click += new System.EventHandler(this.genderLabel_Click);
+            // 
+            // lastNameLabel
+            // 
+            lastNameLabel.AutoSize = true;
+            lastNameLabel.Location = new System.Drawing.Point(78, 102);
+            lastNameLabel.Name = "lastNameLabel";
+            lastNameLabel.Size = new System.Drawing.Size(61, 13);
+            lastNameLabel.TabIndex = 12;
+            lastNameLabel.Text = "Last Name:";
+            lastNameLabel.Click += new System.EventHandler(this.lastNameLabel_Click);
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Location = new System.Drawing.Point(78, 274);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new System.Drawing.Size(41, 13);
+            phoneLabel.TabIndex = 14;
+            phoneLabel.Text = "Phone:";
+            phoneLabel.Click += new System.EventHandler(this.phoneLabel_Click);
+            // 
+            // ssnLabel
+            // 
+            ssnLabel.AutoSize = true;
+            ssnLabel.Location = new System.Drawing.Point(78, 300);
+            ssnLabel.Name = "ssnLabel";
+            ssnLabel.Size = new System.Drawing.Size(28, 13);
+            ssnLabel.TabIndex = 16;
+            ssnLabel.Text = "Ssn:";
+            // 
+            // stateLabel
+            // 
+            stateLabel.AutoSize = true;
+            stateLabel.Location = new System.Drawing.Point(78, 326);
+            stateLabel.Name = "stateLabel";
+            stateLabel.Size = new System.Drawing.Size(35, 13);
+            stateLabel.TabIndex = 18;
+            stateLabel.Text = "State:";
+            // 
+            // userNameLabel
+            // 
+            userNameLabel.AutoSize = true;
+            userNameLabel.Location = new System.Drawing.Point(78, 352);
+            userNameLabel.Name = "userNameLabel";
+            userNameLabel.Size = new System.Drawing.Size(63, 13);
+            userNameLabel.TabIndex = 20;
+            userNameLabel.Text = "User Name:";
+            // 
+            // userTypeLabel
+            // 
+            userTypeLabel.AutoSize = true;
+            userTypeLabel.Location = new System.Drawing.Point(78, 378);
+            userTypeLabel.Name = "userTypeLabel";
+            userTypeLabel.Size = new System.Drawing.Size(59, 13);
+            userTypeLabel.TabIndex = 22;
+            userTypeLabel.Text = "User Type:";
+            // 
+            // zipLabel
+            // 
+            zipLabel.AutoSize = true;
+            zipLabel.Location = new System.Drawing.Point(78, 404);
+            zipLabel.Name = "zipLabel";
+            zipLabel.Size = new System.Drawing.Size(25, 13);
+            zipLabel.TabIndex = 24;
+            zipLabel.Text = "Zip:";
             // 
             // tabPatientRecord
             // 
@@ -119,6 +289,33 @@
             // 
             // tabPersonal
             // 
+            this.tabPersonal.Controls.Add(this.btnUpdatePatient);
+            this.tabPersonal.Controls.Add(addressLabel);
+            this.tabPersonal.Controls.Add(this.addressTextBox);
+            this.tabPersonal.Controls.Add(cityLabel);
+            this.tabPersonal.Controls.Add(this.cityTextBox);
+            this.tabPersonal.Controls.Add(contactIDLabel);
+            this.tabPersonal.Controls.Add(this.contactIDTextBox);
+            this.tabPersonal.Controls.Add(dobLabel);
+            this.tabPersonal.Controls.Add(this.dobDateTimePicker);
+            this.tabPersonal.Controls.Add(firstNameLabel);
+            this.tabPersonal.Controls.Add(this.firstNameTextBox);
+            this.tabPersonal.Controls.Add(genderLabel);
+            this.tabPersonal.Controls.Add(this.genderTextBox);
+            this.tabPersonal.Controls.Add(lastNameLabel);
+            this.tabPersonal.Controls.Add(this.lastNameTextBox);
+            this.tabPersonal.Controls.Add(phoneLabel);
+            this.tabPersonal.Controls.Add(this.phoneTextBox);
+            this.tabPersonal.Controls.Add(ssnLabel);
+            this.tabPersonal.Controls.Add(this.ssnTextBox);
+            this.tabPersonal.Controls.Add(stateLabel);
+            this.tabPersonal.Controls.Add(this.stateTextBox);
+            this.tabPersonal.Controls.Add(userNameLabel);
+            this.tabPersonal.Controls.Add(this.userNameTextBox);
+            this.tabPersonal.Controls.Add(userTypeLabel);
+            this.tabPersonal.Controls.Add(this.userTypeTextBox);
+            this.tabPersonal.Controls.Add(zipLabel);
+            this.tabPersonal.Controls.Add(this.zipTextBox);
             this.tabPersonal.Location = new System.Drawing.Point(4, 34);
             this.tabPersonal.Name = "tabPersonal";
             this.tabPersonal.Padding = new System.Windows.Forms.Padding(3);
@@ -126,6 +323,124 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
+            this.tabPersonal.Click += new System.EventHandler(this.tabPersonal_Click);
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "Address", true));
+            this.addressTextBox.Location = new System.Drawing.Point(147, 140);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(200, 20);
+            this.addressTextBox.TabIndex = 1;
+            this.addressTextBox.TextChanged += new System.EventHandler(this.addressTextBox_TextChanged);
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataSource = typeof(eClinicals.Model.Person);
+            this.personBindingSource.CurrentChanged += new System.EventHandler(this.personBindingSource_CurrentChanged);
+            // 
+            // cityTextBox
+            // 
+            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "City", true));
+            this.cityTextBox.Location = new System.Drawing.Point(147, 166);
+            this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.Size = new System.Drawing.Size(200, 20);
+            this.cityTextBox.TabIndex = 3;
+            this.cityTextBox.TextChanged += new System.EventHandler(this.cityTextBox_TextChanged);
+            // 
+            // contactIDTextBox
+            // 
+            this.contactIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "ContactID", true));
+            this.contactIDTextBox.Location = new System.Drawing.Point(147, 192);
+            this.contactIDTextBox.Name = "contactIDTextBox";
+            this.contactIDTextBox.Size = new System.Drawing.Size(200, 20);
+            this.contactIDTextBox.TabIndex = 5;
+            this.contactIDTextBox.TextChanged += new System.EventHandler(this.contactIDTextBox_TextChanged);
+            // 
+            // dobDateTimePicker
+            // 
+            this.dobDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.personBindingSource, "Dob", true));
+            this.dobDateTimePicker.Location = new System.Drawing.Point(147, 218);
+            this.dobDateTimePicker.Name = "dobDateTimePicker";
+            this.dobDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dobDateTimePicker.TabIndex = 7;
+            this.dobDateTimePicker.ValueChanged += new System.EventHandler(this.dobDateTimePicker_ValueChanged);
+            // 
+            // firstNameTextBox
+            // 
+            this.firstNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "FirstName", true));
+            this.firstNameTextBox.Location = new System.Drawing.Point(147, 73);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.firstNameTextBox.TabIndex = 9;
+            this.firstNameTextBox.TextChanged += new System.EventHandler(this.firstNameTextBox_TextChanged);
+            // 
+            // genderTextBox
+            // 
+            this.genderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "Gender", true));
+            this.genderTextBox.Location = new System.Drawing.Point(446, 73);
+            this.genderTextBox.Name = "genderTextBox";
+            this.genderTextBox.Size = new System.Drawing.Size(200, 20);
+            this.genderTextBox.TabIndex = 11;
+            this.genderTextBox.TextChanged += new System.EventHandler(this.genderTextBox_TextChanged);
+            // 
+            // lastNameTextBox
+            // 
+            this.lastNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "LastName", true));
+            this.lastNameTextBox.Location = new System.Drawing.Point(147, 99);
+            this.lastNameTextBox.Name = "lastNameTextBox";
+            this.lastNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.lastNameTextBox.TabIndex = 13;
+            this.lastNameTextBox.TextChanged += new System.EventHandler(this.lastNameTextBox_TextChanged);
+            // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "Phone", true));
+            this.phoneTextBox.Location = new System.Drawing.Point(147, 271);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(200, 20);
+            this.phoneTextBox.TabIndex = 15;
+            this.phoneTextBox.TextChanged += new System.EventHandler(this.phoneTextBox_TextChanged);
+            // 
+            // ssnTextBox
+            // 
+            this.ssnTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "Ssn", true));
+            this.ssnTextBox.Location = new System.Drawing.Point(147, 297);
+            this.ssnTextBox.Name = "ssnTextBox";
+            this.ssnTextBox.Size = new System.Drawing.Size(200, 20);
+            this.ssnTextBox.TabIndex = 17;
+            // 
+            // stateTextBox
+            // 
+            this.stateTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "State", true));
+            this.stateTextBox.Location = new System.Drawing.Point(147, 323);
+            this.stateTextBox.Name = "stateTextBox";
+            this.stateTextBox.Size = new System.Drawing.Size(200, 20);
+            this.stateTextBox.TabIndex = 19;
+            // 
+            // userNameTextBox
+            // 
+            this.userNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "UserName", true));
+            this.userNameTextBox.Location = new System.Drawing.Point(147, 349);
+            this.userNameTextBox.Name = "userNameTextBox";
+            this.userNameTextBox.Size = new System.Drawing.Size(200, 20);
+            this.userNameTextBox.TabIndex = 21;
+            // 
+            // userTypeTextBox
+            // 
+            this.userTypeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "UserType", true));
+            this.userTypeTextBox.Location = new System.Drawing.Point(147, 375);
+            this.userTypeTextBox.Name = "userTypeTextBox";
+            this.userTypeTextBox.Size = new System.Drawing.Size(200, 20);
+            this.userTypeTextBox.TabIndex = 23;
+            // 
+            // zipTextBox
+            // 
+            this.zipTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.personBindingSource, "Zip", true));
+            this.zipTextBox.Location = new System.Drawing.Point(147, 401);
+            this.zipTextBox.Name = "zipTextBox";
+            this.zipTextBox.Size = new System.Drawing.Size(200, 20);
+            this.zipTextBox.TabIndex = 25;
             // 
             // tabSetAppointments
             // 
@@ -277,6 +592,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.btnSelectAppointment);
             this.groupBox4.Controls.Add(this.dgViewAppointments_ViewAppointments);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Location = new System.Drawing.Point(56, 77);
@@ -285,12 +602,31 @@
             this.groupBox4.TabIndex = 13;
             this.groupBox4.TabStop = false;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(56, 57);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(622, 24);
+            this.label20.TabIndex = 3;
+            this.label20.Text = "Select an appointment from the datagrid to start a routine checkup";
+            // 
+            // btnSelectAppointment
+            // 
+            this.btnSelectAppointment.Location = new System.Drawing.Point(115, 362);
+            this.btnSelectAppointment.Name = "btnSelectAppointment";
+            this.btnSelectAppointment.Size = new System.Drawing.Size(458, 41);
+            this.btnSelectAppointment.TabIndex = 2;
+            this.btnSelectAppointment.Text = "Start Routine Check for seleted appointment";
+            this.btnSelectAppointment.UseVisualStyleBackColor = true;
+            // 
             // dgViewAppointments_ViewAppointments
             // 
             this.dgViewAppointments_ViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgViewAppointments_ViewAppointments.Location = new System.Drawing.Point(19, 34);
+            this.dgViewAppointments_ViewAppointments.Location = new System.Drawing.Point(19, 97);
             this.dgViewAppointments_ViewAppointments.Name = "dgViewAppointments_ViewAppointments";
-            this.dgViewAppointments_ViewAppointments.Size = new System.Drawing.Size(685, 410);
+            this.dgViewAppointments_ViewAppointments.Size = new System.Drawing.Size(685, 249);
             this.dgViewAppointments_ViewAppointments.TabIndex = 1;
             // 
             // label6
@@ -317,10 +653,10 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBox4);
-            this.groupBox7.Controls.Add(this.textBox3);
-            this.groupBox7.Controls.Add(this.textBox2);
-            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.txtPulse);
+            this.groupBox7.Controls.Add(this.txtBodyTemp);
+            this.groupBox7.Controls.Add(this.txtDiastolic);
+            this.groupBox7.Controls.Add(this.txtSystolic);
             this.groupBox7.Controls.Add(this.btnCancel_RoutineCheck);
             this.groupBox7.Controls.Add(this.btnOk_RoutineCheck);
             this.groupBox7.Controls.Add(this.clbSymptoms_RoutineCheck);
@@ -337,37 +673,37 @@
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
             // 
-            // textBox4
+            // txtPulse
             // 
-            this.textBox4.Location = new System.Drawing.Point(235, 175);
-            this.textBox4.MaxLength = 5;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 21;
+            this.txtPulse.Location = new System.Drawing.Point(235, 175);
+            this.txtPulse.MaxLength = 5;
+            this.txtPulse.Name = "txtPulse";
+            this.txtPulse.Size = new System.Drawing.Size(100, 20);
+            this.txtPulse.TabIndex = 21;
             // 
-            // textBox3
+            // txtBodyTemp
             // 
-            this.textBox3.Location = new System.Drawing.Point(235, 141);
-            this.textBox3.MaxLength = 5;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 20;
+            this.txtBodyTemp.Location = new System.Drawing.Point(235, 141);
+            this.txtBodyTemp.MaxLength = 5;
+            this.txtBodyTemp.Name = "txtBodyTemp";
+            this.txtBodyTemp.Size = new System.Drawing.Size(100, 20);
+            this.txtBodyTemp.TabIndex = 20;
             // 
-            // textBox2
+            // txtDiastolic
             // 
-            this.textBox2.Location = new System.Drawing.Point(235, 111);
-            this.textBox2.MaxLength = 5;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 19;
+            this.txtDiastolic.Location = new System.Drawing.Point(235, 111);
+            this.txtDiastolic.MaxLength = 5;
+            this.txtDiastolic.Name = "txtDiastolic";
+            this.txtDiastolic.Size = new System.Drawing.Size(100, 20);
+            this.txtDiastolic.TabIndex = 19;
             // 
-            // textBox1
+            // txtSystolic
             // 
-            this.textBox1.Location = new System.Drawing.Point(235, 77);
-            this.textBox1.MaxLength = 5;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 18;
+            this.txtSystolic.Location = new System.Drawing.Point(235, 77);
+            this.txtSystolic.MaxLength = 5;
+            this.txtSystolic.Name = "txtSystolic";
+            this.txtSystolic.Size = new System.Drawing.Size(100, 20);
+            this.txtSystolic.TabIndex = 18;
             // 
             // btnCancel_RoutineCheck
             // 
@@ -390,18 +726,11 @@
             // clbSymptoms_RoutineCheck
             // 
             this.clbSymptoms_RoutineCheck.FormattingEnabled = true;
-            this.clbSymptoms_RoutineCheck.Items.AddRange(new object[] {
-            "Headache",
-            "Discharge",
-            "Back Pain",
-            "Cough",
-            "Fatigue",
-            "Night Sweats",
-            "No symptoms"});
             this.clbSymptoms_RoutineCheck.Location = new System.Drawing.Point(484, 77);
             this.clbSymptoms_RoutineCheck.Name = "clbSymptoms_RoutineCheck";
             this.clbSymptoms_RoutineCheck.Size = new System.Drawing.Size(219, 139);
             this.clbSymptoms_RoutineCheck.TabIndex = 8;
+            this.clbSymptoms_RoutineCheck.Visible = false;
             // 
             // label19
             // 
@@ -662,6 +991,15 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Test Results";
             // 
+            // btnUpdatePatient
+            // 
+            this.btnUpdatePatient.Location = new System.Drawing.Point(147, 466);
+            this.btnUpdatePatient.Name = "btnUpdatePatient";
+            this.btnUpdatePatient.Size = new System.Drawing.Size(200, 23);
+            this.btnUpdatePatient.TabIndex = 26;
+            this.btnUpdatePatient.Text = "UpdatePatient";
+            this.btnUpdatePatient.UseVisualStyleBackColor = true;
+            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,6 +1010,9 @@
             this.Name = "frmPatientRecordTabs";
             this.Text = "frmPatientRecordTabs";
             this.tabPatientRecord.ResumeLayout(false);
+            this.tabPersonal.ResumeLayout(false);
+            this.tabPersonal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).EndInit();
             this.tabSetAppointments.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -718,7 +1059,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dgTestResults_TestResults;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label6;
@@ -744,15 +1084,33 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.DataGridView dgPreviousReadings__RoutineCheck;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtPulse;
+        public System.Windows.Forms.TextBox txtBodyTemp;
+        public System.Windows.Forms.TextBox txtDiastolic;
+        public System.Windows.Forms.TextBox txtSystolic;
         public System.Windows.Forms.DataGridView dgViewAppointments_ViewAppointments;
         public System.Windows.Forms.ComboBox cbSelectDoctor_OrderTest;
         public System.Windows.Forms.ComboBox cbSelectTest_OrderTest;
         public System.Windows.Forms.ComboBox cbReason_SetAppointment;
         public System.Windows.Forms.ComboBox cbDoctor_SetAppointment;
         public System.Windows.Forms.Button btnOk_SetAppointment;
+        private System.Windows.Forms.Label label20;
+        public System.Windows.Forms.Button btnSelectAppointment;
+        public System.Windows.Forms.DataGridView dgTestResults_TestResults;
+        public System.Windows.Forms.BindingSource personBindingSource;
+        public System.Windows.Forms.Button btnUpdatePatient;
+        public System.Windows.Forms.TextBox addressTextBox;
+        public System.Windows.Forms.TextBox cityTextBox;
+        public System.Windows.Forms.TextBox contactIDTextBox;
+        public System.Windows.Forms.DateTimePicker dobDateTimePicker;
+        public System.Windows.Forms.TextBox firstNameTextBox;
+        public System.Windows.Forms.TextBox genderTextBox;
+        public System.Windows.Forms.TextBox lastNameTextBox;
+        public System.Windows.Forms.TextBox phoneTextBox;
+        public System.Windows.Forms.TextBox ssnTextBox;
+        public System.Windows.Forms.TextBox stateTextBox;
+        public System.Windows.Forms.TextBox userNameTextBox;
+        public System.Windows.Forms.TextBox userTypeTextBox;
+        public System.Windows.Forms.TextBox zipTextBox;
     }
 }

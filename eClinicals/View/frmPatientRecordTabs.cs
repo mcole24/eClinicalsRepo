@@ -42,6 +42,9 @@ namespace eClinicals.View
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
 
+            cbSelectTest_OrderTest.DisplayMember = "Test";
+          
+
             cbReason_SetAppointment.SelectedIndex = 0;
         cbDoctor_SetAppointment.SelectedIndex = 0;      
         cbSelectDoctor_OrderTest.SelectedIndex = 0;        
@@ -56,6 +59,91 @@ namespace eClinicals.View
         }
 
         private void btnCancel_OrderTest_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPersonal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lastNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addressTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cityLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cityTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contactIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contactIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dobLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dobDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phoneLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void phoneTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void genderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void genderTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void personBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void firstNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lastNameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

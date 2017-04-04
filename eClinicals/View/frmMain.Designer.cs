@@ -81,15 +81,16 @@
             // startMenuToolStripMenuItem
             // 
             this.startMenuToolStripMenuItem.Name = "startMenuToolStripMenuItem";
-            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.startMenuToolStripMenuItem.Text = "&Start Menu";
             this.startMenuToolStripMenuItem.Click += new System.EventHandler(this.startMenuToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "&Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 

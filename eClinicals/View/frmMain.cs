@@ -37,6 +37,8 @@ namespace eClinicals.View
         public bool isLoggedIn { get; set; }      
         private List<Appointment> selectedPatientAppointments;
         private Patient selectedPatient;
+        private Appointment selectedAppointment;
+        TabPage routineCheckTab;
         int selectedPatientID;
         private Person selectedUser;
         public frmMain()
@@ -136,39 +138,158 @@ namespace eClinicals.View
                 patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
                 patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
                
-                AddToContainer(patientRecordTabsViewController, MIDDLE);
+
+
+                    AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
 
                 patienRibbon = patientInfoRibbonController.ribbon;
                 frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
-               
-                AddPatientRibonInfo(selectedPatient);            
+                frmPatientTabs.personBindingSource.DataSource = selectedPatient;
 
-                patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
+                //update 
+
+
+                AddPatientRibonInfo(selectedPatient);
+
+                frmPatientTabs.dgViewAppointments_ViewAppointments.CellClick += 
+                            new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
+
+                frmPatientTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
+                frmPatientTabs.btnUpdatePatient.Click += new EventHandler(btnUpdatePatient_Click);
+
+               patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
                 frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
                 frmPatientTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
+                frmPatientTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
+
+                List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();   
+                 frmPatientTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
+                frmPatientTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
+                frmPatientTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
+
+
+
                 // ?? Hide panel
-                          frmPatientTabs.tabPatientRecord.TabPages.RemoveAt(3);
+                frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
+             
                 //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
                 selectedPatientAppointments =  eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-
-
+              //  frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
+               
             }
             else {               
                 Status("No Patient Selected", Color.Yellow);
             }         
         }
 
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        {
+
+            if (frmPatientTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1 )
+            {
+
+             
+                Status("Routine CheckUp Added : ", Color.Yellow);
+         
+
+            }
+            else
+            {
+                Status("Please fill out all form elements : ", Color.Red);
+            }
+
+
+
+
+        }
+
+        private void btnUpdatePatient_Click(object sender, EventArgs e)
+        {
+            
+            eClinicalsController.UpdatePatient(selectedPatient.PatientID, frmPatientTabs.lastNameTextBox.Text, frmPatientTabs.firstNameTextBox.Text,
+                frmPatientTabs.dobDateTimePicker.Value, frmPatientTabs.addressTextBox.Text, frmPatientTabs.cityTextBox.Text, frmPatientTabs.stateTextBox.Text,
+                frmPatientTabs.zipTextBox.Text, frmPatientTabs.phoneTextBox.Text, frmPatientTabs.genderTextBox.Text, frmPatientTabs.ssnTextBox.Text);
+        }
+
+        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        {
+            // "shows" tab page 2
+            if (selectedAppointment != null)
+            {
+                frmPatientTabs.tabPatientRecord.TabPages.Add(frmPatientTabs.tabRoutineCheck);
+                frmPatientTabs.tabPatientRecord.SelectedTab = frmPatientTabs.tabRoutineCheck;
+
+            }
+            else {
+                Status("No Appointment has been selected ", Color.Yellow);
+
+            }
+
+        }
+
+        private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    selectedAppointment = (Appointment)frmPatientTabs.dgViewAppointments_ViewAppointments.CurrentRow.DataBoundItem;
+                    string message = "|Appointment Selected: " + selectedAppointment.AppointmentDoctor +
+                        "  " + selectedAppointment.AppointmentDate + " ID:" + selectedAppointment.AppointmentID +
+                        "...Pressing the start routine checkup Button will select the appointment for checkup.";
+                    Status(message, Color.Transparent);
+                    selectedPatientID = selectedPatient.PatientID;
+                }
+                else
+                {
+                    Status("No appointment has been selection.", Color.Yellow);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+
+        }
+
         private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
         {
 
             //routione checkup
-            Nurse currentNurse = (Nurse)selectedUser;
-//Appointment thisAppointment = (Appointment)eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
-          //  eClinicalsController.CreateCheckup(currentNurse.NurseID, );
-          //   Status("Routine CheckUp Added : ", Color.Yellow);
+            Nurse currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
+            // CheckBox symptoms
+            // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
+            string systolicS = frmPatientTabs.txtSystolic.Text;
+            string diastolicS = frmPatientTabs.txtDiastolic.Text;
+            string bodyTempS = frmPatientTabs.txtBodyTemp.Text;
+            string pulseS = frmPatientTabs.txtPulse.Text;
+
+
+
+            if (selectedAppointment != null  & currentNurse != null & systolicS != ""  & diastolicS != "" & bodyTempS != "" & pulseS != "" )
+            {
+
+                int systolic = Int32.Parse(systolicS);
+                int diastolic = Int32.Parse(diastolicS);
+                decimal bodyTemp = Decimal.Parse(bodyTempS);
+                int pulse = Int32.Parse(pulseS);
+
+                eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, selectedAppointment.AppointmentDate, systolic, diastolic, bodyTemp, pulse);
+                Status("Routine CheckUp Added : ", Color.Yellow);
+                frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
+
+            }
+            else {
+                Status("Please fill out all form elements : ", Color.Red);
+            }
+
+            
         }
 
         private void btnOk_SetAppointment_Click(object sender, EventArgs e)
@@ -195,6 +316,7 @@ namespace eClinicals.View
         private void AddPatientRibonInfo(Person selectedPatient)
         {
             // ADD Patient Side bar
+            patientInfoRibbonController.ribbon.lblUserName.Text = (selectedPatient.LastName + " ," + selectedPatient.FirstName);
             string mailingAddres = selectedPatient.Address + "\n" + selectedPatient.City +
                                 " , " + selectedPatient.State + " " + selectedPatient.Zip;
             patientInfoRibbonController.AddContactInfo(selectedPatient.Phone, mailingAddres);
@@ -360,8 +482,11 @@ namespace eClinicals.View
                 currentViewOpenToClose.Close();
             }
            
-        }  
+        }
 
-
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
