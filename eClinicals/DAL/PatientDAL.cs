@@ -263,5 +263,48 @@ namespace eClinicals.DAL
         }
 
 
+        public static bool UpdatePatient(int patientID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
+            string ZIP, string phone, string gender, string SSN)
+        {
+            bool isUpdated = false;
+            string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " + 
+                "WHERE patientID = (SELECT patientID FROM patient WHERE contactID = @contact)";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@lastName", lastName);
+                        cmd.Parameters.AddWithValue("@firstName", firstName);
+                        cmd.Parameters.AddWithValue("@DOB", DOB);
+                        cmd.Parameters.AddWithValue("@street", street);
+                        cmd.Parameters.AddWithValue("@city", city);
+                        cmd.Parameters.AddWithValue("@state", state);
+                        cmd.Parameters.AddWithValue("@ZIP", ZIP);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@gender", gender);
+                        cmd.Parameters.AddWithValue("@SSN", SSN);
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
+                    }
+                    connect.Close();
+                }
+                return isUpdated;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
     }
 }

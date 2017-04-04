@@ -28,7 +28,6 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@appDate", appointmentDate);
                         cmd.Parameters.AddWithValue("@pID", patientID);
                         cmd.Parameters.AddWithValue("@dID", doctorID);
-                        connect.Open();
                         cmd.ExecuteNonQuery();
                         return true;
                     }
@@ -89,9 +88,9 @@ namespace eClinicals.DAL
                                 appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
                                 appointment.PatientID = (int)reader["patientID"];
                                 appointment.DoctorID = (int)reader["doctorID"];
-
                             }
                         }
+                        connect.Close();
                     }
                 }
             }
@@ -135,10 +134,14 @@ namespace eClinicals.DAL
                                 appointment.AppointmentDoctor = reader["lName"].ToString();
                                 appointmentList.Add(appointment);
                             }
+                            reader.Close();
                         }
+
                     }
+                    connection.Close();
                 }
             }
+
             catch (SqlException ex)
             {
                 throw;
@@ -148,6 +151,83 @@ namespace eClinicals.DAL
                 throw;
             }
             return appointmentList;
+        }
+
+        public static List<Appointment> GetAllAppointmentReasons()
+        {
+            List<Appointment> appointmentReasonList = new List<Appointment>();
+            string selectStatement = "SELECT * FROM appointment_reason";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Appointment appointmentReason = new Appointment();
+                                appointmentReason.AppointmentReasonID = (int)reader["appointmentReasonID"];
+                                appointmentReason.AppointmentReason = reader["appointmentReason"].ToString();
+                                appointmentReasonList.Add(appointmentReason);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return appointmentReasonList;
+        }
+
+        public static List<Doctor> GetAllDoctorNames()
+        {
+            List<Doctor> doctorNameList = new List<Doctor>();
+            string selectStatement = "SELECT doctorID, lName "
+            + "FROM doctor JOIN contact ON doctor.contactID = contact.contactID";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Doctor doctorName = new Doctor();
+                                doctorName.DoctorID = (int)reader["doctorID"];
+                                doctorName.DoctorName = reader["lName"].ToString();
+                                doctorNameList.Add(doctorName);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return doctorNameList;
         }
 
     }

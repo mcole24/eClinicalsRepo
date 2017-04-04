@@ -15,6 +15,13 @@ namespace eClinicals.Controllers
         {
 
         }
+
+        public List<Appointment> GetAllAppointmentReasons()
+        {
+            return DAL.AppointmentDAL.GetAllAppointmentReasons();
+        }
+
+
         public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
         {
             return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID);
@@ -39,6 +46,11 @@ namespace eClinicals.Controllers
         public static List<RoutineCheck> GetPreviousReadings(int patientID)
         {
             return DAL.VisitDAL.GetPreviousReadings(patientID);
+        }
+
+        public static List<LabTest> GetTestResults(int patientID)
+        {
+            return DAL.VisitDAL.GetTestResults(patientID);
         }
         public bool CreateNurse(int contactID)
         {

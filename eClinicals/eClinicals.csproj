@@ -69,12 +69,14 @@
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\RoutineCheck.cs" />
     <Compile Include="Model\SimpleAES.cs" />
+    <Compile Include="Model\Symptom.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\frmBaseView.cs">
