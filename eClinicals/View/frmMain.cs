@@ -72,7 +72,7 @@ namespace eClinicals.View
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
 
             ribbonController.AddUserInfo(selectedUser.LastName + ", "+ selectedUser.FirstName , selectedUser.ContactID, selectedUser.UserType);
-            ribbonController.AddContactInfo("9404-388-3729", "25 Ashley Circle \n Norcross, GA 30029");
+            ribbonController.AddContactInfo(selectedUser.Phone, selectedUser.Address + " "+ selectedUser.City + " ," + selectedUser.State + "  " + selectedUser.Zip);
             ribbonController.AddStatusInfo(this.status);
             //===============================================
             this.menuStripMain.Enabled = true;
@@ -146,6 +146,9 @@ namespace eClinicals.View
 
                 patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
                 frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
+                frmPatientTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
+                // ?? Hide panel
+                          frmPatientTabs.tabPatientRecord.TabPages.RemoveAt(3);
                 //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
                 selectedPatientAppointments =  eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
@@ -158,6 +161,16 @@ namespace eClinicals.View
             }         
         }
 
+        private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
+        {
+
+            //routione checkup
+            Nurse currentNurse = (Nurse)selectedUser;
+//Appointment thisAppointment = (Appointment)eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
+          //  eClinicalsController.CreateCheckup(currentNurse.NurseID, );
+          //   Status("Routine CheckUp Added : ", Color.Yellow);
+        }
+
         private void btnOk_SetAppointment_Click(object sender, EventArgs e)
         {
 
@@ -166,10 +179,7 @@ namespace eClinicals.View
 
             DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
             DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
-            DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
-            Console.WriteLine(dateAndTime.ToString() + " " + selectedPatient.PatientID.ToString() + " " + doc.DoctorID.ToString() + " " + reason.AppointmentReasonID.ToString());
-
-         
+            DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);  
 
             eClinicalsController.CreateAppointment(dateAndTime, selectedPatientID, doc.DoctorID, reason.AppointmentReasonID);
             Status("Appointment Set on : " + dateAndTime + "  With Doctor "+ doc.DoctorName, Color.Yellow);

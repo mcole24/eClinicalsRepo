@@ -23,13 +23,12 @@ namespace eClinicals.View
             eClinicalsController = new eClinicalsController();
 
             listDocs = eClinicalsController.GetAllDoctorNames();
-          
+         
             foreach (Doctor doc in listDocs)
             {
                 cbDoctor_SetAppointment.Items.Add(doc);
-                cbDoctor_SetAppointment.DisplayMember = doc.DoctorName;
+                cbSelectDoctor_OrderTest.Items.Add(doc);                
             }
-
            listReasons =  eClinicalsController.GetAllAppointmentReasons();
 
             foreach (Appointment reason in listReasons)
@@ -37,8 +36,11 @@ namespace eClinicals.View
              cbReason_SetAppointment.Items.Add(reason);
             
             }
+
+
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
+            cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
 
             cbReason_SetAppointment.SelectedIndex = 0;
         cbDoctor_SetAppointment.SelectedIndex = 0;      
