@@ -153,5 +153,44 @@ namespace eClinicals.DAL
             return appointmentList;
         }
 
+        public static List<Appointment> GetAllAppointmentReasons()
+        {
+            List<Appointment> appointmentReasonList = new List<Appointment>();
+            string selectStatement = "SELECT * FROM appointment_reason";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Appointment appointmentReason = new Appointment();
+                                appointmentReason.AppointmentReasonID = (int)reader["appointmentReasonID"];
+                                appointmentReason.AppointmentReason = reader["appointmentReason"].ToString();
+                                appointmentReasonList.Add(appointmentReason);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return appointmentReasonList;
+        }
+
+
     }
 }
