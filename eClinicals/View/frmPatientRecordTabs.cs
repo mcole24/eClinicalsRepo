@@ -1,4 +1,6 @@
-﻿using System;
+﻿using eClinicals.Controllers;
+using eClinicals.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +14,34 @@ namespace eClinicals.View
 {
     public partial class frmPatientRecordTabs : frmBaseView
     {
+        List<Doctor> listDocs;
+        List<Appointment> listReasons;
+        eClinicalsController eClinicalsController;
         public frmPatientRecordTabs()
         {
             InitializeComponent();
-            cbReason_SetAppointment.SelectedIndex = 0;
-             cbDoctor_SetAppointment.SelectedIndex = 0;
-            clbSymptoms_RoutineCheck.SelectedIndex = clbSymptoms_RoutineCheck.SelectedItems.Count;
-             cbSelectDoctor_OrderTest.SelectedIndex = 0;        
-            cbSelectTest_OrderTest.SelectedIndex = 0;
+            eClinicalsController = new eClinicalsController();
+
+            listDocs = eClinicalsController.GetAllDoctorNames();
+          
+            foreach (Doctor doc in listDocs)
+            {
+                cbDoctor_SetAppointment.Items.Add(doc.DoctorName);
+            }
+
+           listReasons =  eClinicalsController.GetAllAppointmentReasons();
+
+            foreach (Appointment reason in listReasons)
+            {
+             cbReason_SetAppointment.Items.Add(reason.AppointmentReason);
+            }
+         
+
+        cbReason_SetAppointment.SelectedIndex = 0;
+        cbDoctor_SetAppointment.SelectedIndex = 0;      
+        cbSelectDoctor_OrderTest.SelectedIndex = 0;        
+        cbSelectTest_OrderTest.SelectedIndex = 0;
+            
 
         }
 

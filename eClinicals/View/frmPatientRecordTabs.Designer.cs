@@ -39,8 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbDoctor_SetAppointment = new System.Windows.Forms.ComboBox();
-            this.cbReason_SetAppointment = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,6 +80,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
+            this.cbDoctor_SetAppointment = new System.Windows.Forms.ComboBox();
+            this.cbReason_SetAppointment = new System.Windows.Forms.ComboBox();
             this.tabPatientRecord.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -209,8 +209,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbDoctor_SetAppointment);
             this.groupBox1.Controls.Add(this.cbReason_SetAppointment);
+            this.groupBox1.Controls.Add(this.cbDoctor_SetAppointment);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -219,32 +219,6 @@
             this.groupBox1.Size = new System.Drawing.Size(524, 123);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            // 
-            // cbDoctor_SetAppointment
-            // 
-            this.cbDoctor_SetAppointment.FormattingEnabled = true;
-            this.cbDoctor_SetAppointment.Items.AddRange(new object[] {
-            "DOC 1",
-            "DOC 2",
-            "DOC 3",
-            "DOC 4"});
-            this.cbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 63);
-            this.cbDoctor_SetAppointment.Name = "cbDoctor_SetAppointment";
-            this.cbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 21);
-            this.cbDoctor_SetAppointment.TabIndex = 17;
-            // 
-            // cbReason_SetAppointment
-            // 
-            this.cbReason_SetAppointment.FormattingEnabled = true;
-            this.cbReason_SetAppointment.Items.AddRange(new object[] {
-            "New Patient",
-            "Annual Visit",
-            "Follow-Up",
-            "Sick Visit"});
-            this.cbReason_SetAppointment.Location = new System.Drawing.Point(141, 24);
-            this.cbReason_SetAppointment.Name = "cbReason_SetAppointment";
-            this.cbReason_SetAppointment.Size = new System.Drawing.Size(368, 21);
-            this.cbReason_SetAppointment.TabIndex = 16;
             // 
             // label3
             // 
@@ -672,6 +646,22 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Test Results";
             // 
+            // cbDoctor_SetAppointment
+            // 
+            this.cbDoctor_SetAppointment.FormattingEnabled = true;
+            this.cbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 63);
+            this.cbDoctor_SetAppointment.Name = "cbDoctor_SetAppointment";
+            this.cbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbDoctor_SetAppointment.TabIndex = 17;
+            // 
+            // cbReason_SetAppointment
+            // 
+            this.cbReason_SetAppointment.FormattingEnabled = true;
+            this.cbReason_SetAppointment.Location = new System.Drawing.Point(141, 27);
+            this.cbReason_SetAppointment.Name = "cbReason_SetAppointment";
+            this.cbReason_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbReason_SetAppointment.TabIndex = 17;
+            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,7 +752,7 @@
         public System.Windows.Forms.DataGridView dgViewAppointments_ViewAppointments;
         public System.Windows.Forms.ComboBox cbSelectDoctor_OrderTest;
         public System.Windows.Forms.ComboBox cbSelectTest_OrderTest;
-        public System.Windows.Forms.ComboBox cbDoctor_SetAppointment;
         public System.Windows.Forms.ComboBox cbReason_SetAppointment;
+        public System.Windows.Forms.ComboBox cbDoctor_SetAppointment;
     }
 }

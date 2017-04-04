@@ -32,6 +32,7 @@ namespace eClinicals.View
         frmBaseView currentViewOpened;
         public string status { get; set; }
         public bool isLoggedIn { get; set; }      
+        private List<Appointment> selectedPatientAppointments;
         private Patient selectedPatient;
         private Person selectedUser;
         public frmMain()
@@ -133,30 +134,37 @@ namespace eClinicals.View
 
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
+
                 frmPatientInfoRibbon patienRibbon = patientInfoRibbonController.ribbon;
                 frmPatientRecordTabs frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
+
                 AddPatientRibonInfo(selectedPatient);
+
                int selectedPatientID = selectedPatient.PatientID;// selectedPatient.id NEEDED
+
                 patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
 
                 //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
 
-                //  public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
-                string reason = frmPatientTabs.cbReason_SetAppointment.Text;
+                //  public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)            
 
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-               // Doctor doctor = frmPatientTabs.cbSelectDoctor_OrderTest.Text;
 
-
+                 Doctor doc = (Doctor)frmPatientTabs.cbDoctor_SetAppointment.SelectedItem;
+                Appointment reason = (Appointment)frmPatientTabs.cbReason_SetAppointment.SelectedItem;
                 DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
                 DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           // FIX   // eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
+          eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, doc.DoctorID, reason.AppointmentReasonID);// !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
 
-               //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                selectedPatientAppointments =  eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
+                frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+
+
             }
             else {               
                 Status("No Patient Selected", Color.Yellow);
