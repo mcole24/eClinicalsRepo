@@ -47,7 +47,7 @@
             // 
             this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 740);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 728);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(1184, 22);
             this.statusStripMain.TabIndex = 7;
@@ -117,7 +117,7 @@
             this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMiddle.Location = new System.Drawing.Point(0, 128);
             this.pMiddle.Name = "pMiddle";
-            this.pMiddle.Size = new System.Drawing.Size(1184, 612);
+            this.pMiddle.Size = new System.Drawing.Size(1184, 600);
             this.pMiddle.TabIndex = 12;
             // 
             // pRight
@@ -126,7 +126,7 @@
             this.pRight.Location = new System.Drawing.Point(984, 0);
             this.pRight.Margin = new System.Windows.Forms.Padding(0);
             this.pRight.Name = "pRight";
-            this.pRight.Size = new System.Drawing.Size(200, 612);
+            this.pRight.Size = new System.Drawing.Size(200, 600);
             this.pRight.TabIndex = 0;
             // 
             // frmMain
@@ -136,7 +136,7 @@
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1184, 762);
+            this.ClientSize = new System.Drawing.Size(1184, 750);
             this.Controls.Add(this.pMiddle);
             this.Controls.Add(this.pTop);
             this.Controls.Add(this.statusStripMain);
@@ -146,7 +146,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMain;
             this.MaximumSize = new System.Drawing.Size(1200, 800);
-            this.MinimumSize = new System.Drawing.Size(1042, 800);
+            this.MinimumSize = new System.Drawing.Size(1042, 726);
             this.Name = "frmMain";
             this.Text = "eClinicals";
             this.Load += new System.EventHandler(this.frmMain_Load);
