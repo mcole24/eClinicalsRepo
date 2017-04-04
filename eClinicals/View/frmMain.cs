@@ -25,7 +25,10 @@ namespace eClinicals.View
         PatientSearchViewController patientSearchViewController;
         RegistrationViewController registrationViewController;
         PatientRecordTabsViewController patientRecordTabsViewController;
-  
+        frmPatientInfoRibbon patienRibbon;
+        frmPatientRecordTabs frmPatientTabs;
+
+
         private const int BY_DOB_NAME = 0;
         private const int BY_DOB = 1;
         private const int BY_NAME = 2;
@@ -34,6 +37,7 @@ namespace eClinicals.View
         public bool isLoggedIn { get; set; }      
         private List<Appointment> selectedPatientAppointments;
         private Patient selectedPatient;
+        int selectedPatientID;
         private Person selectedUser;
         public frmMain()
         {
@@ -127,40 +131,23 @@ namespace eClinicals.View
             {
                 CloseCurrentOpenView(currentViewOpened);
                 //TODO:   Open Patient Record !!!!!!!!!!!!!!!!!!!!!!!!!NEED VISIT METHOD
-                string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open.";
+                string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open. ID : " + selectedPatient.PatientID;
                 Status(message, Color.Transparent);
                 patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
                 patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
-
+               
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
 
-                frmPatientInfoRibbon patienRibbon = patientInfoRibbonController.ribbon;
-                frmPatientRecordTabs frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
-
-                AddPatientRibonInfo(selectedPatient);
-
-               int selectedPatientID = selectedPatient.PatientID;// selectedPatient.id NEEDED
+                patienRibbon = patientInfoRibbonController.ribbon;
+                frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
+               
+                AddPatientRibonInfo(selectedPatient);            
 
                 patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
-
+                frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
                 //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
-
-                //  public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)            
-
-                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-                 Doctor doc = (Doctor)frmPatientTabs.cbDoctor_SetAppointment.SelectedItem;
-                Appointment reason = (Appointment)frmPatientTabs.cbReason_SetAppointment.SelectedItem;
-                DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
-                DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
-                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
-                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, doc.DoctorID, reason.AppointmentReasonID);// !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
-
-                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 selectedPatientAppointments =  eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
 
@@ -169,6 +156,24 @@ namespace eClinicals.View
             else {               
                 Status("No Patient Selected", Color.Yellow);
             }         
+        }
+
+        private void btnOk_SetAppointment_Click(object sender, EventArgs e)
+        {
+
+            Doctor doc = (Doctor)frmPatientTabs.cbDoctor_SetAppointment.SelectedItem;
+            Appointment reason = (Appointment)frmPatientTabs.cbReason_SetAppointment.SelectedItem;   
+
+            DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
+            DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
+            DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
+            Console.WriteLine(dateAndTime.ToString() + " " + selectedPatient.PatientID.ToString() + " " + doc.DoctorID.ToString() + " " + reason.AppointmentReasonID.ToString());
+
+            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! change 6 to patient ID
+
+            eClinicalsController.CreateAppointment(dateAndTime, 6, doc.DoctorID, reason.AppointmentReasonID);
+            Status("Appointment Set on : " + dateAndTime + "  With Doctor "+ doc.DoctorName, Color.Yellow);
+
         }
 
         private void btnSearchPatient_Click(object sender, EventArgs e)
@@ -198,9 +203,10 @@ namespace eClinicals.View
                 {
                     selectedPatient = (Patient)patientSearchViewController.frmPatientSearch.dgvSearchResults.CurrentRow.DataBoundItem;
                     string message  = "|Patient Selected: " + selectedPatient.FirstName +
-                        "  " + selectedPatient.LastName +
+                        "  " + selectedPatient.LastName + " ID:" + selectedPatient.PatientID + 
                         "...Pressing the open Button will open the patient's record.";    
                     Status(message, Color.Transparent);
+                    selectedPatientID = selectedPatient.PatientID;
                 }
                 else
                 {
@@ -272,8 +278,7 @@ namespace eClinicals.View
             string gender = registrationViewController.frmRegistration.cbGender.Text;
             string ssn = registrationViewController.frmRegistration.txtSSN.Text;
             int userType = registrationViewController.frmRegistration.cbUserType.SelectedIndex + 1;
-
-           // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NEED FIX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
             try
             {
                 if (lastName != "" & firstName != "" & dob != null & streetAddress != "" & city != "" & state != "" & zip != "" & phone != "" & gender != "" & ssn != "" & userType > -1)
@@ -289,23 +294,16 @@ namespace eClinicals.View
                 }
             }
             catch (Exception)
-            {
-             
+            {            
                
             }
-
             lblStatus.BackColor = Color.Transparent;
-
-
             this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
             registrationViewController.frmRegistration.Close();
             OpenStartMenuView();
             Status(lastName+ ","+ firstName + " is now registered", Color.Yellow);
         }
-
-
-
-
+        
         private void startMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenStartMenuView();

@@ -26,18 +26,21 @@ namespace eClinicals.View
           
             foreach (Doctor doc in listDocs)
             {
-                cbDoctor_SetAppointment.Items.Add(doc.DoctorName);
+                cbDoctor_SetAppointment.Items.Add(doc);
+                cbDoctor_SetAppointment.DisplayMember = doc.DoctorName;
             }
 
            listReasons =  eClinicalsController.GetAllAppointmentReasons();
 
             foreach (Appointment reason in listReasons)
             {
-             cbReason_SetAppointment.Items.Add(reason.AppointmentReason);
+             cbReason_SetAppointment.Items.Add(reason);
+            
             }
-         
+            cbReason_SetAppointment.DisplayMember = "AppointmentReason";
+            cbDoctor_SetAppointment.DisplayMember = "DoctorName";
 
-        cbReason_SetAppointment.SelectedIndex = 0;
+            cbReason_SetAppointment.SelectedIndex = 0;
         cbDoctor_SetAppointment.SelectedIndex = 0;      
         cbSelectDoctor_OrderTest.SelectedIndex = 0;        
         cbSelectTest_OrderTest.SelectedIndex = 0;

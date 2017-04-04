@@ -39,6 +39,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbReason_SetAppointment = new System.Windows.Forms.ComboBox();
+            this.cbDoctor_SetAppointment = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbDoctor_SetAppointment = new System.Windows.Forms.ComboBox();
-            this.cbReason_SetAppointment = new System.Windows.Forms.ComboBox();
             this.tabPatientRecord.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -219,6 +219,22 @@
             this.groupBox1.Size = new System.Drawing.Size(524, 123);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
+            // 
+            // cbReason_SetAppointment
+            // 
+            this.cbReason_SetAppointment.FormattingEnabled = true;
+            this.cbReason_SetAppointment.Location = new System.Drawing.Point(141, 27);
+            this.cbReason_SetAppointment.Name = "cbReason_SetAppointment";
+            this.cbReason_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbReason_SetAppointment.TabIndex = 17;
+            // 
+            // cbDoctor_SetAppointment
+            // 
+            this.cbDoctor_SetAppointment.FormattingEnabled = true;
+            this.cbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 63);
+            this.cbDoctor_SetAppointment.Name = "cbDoctor_SetAppointment";
+            this.cbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 21);
+            this.cbDoctor_SetAppointment.TabIndex = 17;
             // 
             // label3
             // 
@@ -646,22 +662,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Test Results";
             // 
-            // cbDoctor_SetAppointment
-            // 
-            this.cbDoctor_SetAppointment.FormattingEnabled = true;
-            this.cbDoctor_SetAppointment.Location = new System.Drawing.Point(141, 63);
-            this.cbDoctor_SetAppointment.Name = "cbDoctor_SetAppointment";
-            this.cbDoctor_SetAppointment.Size = new System.Drawing.Size(368, 21);
-            this.cbDoctor_SetAppointment.TabIndex = 17;
-            // 
-            // cbReason_SetAppointment
-            // 
-            this.cbReason_SetAppointment.FormattingEnabled = true;
-            this.cbReason_SetAppointment.Location = new System.Drawing.Point(141, 27);
-            this.cbReason_SetAppointment.Name = "cbReason_SetAppointment";
-            this.cbReason_SetAppointment.Size = new System.Drawing.Size(368, 21);
-            this.cbReason_SetAppointment.TabIndex = 17;
-            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -709,7 +709,6 @@
         public System.Windows.Forms.TabPage tabSetAppointments;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCancel_SetAppointment;
-        private System.Windows.Forms.Button btnOk_SetAppointment;
         public System.Windows.Forms.DateTimePicker dtpAppointmentTime_SetAppointment;
         public System.Windows.Forms.DateTimePicker dtpAppointmentDate_SetAppointment;
         private System.Windows.Forms.Label label5;
@@ -754,5 +753,6 @@
         public System.Windows.Forms.ComboBox cbSelectTest_OrderTest;
         public System.Windows.Forms.ComboBox cbReason_SetAppointment;
         public System.Windows.Forms.ComboBox cbDoctor_SetAppointment;
+        public System.Windows.Forms.Button btnOk_SetAppointment;
     }
 }
