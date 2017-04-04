@@ -137,7 +137,7 @@ namespace eClinicals.DAL
         public static List<Appointment> GetAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
-            string selectStatement = "SELECT appointmentDate, appointmentReason, contact.lName "
+            string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointmentDate, appointmentReason, contact.lName "
                 + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID " 
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
@@ -157,7 +157,11 @@ namespace eClinicals.DAL
                             {
                                 
                                 Appointment appointment = new Appointment();
+                                appointment.PatientID = (int)reader["patientID"];
+                                appointment.DoctorID = (int)reader["doctorID"];
+                                appointment.AppointmentID = (int)reader["appointmentID"];
                                 appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
+                                appointment.AppointmentReasonID = (int)reader["appointmentReasonID"];
                                 appointment.AppointmentReason = reader["appointmentReason"].ToString();
                                 appointment.AppointmentDoctor = reader["lName"].ToString();
                                 appointmentList.Add(appointment);
