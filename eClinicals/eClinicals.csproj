@@ -59,6 +59,7 @@
     <Compile Include="Controllers\RegistrationViewController.cs" />
     <Compile Include="Controllers\PatientInfoRibbonController.cs" />
     <Compile Include="Controllers\RibbonController.cs" />
+    <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\AppointmentDAL.cs" />
     <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="DAL\NurseDAL.cs" />
