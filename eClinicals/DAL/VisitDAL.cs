@@ -145,7 +145,42 @@ namespace eClinicals.DAL
         }
 
 
-
+        public static List<Symptom> GetAllSymptoms()
+        {
+            List<Symptom> symptomList = new List<Symptom>();
+            string selectStmt = "SELECT symptomID, symptomType FROM symptom";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Symptom symptom = new Symptom();
+                                symptom.SymptomID = (int)reader["symptomID"];
+                                symptom.SymptomType = reader["symptomType"].ToString();
+                                symptomList.Add(symptom);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connect.Close();
+                }
+                return symptomList;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 
