@@ -22,9 +22,9 @@ namespace eClinicals.Controllers
         }
 
 
-        public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
+        public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID, int appointmentReasonID)
         {
-            return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID);
+            return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID, appointmentReasonID);
 
         }
 
