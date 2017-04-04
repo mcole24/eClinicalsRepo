@@ -69,6 +69,7 @@
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Appointment.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\LabTest.cs" />
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />

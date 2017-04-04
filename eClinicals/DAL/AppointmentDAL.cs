@@ -191,6 +191,44 @@ namespace eClinicals.DAL
             return appointmentReasonList;
         }
 
+        public static List<Doctor> GetAllDoctorNames()
+        {
+            List<Doctor> doctorNameList = new List<Doctor>();
+            string selectStatement = "SELECT doctorID, lName "
+            + "FROM doctor JOIN contact ON doctor.contactID = contact.contactID";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Doctor doctorName = new Doctor();
+                                doctorName.DoctorID = (int)reader["doctorID"];
+                                doctorName.DoctorName = reader["lName"].ToString();
+                                doctorNameList.Add(doctorName);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return doctorNameList;
+        }
 
     }
 }
