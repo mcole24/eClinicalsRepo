@@ -34,6 +34,12 @@ namespace eClinicals.Controllers
 
         }
 
+        public bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
+        {
+            return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, patientID);
+        }
+
+
         public bool DeleteAppointment(int appointmentID)
         {
             return DAL.AppointmentDAL.DeleteAppointment(appointmentID);
@@ -68,8 +74,6 @@ namespace eClinicals.Controllers
         {
             return DAL.VisitDAL.GetAllSymptoms();
         }
-
-
 
         public bool CreateNurse(int contactID)
         {
