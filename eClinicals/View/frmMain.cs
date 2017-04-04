@@ -138,7 +138,23 @@ namespace eClinicals.View
                 AddPatientRibonInfo(selectedPatient);
                int selectedPatientID = selectedPatient.PatientID;// selectedPatient.id NEEDED
                 patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
-                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);                
+                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
+
+                //  public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
+                string reason = frmPatientTabs.cbReason_SetAppointment.Text;
+
+                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Doctor doctor = frmPatientTabs.cbSelectDoctor_OrderTest.Text;
+
+
+                DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
+                DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
+                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
+                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                eClinicalsController.CreateAppointment(dateAndTime, selectedPatient.PatientID, Doctor.ID); !!!!!!!!!!!!!!!!!!!! NEED Doctor  ID
+
+               //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             }
             else {               
                 Status("No Patient Selected", Color.Yellow);
@@ -149,8 +165,6 @@ namespace eClinicals.View
         {
            //when a view is opened it automatically closes the previous view in center panel
             OpenPatientSearch();
-
-
         }
 
         private void AddPatientRibonInfo(Person selectedPatient)
