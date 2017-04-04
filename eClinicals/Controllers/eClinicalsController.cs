@@ -130,6 +130,13 @@ namespace eClinicals.Controllers
             return DAL.PersonDAL.GetLoggedInUserDetails(username, password);
         }
 
+        public int GetContactIDWithSsn(string ssn)
+        {
+            return DAL.PersonDAL.GetContactIDWithSsn(ssn);
+        }
+
+
+
     }
 
 }
