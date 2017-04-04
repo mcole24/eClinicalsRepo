@@ -72,27 +72,24 @@ CREATE TABLE doctor_specialty (
   FOREIGN KEY (specialtyID) REFERENCES specialty(specialtyID)
 );
 
-CREATE TABLE appointment (
-  appointmentID INT PRIMARY KEY IDENTITY NOT NULL,
-  appointmentDate DATETIME NOT NULL,
-  patientID INT NOT NULL,
-  doctorID INT NOT NULL,
-  FOREIGN KEY (patientID) REFERENCES patient(patientID),
-  FOREIGN KEY (doctorID) REFERENCES doctor(doctorID)
-);
 
 CREATE TABLE appointment_reason (
   appointmentReasonID INT PRIMARY KEY IDENTITY NOT NULL,
   appointmentReason VARCHAR(45) NOT NULL,
 );
 
-CREATE TABLE appointment_reason_for_visit (
+
+CREATE TABLE appointment (
+  appointmentID INT PRIMARY KEY IDENTITY NOT NULL,
+  appointmentDate DATETIME NOT NULL,
+  patientID INT NOT NULL,
+  doctorID INT NOT NULL,
   appointmentReasonID INT NOT NULL,
-  appointmentID INT NOT NULL,
-  PRIMARY KEY (appointmentReasonID, appointmentID),
-  FOREIGN KEY (appointmentReasonID) REFERENCES appointment_reason(appointmentReasonID),
-  FOREIGN KEY (appointmentID) REFERENCES appointment(appointmentID)
+  FOREIGN KEY (patientID) REFERENCES patient(patientID),
+  FOREIGN KEY (doctorID) REFERENCES doctor(doctorID),
+  FOREIGN KEY (appointmentReasonID) REFERENCES appointment_reason(appointmentReasonID)
 );
+
 
 CREATE TABLE visit (
   visitID INT PRIMARY KEY IDENTITY NOT NULL,
@@ -211,27 +208,17 @@ INSERT INTO appointment_reason VALUES
 ('Sick Visit');
 
 INSERT INTO appointment VALUES
-('2016-11-28 08:30:00', 1, 1),
-('2016-11-28 08:45:00', 2, 1),
-('2016-12-01 12:00:00', 3, 2),
-('2016-12-01 12:15:00', 4, 2),
-('2016-12-01 12:30:00', 5, 2),
-('2016-12-02 10:30:00', 6, 3),
-('2016-12-02 10:45:00', 3, 3),
-('2016-12-03 11:00:00', 1, 1),
-('2016-12-03 11:15:00', 5, 2);
+('2016-11-28 08:30:00', 1, 1, 2),
+('2016-11-28 08:45:00', 2, 1, 1),
+('2016-12-01 12:00:00', 3, 2, 3),
+('2016-12-01 12:15:00', 4, 2, 4),
+('2016-12-01 12:30:00', 5, 2, 2),
+('2016-12-02 10:30:00', 6, 3, 1),
+('2016-12-02 10:45:00', 3, 3, 3),
+('2016-12-03 11:00:00', 1, 1, 3),
+('2016-12-03 11:15:00', 5, 2, 3);
 
 
-INSERT INTO appointment_reason_for_visit VALUES
-(2, 1),
-(1, 2),
-(3, 3),
-(4, 4),
-(2, 5),
-(1, 6),
-(3, 7),
-(3, 8),
-(3, 9);
 
 INSERT INTO visit VALUES
 (1, 1, '2016-11-28 08:30:00', 120, 80, 99.0, 75),
