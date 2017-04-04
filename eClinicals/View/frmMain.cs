@@ -169,9 +169,9 @@ namespace eClinicals.View
             DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
             Console.WriteLine(dateAndTime.ToString() + " " + selectedPatient.PatientID.ToString() + " " + doc.DoctorID.ToString() + " " + reason.AppointmentReasonID.ToString());
 
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! change 6 to patient ID
+         
 
-            eClinicalsController.CreateAppointment(dateAndTime, 6, doc.DoctorID, reason.AppointmentReasonID);
+            eClinicalsController.CreateAppointment(dateAndTime, selectedPatientID, doc.DoctorID, reason.AppointmentReasonID);
             Status("Appointment Set on : " + dateAndTime + "  With Doctor "+ doc.DoctorName, Color.Yellow);
 
         }
