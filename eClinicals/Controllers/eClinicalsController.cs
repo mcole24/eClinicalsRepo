@@ -21,10 +21,16 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllAppointmentReasons();
         }
 
-
-        public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
+        public  List<Doctor> GetAllDoctorNames()
         {
-            return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID);
+            return DAL.AppointmentDAL.GetAllDoctorNames();
+        }
+
+
+
+        public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID, int appointmentReasonID)
+        {
+            return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID, appointmentReasonID);
 
         }
 
@@ -52,6 +58,19 @@ namespace eClinicals.Controllers
         {
             return DAL.VisitDAL.GetTestResults(patientID);
         }
+
+        public  bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        {
+            return DAL.VisitDAL.CreateCheckup(appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemp, pulse);
+        }
+
+        public  List<Symptom> GetAllSymptoms()
+        {
+            return DAL.VisitDAL.GetAllSymptoms();
+        }
+
+
+
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
@@ -97,6 +116,11 @@ namespace eClinicals.Controllers
             return DAL.PatientDAL.SearchPatientByLastNameAndDOB(lName, dob);
         }
 
+        public bool UpdatePatient(int patientID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
+         string ZIP, string phone, string gender, string SSN)
+        {
+            return DAL.PatientDAL.UpdatePatient(patientID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
+        }
         public bool CreateLogin(int contactID, string username, string password)
         {
             return DAL.PersonDAL.createLogin(contactID, username, password);
@@ -116,6 +140,13 @@ namespace eClinicals.Controllers
         {
             return DAL.PersonDAL.GetLoggedInUserDetails(username, password);
         }
+
+        public int GetContactIDWithSsn(string ssn)
+        {
+            return DAL.PersonDAL.GetContactIDWithSsn(ssn);
+        }
+
+
 
     }
 

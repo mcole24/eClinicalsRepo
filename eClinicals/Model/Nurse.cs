@@ -12,6 +12,6 @@ namespace eClinicals.Model
     /// </summary>
     class Nurse : Person
     {
-        
+        public int NurseID { get; set; }
     }
 }

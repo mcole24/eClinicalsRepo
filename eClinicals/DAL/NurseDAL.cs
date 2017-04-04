@@ -80,6 +80,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
+                                nurse.NurseID = (int)reader["nurseID"];
                                 nurse.ContactID = (int)reader["contactID"];
                                 nurse.LastName = reader["lName"].ToString();
                                 nurse.FirstName = reader["fName"].ToString();
