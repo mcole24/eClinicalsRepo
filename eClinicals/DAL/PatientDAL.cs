@@ -118,7 +118,7 @@ namespace eClinicals.DAL
         {
             List<Patient> patientList = new List<Patient>();
              string selectStatement = "SELECT * FROM contact INNER JOIN patient ON contact.contactID = patient.contactID " 
-                + "WHERE contact.fName = @fName AND contact.lName = @lName";
+                + "WHERE contact.fName LIKE '%'+@fName+'%' AND contact.lName LIKE '%'+@lName+'%'";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -219,7 +219,7 @@ namespace eClinicals.DAL
         {
             List<Patient> patientList = new List<Patient>();
             string selectStatement = "SELECT * FROM contact INNER JOIN patient ON contact.contactID = patient.contactID "
-               + "WHERE contact.lName = @lName AND contact.dob = @dob";
+               + "WHERE contact.lName LIKE '%'+@lName+'%' AND contact.dob = @dob";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
