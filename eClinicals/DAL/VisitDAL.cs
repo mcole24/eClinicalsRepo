@@ -112,5 +112,44 @@ namespace eClinicals.DAL
             return testResultsList;
         }
 
+
+        public static bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        {
+            string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
+                "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
+
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appID", appointmentID);
+                        cmd.Parameters.AddWithValue("@nurseID", nurseID);
+                        cmd.Parameters.AddWithValue("@time", visitTime);
+                        cmd.Parameters.AddWithValue("@sBP", systolicBP);
+                        cmd.Parameters.AddWithValue("@dBP", diastolicBP);
+                        cmd.Parameters.AddWithValue("@temp", bodyTemp);
+                        cmd.Parameters.AddWithValue("@pulse", pulse);
+                        cmd.ExecuteNonQuery();
+                        connect.Close();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }
