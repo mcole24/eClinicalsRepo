@@ -59,7 +59,12 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.GetTestResults(patientID);
         }
 
-       
+        public  bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        {
+            return DAL.VisitDAL.CreateCheckup(appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemp, pulse);
+        }
+
+
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
