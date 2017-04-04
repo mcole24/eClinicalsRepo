@@ -46,7 +46,7 @@ namespace eClinicals.Controllers
                 //raise the event OnLOggedIn
                 //  Person newUser = eClinicalsController.GetLoggedInUserDetails(username, password);
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  TEST
-                Person newUser = new Person();
+                Nurse newUser = new Nurse();
                 newUser.FirstName = "Fake";
                 newUser.LastName = "Jane";
                 newUser.ContactID =12345;
@@ -63,11 +63,8 @@ namespace eClinicals.Controllers
                 mainForm.lblStatus.Text = "There seems to be a problem with your User Name or Password. Please try again.";
                 frmLoginView.lblError.Text = "Login failed :\n Check your username and password.";
             }
-
         }
-
-
-
+        
         protected virtual void OnLoggedIn(Person person)
         {
             if (LoggedIn != null)
