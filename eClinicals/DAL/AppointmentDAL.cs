@@ -13,21 +13,22 @@ namespace eClinicals.DAL
     class AppointmentDAL
     {
 
-        public static bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID)
+        public static bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID, int appointmentReasonID)
         {
-
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO appointment (appointmentDate, patientID, doctorID) " + 
-                        "VALUES (@appDate, @pID, @dID);";
+                    string insertStmt = "INSERT INTO appointment (appointmentDate, patientID, doctorID, appointmentReasonID) "
+                        + "VALUES (@appDate, @patientID, @doctorID, @appointmentReasonID)";
+                       
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@appDate", appointmentDate);
-                        cmd.Parameters.AddWithValue("@pID", patientID);
-                        cmd.Parameters.AddWithValue("@dID", doctorID);
+                        cmd.Parameters.AddWithValue("@patientID", patientID);
+                        cmd.Parameters.AddWithValue("@doctorID", doctorID);
+                        cmd.Parameters.AddWithValue("@appointmentReasonID", appointmentReasonID);
                         cmd.ExecuteNonQuery();
                         return true;
                     }
@@ -37,10 +38,9 @@ namespace eClinicals.DAL
             {
                 return false;
             }
-            
+
 
         }
-
 
 
         public static bool DeleteAppointment(int appointmentID)
