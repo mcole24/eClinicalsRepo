@@ -38,10 +38,39 @@ namespace eClinicals.DAL
             {
                 return false;
             }
-
-
         }
 
+        public static bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
+        {
+            bool isUpdated = false;
+            string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " +
+                "WHERE patientID = @patientID";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appDate", appointmentDate);
+                        cmd.Parameters.AddWithValue("@doctorID", doctorID);
+                        cmd.Parameters.AddWithValue("@appointmentReasonID", appointmentReasonID);
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
+                    }
+                    connect.Close();
+                }
+                return isUpdated;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static bool DeleteAppointment(int appointmentID)
         {
