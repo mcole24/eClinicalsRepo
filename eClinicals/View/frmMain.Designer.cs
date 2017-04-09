@@ -34,7 +34,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pTop = new System.Windows.Forms.Panel();
             this.pMiddle = new System.Windows.Forms.Panel();
             this.pRight = new System.Windows.Forms.Panel();
@@ -61,8 +60,7 @@
             // 
             this.menuStripMain.Enabled = false;
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(1184, 24);
@@ -91,13 +89,6 @@
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Enabled = false;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
             // 
             // pTop
             // 
@@ -166,7 +157,6 @@
         public System.Windows.Forms.StatusStrip statusStripMain;
         public System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         public System.Windows.Forms.MenuStrip menuStripMain;      
         public System.Windows.Forms.Panel pMiddle;
         public System.Windows.Forms.Panel pTop;
