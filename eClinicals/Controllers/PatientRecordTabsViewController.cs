@@ -12,10 +12,13 @@ namespace eClinicals.Controllers
         public frmPatientRecordTabs frmPatientRecordTabs;
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
+            eClinicalsController eClinicalsController = new eClinicalsController();
 
             frmPatientRecordTabs = (frmPatientRecordTabs)base.thisView;
-
+            frmMain main = (frmMain)base.mainForm;
             mainForm.lblStatus.Text = "Patient Record Tabs active . . .";
+
+           // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
     }

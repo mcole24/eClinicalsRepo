@@ -39,6 +39,12 @@ namespace eClinicals.View
         public bool isLoggedIn { get; set; }      
         private List<Appointment> selectedPatientAppointments;
         private Patient selectedPatient;
+        public int currentPatientID
+        {
+
+            get { return this.selectedPatient.PatientID; }
+            
+        }
         private Appointment selectedAppointment;
         TabPage routineCheckTab;
         int selectedPatientID;
@@ -89,11 +95,11 @@ namespace eClinicals.View
 
             //register the handler for logged on event
             loginController.LoggedIn += this.OnLoggedIn;
-
             AddToContainer(loginController, MIDDLE);
             currentViewOpened = null;
-        }
-        // ===========================
+            selectedPatient = null;
+            selectedUser = null;
+        }       
         public void OnLoggedOut(object source, EventArgs e)
         {
             Status("LoggedOut in successfully.", Color.Transparent);
@@ -392,66 +398,18 @@ namespace eClinicals.View
 
         private void OpenRegistrationView()
         {
-
+            frmRegistration frmReg = new frmRegistration();
             CloseCurrentOpenView(currentViewOpened);
-            registrationViewController = new RegistrationViewController(this, new frmRegistration());
-            AddToContainer(registrationViewController, MIDDLE);                  
-            registrationViewController.frmRegistration.btnRegister.Click += new EventHandler(btnRegister_Click);
-            registrationViewController.frmRegistration.btnCancel.Click += new EventHandler(btnRegisterCancel_Click);
+            registrationViewController = new RegistrationViewController(this, frmReg);
+            AddToContainer(registrationViewController, MIDDLE);
+            frmReg.mainForm = this;      
 
-        }
-
-        private void btnRegisterCancel_Click(object sender, EventArgs e)
-        {
-            registrationViewController.frmRegistration.Close();
-            OpenStartMenuView();
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-
-            string lastName = registrationViewController.frmRegistration.txtLastName.Text;
-            string firstName = registrationViewController.frmRegistration.txtFirstName.Text;
-            DateTime dob = registrationViewController.frmRegistration.dtpDOB.Value;
-            string streetAddress = registrationViewController.frmRegistration.txtAddress.Text;
-            string city = registrationViewController.frmRegistration.txtCity.Text;
-            string state = registrationViewController.frmRegistration.cbState.Text;
-            string zip = registrationViewController.frmRegistration.txtZipcode.Text;
-            string phone = registrationViewController.frmRegistration.txtPhone.Text;
-            string gender = registrationViewController.frmRegistration.cbGender.Text;
-            string ssn = registrationViewController.frmRegistration.txtSSN.Text;
-            int userType = registrationViewController.frmRegistration.cbUserType.SelectedIndex + 1;
-    
-            try
-            {
-                if (lastName != "" & firstName != "" & dob != null & streetAddress != "" & city != "" & state != "" & zip != "" & phone != "" & gender != "" & ssn != "" & userType > -1)
-                {
-                    eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
-
-                }
-                else
-                {
-
-                    Status("Form has an error please check that all fields are filled in : ", Color.Red);
-                    return;
-                }
-            }
-            catch (Exception)
-            {            
-               
-            }
-            lblStatus.BackColor = Color.Transparent;
-            this.lblStatus.Text = ("Open Patient Record : With Registered Patient");
-            registrationViewController.frmRegistration.Close();
-            OpenStartMenuView();
-            Status(lastName+ ","+ firstName + " is now registered", Color.Yellow);
-        }
-        
+        }        
         private void startMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenStartMenuView();
         }
-        private void OpenStartMenuView()
+        public void OpenStartMenuView()
         {
             CloseCurrentOpenView(currentViewOpened);
             nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
@@ -481,7 +439,7 @@ namespace eClinicals.View
             }           
         }
 
-        private void Status(string message, Color color)
+        public void Status(string message, Color color)
         {
             lblStatus.BackColor = color;
             lblStatus.Text = message;

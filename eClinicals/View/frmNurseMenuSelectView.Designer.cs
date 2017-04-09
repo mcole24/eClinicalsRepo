@@ -50,7 +50,7 @@
             this.btnRegisterAPatient.Name = "btnRegisterAPatient";
             this.btnRegisterAPatient.Size = new System.Drawing.Size(342, 151);
             this.btnRegisterAPatient.TabIndex = 1;
-            this.btnRegisterAPatient.Text = "Register A Patient";
+            this.btnRegisterAPatient.Text = "Registration";
             this.btnRegisterAPatient.UseVisualStyleBackColor = true;
             // 
             // frmNurseMenuSelectView
@@ -67,9 +67,7 @@
             this.Text = "Nurse Logged In View";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
             this.Load += new System.EventHandler(this.frmNurseMenuSelectView_Load);
-
             this.ResumeLayout(false);
 
         }
