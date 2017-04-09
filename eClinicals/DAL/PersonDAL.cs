@@ -43,9 +43,9 @@ namespace eClinicals.DAL
 
 
 
-        public static bool createContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
+        public static int createContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
-
+            int contactID = 0;
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -67,14 +67,18 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@ssn", ssn);
                         cmd.Parameters.AddWithValue("@userType", userType);
                         cmd.ExecuteNonQuery();
+                        SqlCommand getContactCmd = new SqlCommand();
+                        getContactCmd.Connection = connect;
+                        getContactCmd.CommandText = "SELECT IDENT_CURRENT('contactID') FROM contact";
+                        contactID = Convert.ToInt32(getContactCmd.ExecuteScalar());
                         connect.Close();
-                        return true;
+                        return contactID;
                     }
                 }
             }
             catch
             {
-                return false;
+                return 0;
             }
 
         }

@@ -30,7 +30,7 @@ namespace eClinicals.DAL
                         cmd.ExecuteNonQuery();
                         SqlCommand idCmd = new SqlCommand();
                         idCmd.Connection = connect;
-                        idCmd.CommandText = "SELECT IDENT_CURRENT('testOrdered') FROM visit_lab_test";
+                        idCmd.CommandText = "SELECT IDENT_CURRENT('testID') FROM visit_lab_test";
                         int testID = Convert.ToInt32(idCmd.ExecuteScalar());
                         connect.Close();
                         return testID;
