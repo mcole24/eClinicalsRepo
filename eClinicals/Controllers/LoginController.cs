@@ -29,8 +29,8 @@ namespace eClinicals.Controllers
         void OkBtn_Click(Object sender, EventArgs e)
         {
 
-            frmLoginView.username = frmLoginView.txtUserName.Text;
-            frmLoginView.password = frmLoginView.txtPassword.Text;
+            frmLoginView.username = "syed1";  //frmLoginView.txtUserName.Text;
+            frmLoginView.password ="testpassword123"; //frmLoginView.txtPassword.Text;
             LogIn(frmLoginView.username, frmLoginView.password);   
         }
         //define delegate
