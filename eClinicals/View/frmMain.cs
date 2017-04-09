@@ -1,10 +1,12 @@
 ﻿using eClinicals.Controllers;
 using eClinicals.Events;
 using eClinicals.Model;
+using eClinicals.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using static eClinicals.Controllers.LoginController;
 
@@ -372,8 +374,20 @@ namespace eClinicals.View
                     break;
                 default:
                     break;
-            }  
-            patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = myPatientsList;
+            }
+            List<Patient> formatPatient = new List<Patient>();
+            foreach (Patient patient in myPatientsList) {
+                Patient newPatient = new Patient();
+                newPatient.PatientID = patient.PatientID;
+                newPatient.FirstName = patient.FirstName;
+                newPatient.LastName = patient.LastName;
+                newPatient.Dob = patient.Dob;
+                formatPatient.Add(newPatient);
+            }
+            patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = formatPatient;
+            ExtensionGridView.RemoveEmptyColumns(patientSearchViewController.frmPatientSearch.dgvSearchResults);
+         
+           
         }
 
         private void OpenRegistrationView()
