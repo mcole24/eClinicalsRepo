@@ -147,5 +147,17 @@ namespace eClinicals.View
         {
 
         }
+
+        private void patientBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmPatientRecordTabs_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the '_CS6232_g5DataSet.contact' table. You can move, or remove it, as needed.
+            this.contactTableAdapter.Fill(this._CS6232_g5DataSet.contact);
+
+        }
     }
 }

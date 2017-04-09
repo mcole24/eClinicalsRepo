@@ -145,7 +145,7 @@ namespace eClinicals.View
 
                 patienRibbon = patientInfoRibbonController.ribbon;
                 frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
-                frmPatientTabs.personBindingSource.DataSource = selectedPatient;
+             
 
                 //update 
 
@@ -156,7 +156,7 @@ namespace eClinicals.View
                             new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
 
                 frmPatientTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
-                frmPatientTabs.btnUpdatePatient.Click += new EventHandler(btnUpdatePatient_Click);
+              
 
                patienRibbon.btnSearchPatient.Click  += new EventHandler(btnSearchPatient_Click);
                 frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
@@ -209,9 +209,6 @@ namespace eClinicals.View
         private void btnUpdatePatient_Click(object sender, EventArgs e)
         {
             
-            eClinicalsController.UpdatePatient(selectedPatient.PatientID, frmPatientTabs.lastNameTextBox.Text, frmPatientTabs.firstNameTextBox.Text,
-                frmPatientTabs.dobDateTimePicker.Value, frmPatientTabs.addressTextBox.Text, frmPatientTabs.cityTextBox.Text, frmPatientTabs.stateTextBox.Text,
-                frmPatientTabs.zipTextBox.Text, frmPatientTabs.phoneTextBox.Text, frmPatientTabs.genderTextBox.Text, frmPatientTabs.ssnTextBox.Text);
         }
 
         private void btnSelectAppointment_Click(object sender, EventArgs e)
