@@ -381,6 +381,7 @@ namespace eClinicals.View
                 default:
                     break;
             }
+
             List<Patient> formatPatient = new List<Patient>();
             foreach (Patient patient in myPatientsList) {
                 Patient newPatient = new Patient();
