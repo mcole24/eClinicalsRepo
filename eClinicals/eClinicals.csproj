@@ -138,6 +138,7 @@
     <Compile Include="View\frmRibbon.Designer.cs">
       <DependentUpon>frmRibbon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ValidateFields.cs" />
     <Compile Include="_CS6232_g5DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -28,39 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
-            this.patientBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.patientBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
-            this.contactDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this._CS6232_g5DataSet = new eClinicals._CS6232_g5DataSet();
+            this.btnEditPerson = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lblError_phone = new System.Windows.Forms.Label();
+            this.lblError_zip = new System.Windows.Forms.Label();
+            this.lblError_state = new System.Windows.Forms.Label();
+            this.lblError_city = new System.Windows.Forms.Label();
+            this.lblError_address = new System.Windows.Forms.Label();
+            this.lblError_ssn = new System.Windows.Forms.Label();
+            this.lblError_lastName = new System.Windows.Forms.Label();
+            this.lblError_firstName = new System.Windows.Forms.Label();
+            this.txtZipcode = new System.Windows.Forms.TextBox();
+            this.txtSSN = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.cbState = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dtpDOB = new System.Windows.Forms.DateTimePicker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.cbGender = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.lblPatientID = new System.Windows.Forms.Label();
             this.tabSetAppointments = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel_SetAppointment = new System.Windows.Forms.Button();
@@ -76,6 +81,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
+            this.btnShowCurrentAppointments = new System.Windows.Forms.Button();
+            this.btnShowFutureAppointments = new System.Windows.Forms.Button();
+            this.btnShowAllAppointments = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnSelectAppointment = new System.Windows.Forms.Button();
@@ -115,19 +123,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
-            this.contactTableAdapter = new eClinicals._CS6232_g5DataSetTableAdapters.contactTableAdapter();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.btnShowAllAppointments = new System.Windows.Forms.Button();
-            this.btnShowFutureAppointments = new System.Windows.Forms.Button();
-            this.btnShowCurrentAppointments = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingNavigator)).BeginInit();
-            this.patientBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             this.tabPatientRecord.SuspendLayout();
             this.tabPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._CS6232_g5DataSet)).BeginInit();
             this.tabSetAppointments.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -144,135 +142,6 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.SuspendLayout();
-            // 
-            // patientBindingNavigator
-            // 
-            this.patientBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.patientBindingNavigator.BindingSource = this.patientBindingSource;
-            this.patientBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.patientBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.patientBindingNavigator.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.patientBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.patientBindingNavigatorSaveItem});
-            this.patientBindingNavigator.Location = new System.Drawing.Point(3, 540);
-            this.patientBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.patientBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.patientBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.patientBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.patientBindingNavigator.Name = "patientBindingNavigator";
-            this.patientBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.patientBindingNavigator.Size = new System.Drawing.Size(1077, 25);
-            this.patientBindingNavigator.TabIndex = 1;
-            this.patientBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(eClinicals.Model.Patient);
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // patientBindingNavigatorSaveItem
-            // 
-            this.patientBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.patientBindingNavigatorSaveItem.Enabled = false;
-            this.patientBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("patientBindingNavigatorSaveItem.Image")));
-            this.patientBindingNavigatorSaveItem.Name = "patientBindingNavigatorSaveItem";
-            this.patientBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.patientBindingNavigatorSaveItem.Text = "Save Data";
             // 
             // tabPatientRecord
             // 
@@ -294,8 +163,41 @@
             // tabPersonal
             // 
             this.tabPersonal.AutoScroll = true;
-            this.tabPersonal.Controls.Add(this.patientBindingNavigator);
-            this.tabPersonal.Controls.Add(this.contactDataGridView);
+            this.tabPersonal.Controls.Add(this.btnEditPerson);
+            this.tabPersonal.Controls.Add(this.label21);
+            this.tabPersonal.Controls.Add(this.label22);
+            this.tabPersonal.Controls.Add(this.label23);
+            this.tabPersonal.Controls.Add(this.lblError_phone);
+            this.tabPersonal.Controls.Add(this.lblError_zip);
+            this.tabPersonal.Controls.Add(this.lblError_state);
+            this.tabPersonal.Controls.Add(this.lblError_city);
+            this.tabPersonal.Controls.Add(this.lblError_address);
+            this.tabPersonal.Controls.Add(this.lblError_ssn);
+            this.tabPersonal.Controls.Add(this.lblError_lastName);
+            this.tabPersonal.Controls.Add(this.lblError_firstName);
+            this.tabPersonal.Controls.Add(this.txtZipcode);
+            this.tabPersonal.Controls.Add(this.txtSSN);
+            this.tabPersonal.Controls.Add(this.txtPhone);
+            this.tabPersonal.Controls.Add(this.label25);
+            this.tabPersonal.Controls.Add(this.btnCancel);
+            this.tabPersonal.Controls.Add(this.btnUpdate);
+            this.tabPersonal.Controls.Add(this.cbState);
+            this.tabPersonal.Controls.Add(this.label26);
+            this.tabPersonal.Controls.Add(this.label27);
+            this.tabPersonal.Controls.Add(this.txtCity);
+            this.tabPersonal.Controls.Add(this.label28);
+            this.tabPersonal.Controls.Add(this.label29);
+            this.tabPersonal.Controls.Add(this.dtpDOB);
+            this.tabPersonal.Controls.Add(this.label30);
+            this.tabPersonal.Controls.Add(this.cbGender);
+            this.tabPersonal.Controls.Add(this.label31);
+            this.tabPersonal.Controls.Add(this.txtLastName);
+            this.tabPersonal.Controls.Add(this.label32);
+            this.tabPersonal.Controls.Add(this.txtAddress);
+            this.tabPersonal.Controls.Add(this.label33);
+            this.tabPersonal.Controls.Add(this.txtFirstName);
+            this.tabPersonal.Controls.Add(this.label34);
+            this.tabPersonal.Controls.Add(this.lblPatientID);
             this.tabPersonal.Location = new System.Drawing.Point(4, 34);
             this.tabPersonal.Name = "tabPersonal";
             this.tabPersonal.Padding = new System.Windows.Forms.Padding(3);
@@ -303,113 +205,382 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
-            this.tabPersonal.Click += new System.EventHandler(this.tabPersonal_Click);
             // 
-            // contactDataGridView
+            // btnEditPerson
             // 
-            this.contactDataGridView.AutoGenerateColumns = false;
-            this.contactDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.contactDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12});
-            this.contactDataGridView.DataSource = this.contactBindingSource;
-            this.contactDataGridView.Location = new System.Drawing.Point(3, 16);
-            this.contactDataGridView.Name = "contactDataGridView";
-            this.contactDataGridView.Size = new System.Drawing.Size(1059, 511);
-            this.contactDataGridView.TabIndex = 0;
+            this.btnEditPerson.Location = new System.Drawing.Point(45, 17);
+            this.btnEditPerson.Name = "btnEditPerson";
+            this.btnEditPerson.Size = new System.Drawing.Size(799, 39);
+            this.btnEditPerson.TabIndex = 63;
+            this.btnEditPerson.Text = "Update";
+            this.btnEditPerson.UseVisualStyleBackColor = true;
+            this.btnEditPerson.Click += new System.EventHandler(this.btnEditPerson_Click);
             // 
-            // dataGridViewTextBoxColumn1
+            // label21
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "contactID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "contactID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label21.Location = new System.Drawing.Point(266, 317);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(42, 13);
+            this.label21.TabIndex = 62;
+            this.label21.Text = "#####";
             // 
-            // dataGridViewTextBoxColumn2
+            // label22
             // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "lName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "lName";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label22.Location = new System.Drawing.Point(380, 115);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(69, 13);
+            this.label22.TabIndex = 61;
+            this.label22.Text = "numbers only";
             // 
-            // dataGridViewTextBoxColumn3
+            // label23
             // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "fName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "fName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label23.Location = new System.Drawing.Point(736, 185);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(95, 13);
+            this.label23.TabIndex = 60;
+            this.label23.Text = "(###) ### - ####";
             // 
-            // dataGridViewTextBoxColumn4
+            // lblError_phone
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "dob";
-            this.dataGridViewTextBoxColumn4.HeaderText = "dob";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.lblError_phone.AutoSize = true;
+            this.lblError_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_phone.ForeColor = System.Drawing.Color.Red;
+            this.lblError_phone.Location = new System.Drawing.Point(589, 203);
+            this.lblError_phone.Name = "lblError_phone";
+            this.lblError_phone.Size = new System.Drawing.Size(0, 16);
+            this.lblError_phone.TabIndex = 59;
             // 
-            // dataGridViewTextBoxColumn5
+            // lblError_zip
             // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "mailingAddressStreet";
-            this.dataGridViewTextBoxColumn5.HeaderText = "mailingAddressStreet";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.lblError_zip.AutoSize = true;
+            this.lblError_zip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_zip.ForeColor = System.Drawing.Color.Red;
+            this.lblError_zip.Location = new System.Drawing.Point(196, 333);
+            this.lblError_zip.Name = "lblError_zip";
+            this.lblError_zip.Size = new System.Drawing.Size(0, 16);
+            this.lblError_zip.TabIndex = 58;
             // 
-            // dataGridViewTextBoxColumn6
+            // lblError_state
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "mailingAddressCity";
-            this.dataGridViewTextBoxColumn6.HeaderText = "mailingAddressCity";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.lblError_state.AutoSize = true;
+            this.lblError_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_state.ForeColor = System.Drawing.Color.Red;
+            this.lblError_state.Location = new System.Drawing.Point(196, 290);
+            this.lblError_state.Name = "lblError_state";
+            this.lblError_state.Size = new System.Drawing.Size(0, 16);
+            this.lblError_state.TabIndex = 57;
             // 
-            // dataGridViewTextBoxColumn7
+            // lblError_city
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "mailingAddressState";
-            this.dataGridViewTextBoxColumn7.HeaderText = "mailingAddressState";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.lblError_city.AutoSize = true;
+            this.lblError_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_city.ForeColor = System.Drawing.Color.Red;
+            this.lblError_city.Location = new System.Drawing.Point(196, 245);
+            this.lblError_city.Name = "lblError_city";
+            this.lblError_city.Size = new System.Drawing.Size(0, 16);
+            this.lblError_city.TabIndex = 56;
             // 
-            // dataGridViewTextBoxColumn8
+            // lblError_address
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "mailingAddressZip";
-            this.dataGridViewTextBoxColumn8.HeaderText = "mailingAddressZip";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.lblError_address.AutoSize = true;
+            this.lblError_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_address.ForeColor = System.Drawing.Color.Red;
+            this.lblError_address.Location = new System.Drawing.Point(196, 201);
+            this.lblError_address.Name = "lblError_address";
+            this.lblError_address.Size = new System.Drawing.Size(0, 16);
+            this.lblError_address.TabIndex = 55;
             // 
-            // dataGridViewTextBoxColumn9
+            // lblError_ssn
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "phoneNumber";
-            this.dataGridViewTextBoxColumn9.HeaderText = "phoneNumber";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.lblError_ssn.AutoSize = true;
+            this.lblError_ssn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_ssn.ForeColor = System.Drawing.Color.Red;
+            this.lblError_ssn.Location = new System.Drawing.Point(349, 156);
+            this.lblError_ssn.Name = "lblError_ssn";
+            this.lblError_ssn.Size = new System.Drawing.Size(0, 16);
+            this.lblError_ssn.TabIndex = 54;
             // 
-            // dataGridViewTextBoxColumn10
+            // lblError_lastName
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "gender";
-            this.dataGridViewTextBoxColumn10.HeaderText = "gender";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.lblError_lastName.AutoSize = true;
+            this.lblError_lastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_lastName.ForeColor = System.Drawing.Color.Red;
+            this.lblError_lastName.Location = new System.Drawing.Point(196, 158);
+            this.lblError_lastName.Name = "lblError_lastName";
+            this.lblError_lastName.Size = new System.Drawing.Size(0, 16);
+            this.lblError_lastName.TabIndex = 53;
             // 
-            // dataGridViewTextBoxColumn11
+            // lblError_firstName
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "SSN";
-            this.dataGridViewTextBoxColumn11.HeaderText = "SSN";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.lblError_firstName.AutoSize = true;
+            this.lblError_firstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_firstName.ForeColor = System.Drawing.Color.Red;
+            this.lblError_firstName.Location = new System.Drawing.Point(42, 158);
+            this.lblError_firstName.Name = "lblError_firstName";
+            this.lblError_firstName.Size = new System.Drawing.Size(0, 16);
+            this.lblError_firstName.TabIndex = 52;
             // 
-            // dataGridViewTextBoxColumn12
+            // txtZipcode
             // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "userType";
-            this.dataGridViewTextBoxColumn12.HeaderText = "userType";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.txtZipcode.Location = new System.Drawing.Point(192, 310);
+            this.txtZipcode.MaxLength = 5;
+            this.txtZipcode.Name = "txtZipcode";
+            this.txtZipcode.Size = new System.Drawing.Size(68, 20);
+            this.txtZipcode.TabIndex = 41;
             // 
-            // contactBindingSource
+            // txtSSN
             // 
-            this.contactBindingSource.DataMember = "contact";
-            this.contactBindingSource.DataSource = this._CS6232_g5DataSet;
+            this.txtSSN.Location = new System.Drawing.Point(344, 131);
+            this.txtSSN.MaxLength = 9;
+            this.txtSSN.Name = "txtSSN";
+            this.txtSSN.Size = new System.Drawing.Size(144, 20);
+            this.txtSSN.TabIndex = 33;
             // 
-            // _CS6232_g5DataSet
+            // txtPhone
             // 
-            this._CS6232_g5DataSet.DataSetName = "_CS6232_g5DataSet";
-            this._CS6232_g5DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.txtPhone.Location = new System.Drawing.Point(585, 181);
+            this.txtPhone.MaxLength = 20;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(144, 20);
+            this.txtPhone.TabIndex = 42;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(523, 181);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 50;
+            this.label25.Text = "Phone";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(370, 402);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(163, 23);
+            this.btnCancel.TabIndex = 48;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Location = new System.Drawing.Point(132, 402);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(163, 23);
+            this.btnUpdate.TabIndex = 47;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // cbState
+            // 
+            this.cbState.Items.AddRange(new object[] {
+            "AK",
+            "AL",
+            "AR",
+            "AZ",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "IA",
+            "ID",
+            "IL",
+            "IN",
+            "KS",
+            "KY",
+            "LA",
+            "MA",
+            "MD",
+            "ME",
+            "MI",
+            "MN",
+            "MO",
+            "MS",
+            "MT",
+            "NC",
+            "ND",
+            "NE",
+            "NH",
+            "NJ",
+            "NM",
+            "NV",
+            "NY",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VA",
+            "VT",
+            "WA",
+            "WI",
+            "WV",
+            "WY"});
+            this.cbState.Location = new System.Drawing.Point(191, 266);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(54, 21);
+            this.cbState.Sorted = true;
+            this.cbState.TabIndex = 39;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(129, 269);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(32, 13);
+            this.label26.TabIndex = 49;
+            this.label26.Text = "State";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(130, 310);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(22, 13);
+            this.label27.TabIndex = 46;
+            this.label27.Text = "Zip";
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(192, 222);
+            this.txtCity.MaxLength = 100;
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(182, 20);
+            this.txtCity.TabIndex = 38;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(129, 225);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(24, 13);
+            this.label28.TabIndex = 44;
+            this.label28.Text = "City";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(584, 112);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(66, 13);
+            this.label29.TabIndex = 43;
+            this.label29.Text = "Date of Birth";
+            // 
+            // dtpDOB
+            // 
+            this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDOB.Location = new System.Drawing.Point(585, 128);
+            this.dtpDOB.Name = "dtpDOB";
+            this.dtpDOB.Size = new System.Drawing.Size(112, 20);
+            this.dtpDOB.TabIndex = 36;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(497, 113);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(42, 13);
+            this.label30.TabIndex = 40;
+            this.label30.Text = "Gender";
+            // 
+            // cbGender
+            // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "M",
+            "F",
+            "O"});
+            this.cbGender.Location = new System.Drawing.Point(494, 129);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(64, 21);
+            this.cbGender.TabIndex = 34;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(338, 114);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(36, 13);
+            this.label31.TabIndex = 35;
+            this.label31.Text = "SSN#";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Location = new System.Drawing.Point(191, 131);
+            this.txtLastName.MaxLength = 45;
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(144, 20);
+            this.txtLastName.TabIndex = 31;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(188, 114);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(58, 13);
+            this.label32.TabIndex = 32;
+            this.label32.Text = "Last Name";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(192, 178);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(314, 20);
+            this.txtAddress.TabIndex = 37;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(129, 181);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(45, 13);
+            this.label33.TabIndex = 29;
+            this.label33.Text = "Address";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(42, 131);
+            this.txtFirstName.MaxLength = 45;
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(143, 20);
+            this.txtFirstName.TabIndex = 30;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(39, 114);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(57, 13);
+            this.label34.TabIndex = 28;
+            this.label34.Text = "First Name";
+            // 
+            // lblPatientID
+            // 
+            this.lblPatientID.AutoSize = true;
+            this.lblPatientID.Location = new System.Drawing.Point(39, 88);
+            this.lblPatientID.Name = "lblPatientID";
+            this.lblPatientID.Size = new System.Drawing.Size(60, 13);
+            this.lblPatientID.TabIndex = 4;
+            this.lblPatientID.Text = "Patient ID: ";
             // 
             // tabSetAppointments
             // 
@@ -561,6 +732,42 @@
             this.tabViewAppointments.TabIndex = 2;
             this.tabViewAppointments.Text = "View Appointment";
             this.tabViewAppointments.UseVisualStyleBackColor = true;
+            // 
+            // btnShowCurrentAppointments
+            // 
+            this.btnShowCurrentAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCurrentAppointments.BackgroundImage")));
+            this.btnShowCurrentAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowCurrentAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnShowCurrentAppointments.Location = new System.Drawing.Point(585, 20);
+            this.btnShowCurrentAppointments.Name = "btnShowCurrentAppointments";
+            this.btnShowCurrentAppointments.Size = new System.Drawing.Size(199, 48);
+            this.btnShowCurrentAppointments.TabIndex = 15;
+            this.btnShowCurrentAppointments.Text = "Show Current Appointments";
+            this.btnShowCurrentAppointments.UseVisualStyleBackColor = true;
+            // 
+            // btnShowFutureAppointments
+            // 
+            this.btnShowFutureAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowFutureAppointments.BackgroundImage")));
+            this.btnShowFutureAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowFutureAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnShowFutureAppointments.Location = new System.Drawing.Point(342, 20);
+            this.btnShowFutureAppointments.Name = "btnShowFutureAppointments";
+            this.btnShowFutureAppointments.Size = new System.Drawing.Size(199, 48);
+            this.btnShowFutureAppointments.TabIndex = 14;
+            this.btnShowFutureAppointments.Text = "Show Future Appointments";
+            this.btnShowFutureAppointments.UseVisualStyleBackColor = true;
+            // 
+            // btnShowAllAppointments
+            // 
+            this.btnShowAllAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowAllAppointments.BackgroundImage")));
+            this.btnShowAllAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAllAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnShowAllAppointments.Location = new System.Drawing.Point(75, 20);
+            this.btnShowAllAppointments.Name = "btnShowAllAppointments";
+            this.btnShowAllAppointments.Size = new System.Drawing.Size(199, 48);
+            this.btnShowAllAppointments.TabIndex = 4;
+            this.btnShowAllAppointments.Text = "Show All Appointments";
+            this.btnShowAllAppointments.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
@@ -870,7 +1077,6 @@
             this.btnCancel_OrderTest.TabIndex = 4;
             this.btnCancel_OrderTest.Text = "Cancel";
             this.btnCancel_OrderTest.UseVisualStyleBackColor = true;
-            this.btnCancel_OrderTest.Click += new System.EventHandler(this.btnCancel_OrderTest_Click);
             // 
             // btnOrderTest
             // 
@@ -880,7 +1086,6 @@
             this.btnOrderTest.TabIndex = 3;
             this.btnOrderTest.Text = "Order Test";
             this.btnOrderTest.UseVisualStyleBackColor = true;
-            this.btnOrderTest.Click += new System.EventHandler(this.btnOrderTest_Click);
             // 
             // label13
             // 
@@ -966,51 +1171,12 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Test Results";
             // 
-            // contactTableAdapter
-            // 
-            this.contactTableAdapter.ClearBeforeFill = true;
-            // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.contactTableAdapter = this.contactTableAdapter;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // btnShowAllAppointments
-            // 
-            this.btnShowAllAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowAllAppointments.BackgroundImage")));
-            this.btnShowAllAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowAllAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowAllAppointments.Location = new System.Drawing.Point(75, 20);
-            this.btnShowAllAppointments.Name = "btnShowAllAppointments";
-            this.btnShowAllAppointments.Size = new System.Drawing.Size(199, 48);
-            this.btnShowAllAppointments.TabIndex = 4;
-            this.btnShowAllAppointments.Text = "Show All Appointments";
-            this.btnShowAllAppointments.UseVisualStyleBackColor = true;
-            // 
-            // btnShowFutureAppointments
-            // 
-            this.btnShowFutureAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowFutureAppointments.BackgroundImage")));
-            this.btnShowFutureAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowFutureAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowFutureAppointments.Location = new System.Drawing.Point(342, 20);
-            this.btnShowFutureAppointments.Name = "btnShowFutureAppointments";
-            this.btnShowFutureAppointments.Size = new System.Drawing.Size(199, 48);
-            this.btnShowFutureAppointments.TabIndex = 14;
-            this.btnShowFutureAppointments.Text = "Show Future Appointments";
-            this.btnShowFutureAppointments.UseVisualStyleBackColor = true;
-            // 
-            // btnShowCurrentAppointments
-            // 
-            this.btnShowCurrentAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCurrentAppointments.BackgroundImage")));
-            this.btnShowCurrentAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowCurrentAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowCurrentAppointments.Location = new System.Drawing.Point(585, 20);
-            this.btnShowCurrentAppointments.Name = "btnShowCurrentAppointments";
-            this.btnShowCurrentAppointments.Size = new System.Drawing.Size(199, 48);
-            this.btnShowCurrentAppointments.TabIndex = 15;
-            this.btnShowCurrentAppointments.Text = "Show Current Appointments";
-            this.btnShowCurrentAppointments.UseVisualStyleBackColor = true;
             // 
             // frmPatientRecordTabs
             // 
@@ -1021,17 +1187,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPatientRecordTabs";
             this.Text = "frmPatientRecordTabs";
-            this.Load += new System.EventHandler(this.frmPatientRecordTabs_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingNavigator)).EndInit();
-            this.patientBindingNavigator.ResumeLayout(false);
-            this.patientBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             this.tabPatientRecord.ResumeLayout(false);
             this.tabPersonal.ResumeLayout(false);
             this.tabPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contactDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contactBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._CS6232_g5DataSet)).EndInit();
             this.tabSetAppointments.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1116,39 +1274,44 @@
         private System.Windows.Forms.Label label20;
         public System.Windows.Forms.Button btnSelectAppointment;
         public System.Windows.Forms.DataGridView dgTestResults_TestResults;
-        private System.Windows.Forms.BindingSource patientBindingSource;
-        private System.Windows.Forms.BindingNavigator patientBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton patientBindingNavigatorSaveItem;
-        private _CS6232_g5DataSet _CS6232_g5DataSet;
-        private System.Windows.Forms.BindingSource contactBindingSource;
-        private _CS6232_g5DataSetTableAdapters.contactTableAdapter contactTableAdapter;
         private _CS6232_g5DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView contactDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Button btnShowAllAppointments;
         private System.Windows.Forms.Button btnShowCurrentAppointments;
         private System.Windows.Forms.Button btnShowFutureAppointments;
+        public System.Windows.Forms.Label lblPatientID;
+        public System.Windows.Forms.TextBox txtZipcode;
+        public System.Windows.Forms.TextBox txtSSN;
+        public System.Windows.Forms.TextBox txtPhone;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.ComboBox cbState;
+        public System.Windows.Forms.TextBox txtCity;
+        public System.Windows.Forms.DateTimePicker dtpDOB;
+        public System.Windows.Forms.ComboBox cbGender;
+        public System.Windows.Forms.TextBox txtLastName;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtFirstName;
+        public System.Windows.Forms.Button btnEditPerson;
+        public System.Windows.Forms.Label label21;
+        public System.Windows.Forms.Label label22;
+        public System.Windows.Forms.Label label23;
+        public System.Windows.Forms.Label lblError_phone;
+        public System.Windows.Forms.Label lblError_zip;
+        public System.Windows.Forms.Label lblError_state;
+        public System.Windows.Forms.Label lblError_city;
+        public System.Windows.Forms.Label lblError_address;
+        public System.Windows.Forms.Label lblError_ssn;
+        public System.Windows.Forms.Label lblError_lastName;
+        public System.Windows.Forms.Label lblError_firstName;
+        public System.Windows.Forms.Label label25;
+        public System.Windows.Forms.Label label26;
+        public System.Windows.Forms.Label label27;
+        public System.Windows.Forms.Label label28;
+        public System.Windows.Forms.Label label29;
+        public System.Windows.Forms.Label label30;
+        public System.Windows.Forms.Label label31;
+        public System.Windows.Forms.Label label32;
+        public System.Windows.Forms.Label label33;
+        public System.Windows.Forms.Label label34;
     }
 }

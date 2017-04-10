@@ -493,16 +493,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-
       
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
@@ -513,23 +503,32 @@
         public System.Windows.Forms.TextBox txtAddress;
         public System.Windows.Forms.TextBox txtCity;
         public System.Windows.Forms.ComboBox cbState;
-        private System.Windows.Forms.Label label10;
         public System.Windows.Forms.ComboBox cbUserType;
-        private System.Windows.Forms.Label label11;
     
         public System.Windows.Forms.TextBox txtPhone;
         public System.Windows.Forms.TextBox txtSSN;
         public System.Windows.Forms.TextBox txtZipcode;
-        private System.Windows.Forms.Label lblError_firstName;
-        private System.Windows.Forms.Label lblError_lastName;
-        private System.Windows.Forms.Label lblError_ssn;
-        private System.Windows.Forms.Label lblError_address;
-        private System.Windows.Forms.Label lblError_city;
-        private System.Windows.Forms.Label lblError_state;
-        private System.Windows.Forms.Label lblError_zip;
-        private System.Windows.Forms.Label lblError_phone;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label lblError_firstName;
+        public System.Windows.Forms.Label lblError_lastName;
+        public System.Windows.Forms.Label lblError_ssn;
+        public System.Windows.Forms.Label lblError_address;
+        public System.Windows.Forms.Label lblError_city;
+        public System.Windows.Forms.Label lblError_state;
+        public System.Windows.Forms.Label lblError_zip;
+        public System.Windows.Forms.Label lblError_phone;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label label14;
     }
 }
