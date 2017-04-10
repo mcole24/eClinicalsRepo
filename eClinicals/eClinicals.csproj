@@ -84,6 +84,7 @@
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ExtensionGridView.cs" />
+    <Compile Include="Utils\RegExCheckUtil.cs" />
     <Compile Include="View\frmBaseView.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
