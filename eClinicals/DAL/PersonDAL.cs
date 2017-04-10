@@ -132,7 +132,7 @@ namespace eClinicals.DAL
         public static Person GetLoggedInUserDetails (string username, string password)
         {
             Person user = new Person();
-            string selectStatement = "SELECT logins.contactID, lName, fName, phoneNumber, mailingAddressStreet, "
+            string selectStatement = "SELECT userName, logins.contactID, lName, fName, phoneNumber, mailingAddressStreet, "
                 + "mailingAddressCity, mailingAddressState, mailingAddressZip, userType "
                 + "FROM logins LEFT JOIN contact ON logins.contactID = contact.contactID "
                 + "WHERE userName = @username AND password = @password";
@@ -149,6 +149,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
+                                user.UserName = reader["userName"].ToString();
                                 user.ContactID = (int)reader["contactID"];
                                 user.LastName = reader["lName"].ToString();
                                 user.FirstName = reader["fName"].ToString();
