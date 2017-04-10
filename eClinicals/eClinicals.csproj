@@ -77,6 +77,7 @@
     <Compile Include="Model\Nurse.cs" />
     <Compile Include="Model\Patient.cs" />
     <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Report.cs" />
     <Compile Include="Model\RoutineCheck.cs" />
     <Compile Include="Model\SimpleAES.cs" />
     <Compile Include="Model\Symptom.cs" />
