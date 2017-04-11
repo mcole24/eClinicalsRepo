@@ -14,7 +14,7 @@ namespace eClinicals.Controllers
         public frmPatientRecordTabs frmPatientRecordTabs;
         eClinicalsController eClinicalsController;
         private Patient patient;
-
+        private List<Appointment> selectedPatientAppointments;
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
              eClinicalsController = new eClinicalsController();
@@ -101,6 +101,8 @@ namespace eClinicals.Controllers
                 {
 
                     this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
+                    selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(patient.PatientID);
+                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
                 }
                 else
                 {
@@ -165,6 +167,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbGender.Enabled = true;
             frmPatientRecordTabs.txtSSN.Enabled = true;
         }
+
 
 
 

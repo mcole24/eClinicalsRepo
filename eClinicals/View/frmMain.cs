@@ -165,8 +165,11 @@ namespace eClinicals.View
 
                 //returns a routine check
                 frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
-                selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);
+               
+                //Fill View appointments
+                selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);               
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+              
                 //  frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
 
                patientRecordTabsViewController.fillPatientInfo(selectedPatient);
@@ -189,12 +192,7 @@ namespace eClinicals.View
             {
                 Status("Please fill out all form elements : ", Color.Red);
             }
-        }
-
-        private void btnUpdatePatient_Click(object sender, EventArgs e)
-        {
-
-        }
+        } 
 
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {
@@ -211,7 +209,6 @@ namespace eClinicals.View
             }
 
         }
-
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
