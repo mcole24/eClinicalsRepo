@@ -208,13 +208,13 @@
             // 
             // btnEditPerson
             // 
-            this.btnEditPerson.Location = new System.Drawing.Point(45, 17);
+            this.btnEditPerson.Location = new System.Drawing.Point(302, 378);
             this.btnEditPerson.Name = "btnEditPerson";
-            this.btnEditPerson.Size = new System.Drawing.Size(799, 39);
+            this.btnEditPerson.Size = new System.Drawing.Size(163, 29);
             this.btnEditPerson.TabIndex = 63;
-            this.btnEditPerson.Text = "Update";
+            this.btnEditPerson.Text = "Enable Update";
             this.btnEditPerson.UseVisualStyleBackColor = true;
-            this.btnEditPerson.Click += new System.EventHandler(this.btnEditPerson_Click);
+         
             // 
             // label21
             // 
@@ -328,6 +328,7 @@
             // 
             // txtZipcode
             // 
+            this.txtZipcode.Enabled = false;
             this.txtZipcode.Location = new System.Drawing.Point(192, 310);
             this.txtZipcode.MaxLength = 5;
             this.txtZipcode.Name = "txtZipcode";
@@ -336,6 +337,7 @@
             // 
             // txtSSN
             // 
+            this.txtSSN.Enabled = false;
             this.txtSSN.Location = new System.Drawing.Point(344, 131);
             this.txtSSN.MaxLength = 9;
             this.txtSSN.Name = "txtSSN";
@@ -344,6 +346,7 @@
             // 
             // txtPhone
             // 
+            this.txtPhone.Enabled = false;
             this.txtPhone.Location = new System.Drawing.Point(585, 181);
             this.txtPhone.MaxLength = 20;
             this.txtPhone.Name = "txtPhone";
@@ -362,27 +365,31 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(370, 402);
+            this.btnCancel.Location = new System.Drawing.Point(438, 413);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
             this.btnCancel.TabIndex = 48;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Visible = false;
+      
             // 
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(132, 402);
+            this.btnUpdate.Location = new System.Drawing.Point(171, 413);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(163, 23);
             this.btnUpdate.TabIndex = 47;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Visible = false;
+     
             // 
             // cbState
             // 
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbState.Enabled = false;
             this.cbState.Items.AddRange(new object[] {
             "AK",
             "AL",
@@ -460,6 +467,7 @@
             // 
             // txtCity
             // 
+            this.txtCity.Enabled = false;
             this.txtCity.Location = new System.Drawing.Point(192, 222);
             this.txtCity.MaxLength = 100;
             this.txtCity.Name = "txtCity";
@@ -486,6 +494,7 @@
             // 
             // dtpDOB
             // 
+            this.dtpDOB.Enabled = false;
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDOB.Location = new System.Drawing.Point(585, 128);
             this.dtpDOB.Name = "dtpDOB";
@@ -504,6 +513,7 @@
             // cbGender
             // 
             this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.Enabled = false;
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Items.AddRange(new object[] {
             "M",
@@ -525,6 +535,7 @@
             // 
             // txtLastName
             // 
+            this.txtLastName.Enabled = false;
             this.txtLastName.Location = new System.Drawing.Point(191, 131);
             this.txtLastName.MaxLength = 45;
             this.txtLastName.Name = "txtLastName";
@@ -542,6 +553,7 @@
             // 
             // txtAddress
             // 
+            this.txtAddress.Enabled = false;
             this.txtAddress.Location = new System.Drawing.Point(192, 178);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(314, 20);
@@ -558,6 +570,7 @@
             // 
             // txtFirstName
             // 
+            this.txtFirstName.Enabled = false;
             this.txtFirstName.Location = new System.Drawing.Point(42, 131);
             this.txtFirstName.MaxLength = 45;
             this.txtFirstName.Name = "txtFirstName";

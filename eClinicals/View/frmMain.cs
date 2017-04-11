@@ -144,19 +144,12 @@ namespace eClinicals.View
 
                 patienRibbon = patientInfoRibbonController.ribbon;
                 frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
-
-
-                //update 
-
-
+                //add patient ribbon
                 AddPatientRibonInfo(selectedPatient);
 
                 frmPatientTabs.dgViewAppointments_ViewAppointments.CellClick +=
                             new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
-
                 frmPatientTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
-
-
                 patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
                 frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
                 frmPatientTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
@@ -167,8 +160,6 @@ namespace eClinicals.View
                 frmPatientTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
                 frmPatientTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
 
-
-
                 // ?? Hide panel
                 frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
 
@@ -178,6 +169,8 @@ namespace eClinicals.View
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
                 //  frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
 
+               patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+                //frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
             }
             else
             {
@@ -210,7 +203,6 @@ namespace eClinicals.View
             {
                 frmPatientTabs.tabPatientRecord.TabPages.Add(frmPatientTabs.tabRoutineCheck);
                 frmPatientTabs.tabPatientRecord.SelectedTab = frmPatientTabs.tabRoutineCheck;
-
             }
             else
             {
@@ -232,6 +224,12 @@ namespace eClinicals.View
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
                     Status(message, Color.Transparent);
                     selectedPatientID = selectedPatient.PatientID;
+
+                  //  *********************************************************************************************** WORKING ON 
+                    //send selected patient to controller
+                    // patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+                 //   frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
+
                 }
                 else
                 {
@@ -321,7 +319,7 @@ namespace eClinicals.View
                                         selectedPatient.Gender, selectedPatient.ContactID.ToString());
         }
 
-        //Select a patient from grid
+        //*************************************************************************************   Select a patient from grid
         private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -370,19 +368,9 @@ namespace eClinicals.View
                     break;
                 default:
                     break;
-            }
-
-            List<Patient> formatPatient = new List<Patient>();
-            foreach (Patient patient in myPatientsList)
-            {
-                Patient newPatient = new Patient();
-                newPatient.PatientID = patient.PatientID;
-                newPatient.FirstName = patient.FirstName;
-                newPatient.LastName = patient.LastName;
-                newPatient.Dob = patient.Dob;
-                formatPatient.Add(newPatient);
-            }
-            patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = formatPatient;
+            }       
+          
+            patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = myPatientsList;
             ExtensionGridView.RemoveEmptyColumns(patientSearchViewController.frmPatientSearch.dgvSearchResults);
         }
 
