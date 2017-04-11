@@ -124,6 +124,7 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPatientRecord.SuspendLayout();
             this.tabPersonal.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
@@ -163,6 +164,7 @@
             // tabPersonal
             // 
             this.tabPersonal.AutoScroll = true;
+            this.tabPersonal.Controls.Add(this.label24);
             this.tabPersonal.Controls.Add(this.btnEditPerson);
             this.tabPersonal.Controls.Add(this.label21);
             this.tabPersonal.Controls.Add(this.label22);
@@ -214,7 +216,6 @@
             this.btnEditPerson.TabIndex = 63;
             this.btnEditPerson.Text = "Enable Update";
             this.btnEditPerson.UseVisualStyleBackColor = true;
-         
             // 
             // label21
             // 
@@ -240,7 +241,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label23.Location = new System.Drawing.Point(736, 185);
+            this.label23.Location = new System.Drawing.Point(735, 178);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(95, 13);
             this.label23.TabIndex = 60;
@@ -372,7 +373,6 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Visible = false;
-      
             // 
             // btnUpdate
             // 
@@ -384,7 +384,6 @@
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Visible = false;
-     
             // 
             // cbState
             // 
@@ -1191,6 +1190,16 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Location = new System.Drawing.Point(740, 196);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(86, 13);
+            this.label24.TabIndex = 64;
+            this.label24.Text = "### ###  ####";
+            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1326,5 +1335,6 @@
         public System.Windows.Forms.Label label32;
         public System.Windows.Forms.Label label33;
         public System.Windows.Forms.Label label34;
+        public System.Windows.Forms.Label label24;
     }
 }

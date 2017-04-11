@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using eClinicals.View;
 using eClinicals.Model;
+using System.Drawing;
 
 namespace eClinicals.Controllers
 {
@@ -53,6 +54,10 @@ namespace eClinicals.Controllers
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+          
             frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
             frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
             frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
@@ -76,6 +81,12 @@ namespace eClinicals.Controllers
                 {
                     DisableEdit();
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                this.mainForm.Status(ex.Message, Color.Red);
+               
             }
         }
 
