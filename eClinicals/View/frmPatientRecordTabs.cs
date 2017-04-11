@@ -3,6 +3,7 @@ using eClinicals.Model;
 using System;
 using System.Collections.Generic;
 
+
 namespace eClinicals.View
 {
     public partial class frmPatientRecordTabs : frmBaseView
@@ -27,6 +28,8 @@ namespace eClinicals.View
         public string doctor;
         public DateTime appointmentDate;
         public DateTime appointmentTime;
+
+      
 
         public frmPatientRecordTabs()
         {

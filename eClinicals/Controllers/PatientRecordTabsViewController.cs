@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using eClinicals.View;
 using eClinicals.Model;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace eClinicals.Controllers
 {
@@ -14,7 +15,10 @@ namespace eClinicals.Controllers
         public frmPatientRecordTabs frmPatientRecordTabs;
         eClinicalsController eClinicalsController;
         private Patient patient;
+        private Person selectedUser;
+        private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
+        internal Nurse currentNurse;
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
              eClinicalsController = new eClinicalsController();
@@ -27,12 +31,23 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnUpdate.Click += new EventHandler(btnUpdate_Click);
             frmPatientRecordTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
 
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
+                         new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
+            frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
+         
+
+            frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
+            frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
+
+
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
-        // pateint comes from frmMain
+    
         public void fillPatientInfo(Patient patient) {
+            // *** pateint comes from frmMain ***
             this.patient = patient;
+
             frmPatientRecordTabs.txtFirstName.Text = patient.FirstName;
             frmPatientRecordTabs.txtLastName.Text = patient.LastName;
             frmPatientRecordTabs.txtSSN.Text = patient.Ssn;
@@ -43,6 +58,18 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbState.Text = patient.State;
             frmPatientRecordTabs.txtZipcode.Text = patient.Zip;
             frmPatientRecordTabs.txtPhone.Text = patient.Phone;
+
+            List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();
+            frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
+            frmPatientRecordTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
+            frmPatientRecordTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
+
+            // ?? Hide panel
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+
+            //returns a routine check
+            frmPatientRecordTabs.dgPreviousReadings__RoutineCheck.DataSource =
+                eClinicalsController.GetPreviousReadings(patient.PatientID);
         }
         private void btnEditPerson_Click(object sender, EventArgs e)
         {
@@ -87,6 +114,19 @@ namespace eClinicals.Controllers
                
             }
         }
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        {
+
+            if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
+            {
+                this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+            }
+            else
+            {
+                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+            }
+        }
+
         private void btnOk_SetAppointment_Click(object sender, EventArgs e)
         {
             try
@@ -114,6 +154,99 @@ namespace eClinicals.Controllers
                 this.mainForm.Status(ex.Message, Color.Red);
             }
         }
+        private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
+        {
+            //routione checkup
+            currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
+            // CheckBox symptoms
+            // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
+            string systolicS = frmPatientRecordTabs.txtSystolic.Text;
+            string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
+            string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
+            string pulseS = frmPatientRecordTabs.txtPulse.Text;
+            if (selectedAppointment != null & currentNurse != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
+            {
+
+                int systolic = Int32.Parse(systolicS);
+                int diastolic = Int32.Parse(diastolicS);
+                decimal bodyTemp = Decimal.Parse(bodyTempS);
+                int pulse = Int32.Parse(pulseS);
+
+                if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, DateTime.Now, systolic, diastolic, bodyTemp, pulse))
+                {
+
+                   this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                    frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+                }
+                else
+                {
+                }
+                this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
+
+            }
+            else
+            {
+                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+            }
+        }
+
+
+
+        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        {
+            // "shows" tab page 2
+            if (selectedAppointment != null)
+            {
+                frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
+                frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
+            }
+            else
+            {
+                this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
+            }
+        }
+        private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    selectedAppointment = (Appointment)frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CurrentRow.DataBoundItem;
+                    string message = "|Appointment Selected: " + selectedAppointment.AppointmentDoctor +
+                        "  " + selectedAppointment.AppointmentDate + " ID:" + selectedAppointment.AppointmentID +
+                        "...Pressing the start routine checkup Button will select the appointment for checkup.";
+                    this.mainForm.Status(message, Color.Transparent);
+                 
+
+                    //  *********************************************************************************************** WORKING ON 
+                    //send selected patient to controller
+                    // patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+                    //   frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
+
+                }
+                else
+                {
+                    this.mainForm.Status("No appointment has been selection.", Color.Yellow);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void DisableEdit()
         {
 

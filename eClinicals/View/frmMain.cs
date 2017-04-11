@@ -42,6 +42,7 @@ namespace eClinicals.View
         private Appointment selectedAppointment;
         public int selectedPatientID;
         private Person selectedUser;
+        Nurse currentNurse;
         public int currentPatientID
         {
             get { return this.selectedPatient.PatientID; }
@@ -64,7 +65,7 @@ namespace eClinicals.View
             lblStatus.BackColor = System.Drawing.Color.Transparent;
             lblStatus.Text = "Logged in successfully.";
             OpenStartMenuView();
-
+           
             ribbonController = new RibbonController(this, new frmRibbon());
 
             //register the handler for logged on event
@@ -74,6 +75,7 @@ namespace eClinicals.View
             this.pTop.Visible = true;
             // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD           
             selectedUser = e.Person;
+            currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
             ribbonController.AddUserInfo(selectedUser.LastName + ", " + selectedUser.FirstName, selectedUser.ContactID, selectedUser.UserType);
             ribbonController.AddContactInfo(selectedUser.Phone, selectedUser.Address + " " + selectedUser.City + " ," + selectedUser.State + "  " + selectedUser.Zip);
@@ -141,31 +143,12 @@ namespace eClinicals.View
 
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
-
                 patienRibbon = patientInfoRibbonController.ribbon;
-                frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
+                frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;             
                 //add patient ribbon
-                AddPatientRibonInfo(selectedPatient);
+                AddPatientRibonInfo(selectedPatient);//       
+                patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);     
 
-                frmPatientTabs.dgViewAppointments_ViewAppointments.CellClick +=
-                            new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
-                frmPatientTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
-                patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
-             
-                frmPatientTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
-                frmPatientTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
-
-                List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();
-                frmPatientTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
-                frmPatientTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
-                frmPatientTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
-
-                // ?? Hide panel
-                frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
-
-                //returns a routine check
-                frmPatientTabs.dgPreviousReadings__RoutineCheck.DataSource = eClinicalsController.GetPreviousReadings(selectedPatientID);
-               
                 //Fill View appointments
                 selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);               
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
@@ -241,9 +224,10 @@ namespace eClinicals.View
         private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
         {
             //routione checkup
-            Nurse currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
+          
             // CheckBox symptoms
             // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
+
             string systolicS = frmPatientTabs.txtSystolic.Text;
             string diastolicS = frmPatientTabs.txtDiastolic.Text;
             string bodyTempS = frmPatientTabs.txtBodyTemp.Text;
