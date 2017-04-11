@@ -151,7 +151,7 @@ namespace eClinicals.View
                             new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
                 frmPatientTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
                 patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
-                frmPatientTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
+             
                 frmPatientTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
                 frmPatientTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
 
@@ -275,30 +275,7 @@ namespace eClinicals.View
             {
                 Status("Please fill out all form elements : ", Color.Red);
             }
-        }
-
-        private void btnOk_SetAppointment_Click(object sender, EventArgs e)
-        {
-
-            Doctor doc = (Doctor)frmPatientTabs.cbDoctor_SetAppointment.SelectedItem;
-            Appointment reason = (Appointment)frmPatientTabs.cbReason_SetAppointment.SelectedItem;
-
-            DateTime dateOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
-            DateTime timeOnly = frmPatientTabs.dtpAppointmentDate_SetAppointment.Value;
-            DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
-
-            if (eClinicalsController.CreateAppointment(dateAndTime, selectedPatientID, doc.DoctorID, reason.AppointmentReasonID))
-            {
-
-                Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
-            }
-            else
-            {
-                Status("Appointment was not Set : Please check the form was properly filled in", Color.Yellow);
-            }
-
-
-        }
+        }      
 
         private void btnSearchPatient_Click(object sender, EventArgs e)
         {

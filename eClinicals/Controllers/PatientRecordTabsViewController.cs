@@ -25,8 +25,8 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnEditPerson.Click += new EventHandler(btnEditPerson_Click);
             frmPatientRecordTabs.btnCancel.Click += new EventHandler(btnCancel_Click);
             frmPatientRecordTabs.btnUpdate.Click += new EventHandler(btnUpdate_Click);
+            frmPatientRecordTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
 
-           
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
@@ -55,32 +55,30 @@ namespace eClinicals.Controllers
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
-            {
+            {          
+                frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
+                frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
+                frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
+                frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
+                frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
+                frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
+                frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
+                frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
+                frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
+                frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
 
-          
-            frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
-            frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
-            frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
-            frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
-            frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
-            frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
-            frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
-            frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
-            frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
-            frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
-
-            if (ValidateFields.patientFields(frmPatientRecordTabs))
-            {
-                bool isUpdate = false;
-
-                isUpdate = eClinicalsController.UpdatePatient(patient.PatientID, patient.LastName,
-                   patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-            patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
-
-                if (isUpdate)
+                if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
-                    DisableEdit();
-                }
+                    bool isUpdate = false;
+
+                    isUpdate = eClinicalsController.UpdatePatient(patient.PatientID, patient.LastName,
+                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
+                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
+
+                    if (isUpdate)
+                    {
+                        DisableEdit();
+                    }
             }
             }
             catch (Exception ex)
@@ -89,7 +87,31 @@ namespace eClinicals.Controllers
                
             }
         }
+        private void btnOk_SetAppointment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Doctor doc = (Doctor)frmPatientRecordTabs.cbDoctor_SetAppointment.SelectedItem;
+                Appointment reason = (Appointment)frmPatientRecordTabs.cbReason_SetAppointment.SelectedItem;
+                DateTime dateOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
+                DateTime timeOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
+                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
 
+                if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
+                {
+
+                    this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
+                }
+                else
+                {
+                    this.mainForm.Status("Appointment was not Set : Please check the form was properly filled in", Color.Red);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.mainForm.Status(ex.Message, Color.Red);
+            }
+        }
         public void DisableEdit()
         {
 

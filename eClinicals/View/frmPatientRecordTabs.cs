@@ -17,7 +17,7 @@ namespace eClinicals.View
         List<Doctor> listDocs;
         List<Appointment> listReasons;
         eClinicalsController eClinicalsController;
-      
+      // Personal Tab
         public string lastName;
         public string firstName;
         public DateTime dob;
@@ -28,16 +28,23 @@ namespace eClinicals.View
         public string phone;
         public string gender;
         public string ssn;
-        public string errorMessage;  
+        public string errorMessage;
+        // Set Appointment Tab
+        public string reason;
+        public string doctor;
+        public DateTime appointmentDate;
+        public DateTime appointmentTime;
 
-      
         public frmPatientRecordTabs()
         {
             InitializeComponent();
             eClinicalsController = new eClinicalsController();
-           
-
-                listDocs = eClinicalsController.GetAllDoctorNames();
+            fillListBoxElements();
+            fillSetAppointmentTab();      
+        }
+        private void fillListBoxElements()
+        {
+            listDocs = eClinicalsController.GetAllDoctorNames();
 
             foreach (Doctor doc in listDocs)
             {
@@ -51,18 +58,20 @@ namespace eClinicals.View
                 cbReason_SetAppointment.Items.Add(reason);
 
             }
+        }
+
+        private void fillSetAppointmentTab()
+        {           
+            // Selects the member name of the object in the listBox
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
             cbSelectTest_OrderTest.DisplayMember = "Test";
-
+            // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
             cbDoctor_SetAppointment.SelectedIndex = 0;
             cbSelectDoctor_OrderTest.SelectedIndex = 0;
             cbSelectTest_OrderTest.SelectedIndex = 0;
-
-        }  
-      
-      
+        }
     }
 }
