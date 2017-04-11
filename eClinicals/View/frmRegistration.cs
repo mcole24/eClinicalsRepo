@@ -53,9 +53,7 @@ namespace eClinicals.View
             try
             {
                
-            if (ValidateFields.patientFields(this))
-                  
-                {
+            if (ValidateFields.patientFields(this)){
                     eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
                 }
                 else

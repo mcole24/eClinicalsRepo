@@ -17,7 +17,7 @@ namespace eClinicals.View
         List<Doctor> listDocs;
         List<Appointment> listReasons;
         eClinicalsController eClinicalsController;
-        ValidateFields ValidateFields;
+     
         public string lastName;
         public string firstName;
         public DateTime dob;
@@ -55,18 +55,12 @@ namespace eClinicals.View
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
-
-            cbSelectTest_OrderTest.DisplayMember = "Test";
-          
+            cbSelectTest_OrderTest.DisplayMember = "Test";          
 
             cbReason_SetAppointment.SelectedIndex = 0;
         cbDoctor_SetAppointment.SelectedIndex = 0;      
         cbSelectDoctor_OrderTest.SelectedIndex = 0;        
         cbSelectTest_OrderTest.SelectedIndex = 0;
-
-
-
-         
 
         }
        private void btnEditPerson_Click(object sender, EventArgs e)
@@ -78,8 +72,6 @@ namespace eClinicals.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
-
             lastName = txtLastName.Text;
             firstName = txtFirstName.Text;
             dob = dtpDOB.Value;
@@ -96,8 +88,7 @@ namespace eClinicals.View
                 btnUpdate.Enabled = false;
                 btnCancel.Enabled = false;
                 btnEditPerson.Enabled = true;
-            }
-       
+            }       
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
