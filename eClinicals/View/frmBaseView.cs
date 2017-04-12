@@ -1,11 +1,14 @@
-﻿using System.Windows.Forms;
+﻿using eClinicals.Controllers;
+using System.Windows.Forms;
 
 namespace eClinicals.View
 {
 
     public class frmBaseView : Form
     {
-        public string status { get; set; }
+
+        public ControllerBase controller { get; set; }
+        internal eClinicalsController eController { get; set; }
         private void InitializeComponent()
         {
             this.SuspendLayout();

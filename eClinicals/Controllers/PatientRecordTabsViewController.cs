@@ -14,8 +14,7 @@ namespace eClinicals.Controllers
     {
         public frmPatientRecordTabs frmPatientRecordTabs;
         eClinicalsController eClinicalsController;
-        private Patient patient;
-        public Nurse selectedNurse;
+        private Patient patient;     
         private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
@@ -39,7 +38,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
             frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
 
-
+            currentNurse = this.mainForm.currentNurse;
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
@@ -156,15 +155,25 @@ namespace eClinicals.Controllers
         }
         private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             //routione checkup
-            currentNurse = eClinicalsController.GetNurseByID(selectedNurse.ContactID);
+        
             // CheckBox symptoms
             // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
             string systolicS = frmPatientRecordTabs.txtSystolic.Text;
             string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
             string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
             string pulseS = frmPatientRecordTabs.txtPulse.Text;
-            if (selectedAppointment != null & currentNurse != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
+
+                if (currentNurse == null) {
+
+                    this.mainForm.Status("Nurse Object is not set. . . ", Color.Red);
+
+                }
+
+            if (selectedAppointment != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
             {
 
                 int systolic = Int32.Parse(systolicS);
@@ -187,6 +196,13 @@ namespace eClinicals.Controllers
             else
             {
                 this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+            }
+
+            }
+            catch (Exception ex)
+            {
+
+                Status(ex.Message + "Object [Nurse] was not retrieved from DAL", Color.Red);
             }
         }
 

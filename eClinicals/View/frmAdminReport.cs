@@ -14,15 +14,30 @@ namespace eClinicals.View
 {
     public partial class frmAdminReport : frmBaseView
     {
-        eClinicalsController eClinicalsController;
+       
+      
         public frmAdminReport()
         {
             InitializeComponent();
-        }
-
-        private void frmAdminReport_Load(object sender, EventArgs e)
-        {
            
-        }
+        }  
+
+        private void btnGetReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Report report = new Report();
+                DateTime startDate = dtStart.Value.Date;
+                DateTime endDate = dtEnd.Value.Date;
+                //Error
+                report = eController.MostPerformedTestsDuringDates(startDate, endDate);
+                dgReport.DataSource = report;
             }
+            catch (Exception ex)
+            {
+                controller.Status(ex.Message, Color.Red);
+
+            }
+        }
+    }
 }

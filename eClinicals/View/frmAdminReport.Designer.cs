@@ -69,7 +69,7 @@
             this.btnGetReport.TabIndex = 3;
             this.btnGetReport.Text = "Get Report";
             this.btnGetReport.UseVisualStyleBackColor = true;
-
+            this.btnGetReport.Click += new System.EventHandler(this.btnGetReport_Click);
             // 
             // label1
             // 
@@ -102,8 +102,7 @@
             this.Controls.Add(this.dgReport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAdminReport";
-            this.Text = "frmAdminReport";
-            this.Load += new System.EventHandler(this.frmAdminReport_Load);
+            this.Text = "frmAdminReport";       
             ((System.ComponentModel.ISupportInitialize)(this.dgReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

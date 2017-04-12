@@ -1,5 +1,7 @@
 ﻿using eClinicals.View;
 using eClinicals.Controllers;
+using System.Drawing;
+
 namespace eClinicals.Controllers
 {
    public abstract class ControllerBase : IController
@@ -83,7 +85,11 @@ namespace eClinicals.Controllers
            
         }
 
-
+        public void Status(string message, Color color)
+        {
+            this.mainForm.lblStatus.BackColor = color;
+            this.mainForm.lblStatus.Text = message;
+        }
 
     }
 

@@ -47,7 +47,7 @@ namespace eClinicals.View
         public Person currentUser;
         
         private AdminLoggedInViewController adminLoggedInViewController;
-      
+        internal Nurse currentNurse;
 
         public int currentPatientID
         {
@@ -75,10 +75,8 @@ namespace eClinicals.View
             ribbonController.LoggedOut += this.OnLoggedOut;
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD       
-                
+            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD  
             currentUser = e.Person;     
-           
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
             ribbonController.AddUserInfo(currentUser.LastName + ", " + currentUser.FirstName, currentUser.ContactID, currentUser.UserType);
             ribbonController.AddContactInfo(currentUser.Phone, currentUser.Address + " " + currentUser.City + " ," + currentUser.State + "  " + currentUser.Zip);
@@ -115,11 +113,12 @@ namespace eClinicals.View
         {
 
             OpenRegistrationView();
-        }
-      
+        }      
         // Open Patient information
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            
+
             if (selectedPatient != null)
             {
                 CloseCurrentOpenView(currentViewOpened);
@@ -128,6 +127,8 @@ namespace eClinicals.View
                 Status(message, Color.Transparent);
                 patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
                 patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
+
+             
 
                 AddToContainer(patientRecordTabsViewController, MIDDLE);
                 AddToContainer(patientInfoRibbonController, RIGHT);
@@ -144,15 +145,22 @@ namespace eClinicals.View
 
                // NEED FIX :: frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
 
-                patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-             
+                patientRecordTabsViewController.fillPatientInfo(selectedPatient);             
             }
             else
             {
                 Status("No Patient Selected", Color.Yellow);
             }
+            try
+            {
+                currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID);
+                Status(currentNurse.FirstName, Color.Yellow);
+            }
+            catch (Exception ex)
+            {
+                Status(ex.Message + " Error in  : " + ex.TargetSite, Color.Red);
+            }
         }
-
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
             if (frmPatientTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
@@ -164,7 +172,6 @@ namespace eClinicals.View
                 Status("Please fill out all form elements : ", Color.Red);
             }
         } 
-
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {
             // "shows" tab page 2
@@ -178,7 +185,6 @@ namespace eClinicals.View
                 Status("No Appointment has been selected ", Color.Yellow);
 
             }
-
         }
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -242,14 +248,16 @@ namespace eClinicals.View
                     Status("No records are listed for selection.", Color.Yellow);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Status(ex.Message, Color.Red);
             }
         }
         // Search for patient  
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {          
             lblStatus.BackColor = Color.Transparent;
             List<Patient> myPatientsList = null;
             DateTime DOB = DateTime.Parse(patientSearchViewController.frmPatientSearch.dtpDate.Value.ToShortDateString());
@@ -276,8 +284,13 @@ namespace eClinicals.View
           
             patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = myPatientsList;
             ExtensionGridView.RemoveEmptyColumns(patientSearchViewController.frmPatientSearch.dgvSearchResults);
-        }
+            }
+            catch (Exception ex)
+            {
 
+                Status(ex.Message, Color.Red);
+            }
+        }
         private void OpenRegistrationView()
         {
             frmRegistration frmReg = new frmRegistration();
@@ -296,7 +309,6 @@ namespace eClinicals.View
         {
             setUserViewByType(currentUser.UserType);           
         }
-
         private void setUserViewByType(int userType)
         {                  
           
@@ -334,7 +346,6 @@ namespace eClinicals.View
                     break;
             }
         }
-
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             OpenReport();
@@ -347,35 +358,15 @@ namespace eClinicals.View
         {
             CloseCurrentOpenView(currentViewOpened);
            adminReportController = new AdminReportController(this, new frmAdminReport());
-            adminReportController.frmAdminReport.btnGetReport.Click += new EventHandler(btnGetReport_Click);
-           AddToContainer(adminReportController, MIDDLE);
-            this.lblStatus.Text = ("Admin Report View");
+
+            adminReportController.frmAdminReport.controller = adminReportController;
+            adminReportController.frmAdminReport.eController = eClinicalsController; 
+
+            AddToContainer(adminReportController, MIDDLE);
+            this.lblStatus.Text = ("Ready...");
            // adminReportController.frmAdminReport.btnOpen.Click += new EventHandler(btnOpen_Click);           /
            // adminReportController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
-
-        }
-        private void btnGetReport_Click(object sender, EventArgs e)
-        {
-            frmAdminReport frmReport = adminReportController.frmAdminReport;
-            try
-            {
-                Report report = new Report();
-                DateTime startDate  = frmReport.dtStart.Value.Date;
-                DateTime endDate = frmReport.dtEnd.Value.Date;
-                //Error
-                report = eClinicalsController.MostPerformedTestsDuringDates(startDate, endDate);
-                frmReport.dgReport.DataSource = report;
-            }
-            catch (Exception ex)
-            {
-                Status(ex.Message, Color.Red);
-
-            }
-
-
-
-        }
-
+        }      
         private void OpenPatientSearch()
         {
             CloseCurrentOpenView(currentViewOpened);
@@ -386,7 +377,6 @@ namespace eClinicals.View
             patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
             patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
         }
-
         private void AddToContainer(ControllerBase thisController, int level)
         {
             switch (level)
