@@ -36,8 +36,14 @@
     <StartupObject>eClinicals.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,8 +53,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminReportController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\eClinicalsController.cs" />
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
@@ -87,6 +97,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ExtensionGridView.cs" />
     <Compile Include="Utils\RegExCheckUtil.cs" />
+    <Compile Include="View\frmAdminReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAdminReport.Designer.cs">
+      <DependentUpon>frmAdminReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmBaseView.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -161,6 +177,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\frmAdminReport.resx">
+      <DependentUpon>frmAdminReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmBaseView.resx">
       <DependentUpon>frmBaseView.cs</DependentUpon>
     </EmbeddedResource>

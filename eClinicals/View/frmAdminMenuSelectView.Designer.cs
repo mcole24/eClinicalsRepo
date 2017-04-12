@@ -40,6 +40,7 @@
             this.btnGenerateReport.TabIndex = 1;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // frmAdminMenuSelectView
             // 

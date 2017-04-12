@@ -21,5 +21,13 @@ namespace eClinicals.View
         {
 
         }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
     }
 }

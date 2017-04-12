@@ -27,6 +27,7 @@ namespace eClinicals.View
         PatientInfoRibbonController patientInfoRibbonController;
         NurseLoggedInViewController nurseLoggedInViewController;
         PatientSearchViewController patientSearchViewController;
+        AdminReportController adminReportController;
         RegistrationViewController registrationViewController;
         PatientRecordTabsViewController patientRecordTabsViewController;
         frmPatientInfoRibbon patienRibbon;
@@ -43,7 +44,7 @@ namespace eClinicals.View
         private Patient selectedPatient;
         private Appointment selectedAppointment;
         public int selectedPatientID;
-        private Person currentUser;
+        public Person currentUser;
         
         private AdminLoggedInViewController adminLoggedInViewController;
       
@@ -68,14 +69,10 @@ namespace eClinicals.View
         public void OnLoggedIn(object source, UserLoggedInArgs e)
         {
             lblStatus.BackColor = System.Drawing.Color.Transparent;
-            Status("Logged in successfully.", Color.Green);
-           
-           
+            Status("Logged in successfully.", Color.Green);    
             ribbonController = new RibbonController(this, new frmRibbon());
-
             //register the handler for logged on event
             ribbonController.LoggedOut += this.OnLoggedOut;
-
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
             // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD       
@@ -313,7 +310,6 @@ namespace eClinicals.View
                     currentViewOpened = adminLoggedInViewController.thisView;             
                     AddToContainer(adminLoggedInViewController, MIDDLE);
                     adminLoggedInViewController.frmAdminMenuSelectView.btnGenerateReport.Click += new EventHandler(btnGenerateReport_Click);
-
                     Status("Admin View Open", Color.Yellow);
                     break;
 
@@ -348,7 +344,13 @@ namespace eClinicals.View
         }
         private void OpenReport()
         {
-            this.lblStatus.Text = ("report open");
+            CloseCurrentOpenView(currentViewOpened);
+           adminReportController = new AdminReportController(this, new frmAdminReport());
+            AddToContainer(adminReportController, MIDDLE);
+            this.lblStatus.Text = ("Admin Report View");
+           // adminReportController.frmAdminReport.btnOpen.Click += new EventHandler(btnOpen_Click);           /
+           // adminReportController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
+
         }
 
         private void OpenPatientSearch()
