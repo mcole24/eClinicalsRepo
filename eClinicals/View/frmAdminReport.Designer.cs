@@ -69,7 +69,7 @@
             this.btnGetReport.TabIndex = 3;
             this.btnGetReport.Text = "Get Report";
             this.btnGetReport.UseVisualStyleBackColor = true;
-            this.btnGetReport.Click += new System.EventHandler(this.btnGetReport_Click);
+
             // 
             // label1
             // 
@@ -111,12 +111,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgReport;
-        private System.Windows.Forms.DateTimePicker dtStart;
-        private System.Windows.Forms.Button btnGetReport;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.DateTimePicker dtEnd;
+        public System.Windows.Forms.Button btnGetReport;
+        public System.Windows.Forms.DataGridView dgReport;
+        public System.Windows.Forms.DateTimePicker dtStart;
     }
 }

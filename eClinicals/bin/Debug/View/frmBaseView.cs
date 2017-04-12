@@ -5,6 +5,7 @@ namespace eClinicals.View
 
     public class frmBaseView : Form
     {
+        public string status { get; set; }
         private void InitializeComponent()
         {
             this.SuspendLayout();

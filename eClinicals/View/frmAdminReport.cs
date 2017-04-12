@@ -24,21 +24,5 @@ namespace eClinicals.View
         {
            
         }
-
-        private void btnGetReport_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Report report = new Report();
-                //Error
-                 report = eClinicalsController.MostPerformedTestsDuringDates(dtStart.Value,dtEnd.Value);
-                dgReport.DataSource = report;
             }
-            catch (Exception)
-            {
-
-
-            }
-        }
-    }
 }

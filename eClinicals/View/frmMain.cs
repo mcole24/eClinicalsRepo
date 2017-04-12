@@ -310,6 +310,7 @@ namespace eClinicals.View
                     currentViewOpened = adminLoggedInViewController.thisView;             
                     AddToContainer(adminLoggedInViewController, MIDDLE);
                     adminLoggedInViewController.frmAdminMenuSelectView.btnGenerateReport.Click += new EventHandler(btnGenerateReport_Click);
+
                     Status("Admin View Open", Color.Yellow);
                     break;
 
@@ -346,10 +347,32 @@ namespace eClinicals.View
         {
             CloseCurrentOpenView(currentViewOpened);
            adminReportController = new AdminReportController(this, new frmAdminReport());
-            AddToContainer(adminReportController, MIDDLE);
+            adminReportController.frmAdminReport.btnGetReport.Click += new EventHandler(btnGetReport_Click);
+           AddToContainer(adminReportController, MIDDLE);
             this.lblStatus.Text = ("Admin Report View");
            // adminReportController.frmAdminReport.btnOpen.Click += new EventHandler(btnOpen_Click);           /
            // adminReportController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
+
+        }
+        private void btnGetReport_Click(object sender, EventArgs e)
+        {
+            frmAdminReport frmReport = adminReportController.frmAdminReport;
+            try
+            {
+                Report report = new Report();
+                DateTime startDate  = frmReport.dtStart.Value.Date;
+                DateTime endDate = frmReport.dtEnd.Value.Date;
+                //Error
+                report = eClinicalsController.MostPerformedTestsDuringDates(startDate, endDate);
+                frmReport.dgReport.DataSource = report;
+            }
+            catch (Exception ex)
+            {
+                Status(ex.Message, Color.Red);
+
+            }
+
+
 
         }
 
