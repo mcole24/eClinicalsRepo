@@ -25,9 +25,6 @@ namespace eClinicals.Controllers
         {
             return DAL.AppointmentDAL.GetAllDoctorNames();
         }
-
-
-
         public bool CreateAppointment(DateTime appointmentDate, int patientID, int doctorID, int appointmentReasonID)
         {
             return DAL.AppointmentDAL.CreateAppointment(appointmentDate, patientID, doctorID, appointmentReasonID);

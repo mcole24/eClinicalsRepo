@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eClinicals.Model
 {
-    class Doctor
+    class Doctor : Person
     {
         public int DoctorID { get; set; }
 

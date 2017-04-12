@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
             this.btnEditPerson = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -124,7 +125,7 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.label24 = new System.Windows.Forms.Label();
+            this.btnEditAppointment = new System.Windows.Forms.Button();
             this.tabPatientRecord.SuspendLayout();
             this.tabPersonal.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
@@ -207,6 +208,16 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Location = new System.Drawing.Point(740, 196);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(86, 13);
+            this.label24.TabIndex = 64;
+            this.label24.Text = "### ###  ####";
             // 
             // btnEditPerson
             // 
@@ -750,7 +761,7 @@
             this.btnShowCurrentAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCurrentAppointments.BackgroundImage")));
             this.btnShowCurrentAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowCurrentAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowCurrentAppointments.Location = new System.Drawing.Point(585, 20);
+            this.btnShowCurrentAppointments.Location = new System.Drawing.Point(616, 15);
             this.btnShowCurrentAppointments.Name = "btnShowCurrentAppointments";
             this.btnShowCurrentAppointments.Size = new System.Drawing.Size(199, 48);
             this.btnShowCurrentAppointments.TabIndex = 15;
@@ -762,7 +773,7 @@
             this.btnShowFutureAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowFutureAppointments.BackgroundImage")));
             this.btnShowFutureAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowFutureAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowFutureAppointments.Location = new System.Drawing.Point(342, 20);
+            this.btnShowFutureAppointments.Location = new System.Drawing.Point(373, 15);
             this.btnShowFutureAppointments.Name = "btnShowFutureAppointments";
             this.btnShowFutureAppointments.Size = new System.Drawing.Size(199, 48);
             this.btnShowFutureAppointments.TabIndex = 14;
@@ -774,7 +785,7 @@
             this.btnShowAllAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowAllAppointments.BackgroundImage")));
             this.btnShowAllAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowAllAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnShowAllAppointments.Location = new System.Drawing.Point(75, 20);
+            this.btnShowAllAppointments.Location = new System.Drawing.Point(106, 15);
             this.btnShowAllAppointments.Name = "btnShowAllAppointments";
             this.btnShowAllAppointments.Size = new System.Drawing.Size(199, 48);
             this.btnShowAllAppointments.TabIndex = 4;
@@ -783,11 +794,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEditAppointment);
             this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Controls.Add(this.btnSelectAppointment);
             this.groupBox4.Controls.Add(this.dgViewAppointments_ViewAppointments);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(75, 78);
+            this.groupBox4.Controls.Add(this.btnSelectAppointment);
+            this.groupBox4.Location = new System.Drawing.Point(105, 69);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(710, 451);
             this.groupBox4.TabIndex = 13;
@@ -806,11 +818,11 @@
             // btnSelectAppointment
             // 
             this.btnSelectAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
-            this.btnSelectAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAppointment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectAppointment.Location = new System.Drawing.Point(121, 348);
+            this.btnSelectAppointment.Location = new System.Drawing.Point(16, 325);
             this.btnSelectAppointment.Name = "btnSelectAppointment";
-            this.btnSelectAppointment.Size = new System.Drawing.Size(458, 59);
+            this.btnSelectAppointment.Size = new System.Drawing.Size(685, 64);
             this.btnSelectAppointment.TabIndex = 2;
             this.btnSelectAppointment.Text = "Start Routine Check for seleted appointment";
             this.btnSelectAppointment.UseVisualStyleBackColor = true;
@@ -1190,15 +1202,17 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // label24
+            // btnEditAppointment
             // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label24.Location = new System.Drawing.Point(740, 196);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(86, 13);
-            this.label24.TabIndex = 64;
-            this.label24.Text = "### ###  ####";
+            this.btnEditAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnEditAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditAppointment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnEditAppointment.Location = new System.Drawing.Point(16, 395);
+            this.btnEditAppointment.Name = "btnEditAppointment";
+            this.btnEditAppointment.Size = new System.Drawing.Size(685, 56);
+            this.btnEditAppointment.TabIndex = 16;
+            this.btnEditAppointment.Text = "Edit Routine Check for seleted appointment";
+            this.btnEditAppointment.UseVisualStyleBackColor = true;
             // 
             // frmPatientRecordTabs
             // 
@@ -1336,5 +1350,6 @@
         public System.Windows.Forms.Label label33;
         public System.Windows.Forms.Label label34;
         public System.Windows.Forms.Label label24;
+        public System.Windows.Forms.Button btnEditAppointment;
     }
 }

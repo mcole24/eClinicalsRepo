@@ -12,6 +12,8 @@ using static eClinicals.Controllers.LoginController;
 
 namespace eClinicals.View
 {
+    public enum UserType {Doctor = 1, Administrator = 2, Nurse = 3, Patient = 4 };
+
     public partial class frmMain : Form
     {
 
@@ -41,8 +43,11 @@ namespace eClinicals.View
         private Patient selectedPatient;
         private Appointment selectedAppointment;
         public int selectedPatientID;
-        private Person selectedUser;
-        Nurse currentNurse;
+        private Person currentUser;
+        
+        private AdminLoggedInViewController adminLoggedInViewController;
+      
+
         public int currentPatientID
         {
             get { return this.selectedPatient.PatientID; }
@@ -63,8 +68,8 @@ namespace eClinicals.View
         public void OnLoggedIn(object source, UserLoggedInArgs e)
         {
             lblStatus.BackColor = System.Drawing.Color.Transparent;
-            lblStatus.Text = "Logged in successfully.";
-            OpenStartMenuView();
+            Status("Logged in successfully.", Color.Green);
+           
            
             ribbonController = new RibbonController(this, new frmRibbon());
 
@@ -73,17 +78,18 @@ namespace eClinicals.View
 
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD           
-            selectedUser = e.Person;
-            currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
+            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD       
+                
+            currentUser = e.Person;     
+           
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
-            ribbonController.AddUserInfo(selectedUser.LastName + ", " + selectedUser.FirstName, selectedUser.ContactID, selectedUser.UserType);
-            ribbonController.AddContactInfo(selectedUser.Phone, selectedUser.Address + " " + selectedUser.City + " ," + selectedUser.State + "  " + selectedUser.Zip);
+            ribbonController.AddUserInfo(currentUser.LastName + ", " + currentUser.FirstName, currentUser.ContactID, currentUser.UserType);
+            ribbonController.AddContactInfo(currentUser.Phone, currentUser.Address + " " + currentUser.City + " ," + currentUser.State + "  " + currentUser.Zip);
             ribbonController.AddStatusInfo(this.status);
             //===============================================
             this.menuStripMain.Enabled = true;
-            currentViewOpened = nurseLoggedInViewController.thisView;
-        }
+            OpenStartMenuView();
+        }     
 
         private void OpenLoginView()
         {
@@ -94,7 +100,7 @@ namespace eClinicals.View
             AddToContainer(loginController, MIDDLE);
             currentViewOpened = null;
             selectedPatient = null;
-            selectedUser = null;
+            currentUser = null;
         }
         public void OnLoggedOut(object source, EventArgs e)
         {
@@ -104,7 +110,7 @@ namespace eClinicals.View
             this.pTop.Visible = false;
             this.pRight.Visible = false;
             selectedPatient = null;
-            selectedUser = null;
+            currentUser = null;
             OpenLoginView();
         }
 
@@ -113,22 +119,7 @@ namespace eClinicals.View
 
             OpenRegistrationView();
         }
-        private void btnFindPatientRecord_Click(object sender, EventArgs e)
-        {
-            OpenPatientSearch();
-        }
-        // ===========================OPEN VIEWS
-
-        private void OpenPatientSearch()
-        {
-            CloseCurrentOpenView(currentViewOpened);
-            patientSearchViewController = new PatientSearchViewController(this, new frmPatientSearch());
-            AddToContainer(patientSearchViewController, MIDDLE);
-            this.lblStatus.Text = ("Patient Appointment Search View");
-            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
-            patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
-            patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
-        }
+      
         // Open Patient information
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -147,16 +138,17 @@ namespace eClinicals.View
                 frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;             
                 //add patient ribbon
                 AddPatientRibonInfo(selectedPatient);//       
-                patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);     
-
+                patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
+                // add nurse
+              //  patientRecordTabsViewController.selectedNurse = currentNurse;
                 //Fill View appointments
                 selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);               
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-              
-                //  frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
 
-               patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-                //frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
+               // NEED FIX :: frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
+
+                patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+             
             }
             else
             {
@@ -166,7 +158,6 @@ namespace eClinicals.View
 
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
-
             if (frmPatientTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
             {
                 Status("Routine CheckUp Added : ", Color.Yellow);
@@ -204,12 +195,6 @@ namespace eClinicals.View
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
                     Status(message, Color.Transparent);
                     selectedPatientID = selectedPatient.PatientID;
-
-                  //  *********************************************************************************************** WORKING ON 
-                    //send selected patient to controller
-                    // patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-                 //   frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
-
                 }
                 else
                 {
@@ -221,43 +206,7 @@ namespace eClinicals.View
                 throw;
             }
         }
-        private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
-        {
-            //routione checkup
-          
-            // CheckBox symptoms
-            // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
-
-            string systolicS = frmPatientTabs.txtSystolic.Text;
-            string diastolicS = frmPatientTabs.txtDiastolic.Text;
-            string bodyTempS = frmPatientTabs.txtBodyTemp.Text;
-            string pulseS = frmPatientTabs.txtPulse.Text;
-            if (selectedAppointment != null & currentNurse != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
-            {
-
-                int systolic = Int32.Parse(systolicS);
-                int diastolic = Int32.Parse(diastolicS);
-                decimal bodyTemp = Decimal.Parse(bodyTempS);
-                int pulse = Int32.Parse(pulseS);
-
-                if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, DateTime.Now, systolic, diastolic, bodyTemp, pulse))
-                {
-
-                    Status("Routine CheckUp Added : ", Color.Yellow);
-                    frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
-                }
-                else
-                {
-                }
-                Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
-
-            }
-            else
-            {
-                Status("Please fill out all form elements : ", Color.Red);
-            }
-        }      
-
+        
         private void btnSearchPatient_Click(object sender, EventArgs e)
         {
             //when a view is opened it automatically closes the previous view in center panel
@@ -345,14 +294,74 @@ namespace eClinicals.View
         {
             OpenStartMenuView();
         }
+
         public void OpenStartMenuView()
         {
-            CloseCurrentOpenView(currentViewOpened);
-            nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
-            AddToContainer(nurseLoggedInViewController, MIDDLE);
-            nurseLoggedInViewController.frmNurseMenuSelectView.btnFindPatientRecord.Click += new EventHandler(btnFindPatientRecord_Click);
-            nurseLoggedInViewController.frmNurseMenuSelectView.btnRegisterAPatient.Click += new EventHandler(btnRegisterAPatient_Click);
+            setUserViewByType(currentUser.UserType);           
         }
+
+        private void setUserViewByType(int userType)
+        {                  
+          
+            switch (userType)
+            {
+                case (int)UserType.Administrator:                 
+
+                    adminLoggedInViewController = new AdminLoggedInViewController(this, new frmAdminMenuSelectView());
+                    //currentAdmin = eClinicalsController.GetAdminByID(currentUser.ContactID);
+                    CloseCurrentOpenView(currentViewOpened);
+                    currentViewOpened = adminLoggedInViewController.thisView;             
+                    AddToContainer(adminLoggedInViewController, MIDDLE);
+                    adminLoggedInViewController.frmAdminMenuSelectView.btnGenerateReport.Click += new EventHandler(btnGenerateReport_Click);
+
+                    Status("Admin View Open", Color.Yellow);
+                    break;
+
+                case (int)UserType.Nurse:
+                  // currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID); 
+                    nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
+                    CloseCurrentOpenView(currentViewOpened);
+                    currentViewOpened = nurseLoggedInViewController.thisView;   
+                    AddToContainer(nurseLoggedInViewController, MIDDLE);
+                    nurseLoggedInViewController.frmNurseMenuSelectView.btnFindPatientRecord.Click += new EventHandler(btnFindPatientRecord_Click);
+                    nurseLoggedInViewController.frmNurseMenuSelectView.btnRegisterAPatient.Click += new EventHandler(btnRegisterAPatient_Click);
+                    Status("Nurses View Open", Color.Yellow);
+                    break;
+
+                case (int)UserType.Doctor:
+                    MessageBox.Show("There is no view for user type : Doctor");
+                    Status("There is no view for user type : Doctor", Color.Red);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            OpenReport();
+        }      
+        private void btnFindPatientRecord_Click(object sender, EventArgs e)
+        {
+            OpenPatientSearch();
+        }
+        private void OpenReport()
+        {
+            this.lblStatus.Text = ("report open");
+        }
+
+        private void OpenPatientSearch()
+        {
+            CloseCurrentOpenView(currentViewOpened);
+            patientSearchViewController = new PatientSearchViewController(this, new frmPatientSearch());
+            AddToContainer(patientSearchViewController, MIDDLE);
+            this.lblStatus.Text = ("Patient Appointment Search View");
+            patientSearchViewController.frmPatientSearch.btnOpen.Click += new EventHandler(btnOpen_Click);
+            patientSearchViewController.frmPatientSearch.btnSearch.Click += new EventHandler(btnSearch_Click);
+            patientSearchViewController.frmPatientSearch.dgvSearchResults.CellClick += new DataGridViewCellEventHandler(dgvSearchResults_CellClick);
+        }
+
         private void AddToContainer(ControllerBase thisController, int level)
         {
             switch (level)

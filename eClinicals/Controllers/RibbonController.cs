@@ -45,16 +45,16 @@ userType definitions --
 */          string userType = "";
             switch (uid)
             {
-               case 1:
+               case (int)UserType.Doctor:
                 userType = "Doctor";
                 break;
-                case 2:
+                case (int)UserType.Administrator:
                     userType = "Administrator";
                     break;
-                case 3:
+                case (int)UserType.Nurse:
                     userType = "Nurse";
                     break;
-                case 4:
+                case (int)UserType.Patient:
                     userType = "Patient";
                     break;
                 default:

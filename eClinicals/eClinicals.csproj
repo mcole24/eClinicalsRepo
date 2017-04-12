@@ -52,6 +52,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\eClinicalsController.cs" />
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
+    <Compile Include="Controllers\AdminLoggedInViewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PatientRecordTabsViewController.cs" />
     <Compile Include="Controllers\PatientSearchViewController.cs" />
@@ -101,6 +102,12 @@
     </Compile>
     <Compile Include="View\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmAdminMenuSelectView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAdminMenuSelectView.Designer.cs">
+      <DependentUpon>frmAdminMenuSelectView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmNurseMenuSelectView.cs">
       <SubType>Form</SubType>
@@ -162,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmAdminMenuSelectView.resx">
+      <DependentUpon>frmAdminMenuSelectView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmNurseMenuSelectView.resx">
       <DependentUpon>frmNurseMenuSelectView.cs</DependentUpon>

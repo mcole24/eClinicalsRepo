@@ -29,7 +29,7 @@ namespace eClinicals.Controllers
         void OkBtn_Click(Object sender, EventArgs e)
         {
 
-            frmLoginView.username = "asyed1";  //frmLoginView.txtUserName.Text;
+            frmLoginView.username = "jwynn1";  //frmLoginView.txtUserName.Text;
             frmLoginView.password ="testpassword123"; //frmLoginView.txtPassword.Text;
             LogIn(frmLoginView.username, frmLoginView.password);   
         }
@@ -44,10 +44,8 @@ namespace eClinicals.Controllers
             if (isLoggedIn)
             {
                 //raise the event OnLOggedIn
-               Person newUser = eClinicalsController.GetLoggedInUserDetails(username, password);
-
-              
-                OnLoggedIn(newUser); // OnLogIn(Nurse); Needed GetA  Nurse by Username and Password
+               Person newUser = eClinicalsController.GetLoggedInUserDetails(username, password);              
+                OnLoggedIn(newUser); 
                 thisView.Close();
                 this.mainForm.isLoggedIn = true;
             }

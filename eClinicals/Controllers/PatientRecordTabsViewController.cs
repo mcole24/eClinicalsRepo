@@ -15,7 +15,7 @@ namespace eClinicals.Controllers
         public frmPatientRecordTabs frmPatientRecordTabs;
         eClinicalsController eClinicalsController;
         private Patient patient;
-        private Person selectedUser;
+        public Nurse selectedNurse;
         private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
@@ -157,7 +157,7 @@ namespace eClinicals.Controllers
         private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
         {
             //routione checkup
-            currentNurse = eClinicalsController.GetNurseByID(selectedUser.ContactID);
+            currentNurse = eClinicalsController.GetNurseByID(selectedNurse.ContactID);
             // CheckBox symptoms
             // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
             string systolicS = frmPatientRecordTabs.txtSystolic.Text;
@@ -234,19 +234,7 @@ namespace eClinicals.Controllers
                 throw;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         public void DisableEdit()
         {
 

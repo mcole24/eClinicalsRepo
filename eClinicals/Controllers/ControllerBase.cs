@@ -39,6 +39,10 @@ namespace eClinicals.Controllers
             {
                 this.thisView = new frmNurseMenuSelectView();
             }
+            if (thisView is frmAdminMenuSelectView)
+            {
+                this.thisView = new frmAdminMenuSelectView();
+            }
             if (thisView is frmRibbon)
             {
                 this.thisView = new frmRibbon();
@@ -75,8 +79,8 @@ namespace eClinicals.Controllers
         private void ThisView_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             frmBaseView frm = (frmBaseView)sender;
-          //  thisView = null;         
-            mainForm.lblStatus.Text = frm.Text + " has been closed. Use the menu above to reopen the form. ";
+            
+           
         }
 
 
