@@ -26,7 +26,7 @@ namespace eClinicals.View
         {
             try
             {
-                Report report = new Report();
+                List<Report> report;
                 DateTime startDate = dtStart.Value.Date;
                 DateTime endDate = dtEnd.Value.Date;
                 //Error
