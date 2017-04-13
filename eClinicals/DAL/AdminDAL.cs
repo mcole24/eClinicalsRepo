@@ -35,7 +35,7 @@ namespace eClinicals.DAL
                                 admin.City = reader["mailingAddressCity"].ToString();
                                 admin.State = reader["mailingAddressState"].ToString();
                                 admin.Zip = reader["mailingAddressZip"].ToString();
-                                admin.Phone = reader["phone"].ToString();
+                                admin.Phone = reader["phoneNumber"].ToString();
                                 admin.Gender = reader["gender"].ToString();
                                 admin.Ssn = reader["ssn"].ToString();
                                 admin.UserName = reader["username"].ToString();
