@@ -91,7 +91,7 @@ namespace eClinicals.DAL
                                 patient.City = reader["contact.mailingAddressCity"].ToString();
                                 patient.State = reader["contact.mailingAddressState"].ToString();
                                 patient.Zip = reader["contact.mailingAddressZip"].ToString();
-                                patient.Phone = reader["contact.phone"].ToString();
+                                patient.Phone = reader["contact.phoneNumber"].ToString();
                                 patient.Gender = reader["contact.gender"].ToString();
                                 patient.Ssn = reader["contact.ssn"].ToString();
                                 // Patients will not have user names
