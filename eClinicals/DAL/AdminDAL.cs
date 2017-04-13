@@ -57,9 +57,9 @@ namespace eClinicals.DAL
             return admin;
         }
 
-        public static Report MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
+        public static List<Report> MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
         {
-            Report report = new Report();
+            List<Report> reportList = new List<Report>();
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -94,6 +94,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
+                                Report report = new Report();
                                 report.TestCode = (int)reader["test_code"];
                                 report.TestName = reader["test_name"].ToString();
                                 report.TimesPerformed = (int)reader["times_performed"];
@@ -103,6 +104,7 @@ namespace eClinicals.DAL
                                 report.AbnormalResults = (int)reader["abnormal_results"];
                                 report.PatientsUnder30 = (decimal)reader["patients_under_30"];
                                 report.PatientsOver30 = (decimal)reader["patients_over_30"];
+                                reportList.Add(report);
                             }
                             reader.Close();
                         }
@@ -118,7 +120,7 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return report;
+            return reportList;
         }
 
 
