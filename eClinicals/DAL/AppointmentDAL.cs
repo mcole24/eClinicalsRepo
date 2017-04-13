@@ -185,6 +185,57 @@ namespace eClinicals.DAL
             return appointmentList;
         }
 
+        public static List<Appointment> GetAllFutureAppointmentsByPatientID(int patientID)
+        {
+            List<Appointment> appointmentList = new List<Appointment>();
+            string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
+                + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
+                + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
+                + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
+                + "JOIN contact ON doctor.contactID = contact.contactID "
+                + "WHERE Patient.patientID = @patientID AND appointmentDate > GETDATE()";
+            try
+            {
+                using (SqlConnection connection = DBConnection.GetConnection())
+                {
+                    connection.Open();
+                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                    {
+                        selectCommand.Parameters.AddWithValue("@patientID", patientID);
+                        using (SqlDataReader reader = selectCommand.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+
+                                Appointment appointment = new Appointment();
+                                appointment.PatientID = (int)reader["patientID"];
+                                appointment.DoctorID = (int)reader["doctorID"];
+                                appointment.AppointmentID = (int)reader["appointmentID"];
+                                appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
+                                appointment.AppointmentReasonID = (int)reader["appointmentReasonID"];
+                                appointment.AppointmentReason = reader["appointmentReason"].ToString();
+                                appointment.AppointmentDoctor = reader["lName"].ToString();
+                                appointmentList.Add(appointment);
+                            }
+                            reader.Close();
+                        }
+
+                    }
+                    connection.Close();
+                }
+            }
+
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return appointmentList;
+        }
+
         public static List<Appointment> GetAllAppointmentReasons()
         {
             List<Appointment> appointmentReasonList = new List<Appointment>();
