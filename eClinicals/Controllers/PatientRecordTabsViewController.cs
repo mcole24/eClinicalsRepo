@@ -286,7 +286,7 @@ namespace eClinicals.Controllers
             try
             {
 
-            DateTime dateAndTime = frmPatientRecordTabs.dtpAppDateDate.Value;
+            DateTime dateAndTime = (DateTime)frmPatientRecordTabs.dtpAppDateDate.Value;
 
                int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
             int appReasonID = Int32.Parse(frmPatientRecordTabs.txtAppReasonID.Text);
@@ -303,9 +303,15 @@ namespace eClinicals.Controllers
 
                 mainForm.Status(ex.Message, Color.Red);
             }
-
-
         }
+
+        private void btnAppEditCancel_Click(object sender, EventArgs e)
+        {
+            enableDisableEditAppointment("off");
+            mainForm.Status("Appointment edit canceled", Color.Yellow);
+        }
+
+
         public void DisableEdit()
         {
 
@@ -365,7 +371,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnCancel.Click += new EventHandler(btnCancel_Click);
             frmPatientRecordTabs.btnUpdate.Click += new EventHandler(btnUpdate_Click);
             frmPatientRecordTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
-
+            frmPatientRecordTabs.btnAppEditCancel.Click += new System.EventHandler(this.btnAppEditCancel_Click);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
                          new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
             frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);

@@ -145,6 +145,7 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.btnAppEditCancel = new System.Windows.Forms.Button();
             appointmentIDLabel = new System.Windows.Forms.Label();
             appointmentReasonIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
@@ -853,6 +854,7 @@
             // 
             // gbEditAppointment
             // 
+            this.gbEditAppointment.Controls.Add(this.btnAppEditCancel);
             this.gbEditAppointment.Controls.Add(this.btnCommitEdit);
             this.gbEditAppointment.Controls.Add(appointmentDateLabel);
             this.gbEditAppointment.Controls.Add(this.doctorIDTextBox);
@@ -880,13 +882,12 @@
             this.btnCommitEdit.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
             this.btnCommitEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCommitEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCommitEdit.Location = new System.Drawing.Point(535, 80);
+            this.btnCommitEdit.Location = new System.Drawing.Point(421, 80);
             this.btnCommitEdit.Name = "btnCommitEdit";
-            this.btnCommitEdit.Size = new System.Drawing.Size(169, 32);
+            this.btnCommitEdit.Size = new System.Drawing.Size(136, 32);
             this.btnCommitEdit.TabIndex = 18;
             this.btnCommitEdit.Text = "Commit ";
             this.btnCommitEdit.UseVisualStyleBackColor = true;
-         
             // 
             // doctorIDTextBox
             // 
@@ -1430,6 +1431,19 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // btnAppEditCancel
+            // 
+            this.btnAppEditCancel.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnAppEditCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppEditCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAppEditCancel.Location = new System.Drawing.Point(563, 80);
+            this.btnAppEditCancel.Name = "btnAppEditCancel";
+            this.btnAppEditCancel.Size = new System.Drawing.Size(136, 32);
+            this.btnAppEditCancel.TabIndex = 47;
+            this.btnAppEditCancel.Text = "Cancel ";
+            this.btnAppEditCancel.UseVisualStyleBackColor = true;
+          
+            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1584,5 +1598,6 @@
         public System.Windows.Forms.GroupBox gbBeginRoutineCheck;
         public System.Windows.Forms.GroupBox gbSelectEditApp;
         public System.Windows.Forms.GroupBox gbShowAppontment;
+        public System.Windows.Forms.Button btnAppEditCancel;
     }
 }
