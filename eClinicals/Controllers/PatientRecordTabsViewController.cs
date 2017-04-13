@@ -287,20 +287,21 @@ namespace eClinicals.Controllers
             {
 
             DateTime dateAndTime = frmPatientRecordTabs.dtpAppDateDate.Value;
-            int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
+
+               int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
             int appReasonID = Int32.Parse(frmPatientRecordTabs.txtAppReasonID.Text);
 
-            if (eClinicalsController.UpdateAppointment(DateTime.Now,docID, appReasonID,mainForm.currentPatientID)) {
+            if (eClinicalsController.UpdateAppointment(dateAndTime,docID, appReasonID,mainForm.currentPatientID)) {
 
                 enableDisableEditAppointment("off");
-                mainForm.Status("Appointment has been updated", Color.Red);
+                mainForm.Status("Appointment has been updated", Color.Yellow);
             }
 
             }
             catch (Exception ex)
             {
 
-                mainForm.Status(ex.Message, Color.Yellow);
+                mainForm.Status(ex.Message, Color.Red);
             }
 
 
