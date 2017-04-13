@@ -82,7 +82,7 @@ namespace eClinicals.DAL
                     + "ON appointment.patientID = patient.patientID "
                     + "JOIN contact "
                     + "ON patient.contactID = contact.contactID "
-                    + "WHERE lab.testDateCompleted BETWEEN @startDate AND '@endDate' "
+                    + "WHERE lab.testDateCompleted BETWEEN @startDate AND @endDate "
                     + "GROUP BY lab.testCode, test.testType "
                     + "HAVING COUNT(lab.testCode) >= 2 "
                     + "ORDER BY times_performed DESC, lab.testCode DESC";
