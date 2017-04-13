@@ -47,10 +47,27 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentByID(appointmentID);
         }
 
-        public List<Appointment> GetAppointmentsByPatientID(int patientID)
+        public List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
-            return DAL.AppointmentDAL.GetAppointmentsByPatientID(patientID);
+            return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
         }
+
+        public  List<Appointment> GetAllFutureAppointmentsByPatientID(int patientID)
+        {
+            return DAL.AppointmentDAL.GetAllFutureAppointmentsByPatientID(patientID);
+        }
+
+        public  List<Appointment> GetAllPastAppointmentsByPatientID(int patientID)
+        {
+            return DAL.AppointmentDAL.GetAllPastAppointmentsByPatientID(patientID);
+        }
+
+        public  List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
+        {
+            return DAL.AppointmentDAL.GetAllCurrentDateAppointmentsByPatientID(patientID);
+        }
+
+
 
         public List<RoutineCheck> GetPreviousReadings(int patientID)
         {

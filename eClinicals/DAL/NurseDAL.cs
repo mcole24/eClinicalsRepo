@@ -89,7 +89,7 @@ namespace eClinicals.DAL
                                 nurse.City = reader["mailingAddressCity"].ToString();
                                 nurse.State = reader["mailingAddressState"].ToString();
                                 nurse.Zip = reader["mailingAddressZip"].ToString();
-                                nurse.Phone = reader["phone"].ToString();
+                                nurse.Phone = reader["phoneNumber"].ToString();
                                 nurse.Gender = reader["gender"].ToString();
                                 nurse.Ssn = reader["ssn"].ToString();
                                 nurse.UserName = reader["username"].ToString();
