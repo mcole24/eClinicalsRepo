@@ -219,10 +219,11 @@ namespace eClinicals.Controllers
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
                     this.mainForm.Status(message, Color.Transparent);
                     frmPatientRecordTabs.txtAppID.Text = selectedAppointment.AppointmentID.ToString();
-                    frmPatientRecordTabs.dtpAppDateDate.Value = selectedAppointment.AppointmentDate;
-                    frmPatientRecordTabs.txtAppDoctor.Text = selectedAppointment.AppointmentDoctor;
-                    frmPatientRecordTabs.txtAppReasonID.Text = selectedAppointment.AppointmentReasonID.ToString();
-                    frmPatientRecordTabs.txtAppReason.Text = selectedAppointment.AppointmentReason;
+                    frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
+                    frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;                   
+                    frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
+
+
 
                     //  *********************************************************************************************** WORKING ON 
                     //send selected patient to controller
@@ -245,6 +246,7 @@ namespace eClinicals.Controllers
 
             enableDisableEditAppointment("on");
 
+
            
           }
 
@@ -262,6 +264,13 @@ namespace eClinicals.Controllers
                         frmPatientRecordTabs.gbSelectEditApp.Enabled = false;
                         frmPatientRecordTabs.gbEditAppointment.Visible = true;
                         frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.DarkCyan;
+
+                    
+
+
+
+
+
                     }
                     else
                     {
@@ -279,19 +288,26 @@ namespace eClinicals.Controllers
 
                 default:
                     break;
-            }          
+            }  
+            
+            
+            
+            
+            
+                    
         }
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
             try
             {
 
-            DateTime dateAndTime = (DateTime)frmPatientRecordTabs.dtpAppDateDate.Value;
+                Doctor doc = (Doctor)frmPatientRecordTabs.cbAppDoctor.SelectedItem;
+                Appointment reason = (Appointment)frmPatientRecordTabs.cbAppReason.SelectedItem;
+                DateTime dateOnly = frmPatientRecordTabs.dtpAppDate.Value;
+                DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
+                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
 
-               int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
-            int appReasonID = Int32.Parse(frmPatientRecordTabs.txtAppReasonID.Text);
-
-            if (eClinicalsController.UpdateAppointment(dateAndTime,docID, appReasonID,mainForm.currentPatientID)) {
+                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, reason.PatientID)) {
 
                 enableDisableEditAppointment("off");
                 mainForm.Status("Appointment has been updated", Color.Yellow);

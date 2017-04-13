@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label appointmentIDLabel;
-            System.Windows.Forms.Label appointmentReasonIDLabel;
             System.Windows.Forms.Label patientIDLabel;
             System.Windows.Forms.Label doctorIDLabel;
             System.Windows.Forms.Label appointmentDoctorLabel;
             System.Windows.Forms.Label appointmentReasonLabel;
             System.Windows.Forms.Label appointmentDateLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
+            System.Windows.Forms.Label label35;
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
             this.label24 = new System.Windows.Forms.Label();
@@ -90,13 +90,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
             this.gbEditAppointment = new System.Windows.Forms.GroupBox();
+            this.btnAppEditCancel = new System.Windows.Forms.Button();
             this.btnCommitEdit = new System.Windows.Forms.Button();
             this.doctorIDTextBox = new System.Windows.Forms.TextBox();
-            this.dtpAppDateDate = new System.Windows.Forms.DateTimePicker();
-            this.txtAppReason = new System.Windows.Forms.TextBox();
-            this.txtAppDoctor = new System.Windows.Forms.TextBox();
+            this.dtpAppDate = new System.Windows.Forms.DateTimePicker();
             this.txtAppID = new System.Windows.Forms.TextBox();
-            this.txtAppReasonID = new System.Windows.Forms.TextBox();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.gbShowAppontment = new System.Windows.Forms.GroupBox();
             this.btnShowAllAppointments = new System.Windows.Forms.Button();
@@ -145,14 +143,16 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.btnAppEditCancel = new System.Windows.Forms.Button();
+            this.dtAppTime = new System.Windows.Forms.DateTimePicker();
+            this.cbAppReason = new System.Windows.Forms.ComboBox();
+            this.cbAppDoctor = new System.Windows.Forms.ComboBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
-            appointmentReasonIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
             appointmentDoctorLabel = new System.Windows.Forms.Label();
             appointmentReasonLabel = new System.Windows.Forms.Label();
             appointmentDateLabel = new System.Windows.Forms.Label();
+            label35 = new System.Windows.Forms.Label();
             this.tabPatientRecord.SuspendLayout();
             this.tabPersonal.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
@@ -179,20 +179,11 @@
             // appointmentIDLabel
             // 
             appointmentIDLabel.AutoSize = true;
-            appointmentIDLabel.Location = new System.Drawing.Point(23, 22);
+            appointmentIDLabel.Location = new System.Drawing.Point(6, 30);
             appointmentIDLabel.Name = "appointmentIDLabel";
             appointmentIDLabel.Size = new System.Drawing.Size(83, 13);
             appointmentIDLabel.TabIndex = 37;
             appointmentIDLabel.Text = "Appointment ID:";
-            // 
-            // appointmentReasonIDLabel
-            // 
-            appointmentReasonIDLabel.AutoSize = true;
-            appointmentReasonIDLabel.Location = new System.Drawing.Point(370, 18);
-            appointmentReasonIDLabel.Name = "appointmentReasonIDLabel";
-            appointmentReasonIDLabel.Size = new System.Drawing.Size(123, 13);
-            appointmentReasonIDLabel.TabIndex = 41;
-            appointmentReasonIDLabel.Text = "Appointment Reason ID:";
             // 
             // patientIDLabel
             // 
@@ -215,7 +206,7 @@
             // appointmentDoctorLabel
             // 
             appointmentDoctorLabel.AutoSize = true;
-            appointmentDoctorLabel.Location = new System.Drawing.Point(23, 74);
+            appointmentDoctorLabel.Location = new System.Drawing.Point(375, 48);
             appointmentDoctorLabel.Name = "appointmentDoctorLabel";
             appointmentDoctorLabel.Size = new System.Drawing.Size(104, 13);
             appointmentDoctorLabel.TabIndex = 35;
@@ -224,7 +215,7 @@
             // appointmentReasonLabel
             // 
             appointmentReasonLabel.AutoSize = true;
-            appointmentReasonLabel.Location = new System.Drawing.Point(370, 45);
+            appointmentReasonLabel.Location = new System.Drawing.Point(370, 17);
             appointmentReasonLabel.Name = "appointmentReasonLabel";
             appointmentReasonLabel.Size = new System.Drawing.Size(109, 13);
             appointmentReasonLabel.TabIndex = 39;
@@ -233,7 +224,7 @@
             // appointmentDateLabel
             // 
             appointmentDateLabel.AutoSize = true;
-            appointmentDateLabel.Location = new System.Drawing.Point(23, 49);
+            appointmentDateLabel.Location = new System.Drawing.Point(128, 19);
             appointmentDateLabel.Name = "appointmentDateLabel";
             appointmentDateLabel.Size = new System.Drawing.Size(95, 13);
             appointmentDateLabel.TabIndex = 33;
@@ -854,21 +845,21 @@
             // 
             // gbEditAppointment
             // 
+            this.gbEditAppointment.Controls.Add(this.cbAppDoctor);
+            this.gbEditAppointment.Controls.Add(this.cbAppReason);
+            this.gbEditAppointment.Controls.Add(label35);
+            this.gbEditAppointment.Controls.Add(this.dtAppTime);
             this.gbEditAppointment.Controls.Add(this.btnAppEditCancel);
             this.gbEditAppointment.Controls.Add(this.btnCommitEdit);
             this.gbEditAppointment.Controls.Add(appointmentDateLabel);
             this.gbEditAppointment.Controls.Add(this.doctorIDTextBox);
-            this.gbEditAppointment.Controls.Add(this.dtpAppDateDate);
-            this.gbEditAppointment.Controls.Add(this.txtAppReason);
+            this.gbEditAppointment.Controls.Add(this.dtpAppDate);
             this.gbEditAppointment.Controls.Add(appointmentReasonLabel);
             this.gbEditAppointment.Controls.Add(appointmentDoctorLabel);
             this.gbEditAppointment.Controls.Add(doctorIDLabel);
             this.gbEditAppointment.Controls.Add(patientIDLabel);
-            this.gbEditAppointment.Controls.Add(this.txtAppDoctor);
-            this.gbEditAppointment.Controls.Add(appointmentReasonIDLabel);
             this.gbEditAppointment.Controls.Add(this.txtAppID);
             this.gbEditAppointment.Controls.Add(appointmentIDLabel);
-            this.gbEditAppointment.Controls.Add(this.txtAppReasonID);
             this.gbEditAppointment.Controls.Add(this.patientIDTextBox);
             this.gbEditAppointment.Location = new System.Drawing.Point(8, 369);
             this.gbEditAppointment.Name = "gbEditAppointment";
@@ -876,6 +867,18 @@
             this.gbEditAppointment.TabIndex = 47;
             this.gbEditAppointment.TabStop = false;
             this.gbEditAppointment.Text = "Edit Appointment";
+            // 
+            // btnAppEditCancel
+            // 
+            this.btnAppEditCancel.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnAppEditCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppEditCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAppEditCancel.Location = new System.Drawing.Point(563, 80);
+            this.btnAppEditCancel.Name = "btnAppEditCancel";
+            this.btnAppEditCancel.Size = new System.Drawing.Size(136, 32);
+            this.btnAppEditCancel.TabIndex = 47;
+            this.btnAppEditCancel.Text = "Cancel ";
+            this.btnAppEditCancel.UseVisualStyleBackColor = true;
             // 
             // btnCommitEdit
             // 
@@ -896,40 +899,21 @@
             this.doctorIDTextBox.Size = new System.Drawing.Size(200, 20);
             this.doctorIDTextBox.TabIndex = 44;
             // 
-            // dtpAppDateDate
+            // dtpAppDate
             // 
-            this.dtpAppDateDate.Location = new System.Drawing.Point(152, 45);
-            this.dtpAppDateDate.Name = "dtpAppDateDate";
-            this.dtpAppDateDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpAppDateDate.TabIndex = 34;
-            // 
-            // txtAppReason
-            // 
-            this.txtAppReason.Location = new System.Drawing.Point(499, 42);
-            this.txtAppReason.Name = "txtAppReason";
-            this.txtAppReason.Size = new System.Drawing.Size(200, 20);
-            this.txtAppReason.TabIndex = 40;
-            // 
-            // txtAppDoctor
-            // 
-            this.txtAppDoctor.Location = new System.Drawing.Point(152, 71);
-            this.txtAppDoctor.Name = "txtAppDoctor";
-            this.txtAppDoctor.Size = new System.Drawing.Size(200, 20);
-            this.txtAppDoctor.TabIndex = 36;
+            this.dtpAppDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAppDate.Location = new System.Drawing.Point(260, 15);
+            this.dtpAppDate.Name = "dtpAppDate";
+            this.dtpAppDate.Size = new System.Drawing.Size(86, 20);
+            this.dtpAppDate.TabIndex = 34;
             // 
             // txtAppID
             // 
-            this.txtAppID.Location = new System.Drawing.Point(152, 19);
+            this.txtAppID.Enabled = false;
+            this.txtAppID.Location = new System.Drawing.Point(9, 48);
             this.txtAppID.Name = "txtAppID";
-            this.txtAppID.Size = new System.Drawing.Size(59, 20);
+            this.txtAppID.Size = new System.Drawing.Size(80, 20);
             this.txtAppID.TabIndex = 38;
-            // 
-            // txtAppReasonID
-            // 
-            this.txtAppReasonID.Location = new System.Drawing.Point(499, 15);
-            this.txtAppReasonID.Name = "txtAppReasonID";
-            this.txtAppReasonID.Size = new System.Drawing.Size(71, 20);
-            this.txtAppReasonID.TabIndex = 42;
             // 
             // patientIDTextBox
             // 
@@ -1431,18 +1415,38 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // btnAppEditCancel
+            // dtAppTime
             // 
-            this.btnAppEditCancel.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
-            this.btnAppEditCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppEditCancel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAppEditCancel.Location = new System.Drawing.Point(563, 80);
-            this.btnAppEditCancel.Name = "btnAppEditCancel";
-            this.btnAppEditCancel.Size = new System.Drawing.Size(136, 32);
-            this.btnAppEditCancel.TabIndex = 47;
-            this.btnAppEditCancel.Text = "Cancel ";
-            this.btnAppEditCancel.UseVisualStyleBackColor = true;
-          
+            this.dtAppTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtAppTime.Location = new System.Drawing.Point(260, 41);
+            this.dtAppTime.Name = "dtAppTime";
+            this.dtAppTime.Size = new System.Drawing.Size(86, 20);
+            this.dtAppTime.TabIndex = 48;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(128, 43);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(92, 13);
+            label35.TabIndex = 49;
+            label35.Text = "Appointment Time";
+            // 
+            // cbAppReason
+            // 
+            this.cbAppReason.FormattingEnabled = true;
+            this.cbAppReason.Location = new System.Drawing.Point(485, 14);
+            this.cbAppReason.Name = "cbAppReason";
+            this.cbAppReason.Size = new System.Drawing.Size(200, 21);
+            this.cbAppReason.TabIndex = 50;
+            // 
+            // cbAppDoctor
+            // 
+            this.cbAppDoctor.FormattingEnabled = true;
+            this.cbAppDoctor.Location = new System.Drawing.Point(485, 45);
+            this.cbAppDoctor.Name = "cbAppDoctor";
+            this.cbAppDoctor.Size = new System.Drawing.Size(200, 21);
+            this.cbAppDoctor.TabIndex = 51;
             // 
             // frmPatientRecordTabs
             // 
@@ -1583,11 +1587,8 @@
         public System.Windows.Forms.Button btnSelectAppointment;
         public System.Windows.Forms.Button btnEditAppointment;
         private System.Windows.Forms.TextBox doctorIDTextBox;
-        public System.Windows.Forms.DateTimePicker dtpAppDateDate;
-        public System.Windows.Forms.TextBox txtAppReason;
-        public System.Windows.Forms.TextBox txtAppDoctor;
+        public System.Windows.Forms.DateTimePicker dtpAppDate;
         public System.Windows.Forms.TextBox txtAppID;
-        public System.Windows.Forms.TextBox txtAppReasonID;
         private System.Windows.Forms.TextBox patientIDTextBox;
         public System.Windows.Forms.GroupBox gbEditAppointment;
         public System.Windows.Forms.GroupBox gbViewAppointments;
@@ -1599,5 +1600,8 @@
         public System.Windows.Forms.GroupBox gbSelectEditApp;
         public System.Windows.Forms.GroupBox gbShowAppontment;
         public System.Windows.Forms.Button btnAppEditCancel;
+        public System.Windows.Forms.DateTimePicker dtAppTime;
+        public System.Windows.Forms.ComboBox cbAppDoctor;
+        public System.Windows.Forms.ComboBox cbAppReason;
     }
 }

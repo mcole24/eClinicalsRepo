@@ -55,13 +55,14 @@ namespace eClinicals.View
             {
                 cbDoctor_SetAppointment.Items.Add(doc);
                 cbSelectDoctor_OrderTest.Items.Add(doc);
+                cbAppDoctor.Items.Add(doc);
             }
             listReasons = eClinicalsController.GetAllAppointmentReasons();
 
             foreach (Appointment reason in listReasons)
             {
                 cbReason_SetAppointment.Items.Add(reason);
-
+                cbAppReason.Items.Add(reason);
             }
         }
 
@@ -72,11 +73,17 @@ namespace eClinicals.View
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
             cbSelectTest_OrderTest.DisplayMember = "Test";
+
+            cbAppReason.DisplayMember = "AppointmentReason";
+            cbAppDoctor.DisplayMember = "DoctorName";
             // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
             cbDoctor_SetAppointment.SelectedIndex = 0;
             cbSelectDoctor_OrderTest.SelectedIndex = 0;
             cbSelectTest_OrderTest.SelectedIndex = 0;
+
+            cbAppReason.SelectedIndex = 0;
+            cbAppDoctor.SelectedIndex = 0;
         }
 
         private void btnSelectAppointment_Click(object sender, EventArgs e)
