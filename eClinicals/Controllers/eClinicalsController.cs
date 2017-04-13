@@ -47,9 +47,9 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentByID(appointmentID);
         }
 
-        public List<Appointment> GetAppointmentsByPatientID(int patientID)
+        public List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
-            return DAL.AppointmentDAL.GetAppointmentsByPatientID(patientID);
+            return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
         }
 
         public List<RoutineCheck> GetPreviousReadings(int patientID)

@@ -134,7 +134,7 @@ namespace eClinicals.DAL
             return appointment;
         }
 
-        public static List<Appointment> GetAppointmentsByPatientID(int patientID)
+        public static List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
