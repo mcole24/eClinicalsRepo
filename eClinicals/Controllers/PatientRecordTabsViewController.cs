@@ -23,30 +23,16 @@ namespace eClinicals.Controllers
              eClinicalsController = new eClinicalsController();
 
             frmPatientRecordTabs = (frmPatientRecordTabs)base.thisView;
-            frmMain main = (frmMain)base.mainForm;
+            frmMain main = (frmMain)base.mainForm;           
             mainForm.lblStatus.Text = "Patient Record Tabs active . . .";
-            frmPatientRecordTabs.btnEditPerson.Click += new EventHandler(btnEditPerson_Click);
-            frmPatientRecordTabs.btnCancel.Click += new EventHandler(btnCancel_Click);
-            frmPatientRecordTabs.btnUpdate.Click += new EventHandler(btnUpdate_Click);
-            frmPatientRecordTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
-
-            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
-                         new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
-            frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
-         
-
-            frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
-            frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
-
+            setEventHandlers();
             currentNurse = this.mainForm.currentNurse;
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
-    
         public void fillPatientInfo(Patient patient) {
             // *** pateint comes from frmMain ***
             this.patient = patient;
-
             frmPatientRecordTabs.txtFirstName.Text = patient.FirstName;
             frmPatientRecordTabs.txtLastName.Text = patient.LastName;
             frmPatientRecordTabs.txtSSN.Text = patient.Ssn;
@@ -232,7 +218,11 @@ namespace eClinicals.Controllers
                         "  " + selectedAppointment.AppointmentDate + " ID:" + selectedAppointment.AppointmentID +
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
                     this.mainForm.Status(message, Color.Transparent);
-                 
+                    frmPatientRecordTabs.txtAppID.Text = selectedAppointment.AppointmentID.ToString();
+                    frmPatientRecordTabs.dtpAppDateDate.Value = selectedAppointment.AppointmentDate;
+                    frmPatientRecordTabs.txtAppDoctor.Text = selectedAppointment.AppointmentDoctor;
+                    frmPatientRecordTabs.txtAppReasonID.Text = selectedAppointment.AppointmentReasonID.ToString();
+                    frmPatientRecordTabs.txtAppReason.Text = selectedAppointment.AppointmentReason;
 
                     //  *********************************************************************************************** WORKING ON 
                     //send selected patient to controller
@@ -250,7 +240,71 @@ namespace eClinicals.Controllers
                 throw;
             }
         }
-        
+        private void btnEditAppointment_Click(object sender, EventArgs e)
+        {
+
+            enableDisableEditAppointment("on");
+
+           
+          }
+
+        private void enableDisableEditAppointment(string state)
+        {
+
+            switch (state)
+            {
+                case "on":
+                    if (selectedAppointment != null)
+                    {
+                        frmPatientRecordTabs.gbShowAppontment.Enabled = false;
+                        frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = false;
+                        frmPatientRecordTabs.gbViewAppointments.Enabled = false;
+                        frmPatientRecordTabs.gbSelectEditApp.Enabled = false;
+                        frmPatientRecordTabs.gbEditAppointment.Visible = true;
+                        frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.DarkCyan;
+                    }
+                    else
+                    {
+                        this.mainForm.Status("No appointment has been selection for edit.", Color.Yellow);
+                    }
+                    break;
+                case "off":
+                    frmPatientRecordTabs.gbShowAppontment.Enabled = true;
+                    frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = true;
+                    frmPatientRecordTabs.gbViewAppointments.Enabled = true;
+                    frmPatientRecordTabs.gbSelectEditApp.Enabled = true;
+                    frmPatientRecordTabs.gbEditAppointment.Visible = false;
+                    frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.Transparent;
+                    break;
+
+                default:
+                    break;
+            }          
+        }
+        private void btnCommitEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            DateTime dateAndTime = frmPatientRecordTabs.dtpAppDateDate.Value;
+            int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
+            int appReasonID = Int32.Parse(frmPatientRecordTabs.txtAppReasonID.Text);
+
+            if (eClinicalsController.UpdateAppointment(dateAndTime,docID, appReasonID,mainForm.currentPatientID)) {
+
+                enableDisableEditAppointment("off");
+                mainForm.Status("Appointment has been updated", Color.Yellow);
+            }
+
+            }
+            catch (Exception ex)
+            {
+
+                mainForm.Status(ex.Message, Color.Yellow);
+            }
+
+
+        }
         public void DisableEdit()
         {
 
@@ -304,7 +358,22 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbGender.Enabled = true;
             frmPatientRecordTabs.txtSSN.Enabled = true;
         }
+        private void setEventHandlers()
+        {
+            frmPatientRecordTabs.btnEditPerson.Click += new EventHandler(btnEditPerson_Click);
+            frmPatientRecordTabs.btnCancel.Click += new EventHandler(btnCancel_Click);
+            frmPatientRecordTabs.btnUpdate.Click += new EventHandler(btnUpdate_Click);
+            frmPatientRecordTabs.btnOk_SetAppointment.Click += new EventHandler(btnOk_SetAppointment_Click);
 
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
+                         new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
+            frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
+
+            frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
+            frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
+            frmPatientRecordTabs.btnEditAppointment.Click += new EventHandler(this.btnEditAppointment_Click);
+            frmPatientRecordTabs.btnCommitEdit.Click += new System.EventHandler(this.btnCommitEdit_Click);
+        }
 
 
 

@@ -40,9 +40,9 @@ namespace eClinicals.View
         frmBaseView currentViewOpened;
         public string status { get; set; }
         public bool isLoggedIn { get; set; }
-        private List<Appointment> selectedPatientAppointments;
+        internal List<Appointment> selectedPatientAppointments;
         private Patient selectedPatient;
-        private Appointment selectedAppointment;
+        internal Appointment selectedAppointment;
         public int selectedPatientID;
         public Person currentUser;
         

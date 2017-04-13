@@ -36,8 +36,17 @@ namespace eClinicals.View
             InitializeComponent();
             eClinicalsController = new eClinicalsController();
             fillListBoxElements();
-            fillSetAppointmentTab();      
+            fillSetAppointmentTab();
+            editAppointment();
+            gbEditAppointment.Visible = false;
+
         }
+
+        private void editAppointment()
+        {
+          
+        }
+
         private void fillListBoxElements()
         {
             listDocs = eClinicalsController.GetAllDoctorNames();
@@ -70,6 +79,17 @@ namespace eClinicals.View
             cbSelectTest_OrderTest.SelectedIndex = 0;
         }
 
-    
+        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        {
+          
+          
+       }
+
+        private void btnEditAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
