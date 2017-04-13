@@ -174,7 +174,7 @@ namespace eClinicals.Controllers
             return DAL.AdminDAL.GetAdminByID(contactID);
         }
 
-        public Report MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
+        public List<Report> MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
         {
             return DAL.AdminDAL.MostPerformedTestsDuringDates(startDate, endDate);
         }

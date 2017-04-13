@@ -29,7 +29,7 @@ namespace eClinicals.Controllers
         void OkBtn_Click(Object sender, EventArgs e)
         {
 
-            frmLoginView.username = "cwoods6";  //frmLoginView.txtUserName.Text;
+            frmLoginView.username = "jwynn1";  //frmLoginView.txtUserName.Text;
             frmLoginView.password ="testpassword123"; //frmLoginView.txtPassword.Text;
             LogIn(frmLoginView.username, frmLoginView.password);   
         }
