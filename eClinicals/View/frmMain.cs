@@ -153,8 +153,9 @@ namespace eClinicals.View
             }
             try
             {
+                
                 currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID);
-                Status(currentNurse.FirstName, Color.Yellow);
+                Status("Current Nures: " + currentNurse.FirstName, Color.Yellow);
             }
             catch (Exception ex)
             {

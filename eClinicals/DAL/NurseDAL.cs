@@ -92,7 +92,7 @@ namespace eClinicals.DAL
                                 nurse.Phone = reader["phoneNumber"].ToString();
                                 nurse.Gender = reader["gender"].ToString();
                                 nurse.Ssn = reader["ssn"].ToString();
-                                nurse.UserName = reader["username"].ToString();
+                               // nurse.UserName = reader["username"].ToString();
                             }
                             reader.Close();
                         }
