@@ -140,7 +140,7 @@ namespace eClinicals.View
                 // add nurse
               //  patientRecordTabsViewController.selectedNurse = currentNurse;
                 //Fill View appointments
-                selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(selectedPatientID);               
+                selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID);               
                 frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
 
                // NEED FIX :: frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);

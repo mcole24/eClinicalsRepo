@@ -126,7 +126,7 @@ namespace eClinicals.Controllers
                 {
 
                     this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
-                    selectedPatientAppointments = eClinicalsController.GetAppointmentsByPatientID(patient.PatientID);
+                    selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
                     frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
                 }
                 else
@@ -290,10 +290,10 @@ namespace eClinicals.Controllers
             int docID= Int32.Parse(frmPatientRecordTabs.txtAppDoctor.Text);
             int appReasonID = Int32.Parse(frmPatientRecordTabs.txtAppReasonID.Text);
 
-            if (eClinicalsController.UpdateAppointment(dateAndTime,docID, appReasonID,mainForm.currentPatientID)) {
+            if (eClinicalsController.UpdateAppointment(DateTime.Now,docID, appReasonID,mainForm.currentPatientID)) {
 
                 enableDisableEditAppointment("off");
-                mainForm.Status("Appointment has been updated", Color.Yellow);
+                mainForm.Status("Appointment has been updated", Color.Red);
             }
 
             }
