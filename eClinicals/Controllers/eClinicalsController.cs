@@ -81,7 +81,7 @@ namespace eClinicals.Controllers
 
         public List<LabTest> GetTestResults(int patientID)
         {
-            return DAL.VisitDAL.GetTestResults(patientID);
+            return DAL.LabTestDAL.GetTestResults(patientID);
         }
 
         public  bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)

@@ -14,12 +14,10 @@ namespace eClinicals.Model
 
         public string Test { get; set; }
 
-        public int InitialDiagnosis { get; set; }
+        public int TestCode { get; set; }
 
-        public int FinalDiagnosis { get; set; }
+        public string TestName { get; set; }
 
-        public string DiagnosisType { get; set; }
-
-        public string Doctor { get; set; }
+        public int TestResult { get; set; }
     }
 }
