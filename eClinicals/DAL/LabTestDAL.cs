@@ -97,5 +97,38 @@ namespace eClinicals.DAL
             return testResultsList;
         }
 
+        public static bool UpdateResult(int testID, DateTime performedDate, int result)
+        {
+            bool isUpdated = false;
+            string updateStmt = "UPDATE visit_lab_test "
+                    + "SET testDateCompleted = @performedDate, result = @result "
+                    + "WHERE testID = @testID";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@testID", testID);
+                        cmd.Parameters.AddWithValue("@performedDate", performedDate);
+                        cmd.Parameters.AddWithValue("@result", result);
+                        
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
+                    }
+                    connect.Close();
+                }
+                return isUpdated;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }
