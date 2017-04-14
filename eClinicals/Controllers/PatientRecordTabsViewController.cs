@@ -175,12 +175,8 @@ namespace eClinicals.Controllers
 
                    this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
                     frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
-                }
-                else
-                {
-                }
+                }               
                 this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
-
             }
             else
             {
@@ -206,17 +202,13 @@ namespace eClinicals.Controllers
                 if (selectedAppointment != null)
                 {
                     frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
-                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
-
-                    
+                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;                    
                     EnableTab(frmPatientRecordTabs.tabRoutineCheck, true);
-
                     EnableTab(frmPatientRecordTabs.tabViewAppointments, false);
                     EnableTab(frmPatientRecordTabs.tabOrderTests, false);
                     EnableTab(frmPatientRecordTabs.tabTestsResults, false);
                     EnableTab(frmPatientRecordTabs.tabSetAppointments, false);
                     EnableTab(frmPatientRecordTabs.tabPersonal, false);
-
                 }
                 else
                 {
@@ -260,7 +252,6 @@ namespace eClinicals.Controllers
                         default:
                             break;
                     }
-
                 }
                 else {
                      message = "Must complete routine check.";
@@ -320,7 +311,7 @@ namespace eClinicals.Controllers
                 }
                 else
                 {
-                    this.mainForm.Status("No appointment has been selection.", Color.Yellow);
+                    this.mainForm.Status("No appointment has been selected.", Color.Yellow);
                 }
             }
             catch (Exception)
@@ -367,14 +358,13 @@ namespace eClinicals.Controllers
         {
             try
             {
-
                 Doctor doc = (Doctor)frmPatientRecordTabs.cbAppDoctor.SelectedItem;
                 Appointment reason = (Appointment)frmPatientRecordTabs.cbAppReason.SelectedItem;
                 DateTime dateOnly = frmPatientRecordTabs.dtpAppDate.Value;
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //need to put last parameter as the appointment ID
-                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, 8)) {
+                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, reason.AppointmentID)) {
 
                 enableDisableEditAppointment("off");
                 base.mainForm.Status("Appointment has been updated", Color.Yellow);
@@ -406,9 +396,6 @@ namespace eClinicals.Controllers
             EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
             EnableTab(frmPatientRecordTabs.tabPersonal, true);
         }
-
-
-
         public void DisableEdit()
         {
 

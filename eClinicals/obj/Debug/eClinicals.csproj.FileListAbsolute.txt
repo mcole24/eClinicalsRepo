@@ -114,20 +114,6 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
 <<<<<<< HEAD
 =======
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
-\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
