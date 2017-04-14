@@ -13,7 +13,7 @@ using static eClinicals.Controllers.LoginController;
 namespace eClinicals.View
 {
     public enum UserType {Doctor = 1, Administrator = 2, Nurse = 3, Patient = 4 };
-
+    
     public partial class frmMain : Form
     {
 

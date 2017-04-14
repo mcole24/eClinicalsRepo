@@ -163,6 +163,12 @@
       <DependentUpon>frmRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\ValidateFields.cs" />
+    <Compile Include="View\ucAlert.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucAlert.Designer.cs">
+      <DependentUpon>ucAlert.cs</DependentUpon>
+    </Compile>
     <Compile Include="_CS6232_g5DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,6 +217,9 @@
     <EmbeddedResource Include="View\frmRibbon.resx">
       <DependentUpon>frmRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ucAlert.resx">
+      <DependentUpon>ucAlert.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\eClinicals.Model.Admin.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.LabTest.datasource" />
@@ -250,6 +259,10 @@
     </Content>
     <Content Include="DB\CS6232-g5.sql" />
     <Content Include="FileStructure.txt" />
+    <Resource Include="Resources\Alert.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Resources\Image1.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\footer-image.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

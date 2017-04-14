@@ -34,10 +34,11 @@
             System.Windows.Forms.Label appointmentDoctorLabel;
             System.Windows.Forms.Label appointmentReasonLabel;
             System.Windows.Forms.Label appointmentDateLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
             System.Windows.Forms.Label label35;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
+            this.ucAlertPersonal = new eClinicals.View.ucAlert();
             this.label24 = new System.Windows.Forms.Label();
             this.btnEditPerson = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
@@ -75,6 +76,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.tabSetAppointments = new System.Windows.Forms.TabPage();
+            this.ucAlertSetApp = new eClinicals.View.ucAlert();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancel_SetAppointment = new System.Windows.Forms.Button();
             this.btnOk_SetAppointment = new System.Windows.Forms.Button();
@@ -89,7 +91,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
+            this.ucAlertViewApp = new eClinicals.View.ucAlert();
             this.gbEditAppointment = new System.Windows.Forms.GroupBox();
+            this.cbAppDoctor = new System.Windows.Forms.ComboBox();
+            this.cbAppReason = new System.Windows.Forms.ComboBox();
+            this.dtAppTime = new System.Windows.Forms.DateTimePicker();
             this.btnAppEditCancel = new System.Windows.Forms.Button();
             this.btnCommitEdit = new System.Windows.Forms.Button();
             this.doctorIDTextBox = new System.Windows.Forms.TextBox();
@@ -109,6 +115,7 @@
             this.dgViewAppointments_ViewAppointments = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.tabRoutineCheck = new System.Windows.Forms.TabPage();
+            this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtPulse = new System.Windows.Forms.TextBox();
             this.txtBodyTemp = new System.Windows.Forms.TextBox();
@@ -128,6 +135,7 @@
             this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.tabOrderTests = new System.Windows.Forms.TabPage();
+            this.ucAlertOrderTest = new eClinicals.View.ucAlert();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbSelectTest_OrderTest = new System.Windows.Forms.ComboBox();
             this.cbSelectDoctor_OrderTest = new System.Windows.Forms.ComboBox();
@@ -139,13 +147,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.dtAppTime = new System.Windows.Forms.DateTimePicker();
-            this.cbAppReason = new System.Windows.Forms.ComboBox();
-            this.cbAppDoctor = new System.Windows.Forms.ComboBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -230,6 +236,15 @@
             appointmentDateLabel.TabIndex = 33;
             appointmentDateLabel.Text = "Appointment Date:";
             // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(128, 43);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(92, 13);
+            label35.TabIndex = 49;
+            label35.Text = "Appointment Time";
+            // 
             // tabPatientRecord
             // 
             this.tabPatientRecord.Controls.Add(this.tabPersonal);
@@ -250,6 +265,7 @@
             // tabPersonal
             // 
             this.tabPersonal.AutoScroll = true;
+            this.tabPersonal.Controls.Add(this.ucAlertPersonal);
             this.tabPersonal.Controls.Add(this.label24);
             this.tabPersonal.Controls.Add(this.btnEditPerson);
             this.tabPersonal.Controls.Add(this.label21);
@@ -293,6 +309,15 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertPersonal
+            // 
+            this.ucAlertPersonal.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertPersonal.Name = "ucAlertPersonal";
+            this.ucAlertPersonal.Size = new System.Drawing.Size(1034, 456);
+            this.ucAlertPersonal.TabIndex = 65;
+            this.ucAlertPersonal.Visible = false;
             // 
             // label24
             // 
@@ -692,6 +717,7 @@
             // 
             // tabSetAppointments
             // 
+            this.tabSetAppointments.Controls.Add(this.ucAlertSetApp);
             this.tabSetAppointments.Controls.Add(this.groupBox2);
             this.tabSetAppointments.Controls.Add(this.groupBox1);
             this.tabSetAppointments.Location = new System.Drawing.Point(4, 34);
@@ -701,6 +727,15 @@
             this.tabSetAppointments.TabIndex = 1;
             this.tabSetAppointments.Text = "Set Appointment";
             this.tabSetAppointments.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertSetApp
+            // 
+            this.ucAlertSetApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertSetApp.Name = "ucAlertSetApp";
+            this.ucAlertSetApp.Size = new System.Drawing.Size(812, 456);
+            this.ucAlertSetApp.TabIndex = 13;
+            this.ucAlertSetApp.Visible = false;
             // 
             // groupBox2
             // 
@@ -830,6 +865,7 @@
             // tabViewAppointments
             // 
             this.tabViewAppointments.AutoScroll = true;
+            this.tabViewAppointments.Controls.Add(this.ucAlertViewApp);
             this.tabViewAppointments.Controls.Add(this.gbEditAppointment);
             this.tabViewAppointments.Controls.Add(this.gbShowAppontment);
             this.tabViewAppointments.Controls.Add(this.gbBeginRoutineCheck);
@@ -842,6 +878,15 @@
             this.tabViewAppointments.TabIndex = 2;
             this.tabViewAppointments.Text = "View Appointment";
             this.tabViewAppointments.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertViewApp
+            // 
+            this.ucAlertViewApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 44);
+            this.ucAlertViewApp.Name = "ucAlertViewApp";
+            this.ucAlertViewApp.Size = new System.Drawing.Size(920, 501);
+            this.ucAlertViewApp.TabIndex = 48;
+            this.ucAlertViewApp.Visible = false;
             // 
             // gbEditAppointment
             // 
@@ -867,6 +912,30 @@
             this.gbEditAppointment.TabIndex = 47;
             this.gbEditAppointment.TabStop = false;
             this.gbEditAppointment.Text = "Edit Appointment";
+            // 
+            // cbAppDoctor
+            // 
+            this.cbAppDoctor.FormattingEnabled = true;
+            this.cbAppDoctor.Location = new System.Drawing.Point(485, 45);
+            this.cbAppDoctor.Name = "cbAppDoctor";
+            this.cbAppDoctor.Size = new System.Drawing.Size(200, 21);
+            this.cbAppDoctor.TabIndex = 51;
+            // 
+            // cbAppReason
+            // 
+            this.cbAppReason.FormattingEnabled = true;
+            this.cbAppReason.Location = new System.Drawing.Point(485, 14);
+            this.cbAppReason.Name = "cbAppReason";
+            this.cbAppReason.Size = new System.Drawing.Size(200, 21);
+            this.cbAppReason.TabIndex = 50;
+            // 
+            // dtAppTime
+            // 
+            this.dtAppTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtAppTime.Location = new System.Drawing.Point(260, 41);
+            this.dtAppTime.Name = "dtAppTime";
+            this.dtAppTime.Size = new System.Drawing.Size(86, 20);
+            this.dtAppTime.TabIndex = 48;
             // 
             // btnAppEditCancel
             // 
@@ -1060,6 +1129,7 @@
             // 
             // tabRoutineCheck
             // 
+            this.tabRoutineCheck.Controls.Add(this.ucAlertRoutineCheck);
             this.tabRoutineCheck.Controls.Add(this.groupBox7);
             this.tabRoutineCheck.Controls.Add(this.groupBox5);
             this.tabRoutineCheck.Location = new System.Drawing.Point(4, 34);
@@ -1069,6 +1139,15 @@
             this.tabRoutineCheck.TabIndex = 3;
             this.tabRoutineCheck.Text = "Routine Check";
             this.tabRoutineCheck.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertRoutineCheck
+            // 
+            this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
+            this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
+            this.ucAlertRoutineCheck.TabIndex = 16;
+            this.ucAlertRoutineCheck.Visible = false;
             // 
             // groupBox7
             // 
@@ -1251,6 +1330,7 @@
             // 
             // tabOrderTests
             // 
+            this.tabOrderTests.Controls.Add(this.ucAlertOrderTest);
             this.tabOrderTests.Controls.Add(this.groupBox6);
             this.tabOrderTests.Location = new System.Drawing.Point(4, 34);
             this.tabOrderTests.Name = "tabOrderTests";
@@ -1259,6 +1339,15 @@
             this.tabOrderTests.TabIndex = 4;
             this.tabOrderTests.Text = "Order Tests";
             this.tabOrderTests.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertOrderTest
+            // 
+            this.ucAlertOrderTest.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertOrderTest.Name = "ucAlertOrderTest";
+            this.ucAlertOrderTest.Size = new System.Drawing.Size(814, 446);
+            this.ucAlertOrderTest.TabIndex = 14;
+            this.ucAlertOrderTest.Visible = false;
             // 
             // groupBox6
             // 
@@ -1371,6 +1460,7 @@
             // 
             // tabTestsResults
             // 
+            this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
             this.tabTestsResults.Name = "tabTestsResults";
@@ -1379,6 +1469,15 @@
             this.tabTestsResults.TabIndex = 5;
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertTestResults
+            // 
+            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertTestResults.Name = "ucAlertTestResults";
+            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
+            this.ucAlertTestResults.TabIndex = 13;
+            this.ucAlertTestResults.Visible = false;
             // 
             // groupBox3
             // 
@@ -1414,39 +1513,6 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // dtAppTime
-            // 
-            this.dtAppTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtAppTime.Location = new System.Drawing.Point(260, 41);
-            this.dtAppTime.Name = "dtAppTime";
-            this.dtAppTime.Size = new System.Drawing.Size(86, 20);
-            this.dtAppTime.TabIndex = 48;
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Location = new System.Drawing.Point(128, 43);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(92, 13);
-            label35.TabIndex = 49;
-            label35.Text = "Appointment Time";
-            // 
-            // cbAppReason
-            // 
-            this.cbAppReason.FormattingEnabled = true;
-            this.cbAppReason.Location = new System.Drawing.Point(485, 14);
-            this.cbAppReason.Name = "cbAppReason";
-            this.cbAppReason.Size = new System.Drawing.Size(200, 21);
-            this.cbAppReason.TabIndex = 50;
-            // 
-            // cbAppDoctor
-            // 
-            this.cbAppDoctor.FormattingEnabled = true;
-            this.cbAppDoctor.Location = new System.Drawing.Point(485, 45);
-            this.cbAppDoctor.Name = "cbAppDoctor";
-            this.cbAppDoctor.Size = new System.Drawing.Size(200, 21);
-            this.cbAppDoctor.TabIndex = 51;
             // 
             // frmPatientRecordTabs
             // 
@@ -1603,5 +1669,11 @@
         public System.Windows.Forms.DateTimePicker dtAppTime;
         public System.Windows.Forms.ComboBox cbAppDoctor;
         public System.Windows.Forms.ComboBox cbAppReason;
+        public ucAlert ucAlertPersonal;
+        public ucAlert ucAlertSetApp;
+        public ucAlert ucAlertViewApp;
+        public ucAlert ucAlertRoutineCheck;
+        public ucAlert ucAlertOrderTest;
+        public ucAlert ucAlertTestResults;
     }
 }
