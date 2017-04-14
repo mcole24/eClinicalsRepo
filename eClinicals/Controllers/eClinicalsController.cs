@@ -31,9 +31,9 @@ namespace eClinicals.Controllers
 
         }
 
-        public bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
+        public bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int appointmentID)
         {
-            return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, patientID);
+            return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
 
 

@@ -306,8 +306,8 @@ namespace eClinicals.Controllers
                 DateTime dateOnly = frmPatientRecordTabs.dtpAppDate.Value;
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
-
-                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, reason.PatientID)) {
+                //need to put last parameter as the appointment ID
+                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, 8)) {
 
                 enableDisableEditAppointment("off");
                 mainForm.Status("Appointment has been updated", Color.Yellow);

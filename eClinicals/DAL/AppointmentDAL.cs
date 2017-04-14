@@ -41,11 +41,12 @@ namespace eClinicals.DAL
             }
         }
 
-        public static bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
+       
+        public static bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int appointmentID)
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE appointment SET appointmentDate = @appointmentDate, doctorID = @doctorID, appointmentReasonID = @appointmentReasonID "
-            + "WHERE patientID = @patientID";
+            + "WHERE appointmentID = @appointmentID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -53,9 +54,10 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appDate", appointmentDate);
+                        cmd.Parameters.AddWithValue("@appointmentDate", appointmentDate);
                         cmd.Parameters.AddWithValue("@doctorID", doctorID);
                         cmd.Parameters.AddWithValue("@appointmentReasonID", appointmentReasonID);
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();
@@ -71,6 +73,8 @@ namespace eClinicals.DAL
                 throw ex;
             }
         }
+    
+    
 
         public static bool DeleteAppointment(int appointmentID)
         {
@@ -93,6 +97,8 @@ namespace eClinicals.DAL
                 return false;
             }
         }
+
+
 
 
         public static Appointment GetAppointmentByID(int appointmentID)
