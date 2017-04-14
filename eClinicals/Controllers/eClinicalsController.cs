@@ -104,6 +104,11 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.GetAllDiagnosis();
         }
 
+        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        {
+            return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, initialDiagnosis);
+        }
+
         public bool CreateNurse(int contactID)
         {
             return DAL.NurseDAL.CreateNurse(contactID);
