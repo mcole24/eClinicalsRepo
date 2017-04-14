@@ -19,7 +19,7 @@ namespace eClinicals.Controllers
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
         public Boolean routineCheckOpen;
-       public frmMain mainForm;
+       internal frmMain mainForm;
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
              eClinicalsController = new eClinicalsController();
@@ -131,6 +131,7 @@ namespace eClinicals.Controllers
                     this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
                     selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
                     frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+                 
                 }
                 else
                 {
@@ -364,10 +365,15 @@ namespace eClinicals.Controllers
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //need to put last parameter as the appointment ID
-                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, reason.AppointmentID)) {
+               
+                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID)) {
 
                 enableDisableEditAppointment("off");
-                base.mainForm.Status("Appointment has been updated", Color.Yellow);
+
+                    selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+
+                    base.mainForm.Status("Appointment has been updated", Color.Yellow);
             }
 
             }
