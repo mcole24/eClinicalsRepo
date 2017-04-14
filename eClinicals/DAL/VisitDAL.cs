@@ -164,6 +164,33 @@ namespace eClinicals.DAL
             }
         }
 
+        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        {
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string insertStmt = "INSERT INTO appointment (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                        + "VALUES (@visitID, @diagnosisID, @initialDiagnosis, 0)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@visitID", visitID);
+                        cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
+                        cmd.Parameters.AddWithValue("@initialDiagnosis", initialDiagnosis);
+                        cmd.ExecuteNonQuery();
+
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
     }
 }
