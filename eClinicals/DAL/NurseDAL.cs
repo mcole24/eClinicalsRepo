@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using System.IO;
 using eClinicals.Model;
 
@@ -13,8 +12,6 @@ namespace eClinicals.DAL
 {
     class NurseDAL
     {
-        private SimpleAES encrypt = new SimpleAES();
-
 
         public static bool CreateNurse(int contactID)
         {
@@ -92,7 +89,6 @@ namespace eClinicals.DAL
                                 nurse.Phone = reader["phoneNumber"].ToString();
                                 nurse.Gender = reader["gender"].ToString();
                                 nurse.Ssn = reader["ssn"].ToString();
-                               // nurse.UserName = reader["username"].ToString();
                             }
                             reader.Close();
                         }
