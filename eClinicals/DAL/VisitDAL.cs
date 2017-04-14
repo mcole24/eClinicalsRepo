@@ -127,7 +127,42 @@ namespace eClinicals.DAL
             }
         }
 
-
+        public static List<Diagnosis> GetAllDiagnosis()
+        {
+            List<Diagnosis> diagnosisList = new List<Diagnosis>();
+            string selectStmt = "SELECT diagnosisID, diagnosisType FROM diagnosis";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Diagnosis diagnosis = new Diagnosis();
+                                diagnosis.DiagnosisID = (int)reader["diagnosisID"];
+                                diagnosis.DiagnosisName = reader["diagnosisType"].ToString();
+                                diagnosisList.Add(diagnosis);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connect.Close();
+                }
+                return diagnosisList;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
     }
