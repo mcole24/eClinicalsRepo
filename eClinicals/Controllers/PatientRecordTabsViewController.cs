@@ -18,15 +18,18 @@ namespace eClinicals.Controllers
         private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
+        public Boolean routineCheckOpen;
+       public frmMain mainForm;
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
              eClinicalsController = new eClinicalsController();
 
             frmPatientRecordTabs = (frmPatientRecordTabs)base.thisView;
-            frmMain main = (frmMain)base.mainForm;           
+             this.mainForm = (frmMain)base.mainForm;           
             mainForm.lblStatus.Text = "Patient Record Tabs active . . .";
             setEventHandlers();
             currentNurse = this.mainForm.currentNurse;
+            routineCheckOpen = false;
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
@@ -196,17 +199,101 @@ namespace eClinicals.Controllers
 
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {
-            // "shows" tab page 2
-            if (selectedAppointment != null)
+            // "shows" tab page 2 : start routine check
+            if (!routineCheckOpen)
             {
-                frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
-                frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
+               
+                if (selectedAppointment != null)
+                {
+                    frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
+                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
+
+                    
+                    EnableTab(frmPatientRecordTabs.tabRoutineCheck, true);
+
+                    EnableTab(frmPatientRecordTabs.tabViewAppointments, false);
+                    EnableTab(frmPatientRecordTabs.tabOrderTests, false);
+                    EnableTab(frmPatientRecordTabs.tabTestsResults, false);
+                    EnableTab(frmPatientRecordTabs.tabSetAppointments, false);
+                    EnableTab(frmPatientRecordTabs.tabPersonal, false);
+
+                }
+                else
+                {
+                    this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
+                }
+
             }
-            else
-            {
-                this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
-            }
+            routineCheckOpen = true;
         }
+        public void EnableTab(TabPage page, bool enable)
+        {
+            string message = "";
+            foreach (Control ctl in page.Controls) {  
+
+                ctl.Enabled = enable;
+                if (enable)
+                {
+                     message = "";
+                    switch (page.Name)
+                    {
+                        case "tabViewAppointments":
+                            frmPatientRecordTabs.ucAlertViewApp.Visible = false;
+                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
+                            break;
+                        case "tabOrderTests":
+                            frmPatientRecordTabs.ucAlertOrderTest.Visible = false;
+                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
+                            break;
+                        case "tabSetAppointments":
+                            frmPatientRecordTabs.ucAlertSetApp.Visible = false;
+                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
+                            break;
+                        case "tabPersonal":
+                            frmPatientRecordTabs.ucAlertPersonal.Visible = false;
+                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
+                            break;
+                        case "tabTestsResults":
+                            frmPatientRecordTabs.ucAlertTestResults.Visible = false;
+                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+                else {
+                     message = "Must complete routine check.";
+                    switch (page.Name)
+                    {
+                        case "tabViewAppointments":
+                            frmPatientRecordTabs.ucAlertViewApp.Visible = true;
+                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
+                            break;
+                        case "tabOrderTests":
+                            frmPatientRecordTabs.ucAlertOrderTest.Visible = true;
+                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
+                            break;
+                        case "tabSetAppointments":
+                            frmPatientRecordTabs.ucAlertSetApp.Visible = true;
+                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
+                            break;
+                        case "tabPersonal":
+                            frmPatientRecordTabs.ucAlertPersonal.Visible = true;
+                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
+                            break;
+                        case "tabTestsResults":
+                            frmPatientRecordTabs.ucAlertTestResults.Visible = true;
+                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
+                            break;
+                        default:
+                            break;
+                    }               
+                  
+                    mainForm.Status("You must complete the routine check before any other action can be performed.",Color.Yellow);
+                }             
+            }
+        }       
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -243,16 +330,10 @@ namespace eClinicals.Controllers
         }
         private void btnEditAppointment_Click(object sender, EventArgs e)
         {
-
-            enableDisableEditAppointment("on");
-
-
-           
+            enableDisableEditAppointment("on");           
           }
-
-        private void enableDisableEditAppointment(string state)
-        {
-
+       private void enableDisableEditAppointment(string state)
+        {          
             switch (state)
             {
                 case "on":
@@ -263,14 +344,6 @@ namespace eClinicals.Controllers
                         frmPatientRecordTabs.gbViewAppointments.Enabled = false;
                         frmPatientRecordTabs.gbSelectEditApp.Enabled = false;
                         frmPatientRecordTabs.gbEditAppointment.Visible = true;
-                        frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.DarkCyan;
-
-                    
-
-
-
-
-
                     }
                     else
                     {
@@ -288,13 +361,7 @@ namespace eClinicals.Controllers
 
                 default:
                     break;
-            }  
-            
-            
-            
-            
-            
-                    
+            }   
         }
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
@@ -310,22 +377,36 @@ namespace eClinicals.Controllers
                 if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, reason.PatientID)) {
 
                 enableDisableEditAppointment("off");
-                mainForm.Status("Appointment has been updated", Color.Yellow);
+                base.mainForm.Status("Appointment has been updated", Color.Yellow);
             }
 
             }
             catch (Exception ex)
             {
 
-                mainForm.Status(ex.Message, Color.Red);
+                base.mainForm.Status(ex.Message, Color.Red);
             }
         }
 
         private void btnAppEditCancel_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("off");
-            mainForm.Status("Appointment edit canceled", Color.Yellow);
+            base.mainForm.Status("Appointment edit canceled", Color.Yellow);
         }
+        private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
+        {
+            routineCheckOpen = false;
+            enableDisableEditAppointment("off");
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
+           // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
+            EnableTab(frmPatientRecordTabs.tabViewAppointments, true);
+            EnableTab(frmPatientRecordTabs.tabOrderTests, true);
+            EnableTab(frmPatientRecordTabs.tabTestsResults, true);
+            EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
+            EnableTab(frmPatientRecordTabs.tabPersonal, true);
+        }
+
 
 
         public void DisableEdit()
@@ -396,6 +477,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
             frmPatientRecordTabs.btnEditAppointment.Click += new EventHandler(this.btnEditAppointment_Click);
             frmPatientRecordTabs.btnCommitEdit.Click += new System.EventHandler(this.btnCommitEdit_Click);
+            frmPatientRecordTabs.btnCancel_RoutineCheck.Click += new EventHandler(btnCancel_RoutineCheck_Click);
         }
 
 
