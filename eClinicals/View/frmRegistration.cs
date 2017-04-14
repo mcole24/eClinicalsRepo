@@ -2,6 +2,7 @@
 using eClinicals.Utils;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace eClinicals.View
 {
@@ -54,7 +55,8 @@ namespace eClinicals.View
             {
                
             if (ValidateFields.patientFields(this)){
-                    eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
+                    int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
+                    this.createPersonByType(contactID);
                 }
                 else
                 {
@@ -78,6 +80,36 @@ namespace eClinicals.View
             this.Close();
             mainForm.OpenStartMenuView();
         }
+
+
+        private void createPersonByType(int contactID)
+        {
+
+            if (contactID > 0)
+            {
+                switch (userType)
+                {
+                    case 1:
+                        //eClinicalsController.createDoctor(contactID);
+                        break;
+                    case 2:
+                        //eClinicalsController.createClinicAdministrator(contactID);
+                        break;
+                    case 3:
+                        eClinicalsController.CreateNurse(contactID);
+                        break;
+                    case 4:
+                        eClinicalsController.CreatePatient(contactID);
+                        break;
+                    default:
+                        MessageBox.Show("There was a problem creating this person");
+                        break;
+                }
+            }
+        }
+
+
+
 
     }
 

@@ -31,9 +31,9 @@ namespace eClinicals.Controllers
 
         }
 
-        public bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int patientID)
+        public bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int appointmentID)
         {
-            return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, patientID);
+            return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
 
 
@@ -81,7 +81,12 @@ namespace eClinicals.Controllers
 
         public List<LabTest> GetTestResults(int patientID)
         {
-            return DAL.VisitDAL.GetTestResults(patientID);
+            return DAL.LabTestDAL.GetTestResults(patientID);
+        }
+
+        public bool UpdateResult(int testID, DateTime performedDate, int result)
+        {
+            return DAL.LabTestDAL.UpdateResult(testID, performedDate, result);
         }
 
         public  bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
@@ -92,6 +97,21 @@ namespace eClinicals.Controllers
         public  List<Symptom> GetAllSymptoms()
         {
             return DAL.VisitDAL.GetAllSymptoms();
+        }
+
+        public List<Diagnosis> GetAllDiagnosis()
+        {
+            return DAL.VisitDAL.GetAllDiagnosis();
+        }
+
+        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        {
+            return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, initialDiagnosis);
+        }
+
+        public static bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        {
+            return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, finalDiagnosis);
         }
 
         public bool CreateNurse(int contactID)
