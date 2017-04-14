@@ -58,61 +58,6 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
-        public static List<LabTest> GetTestResults(int patientID)
-        {
-            List<LabTest> testResultsList = new List<LabTest>();
-            string selectStatement = "SELECT testID, testDateCompleted, testType, initialDiagnosis, finalDiagnosis, diagnosisType, lName "
-            + "FROM appointment JOIN visit ON appointment.appointmentID = visit.appointmentID "
-            + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
-            + "JOIN lab_test ON visit_lab_test.testCode = lab_test.testCode "
-            + "JOIN visit_has_diagnosis ON visit_lab_test.visitID = visit_has_diagnosis.visitID "
-            + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
-            + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
-            + "JOIN contact ON doctor.contactID = contact.contactID "
-            + "WHERE patientID = @patientID";
-            try
-            {
-                using (SqlConnection connection = DBConnection.GetConnection())
-                {
-                    connection.Open();
-                    using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                    {
-                        selectCommand.Parameters.AddWithValue("@patientID", patientID);
-                        using (SqlDataReader reader = selectCommand.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                LabTest testResult = new LabTest();
-                                testResult.TestID = (int)reader["testID"];
-                                testResult.PerformedDate = (DateTime)reader["testDateCompleted"];
-                                testResult.Test = reader["testType"].ToString();
-                                testResult.InitialDiagnosis = (int)reader["initialDiagnosis"];
-                                testResult.FinalDiagnosis = (int)reader["finalDiagnosis"];
-                                testResult.DiagnosisType = reader["diagnosisType"].ToString();
-                                testResult.Doctor = reader["lName"].ToString();
-                           
-                                testResultsList.Add(testResult);
-                            }
-                            reader.Close();
-                        }
-
-                    }
-                    connection.Close();
-                }
-            }
-
-            catch (SqlException ex)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return testResultsList;
-        }
-
-
         public static bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
         {
             string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
@@ -182,8 +127,97 @@ namespace eClinicals.DAL
             }
         }
 
+        public static List<Diagnosis> GetAllDiagnosis()
+        {
+            List<Diagnosis> diagnosisList = new List<Diagnosis>();
+            string selectStmt = "SELECT diagnosisID, diagnosisType FROM diagnosis";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Diagnosis diagnosis = new Diagnosis();
+                                diagnosis.DiagnosisID = (int)reader["diagnosisID"];
+                                diagnosis.DiagnosisName = reader["diagnosisType"].ToString();
+                                diagnosisList.Add(diagnosis);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    connect.Close();
+                }
+                return diagnosisList;
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        {
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string insertStmt = "INSERT INTO appointment (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                        + "VALUES (@visitID, @diagnosisID, @initialDiagnosis, 0)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@visitID", visitID);
+                        cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
+                        cmd.Parameters.AddWithValue("@initialDiagnosis", initialDiagnosis);
+                        cmd.ExecuteNonQuery();
+
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
+        public static bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        {
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string insertStmt = "INSERT INTO appointment (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                        + "VALUES (@visitID, @diagnosisID, 0, @finalDiagnosis)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@visitID", visitID);
+                        cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
+                        cmd.Parameters.AddWithValue("@finalDiagnosis", finalDiagnosis);
+                        cmd.ExecuteNonQuery();
+
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
     }
 }
