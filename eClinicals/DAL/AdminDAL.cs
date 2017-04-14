@@ -124,5 +124,32 @@ namespace eClinicals.DAL
         }
 
 
+        public static bool CreateAdmin(int contactID)
+        {
+
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string insertStmt = "INSERT INTO clinic_administrator (contactID) VALUES (@contact);";
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@contact", contactID);
+                        cmd.ExecuteNonQuery();
+                        connect.Close();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
+
     }
 }
