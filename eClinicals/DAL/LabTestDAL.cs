@@ -76,9 +76,9 @@ namespace eClinicals.DAL
                                 testResult.TestName = reader["testType"].ToString();
                                 testResult.ResultRecorded = (bool)reader["result"];
                                 if (testResult.ResultRecorded == true)
-                                    testResult.TestResult = 1;
+                                    testResult.TestResult = "positive";
                                 else
-                                    testResult.TestResult = 0;
+                                    testResult.TestResult = "negative";
                                 testResult.PerformedDate = (DateTime)reader["testDateCompleted"];
                                 testResultsList.Add(testResult);
                             }

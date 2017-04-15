@@ -16,7 +16,7 @@ namespace eClinicals.Model
 
         public string TestName { get; set; }
 
-        public int TestResult { get; set; }
+        public string TestResult { get; set; }
 
         public bool ResultRecorded { get; set; }
     }
