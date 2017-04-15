@@ -7,9 +7,12 @@ using eClinicals.View;
 using eClinicals.Model;
 using System.Drawing;
 using System.Windows.Forms;
+using eClinicals.Controllers;
 
 namespace eClinicals.Controllers
 {
+    enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3};
+
     class PatientRecordTabsViewController : ControllerBase
     {
         public frmPatientRecordTabs frmPatientRecordTabs;
@@ -19,7 +22,11 @@ namespace eClinicals.Controllers
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
         public Boolean routineCheckOpen;
-       internal frmMain mainForm;
+        internal frmMain mainForm;
+        private List<Appointment> selectedFuturePatientAppointments;
+        CURRENT_APP_VIEW CURRENT_APP_VIEW;
+        private List<Appointment> selectedPastPatientAppointments;
+
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
              eClinicalsController = new eClinicalsController();
@@ -30,12 +37,19 @@ namespace eClinicals.Controllers
             setEventHandlers();
             currentNurse = this.mainForm.currentNurse;
             routineCheckOpen = false;
-            // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
+           // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
         public void fillPatientInfo(Patient patient) {
             // *** pateint comes from frmMain ***
-            this.patient = patient;
+            if (patient != null)
+            {
+                this.patient = patient;
+            }
+            else {
+                mainForm.Status("Patient cannot be null.", Color.Red);
+
+            }          
             frmPatientRecordTabs.txtFirstName.Text = patient.FirstName;
             frmPatientRecordTabs.txtLastName.Text = patient.LastName;
             frmPatientRecordTabs.txtSSN.Text = patient.Ssn;
@@ -171,14 +185,16 @@ namespace eClinicals.Controllers
                 decimal bodyTemp = Decimal.Parse(bodyTempS);
                 int pulse = Int32.Parse(pulseS);
 
-                if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, DateTime.Now, systolic, diastolic, bodyTemp, pulse))
-                {
+                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, DateTime.Now, systolic, diastolic, bodyTemp, pulse))
+                    {
 
-                   this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
-                    frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
-                }               
+                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+                    }
+                    else {          
                 this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
-            }
+                    }
+                }
             else
             {
                 this.mainForm.Status("Please fill out all form elements : ", Color.Red);
@@ -191,9 +207,6 @@ namespace eClinicals.Controllers
                 Status(ex.Message + "Object [Nurse] was not retrieved from DAL", Color.Red);
             }
         }
-
-
-
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {
             // "shows" tab page 2 : start routine check
@@ -301,14 +314,6 @@ namespace eClinicals.Controllers
                     frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
                     frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;                   
                     frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
-
-
-
-                    //  *********************************************************************************************** WORKING ON 
-                    //send selected patient to controller
-                    // patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-                    //   frmPatientTabs.txtFirstName.Text = selectedPatient.FirstName;
-
                 }
                 else
                 {
@@ -369,9 +374,24 @@ namespace eClinicals.Controllers
                 if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID)) {
 
                 enableDisableEditAppointment("off");
-
-                    selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
-                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+                    switch (CURRENT_APP_VIEW)
+                    {
+                        case CURRENT_APP_VIEW.ALL:
+                            selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+                            break;
+                        case CURRENT_APP_VIEW.FUTURE:
+                            selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
+                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
+                            break;
+                        case CURRENT_APP_VIEW.PAST:
+                            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
+                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
+                            break;
+                        default:
+                            break;
+                    }
+                   
 
                     base.mainForm.Status("Appointment has been updated", Color.Yellow);
             }
@@ -389,6 +409,24 @@ namespace eClinicals.Controllers
             enableDisableEditAppointment("off");
             base.mainForm.Status("Appointment edit canceled", Color.Yellow);
         }
+        private void btnShowAllAppointments_Click(object sender, EventArgs e)
+        {
+            CURRENT_APP_VIEW = CURRENT_APP_VIEW.ALL;
+            selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+        }
+        private void btnShowFutureAppointments_Click(object sender, EventArgs e)
+        {
+            CURRENT_APP_VIEW = CURRENT_APP_VIEW.FUTURE;
+            selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
+        }
+        private void btnShowCurrentAppointments_Click(object sender, EventArgs e)
+        {
+            CURRENT_APP_VIEW = CURRENT_APP_VIEW.PAST;
+            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
+        }
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             routineCheckOpen = false;
@@ -404,7 +442,6 @@ namespace eClinicals.Controllers
         }
         public void DisableEdit()
         {
-
             frmPatientRecordTabs.txtLastName.Text = this.patient.LastName;
             frmPatientRecordTabs.txtFirstName.Text = this.patient.FirstName;
             frmPatientRecordTabs.dtpDOB.Value = this.patient.Dob;
@@ -465,12 +502,14 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
                          new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
             frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
-
             frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
             frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
             frmPatientRecordTabs.btnEditAppointment.Click += new EventHandler(this.btnEditAppointment_Click);
             frmPatientRecordTabs.btnCommitEdit.Click += new System.EventHandler(this.btnCommitEdit_Click);
             frmPatientRecordTabs.btnCancel_RoutineCheck.Click += new EventHandler(btnCancel_RoutineCheck_Click);
+            frmPatientRecordTabs.btnShowAllAppointments.Click += new System.EventHandler(this.btnShowAllAppointments_Click);
+            frmPatientRecordTabs.btnShowFutureAppointments.Click += new System.EventHandler(this.btnShowFutureAppointments_Click);
+            frmPatientRecordTabs.btnShowCurrentAppointments.Click += new System.EventHandler(this.btnShowCurrentAppointments_Click);
         }
 
 

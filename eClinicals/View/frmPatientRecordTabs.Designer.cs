@@ -313,7 +313,7 @@
             // ucAlertPersonal
             // 
             this.ucAlertPersonal.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 45);
             this.ucAlertPersonal.Name = "ucAlertPersonal";
             this.ucAlertPersonal.Size = new System.Drawing.Size(1034, 456);
             this.ucAlertPersonal.TabIndex = 65;
@@ -731,7 +731,7 @@
             // ucAlertSetApp
             // 
             this.ucAlertSetApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 45);
             this.ucAlertSetApp.Name = "ucAlertSetApp";
             this.ucAlertSetApp.Size = new System.Drawing.Size(812, 456);
             this.ucAlertSetApp.TabIndex = 13;
@@ -882,7 +882,7 @@
             // ucAlertViewApp
             // 
             this.ucAlertViewApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 44);
+            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 45);
             this.ucAlertViewApp.Name = "ucAlertViewApp";
             this.ucAlertViewApp.Size = new System.Drawing.Size(920, 501);
             this.ucAlertViewApp.TabIndex = 48;
@@ -1062,7 +1062,6 @@
             this.btnSelectAppointment.TabIndex = 3;
             this.btnSelectAppointment.Text = "Begin Check";
             this.btnSelectAppointment.UseVisualStyleBackColor = true;
-            this.btnSelectAppointment.Click += new System.EventHandler(this.btnSelectAppointment_Click);
             // 
             // gbSelectEditApp
             // 
@@ -1086,7 +1085,6 @@
             this.btnEditAppointment.TabIndex = 17;
             this.btnEditAppointment.Text = "Edit Appointment";
             this.btnEditAppointment.UseVisualStyleBackColor = true;
-            this.btnEditAppointment.Click += new System.EventHandler(this.btnEditAppointment_Click);
             // 
             // gbViewAppointments
             // 
@@ -1143,7 +1141,7 @@
             // ucAlertRoutineCheck
             // 
             this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 45);
             this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
             this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
             this.ucAlertRoutineCheck.TabIndex = 16;
@@ -1343,7 +1341,7 @@
             // ucAlertOrderTest
             // 
             this.ucAlertOrderTest.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 45);
             this.ucAlertOrderTest.Name = "ucAlertOrderTest";
             this.ucAlertOrderTest.Size = new System.Drawing.Size(814, 446);
             this.ucAlertOrderTest.TabIndex = 14;
@@ -1473,7 +1471,7 @@
             // ucAlertTestResults
             // 
             this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 55);
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
             this.ucAlertTestResults.Name = "ucAlertTestResults";
             this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
             this.ucAlertTestResults.TabIndex = 13;
@@ -1671,9 +1669,9 @@
         public System.Windows.Forms.ComboBox cbAppReason;
         public ucAlert ucAlertPersonal;
         public ucAlert ucAlertSetApp;
-        public ucAlert ucAlertViewApp;
         public ucAlert ucAlertRoutineCheck;
         public ucAlert ucAlertOrderTest;
         public ucAlert ucAlertTestResults;
+        public ucAlert ucAlertViewApp;
     }
 }

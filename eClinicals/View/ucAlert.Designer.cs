@@ -60,7 +60,7 @@
             this.pbAlert.ErrorImage = global::eClinicals.Properties.Resources.Alert;
             this.pbAlert.Image = global::eClinicals.Properties.Resources.Alert;
             this.pbAlert.InitialImage = global::eClinicals.Properties.Resources.Alert;
-            this.pbAlert.Location = new System.Drawing.Point(180, 10);
+            this.pbAlert.Location = new System.Drawing.Point(184, 26);
             this.pbAlert.Name = "pbAlert";
             this.pbAlert.Size = new System.Drawing.Size(416, 248);
             this.pbAlert.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

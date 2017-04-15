@@ -86,15 +86,6 @@ namespace eClinicals.View
             cbAppDoctor.SelectedIndex = 0;
         }
 
-        private void btnSelectAppointment_Click(object sender, EventArgs e)
-        {
-          
-          
-       }
-
-        private void btnEditAppointment_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
