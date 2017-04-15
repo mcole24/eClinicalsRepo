@@ -147,11 +147,21 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
-            this.ucAlertTestResults = new eClinicals.View.ucAlert();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -178,6 +188,10 @@
             this.tabOrderTests.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabTestsResults.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.SuspendLayout();
@@ -1459,6 +1473,11 @@
             // tabTestsResults
             // 
             this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
+            this.tabTestsResults.Controls.Add(this.groupBox10);
+            this.tabTestsResults.Controls.Add(this.button2);
+            this.tabTestsResults.Controls.Add(this.groupBox9);
+            this.tabTestsResults.Controls.Add(this.groupBox8);
+            this.tabTestsResults.Controls.Add(this.groupBox4);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
             this.tabTestsResults.Name = "tabTestsResults";
@@ -1468,31 +1487,119 @@
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
-            // ucAlertTestResults
+            // groupBox10
             // 
-            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertTestResults.Name = "ucAlertTestResults";
-            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
-            this.ucAlertTestResults.TabIndex = 13;
-            this.ucAlertTestResults.Visible = false;
+            this.groupBox10.Controls.Add(this.radioButton2);
+            this.groupBox10.Controls.Add(this.radioButton1);
+            this.groupBox10.Location = new System.Drawing.Point(54, 84);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(212, 57);
+            this.groupBox10.TabIndex = 19;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Diagnosis Type";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(6, 23);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(98, 17);
+            this.radioButton2.TabIndex = 25;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Initial Diagnosis";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(116, 23);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(96, 17);
+            this.radioButton1.TabIndex = 24;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Final Diagnosis";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(54, 365);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(206, 23);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Commit Test";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.dateTimePicker1);
+            this.groupBox9.Location = new System.Drawing.Point(48, 147);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(218, 56);
+            this.groupBox9.TabIndex = 19;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Performed Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(6, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.comboBox1);
+            this.groupBox8.Location = new System.Drawing.Point(48, 283);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(218, 56);
+            this.groupBox8.TabIndex = 18;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Diagnosis";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 16;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Location = new System.Drawing.Point(48, 215);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(218, 56);
+            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Test";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 19);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(200, 21);
+            this.comboBox2.TabIndex = 16;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgTestResults_TestResults);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(42, 69);
+            this.groupBox3.Location = new System.Drawing.Point(341, 84);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(481, 462);
+            this.groupBox3.Size = new System.Drawing.Size(349, 304);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             // 
             // dgTestResults_TestResults
             // 
             this.dgTestResults_TestResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTestResults_TestResults.Location = new System.Drawing.Point(19, 34);
+            this.dgTestResults_TestResults.Location = new System.Drawing.Point(6, 23);
             this.dgTestResults_TestResults.Name = "dgTestResults_TestResults";
-            this.dgTestResults_TestResults.Size = new System.Drawing.Size(447, 410);
+            this.dgTestResults_TestResults.Size = new System.Drawing.Size(330, 275);
             this.dgTestResults_TestResults.TabIndex = 1;
             // 
             // label8
@@ -1511,6 +1618,15 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // ucAlertTestResults
+            // 
+            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertTestResults.Name = "ucAlertTestResults";
+            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
+            this.ucAlertTestResults.TabIndex = 24;
+            this.ucAlertTestResults.Visible = false;
             // 
             // frmPatientRecordTabs
             // 
@@ -1548,6 +1664,11 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabTestsResults.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
@@ -1671,7 +1792,17 @@
         public ucAlert ucAlertSetApp;
         public ucAlert ucAlertRoutineCheck;
         public ucAlert ucAlertOrderTest;
-        public ucAlert ucAlertTestResults;
         public ucAlert ucAlertViewApp;
+        private System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox groupBox8;
+        public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        public ucAlert ucAlertTestResults;
     }
 }

@@ -117,42 +117,47 @@ namespace eClinicals.View
         // Open Patient information
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            
 
-            if (selectedPatient != null)
-            {
-                CloseCurrentOpenView(currentViewOpened);
-                //TODO:   Open Patient Record !!!!!!!!!!!!!!!!!!!!!!!!!NEED VISIT METHOD
-                string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open. ID : " + selectedPatient.PatientID;
-                Status(message, Color.Transparent);
-                patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
-                patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
-
-             
-
-                AddToContainer(patientRecordTabsViewController, MIDDLE);
-                AddToContainer(patientInfoRibbonController, RIGHT);
-                patienRibbon = patientInfoRibbonController.ribbon;
-                frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;             
-                //add patient ribbon
-                AddPatientRibonInfo(selectedPatient);//       
-                patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
-                // add nurse
-              //  patientRecordTabsViewController.selectedNurse = currentNurse;
-                //Fill View appointments
-                selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID); 
-                frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-
-               // NEED FIX :: frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatient.PatientID);
-
-                patientRecordTabsViewController.fillPatientInfo(selectedPatient);             
-            }
-            else
-            {
-                Status("No Patient Selected", Color.Yellow);
-            }
             try
             {
+
+                    if (selectedPatient != null)
+                    {
+                        CloseCurrentOpenView(currentViewOpened);
+                        //TODO:   Open Patient Record !!!!!!!!!!!!!!!!!!!!!!!!!NEED VISIT METHOD
+                        string message = selectedPatient.FirstName + selectedPatient.LastName + " Record is now open. ID : " + selectedPatient.PatientID;
+                        Status(message, Color.Transparent);
+                        patientInfoRibbonController = new PatientInfoRibbonController(this, new frmPatientInfoRibbon());
+                        patientRecordTabsViewController = new PatientRecordTabsViewController(this, new frmPatientRecordTabs());
+                        AddToContainer(patientRecordTabsViewController, MIDDLE);
+                        AddToContainer(patientInfoRibbonController, RIGHT);
+                        patienRibbon = patientInfoRibbonController.ribbon;
+                        frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;             
+                        //add patient ribbon
+                        AddPatientRibonInfo(selectedPatient);//       
+                        patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
+                        // add nurse            
+                        //Fill View appointments
+                        selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID); 
+                        frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+                        patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+
+                        frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
+                      
+                    }
+                    else
+                    {
+                        Status("No Patient Selected", Color.Yellow);
+                    }
+
+                }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message + " Error in  : " + ex.TargetSite);
+                Status(ex.Message + " Error in  : " + ex.TargetSite, Color.Red);
+            }
+
+
+            try {
                 
                 currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID);
                 Status("Current Nures: " + currentNurse.FirstName, Color.Yellow);
@@ -328,7 +333,7 @@ namespace eClinicals.View
                     break;
 
                 case (int)UserType.Nurse:
-                  // currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID); 
+                   currentNurse = eClinicalsController.GetNurseByID(currentUser.ContactID); 
                     nurseLoggedInViewController = new NurseLoggedInViewController(this, new frmNurseMenuSelectView());
                     CloseCurrentOpenView(currentViewOpened);
                     currentViewOpened = nurseLoggedInViewController.thisView;   

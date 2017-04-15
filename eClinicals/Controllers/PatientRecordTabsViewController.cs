@@ -112,8 +112,7 @@ namespace eClinicals.Controllers
             }
             catch (Exception ex)
             {
-                this.mainForm.Status(ex.Message, Color.Red);
-               
+                this.mainForm.Status(ex.Message, Color.Red);               
             }
         }
         private void btnOrderTest_Click(object sender, EventArgs e)
@@ -128,7 +127,6 @@ namespace eClinicals.Controllers
                 this.mainForm.Status("Please fill out all form elements : ", Color.Red);
             }
         }
-
         private void btnOk_SetAppointment_Click(object sender, EventArgs e)
         {
             try
@@ -141,11 +139,9 @@ namespace eClinicals.Controllers
 
                 if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
                 {
-
                     this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
                     selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
-                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-                 
+                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;                 
                 }
                 else
                 {
@@ -161,9 +157,7 @@ namespace eClinicals.Controllers
         {
             try
             {
-
-            //routione checkup
-        
+            //routione checkup        
             // CheckBox symptoms
             // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
             string systolicS = frmPatientRecordTabs.txtSystolic.Text;
@@ -172,9 +166,7 @@ namespace eClinicals.Controllers
             string pulseS = frmPatientRecordTabs.txtPulse.Text;
 
                 if (currentNurse == null) {
-
                     this.mainForm.Status("Nurse Object is not set. . . ", Color.Red);
-
                 }
 
             if (selectedAppointment != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
@@ -184,12 +176,20 @@ namespace eClinicals.Controllers
                 int diastolic = Int32.Parse(diastolicS);
                 decimal bodyTemp = Decimal.Parse(bodyTempS);
                 int pulse = Int32.Parse(pulseS);
-
-                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, DateTime.Now, systolic, diastolic, bodyTemp, pulse))
+                DateTime visitTime = DateTime.Now;
+                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, visitTime, systolic, diastolic, bodyTemp, pulse))
                     {
-
-                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                        
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+                    
+                        EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
+                        EnableTab(frmPatientRecordTabs.tabViewAppointments, true);
+                        EnableTab(frmPatientRecordTabs.tabOrderTests, true);
+                        EnableTab(frmPatientRecordTabs.tabTestsResults, true);
+                        EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
+                        EnableTab(frmPatientRecordTabs.tabPersonal, true);
+                        routineCheckOpen = false;
+                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
                     }
                     else {          
                 this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
@@ -199,7 +199,6 @@ namespace eClinicals.Controllers
             {
                 this.mainForm.Status("Please fill out all form elements : ", Color.Red);
             }
-
             }
             catch (Exception ex)
             {
@@ -211,8 +210,7 @@ namespace eClinicals.Controllers
         {
             // "shows" tab page 2 : start routine check
             if (!routineCheckOpen)
-            {
-               
+            {               
                 if (selectedAppointment != null)
                 {
                     frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
@@ -223,12 +221,13 @@ namespace eClinicals.Controllers
                     EnableTab(frmPatientRecordTabs.tabTestsResults, false);
                     EnableTab(frmPatientRecordTabs.tabSetAppointments, false);
                     EnableTab(frmPatientRecordTabs.tabPersonal, false);
+                    mainForm.Status("You must complete the routine check before any other action can be performed.", Color.Yellow);
+
                 }
                 else
                 {
                     this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
                 }
-
             }
             routineCheckOpen = true;
         }
@@ -295,8 +294,7 @@ namespace eClinicals.Controllers
                             break;
                     }               
                   
-                    mainForm.Status("You must complete the routine check before any other action can be performed.",Color.Yellow);
-                }             
+                      }             
             }
         }       
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -355,7 +353,6 @@ namespace eClinicals.Controllers
                     frmPatientRecordTabs.gbEditAppointment.Visible = false;
                     frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.Transparent;
                     break;
-
                 default:
                     break;
             }   
@@ -390,20 +387,15 @@ namespace eClinicals.Controllers
                             break;
                         default:
                             break;
-                    }
-                   
-
+                    }                 
                     base.mainForm.Status("Appointment has been updated", Color.Yellow);
-            }
-
+                }
             }
             catch (Exception ex)
             {
-
                 base.mainForm.Status(ex.Message, Color.Red);
             }
         }
-
         private void btnAppEditCancel_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("off");
