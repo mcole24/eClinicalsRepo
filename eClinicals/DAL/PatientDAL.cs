@@ -266,7 +266,7 @@ namespace eClinicals.DAL
         }
 
 
-        public static bool UpdatePatient(int patientID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
+        public static bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
             string ZIP, string phone, string gender, string SSN)
         {
             bool isUpdated = false;
@@ -280,6 +280,7 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
                     {
+                        cmd.Parameters.AddWithValue("@contact", contactID);
                         cmd.Parameters.AddWithValue("@lastName", lastName);
                         cmd.Parameters.AddWithValue("@firstName", firstName);
                         cmd.Parameters.AddWithValue("@DOB", DOB);
