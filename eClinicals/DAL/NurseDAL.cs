@@ -69,7 +69,8 @@ namespace eClinicals.DAL
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string selStmt = "SELECT * FROM contact INNER JOIN nurse ON contact.contactID = nurse.contactID WHERE nurse.contactID = @contactID";
+                    string selStmt = "SELECT n.nurseID, c.lName, c.fName, c.dob, c.mailingAddressStreet, c.mailingAddressCity, c.mailingAddressState, c.mailingAddressZip, c.phoneNumber, c.gender, c.ssn " + 
+                        "FROM contact c INNER JOIN nurse n ON c.contactID = n.contactID WHERE n.contactID = @contactID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@contactID", contactID);
@@ -77,18 +78,18 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                nurse.NurseID = (int)reader["nurseID"];
-                                nurse.ContactID = (int)reader["contactID"];
-                                nurse.LastName = reader["lName"].ToString();
-                                nurse.FirstName = reader["fName"].ToString();
-                                nurse.Dob = (DateTime)reader["dob"];
-                                nurse.Address = reader["mailingAddressStreet"].ToString();
-                                nurse.City = reader["mailingAddressCity"].ToString();
-                                nurse.State = reader["mailingAddressState"].ToString();
-                                nurse.Zip = reader["mailingAddressZip"].ToString();
-                                nurse.Phone = reader["phoneNumber"].ToString();
-                                nurse.Gender = reader["gender"].ToString();
-                                nurse.Ssn = reader["ssn"].ToString();
+                                nurse.NurseID = (int)reader["n.nurseID"];
+                                nurse.ContactID = contactID;
+                                nurse.LastName = reader["c.lName"].ToString();
+                                nurse.FirstName = reader["c.fName"].ToString();
+                                nurse.Dob = (DateTime)reader["c.dob"];
+                                nurse.Address = reader["c.mailingAddressStreet"].ToString();
+                                nurse.City = reader["c.mailingAddressCity"].ToString();
+                                nurse.State = reader["c.mailingAddressState"].ToString();
+                                nurse.Zip = reader["c.mailingAddressZip"].ToString();
+                                nurse.Phone = reader["c.phoneNumber"].ToString();
+                                nurse.Gender = reader["c.gender"].ToString();
+                                nurse.Ssn = reader["c.ssn"].ToString();
                             }
                             reader.Close();
                         }
