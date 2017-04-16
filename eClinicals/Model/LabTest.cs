@@ -12,12 +12,12 @@ namespace eClinicals.Model
 
         public DateTime PerformedDate { get; set; }
 
-        public string Test { get; set; }
-
         public int TestCode { get; set; }
 
         public string TestName { get; set; }
 
-        public int TestResult { get; set; }
+        public string TestResult { get; set; }
+
+        public bool ResultRecorded { get; set; }
     }
 }

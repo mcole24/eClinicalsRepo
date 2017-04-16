@@ -28,7 +28,7 @@ namespace eClinicals.DAL
                             {
                                 LabTest labTest = new LabTest();
                                 labTest.TestID = (int)reader["testCode"];
-                                labTest.Test = reader["testType"].ToString();
+                                labTest.TestName = reader["testType"].ToString();
                                 testList.Add(labTest);
                             }
                             reader.Close();
@@ -74,7 +74,11 @@ namespace eClinicals.DAL
                                 testResult.TestID = (int)reader["testID"];
                                 testResult.TestCode = (int)reader["testCode"];
                                 testResult.TestName = reader["testType"].ToString();
-                                testResult.TestResult = (int)reader["result"];
+                                testResult.ResultRecorded = (bool)reader["result"];
+                                if (testResult.ResultRecorded == true)
+                                    testResult.TestResult = "positive";
+                                else
+                                    testResult.TestResult = "negative";
                                 testResult.PerformedDate = (DateTime)reader["testDateCompleted"];
                                 testResultsList.Add(testResult);
                             }

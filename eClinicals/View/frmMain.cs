@@ -140,12 +140,11 @@ namespace eClinicals.View
                         //Fill View appointments
                         selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID); 
                         frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-                        patientRecordTabsViewController.fillPatientInfo(selectedPatient);
+                    patientRecordTabsViewController.fillPatientInfo(selectedPatient);
 
-                        frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
-                      
-                    }
-                    else
+                     frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
+                }
+                else
                     {
                         Status("No Patient Selected", Color.Yellow);
                     }

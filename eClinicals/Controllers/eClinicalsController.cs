@@ -159,10 +159,10 @@ namespace eClinicals.Controllers
             return DAL.PatientDAL.SearchPatientByLastNameAndDOB(lName, dob);
         }
 
-        public bool UpdatePatient(int patientID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
+        public bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
          string ZIP, string phone, string gender, string SSN)
         {
-            return DAL.PatientDAL.UpdatePatient(patientID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
+            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
         }
         public bool CreateLogin(int contactID, string username, string password)
         {
