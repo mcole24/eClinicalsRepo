@@ -105,10 +105,13 @@
             this.gbShowAppontment = new System.Windows.Forms.GroupBox();
             this.btnShowAllAppointments = new System.Windows.Forms.Button();
             this.btnShowFutureAppointments = new System.Windows.Forms.Button();
+            this.btnShowPastAppointments = new System.Windows.Forms.Button();
             this.btnShowCurrentAppointments = new System.Windows.Forms.Button();
             this.gbBeginRoutineCheck = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
             this.btnSelectAppointment = new System.Windows.Forms.Button();
             this.gbSelectEditApp = new System.Windows.Forms.GroupBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.btnEditAppointment = new System.Windows.Forms.Button();
             this.gbViewAppointments = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -162,8 +165,6 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -1011,11 +1012,12 @@
             // 
             this.gbShowAppontment.Controls.Add(this.btnShowAllAppointments);
             this.gbShowAppontment.Controls.Add(this.btnShowFutureAppointments);
+            this.gbShowAppontment.Controls.Add(this.btnShowPastAppointments);
             this.gbShowAppontment.Controls.Add(this.btnShowCurrentAppointments);
             this.gbShowAppontment.Location = new System.Drawing.Point(739, 44);
             this.gbShowAppontment.Name = "gbShowAppontment";
             this.gbShowAppontment.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbShowAppontment.Size = new System.Drawing.Size(181, 155);
+            this.gbShowAppontment.Size = new System.Drawing.Size(181, 191);
             this.gbShowAppontment.TabIndex = 19;
             this.gbShowAppontment.TabStop = false;
             this.gbShowAppontment.Text = "Show Appointments";
@@ -1044,6 +1046,18 @@
             this.btnShowFutureAppointments.Text = "Show Future Appointments";
             this.btnShowFutureAppointments.UseVisualStyleBackColor = true;
             // 
+            // btnShowPastAppointments
+            // 
+            this.btnShowPastAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowPastAppointments.BackgroundImage")));
+            this.btnShowPastAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowPastAppointments.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnShowPastAppointments.Location = new System.Drawing.Point(6, 147);
+            this.btnShowPastAppointments.Name = "btnShowPastAppointments";
+            this.btnShowPastAppointments.Size = new System.Drawing.Size(169, 32);
+            this.btnShowPastAppointments.TabIndex = 15;
+            this.btnShowPastAppointments.Text = "Show Past Appointments";
+            this.btnShowPastAppointments.UseVisualStyleBackColor = true;
+            // 
             // btnShowCurrentAppointments
             // 
             this.btnShowCurrentAppointments.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowCurrentAppointments.BackgroundImage")));
@@ -1069,6 +1083,17 @@
             this.gbBeginRoutineCheck.TabStop = false;
             this.gbBeginRoutineCheck.Text = "Routine Check";
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label38.Location = new System.Drawing.Point(6, 27);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(187, 16);
+            this.label38.TabIndex = 18;
+            this.label38.Text = "Only current appointments";
+            // 
             // btnSelectAppointment
             // 
             this.btnSelectAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
@@ -1093,6 +1118,17 @@
             this.gbSelectEditApp.TabIndex = 18;
             this.gbSelectEditApp.TabStop = false;
             this.gbSelectEditApp.Text = "Edit Seleted Appointment";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label37.Location = new System.Drawing.Point(10, 20);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(178, 16);
+            this.label37.TabIndex = 5;
+            this.label37.Text = "Only future appointments";
             // 
             // btnEditAppointment
             // 
@@ -1634,28 +1670,6 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label37.Location = new System.Drawing.Point(10, 20);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(178, 16);
-            this.label37.TabIndex = 5;
-            this.label37.Text = "Only future appointments";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label38.Location = new System.Drawing.Point(6, 27);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(187, 16);
-            this.label38.TabIndex = 18;
-            this.label38.Text = "Only current appointments";
-            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1836,5 +1850,6 @@
         public ucAlert ucAlertTestResults;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
+        public System.Windows.Forms.Button btnShowPastAppointments;
     }
 }

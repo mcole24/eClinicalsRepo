@@ -137,12 +137,34 @@ namespace eClinicals.Controllers
                 DateTime dateOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
                 DateTime timeOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
+                selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+
+//CHECK CUrrent DateTime for patient making same appointment time and day
+
+                foreach (Appointment app in selectedPatientAppointments)
+                    {
+                        if (DateTime.Compare( dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
+                        {
+                            mainForm.Status("Patient is already scheduled for that time.", Color.Red);
+                            Console.WriteLine(app.AppointmentDate.Date.ToShortDateString());
+                            Console.WriteLine(dateAndTime.Date.ToShortDateString());
+                        
+                        return;
+                        }                      
+                    }
+                Console.Write("here");
+
+
+
+
 
                 if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
                 {
                     this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
                     selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
-                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;                 
+                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+
+                       
                 }
                 else
                 {
@@ -253,7 +275,7 @@ namespace eClinicals.Controllers
                             frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
                             break;
                         case "tabSetAppointments":
-                            frmPatientRecordTabs.ucAlertSetApp.Visible = false;
+                            frmPatientRecordTabs.ucAlertSetApp.Visible = false;                         
                             frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
                             break;
                         case "tabPersonal":
@@ -298,6 +320,7 @@ namespace eClinicals.Controllers
                   
                       }             
             }
+
         }       
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -351,12 +374,11 @@ namespace eClinicals.Controllers
                 mainForm.Status("NOTE:  Only selected current date can begin routine check....", Color.Yellow);
             }
         }
-
         private void btnEditAppointment_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("on");           
           }
-       private void enableDisableEditAppointment(string state)
+        private void enableDisableEditAppointment(string state)
         {          
             switch (state)
             {
@@ -396,7 +418,15 @@ namespace eClinicals.Controllers
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
                 //need to put last parameter as the appointment ID
-               
+                foreach (Appointment app in selectedPatientAppointments)
+                {
+                    if (reason.AppointmentDate == app.AppointmentDate) {
+                        mainForm.Status("Patient is already scheduled for that time.", Color.Red);
+                        return;
+                    }
+                }
+
+
                 if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID)) {
 
                 enableDisableEditAppointment("off");
@@ -409,6 +439,10 @@ namespace eClinicals.Controllers
                         case CURRENT_APP_VIEW.FUTURE:
                             selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
                             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
+                            break;
+                        case CURRENT_APP_VIEW.PAST:
+                            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
+                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
                             break;
                         case CURRENT_APP_VIEW.CURRENT:
                             selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
@@ -465,22 +499,29 @@ namespace eClinicals.Controllers
             {
 
                 Status(ex.Message + " Select  Current Appoinitment", Color.Red);
-            }
-          
+            }         
            
+        }
+        private void btnShowPastAppointments_Click(object sender, EventArgs e)
+        {
+            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
         }
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             routineCheckOpen = false;
-            enableDisableEditAppointment("off");
+          
             frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
-           // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
+          
+            // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
             EnableTab(frmPatientRecordTabs.tabViewAppointments, true);
             EnableTab(frmPatientRecordTabs.tabOrderTests, true);
             EnableTab(frmPatientRecordTabs.tabTestsResults, true);
             EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
             EnableTab(frmPatientRecordTabs.tabPersonal, true);
+            enableDisableEditAppointment("off");
+
         }
         public void DisableEdit()
         {
@@ -514,7 +555,6 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtSSN.Enabled = false;
 
         }
-
         public void EnableEdit()
         {
             frmPatientRecordTabs.btnUpdate.Enabled = true;
@@ -552,6 +592,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnShowAllAppointments.Click += new System.EventHandler(this.btnShowAllAppointments_Click);
             frmPatientRecordTabs.btnShowFutureAppointments.Click += new System.EventHandler(this.btnShowFutureAppointments_Click);
             frmPatientRecordTabs.btnShowCurrentAppointments.Click += new System.EventHandler(this.btnShowCurrentAppointments_Click);
+            frmPatientRecordTabs.btnShowPastAppointments.Click += new System.EventHandler(this.btnShowPastAppointments_Click);
         }
 
 

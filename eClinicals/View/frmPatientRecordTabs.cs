@@ -84,8 +84,9 @@ namespace eClinicals.View
 
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
-        }
+        
 
-       
+        }
+  
     }
 }
