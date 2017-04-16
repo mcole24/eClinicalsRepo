@@ -296,13 +296,14 @@ namespace eClinicals.DAL
         public static List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
-            var date = DateTime.Now.ToString("dd/MM/yyyy");
+            //   string today = "2017-04-16";
+             string today = DateTime.Now.ToString("yyyy-MM-dd");
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
                 + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate = date";
+                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%'";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -311,6 +312,7 @@ namespace eClinicals.DAL
                     using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                     {
                         selectCommand.Parameters.AddWithValue("@patientID", patientID);
+                       selectCommand.Parameters.AddWithValue("@today", today);
                         using (SqlDataReader reader = selectCommand.ExecuteReader())
                         {
                             while (reader.Read())
@@ -421,6 +423,234 @@ namespace eClinicals.DAL
             }
             return doctorNameList;
         }
+
+
+        public static Visit GetAppointmentSummaryVisitDetails(int appointmentID)
+        {
+            Visit visit = new Visit();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
+                        + "FROM visit "
+                        + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
+                        + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
+                        + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
+                        + "JOIN contact ON doctor.contactID = contact.contactID "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                visit.VisitID = (int)reader["visitID"];
+                                visit.VisitDate = (DateTime)reader["appointmentDate"];
+                                visit.Doctor = reader["lName"].ToString();
+                                visit.ReasonForVisit = reader["appointmentReason"].ToString();
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visit;
+        }
+
+
+        public static List<Visit> GetAppointmentSummarySymptoms(int appointmentID)
+        {
+            List<Visit> visitSymptomsList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT symptomType "
+                        + "FROM visit "
+                        + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
+                        + "JOIN symptom ON visit_symptom.symptomID = symptom.symptomID "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitSymptom = new Visit();
+                                visitSymptom.Symptoms = reader["symptomType"].ToString();
+                                visitSymptomsList.Add(visitSymptom);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitSymptomsList;
+        }
+
+
+        public static Visit GetAppointmentSummaryCheckupResults(int appointmentID)
+        {
+            Visit visit = new Visit();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
+                        + "FROM visit "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                visit.SystolicBPReading = (int)reader["systolicBP"];
+                                visit.DiastolicBPReading = (int)reader["diastolicBP"];
+                                visit.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
+                                visit.PulseReading = (int)reader["pulse"];
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visit;
+        }
+
+        public static List<Visit> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        {
+            List<Visit> visitDiagnosisList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
+                            + "FROM visit "
+                            + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                            + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                            + "WHERE appointmentID = @appointmentID AND initialDiagnosis = 1"
+                            +
+                    "SELECT visit.visitID, diagnosisType AS finalDiagnosis "
+                   + " FROM visit "
+                   + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                   + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                   + "WHERE appointmentID = @appointmentID AND finalDiagnosis = 1";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitDiagnosis = new Visit();
+                                visitDiagnosis.InitialDiagnosis = reader["initialDiagnosis"].ToString();
+                                visitDiagnosis.FinalDiagnosis = reader["finalDiagnosis"].ToString();
+                                visitDiagnosisList.Add(visitDiagnosis);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitDiagnosisList;
+        }
+
+        public static List<Visit> GetAppointmentSummaryTestResults(int appointmentID)
+        {
+            List<Visit> visitTestResultList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT testType, result "
+                    + "FROM visit "
+                    + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
+                    + "JOIN lab_test ON visit_lab_test.testCode = lab_test.testCode "
+                    + "WHERE appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitTestResult = new Visit();
+                                visitTestResult.TestName = reader["testType"].ToString();
+                                visitTestResult.ResultRecorded = (bool)reader["result"];
+                                if (visitTestResult.ResultRecorded == true)
+                                {
+                                    visitTestResult.TestResult = "positive";
+                                }
+                                else
+                                {
+                                    visitTestResult.TestResult = "negative";
+                                }
+                                visitTestResultList.Add(visitTestResult);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitTestResultList;
+        }
+
+
 
     }
 }
