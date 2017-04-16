@@ -113,24 +113,5 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.G
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 \\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.g.resources
 \\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
-=======
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
-C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
->>>>>>> e0c58c47461c47890be5090437e0cb5ea1570107
