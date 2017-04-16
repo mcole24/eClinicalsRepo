@@ -424,5 +424,133 @@ namespace eClinicals.DAL
             return doctorNameList;
         }
 
+
+        public static Visit GetAppointmentSummaryVisitDetails(int appointmentID)
+        {
+            Visit visit = new Visit();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
+                        + "FROM visit "
+                        + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
+                        + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
+                        + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
+                        + "JOIN contact ON doctor.contactID = contact.contactID "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                visit.VisitID = (int)reader["visitID"];
+                                visit.VisitDate = (DateTime)reader["appointmentDate"];
+                                visit.Doctor = reader["lName"].ToString();
+                                visit.ReasonForVisit = reader["appointmentReason"].ToString();
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visit;
+        }
+
+
+        public static List<Visit> GetAppointmentSummarySymptoms(int appointmentID)
+        {
+            List<Visit> visitSymptomsList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT symptomType "
+                        + "FROM visit "
+                        + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
+                        + "JOIN symptom ON visit_symptom.symptomID = symptom.symptomID "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitSymptom = new Visit();
+                                visitSymptom.Symptoms = reader["symptomType"].ToString();
+                                visitSymptomsList.Add(visitSymptom);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitSymptomsList;
+        }
+
+
+        public static Visit GetAppointmentSummaryCheckupResults(int appointmentID)
+        {
+            Visit visit = new Visit();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
+                        + "FROM visit "
+                        + "WHERE visit.appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                visit.SystolicBPReading = (int)reader["systolicBP"];
+                                visit.DiastolicBPReading = (int)reader["diastolicBP"];
+                                visit.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
+                                visit.PulseReading = (int)reader["pulse"];
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visit;
+        }
+
     }
 }
