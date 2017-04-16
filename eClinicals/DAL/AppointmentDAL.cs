@@ -296,13 +296,14 @@ namespace eClinicals.DAL
         public static List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
-            var date = DateTime.Now.ToString("dd/MM/yyyy");
+            //   string today = "2017-04-16";
+             string today = DateTime.Now.ToString("yyyy-MM-dd");
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
                 + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate = date";
+                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%'";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -311,6 +312,7 @@ namespace eClinicals.DAL
                     using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                     {
                         selectCommand.Parameters.AddWithValue("@patientID", patientID);
+                       selectCommand.Parameters.AddWithValue("@today", today);
                         using (SqlDataReader reader = selectCommand.ExecuteReader())
                         {
                             while (reader.Read())
