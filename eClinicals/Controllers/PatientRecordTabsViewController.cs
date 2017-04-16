@@ -440,15 +440,33 @@ namespace eClinicals.Controllers
         private void btnShowFutureAppointments_Click(object sender, EventArgs e)
         {
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.FUTURE;
-            selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
+            try
+            {
+             selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
-           
+            }
+            catch (Exception ex)
+            {
+
+                Status(ex.Message + " Select  future Appoinitment", Color.Red);
+            }
+
+
         }
         private void btnShowCurrentAppointments_Click(object sender, EventArgs e)
         {
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.CURRENT;
-            selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
-            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedCurrentPatientAppointments;
+            try
+            {             
+                selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
+                frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedCurrentPatientAppointments;
+            }
+            catch (Exception ex)
+            {
+
+                Status(ex.Message + " Select  Current Appoinitment", Color.Red);
+            }
+          
            
         }
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
