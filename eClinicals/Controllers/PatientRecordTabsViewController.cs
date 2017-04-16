@@ -11,7 +11,7 @@ using eClinicals.Controllers;
 
 namespace eClinicals.Controllers
 {
-    enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3};
+    enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4};
 
     class PatientRecordTabsViewController : ControllerBase
     {
@@ -26,6 +26,7 @@ namespace eClinicals.Controllers
         private List<Appointment> selectedFuturePatientAppointments;
         CURRENT_APP_VIEW CURRENT_APP_VIEW;
         private List<Appointment> selectedPastPatientAppointments;
+        private List<Appointment> selectedCurrentPatientAppointments;
 
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
@@ -207,7 +208,7 @@ namespace eClinicals.Controllers
             }
         }
         private void btnSelectAppointment_Click(object sender, EventArgs e)
-        {
+        {//btnBegin Routine Check
             // "shows" tab page 2 : start routine check
             if (!routineCheckOpen)
             {               
@@ -222,11 +223,12 @@ namespace eClinicals.Controllers
                     EnableTab(frmPatientRecordTabs.tabSetAppointments, false);
                     EnableTab(frmPatientRecordTabs.tabPersonal, false);
                     mainForm.Status("You must complete the routine check before any other action can be performed.", Color.Yellow);
-
+                   
                 }
                 else
                 {
                     this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
+                   
                 }
             }
             routineCheckOpen = true;
@@ -312,6 +314,8 @@ namespace eClinicals.Controllers
                     frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
                     frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;                   
                     frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
+                    checkAppointmentCurrentDate();
+                    checkAppointmentFutureDate();
                 }
                 else
                 {
@@ -323,6 +327,31 @@ namespace eClinicals.Controllers
                 throw;
             }
         }
+        private void checkAppointmentFutureDate()
+        {
+            if (selectedAppointment.AppointmentDate.Date > DateTime.Now.Date)
+            {
+                frmPatientRecordTabs.gbSelectEditApp.Enabled = true;
+            }
+            else
+            {
+                frmPatientRecordTabs.gbSelectEditApp.Enabled = false;
+                mainForm.Status("NOTE:  Only selected future date can be edited....", Color.Yellow);
+            }
+        }
+        private void checkAppointmentCurrentDate()
+        {
+            if (selectedAppointment.AppointmentDate.Date == DateTime.Now.Date)
+            {
+                frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = true;
+            }
+            else
+            {
+                frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = false;
+                mainForm.Status("NOTE:  Only selected current date can begin routine check....", Color.Yellow);
+            }
+        }
+
         private void btnEditAppointment_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("on");           
@@ -347,9 +376,9 @@ namespace eClinicals.Controllers
                     break;
                 case "off":
                     frmPatientRecordTabs.gbShowAppontment.Enabled = true;
-                    frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = true;
+                    frmPatientRecordTabs.gbBeginRoutineCheck.Enabled = false;
                     frmPatientRecordTabs.gbViewAppointments.Enabled = true;
-                    frmPatientRecordTabs.gbSelectEditApp.Enabled = true;
+                    frmPatientRecordTabs.gbSelectEditApp.Enabled = false;
                     frmPatientRecordTabs.gbEditAppointment.Visible = false;
                     frmPatientRecordTabs.gbViewAppointments.BackColor = System.Drawing.Color.Transparent;
                     break;
@@ -381,9 +410,9 @@ namespace eClinicals.Controllers
                             selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
                             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
                             break;
-                        case CURRENT_APP_VIEW.PAST:
-                            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
-                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
+                        case CURRENT_APP_VIEW.CURRENT:
+                            selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
+                            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedCurrentPatientAppointments;
                             break;
                         default:
                             break;
@@ -406,18 +435,21 @@ namespace eClinicals.Controllers
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.ALL;
             selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+         
         }
         private void btnShowFutureAppointments_Click(object sender, EventArgs e)
         {
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.FUTURE;
             selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
+           
         }
         private void btnShowCurrentAppointments_Click(object sender, EventArgs e)
         {
-            CURRENT_APP_VIEW = CURRENT_APP_VIEW.PAST;
-            selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
-            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
+            CURRENT_APP_VIEW = CURRENT_APP_VIEW.CURRENT;
+            selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
+            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedCurrentPatientAppointments;
+           
         }
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {

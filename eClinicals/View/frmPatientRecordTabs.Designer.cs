@@ -147,6 +147,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -161,7 +162,8 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.ucAlertTestResults = new eClinicals.View.ucAlert();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -896,7 +898,7 @@
             // ucAlertViewApp
             // 
             this.ucAlertViewApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertViewApp.Location = new System.Drawing.Point(999, 256);
             this.ucAlertViewApp.Name = "ucAlertViewApp";
             this.ucAlertViewApp.Size = new System.Drawing.Size(920, 501);
             this.ucAlertViewApp.TabIndex = 48;
@@ -1056,11 +1058,13 @@
             // 
             // gbBeginRoutineCheck
             // 
+            this.gbBeginRoutineCheck.Controls.Add(this.label38);
             this.gbBeginRoutineCheck.Controls.Add(this.btnSelectAppointment);
+            this.gbBeginRoutineCheck.Enabled = false;
             this.gbBeginRoutineCheck.Location = new System.Drawing.Point(739, 256);
             this.gbBeginRoutineCheck.Name = "gbBeginRoutineCheck";
             this.gbBeginRoutineCheck.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbBeginRoutineCheck.Size = new System.Drawing.Size(181, 63);
+            this.gbBeginRoutineCheck.Size = new System.Drawing.Size(193, 88);
             this.gbBeginRoutineCheck.TabIndex = 19;
             this.gbBeginRoutineCheck.TabStop = false;
             this.gbBeginRoutineCheck.Text = "Routine Check";
@@ -1070,7 +1074,7 @@
             this.btnSelectAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
             this.btnSelectAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAppointment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectAppointment.Location = new System.Drawing.Point(10, 18);
+            this.btnSelectAppointment.Location = new System.Drawing.Point(6, 46);
             this.btnSelectAppointment.Name = "btnSelectAppointment";
             this.btnSelectAppointment.Size = new System.Drawing.Size(169, 32);
             this.btnSelectAppointment.TabIndex = 3;
@@ -1079,11 +1083,13 @@
             // 
             // gbSelectEditApp
             // 
+            this.gbSelectEditApp.Controls.Add(this.label37);
             this.gbSelectEditApp.Controls.Add(this.btnEditAppointment);
+            this.gbSelectEditApp.Enabled = false;
             this.gbSelectEditApp.Location = new System.Drawing.Point(733, 369);
             this.gbSelectEditApp.Name = "gbSelectEditApp";
             this.gbSelectEditApp.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbSelectEditApp.Size = new System.Drawing.Size(181, 63);
+            this.gbSelectEditApp.Size = new System.Drawing.Size(199, 84);
             this.gbSelectEditApp.TabIndex = 18;
             this.gbSelectEditApp.TabStop = false;
             this.gbSelectEditApp.Text = "Edit Seleted Appointment";
@@ -1093,7 +1099,7 @@
             this.btnEditAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
             this.btnEditAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditAppointment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditAppointment.Location = new System.Drawing.Point(10, 19);
+            this.btnEditAppointment.Location = new System.Drawing.Point(6, 43);
             this.btnEditAppointment.Name = "btnEditAppointment";
             this.btnEditAppointment.Size = new System.Drawing.Size(169, 32);
             this.btnEditAppointment.TabIndex = 17;
@@ -1487,6 +1493,15 @@
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
+            // ucAlertTestResults
+            // 
+            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertTestResults.Name = "ucAlertTestResults";
+            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
+            this.ucAlertTestResults.TabIndex = 24;
+            this.ucAlertTestResults.Visible = false;
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.radioButton2);
@@ -1619,14 +1634,27 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // ucAlertTestResults
+            // label37
             // 
-            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertTestResults.Name = "ucAlertTestResults";
-            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
-            this.ucAlertTestResults.TabIndex = 24;
-            this.ucAlertTestResults.Visible = false;
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label37.Location = new System.Drawing.Point(10, 20);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(178, 16);
+            this.label37.TabIndex = 5;
+            this.label37.Text = "Only future appointments";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.label38.Location = new System.Drawing.Point(6, 27);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(187, 16);
+            this.label38.TabIndex = 18;
+            this.label38.Text = "Only current appointments";
             // 
             // frmPatientRecordTabs
             // 
@@ -1650,7 +1678,9 @@
             this.gbEditAppointment.PerformLayout();
             this.gbShowAppontment.ResumeLayout(false);
             this.gbBeginRoutineCheck.ResumeLayout(false);
+            this.gbBeginRoutineCheck.PerformLayout();
             this.gbSelectEditApp.ResumeLayout(false);
+            this.gbSelectEditApp.PerformLayout();
             this.gbViewAppointments.ResumeLayout(false);
             this.gbViewAppointments.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).EndInit();
@@ -1804,5 +1834,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         public ucAlert ucAlertTestResults;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
     }
 }
