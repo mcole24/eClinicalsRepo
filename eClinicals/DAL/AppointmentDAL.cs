@@ -552,5 +552,105 @@ namespace eClinicals.DAL
             return visit;
         }
 
+        public static List<Visit> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        {
+            List<Visit> visitDiagnosisList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
+                            + "FROM visit "
+                            + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                            + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                            + "WHERE appointmentID = @appointmentID AND initialDiagnosis = 1"
+                            +
+                    "SELECT visit.visitID, diagnosisType AS finalDiagnosis "
+                   + " FROM visit "
+                   + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                   + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                   + "WHERE appointmentID = @appointmentID AND finalDiagnosis = 1";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitDiagnosis = new Visit();
+                                visitDiagnosis.InitialDiagnosis = reader["initialDiagnosis"].ToString();
+                                visitDiagnosis.FinalDiagnosis = reader["finalDiagnosis"].ToString();
+                                visitDiagnosisList.Add(visitDiagnosis);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitDiagnosisList;
+        }
+
+        public static List<Visit> GetAppointmentSummaryTestResults(int appointmentID)
+        {
+            List<Visit> visitTestResultList = new List<Visit>();
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    string selStmt = "SELECT testType, result "
+                    + "FROM visit "
+                    + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
+                    + "JOIN lab_test ON visit_lab_test.testCode = lab_test.testCode "
+                    + "WHERE appointmentID = @appointmentID";
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        connect.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Visit visitTestResult = new Visit();
+                                visitTestResult.TestName = reader["testType"].ToString();
+                                visitTestResult.ResultRecorded = (bool)reader["result"];
+                                if (visitTestResult.ResultRecorded == true)
+                                {
+                                    visitTestResult.TestResult = "positive";
+                                }
+                                else
+                                {
+                                    visitTestResult.TestResult = "negative";
+                                }
+                                visitTestResultList.Add(visitTestResult);
+                            }
+                        }
+                        connect.Close();
+                    }
+                }
+            }
+            catch (SqlException sqlex)
+            {
+                throw sqlex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitTestResultList;
+        }
+
+
+
     }
 }

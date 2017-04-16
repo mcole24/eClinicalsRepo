@@ -23,5 +23,15 @@ namespace eClinicals.Model
         public decimal BodyTemperatureReading { get; set; }
 
         public int PulseReading { get; set; }
-    }
+
+        public string InitialDiagnosis { get; set; }
+
+        public string FinalDiagnosis { get; set;}
+
+        public string TestResult { get; set; }
+
+        public string TestName { get; set; }
+
+        public bool  ResultRecorded { get; set; }
+    } 
 }
