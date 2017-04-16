@@ -296,12 +296,13 @@ namespace eClinicals.DAL
         public static List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
+            var date = DateTime.Now.ToString("dd/MM/yyyy");
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
                 + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate = GETDATE()";
+                + "WHERE Patient.patientID = @patientID AND appointmentDate = date";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
