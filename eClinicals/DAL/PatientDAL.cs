@@ -271,8 +271,8 @@ namespace eClinicals.DAL
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
-                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " + 
-                "WHERE patientID = (SELECT patientID FROM patient WHERE contactID = @contact)";
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " +
+                "WHERE contactID = @contact";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
