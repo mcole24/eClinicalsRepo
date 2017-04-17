@@ -21,5 +21,8 @@ namespace eClinicals.Controllers
             mainForm.lblStatus.Text = "Registration View Active . . .";
             
         }
+
+
+
     }
 }

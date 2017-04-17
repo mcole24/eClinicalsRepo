@@ -43,7 +43,7 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(374, 54);
+            this.txtFirstName.Location = new System.Drawing.Point(195, 53);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(200, 20);
             this.txtFirstName.TabIndex = 1;
@@ -52,7 +52,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(209, 28);
+            this.label4.Location = new System.Drawing.Point(28, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 8;
@@ -61,7 +61,7 @@
             // lblDate_FirstName
             // 
             this.lblDate_FirstName.AutoSize = true;
-            this.lblDate_FirstName.Location = new System.Drawing.Point(377, 28);
+            this.lblDate_FirstName.Location = new System.Drawing.Point(192, 27);
             this.lblDate_FirstName.Name = "lblDate_FirstName";
             this.lblDate_FirstName.Size = new System.Drawing.Size(92, 13);
             this.lblDate_FirstName.TabIndex = 7;
@@ -70,15 +70,16 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(629, 28);
+            this.lblLastName.Location = new System.Drawing.Point(411, 27);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(94, 13);
             this.lblLastName.TabIndex = 101;
             this.lblLastName.Text = "Patient Last Name";
+            this.lblLastName.Click += new System.EventHandler(this.lblLastName_Click);
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(848, 346);
+            this.btnOpen.Location = new System.Drawing.Point(578, 346);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(106, 23);
             this.btnOpen.TabIndex = 4;
@@ -94,13 +95,13 @@
             this.dgvSearchResults.MultiSelect = false;
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.ReadOnly = true;
-            this.dgvSearchResults.Size = new System.Drawing.Size(959, 227);
+            this.dgvSearchResults.Size = new System.Drawing.Size(544, 227);
             this.dgvSearchResults.TabIndex = 5;
             this.dgvSearchResults.TabStop = false;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(848, 40);
+            this.btnSearch.Location = new System.Drawing.Point(578, 26);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(106, 48);
             this.btnSearch.TabIndex = 3;
@@ -109,15 +110,16 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.Location = new System.Drawing.Point(616, 54);
+            this.txtLastName.Location = new System.Drawing.Point(414, 53);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(144, 20);
+            this.txtLastName.Size = new System.Drawing.Size(145, 20);
             this.txtLastName.TabIndex = 2;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // dtpDate
             // 
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(374, 55);
+            this.dtpDate.Location = new System.Drawing.Point(195, 53);
             this.dtpDate.MaxDate = new System.DateTime(1990, 12, 9, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(95, 20);
@@ -132,7 +134,7 @@
             "DOB/NAME",
             "Date of Birth",
             "Name"});
-            this.cbSearch.Location = new System.Drawing.Point(210, 54);
+            this.cbSearch.Location = new System.Drawing.Point(31, 53);
             this.cbSearch.Name = "cbSearch";
             this.cbSearch.Size = new System.Drawing.Size(119, 21);
             this.cbSearch.TabIndex = 0;
@@ -142,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 381);
+            this.ClientSize = new System.Drawing.Size(723, 381);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblDate_FirstName);

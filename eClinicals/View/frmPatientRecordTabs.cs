@@ -2,13 +2,16 @@
 using eClinicals.Model;
 using System;
 using System.Collections.Generic;
-
+using System.Drawing;
+using System.Linq;
 
 namespace eClinicals.View
 {
     public partial class frmPatientRecordTabs : frmBaseView
     {
         List<Doctor> listDocs;
+        List<Diagnosis> listDiagnosis;
+        List<LabTest> listTestOrder;
         List<Appointment> listReasons;
         eClinicalsController eClinicalsController;
       // Personal Tab
@@ -39,7 +42,6 @@ namespace eClinicals.View
             fillSetAppointmentTab();
             editAppointment();
             gbEditAppointment.Visible = false;
-
         }
 
         private void editAppointment()
@@ -64,6 +66,23 @@ namespace eClinicals.View
                 cbReason_SetAppointment.Items.Add(reason);
                 cbAppReason.Items.Add(reason);
             }
+
+            listDiagnosis = eClinicalsController.GetAllDiagnosis();
+
+            foreach (Diagnosis diagnosis in listDiagnosis)
+            {
+               cbDiagnosis_TestResults.Items.Add(diagnosis);              
+           
+            }
+            listTestOrder = eClinicalsController.GetAllTests();
+
+            foreach (LabTest test in listTestOrder)
+            {
+                cbTest_TestResults.Items.Add(test);
+               cbSelectTest_OrderTest.Items.Add(test);
+            }
+
+
         }
 
         private void fillSetAppointmentTab()
@@ -72,21 +91,24 @@ namespace eClinicals.View
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
-            cbSelectTest_OrderTest.DisplayMember = "Test";
+            cbSelectTest_OrderTest.DisplayMember = "TestName";
 
             cbAppReason.DisplayMember = "AppointmentReason";
             cbAppDoctor.DisplayMember = "DoctorName";
+            cbDiagnosis_TestResults.DisplayMember = "DiagnosisName";
+            cbTest_TestResults.DisplayMember = "TestName";
+
             // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
             cbDoctor_SetAppointment.SelectedIndex = 0;
             cbSelectDoctor_OrderTest.SelectedIndex = 0;
             cbSelectTest_OrderTest.SelectedIndex = 0;
-
+            cbDiagnosis_TestResults.SelectedIndex = 0;
+            cbTest_TestResults.SelectedIndex = 0;
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
         
 
         }
-  
     }
 }

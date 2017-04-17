@@ -21,6 +21,8 @@ namespace eClinicals.View
         public string gender;
         public string ssn;
         public string errorMessage;
+        public string password1;
+        public string password2;
         public int userType;
 
         public frmRegistration()
@@ -37,8 +39,6 @@ namespace eClinicals.View
         }
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
-
             lastName = txtLastName.Text;
             firstName = txtFirstName.Text;
             dob = dtpDOB.Value;
@@ -50,12 +50,13 @@ namespace eClinicals.View
             gender = cbGender.Text;
             ssn = txtSSN.Text;
             userType = cbUserType.SelectedIndex + 1;
-
+            password1 = txtPassword1.Text;
+            password2 = txtPassword2.Text;
             try
-            {
-               
+            {               
             if (ValidateFields.patientFields(this)){
                     int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
+                  
                     this.createPersonByType(contactID);
                 }
                 else
@@ -80,8 +81,6 @@ namespace eClinicals.View
             this.Close();
             mainForm.OpenStartMenuView();
         }
-
-
         private void createPersonByType(int contactID)
         {
 
@@ -105,12 +104,12 @@ namespace eClinicals.View
                         MessageBox.Show("There was a problem creating this person");
                         break;
                 }
+                eClinicalsController.CreateLogin(contactID, createUserName(firstName, contactID,lastName), password1);
             }
         }
-
-
-
-
+        private string createUserName(string firstname, int contactId, string lastname) {
+            return  (firstname.Substring(0, 1) + lastname + contactId.ToString()).ToLower();
+        } 
     }
 
 

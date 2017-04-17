@@ -28,6 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtPassword2 = new System.Windows.Forms.TextBox();
+            this.txtPassword1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblError_phone = new System.Windows.Forms.Label();
+            this.lblError_zip = new System.Windows.Forms.Label();
+            this.lblError_state = new System.Windows.Forms.Label();
+            this.lblError_city = new System.Windows.Forms.Label();
+            this.lblError_address = new System.Windows.Forms.Label();
+            this.lblError_ssn = new System.Windows.Forms.Label();
+            this.lblError_lastName = new System.Windows.Forms.Label();
+            this.lblError_firstName = new System.Windows.Forms.Label();
             this.txtZipcode = new System.Windows.Forms.TextBox();
             this.txtSSN = new System.Windows.Forms.TextBox();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -52,22 +66,148 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblError_firstName = new System.Windows.Forms.Label();
-            this.lblError_lastName = new System.Windows.Forms.Label();
-            this.lblError_ssn = new System.Windows.Forms.Label();
-            this.lblError_address = new System.Windows.Forms.Label();
-            this.lblError_city = new System.Windows.Forms.Label();
-            this.lblError_state = new System.Windows.Forms.Label();
-            this.lblError_zip = new System.Windows.Forms.Label();
-            this.lblError_phone = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblError_password = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // txtPassword2
+            // 
+            this.txtPassword2.Location = new System.Drawing.Point(124, 299);
+            this.txtPassword2.MaxLength = 45;
+            this.txtPassword2.Name = "txtPassword2";
+            this.txtPassword2.PasswordChar = '*';
+            this.txtPassword2.Size = new System.Drawing.Size(162, 20);
+            this.txtPassword2.TabIndex = 30;
+            // 
+            // txtPassword1
+            // 
+            this.txtPassword1.Location = new System.Drawing.Point(125, 273);
+            this.txtPassword1.MaxLength = 45;
+            this.txtPassword1.Name = "txtPassword1";
+            this.txtPassword1.Size = new System.Drawing.Size(162, 20);
+            this.txtPassword1.TabIndex = 28;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(122, 254);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Password";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label14.Location = new System.Drawing.Point(258, 223);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(42, 13);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "#####";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label13.Location = new System.Drawing.Point(372, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "numbers only";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label12.Location = new System.Drawing.Point(728, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 13);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "(###) ### - ####";
+            // 
+            // lblError_phone
+            // 
+            this.lblError_phone.AutoSize = true;
+            this.lblError_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_phone.ForeColor = System.Drawing.Color.Red;
+            this.lblError_phone.Location = new System.Drawing.Point(581, 120);
+            this.lblError_phone.Name = "lblError_phone";
+            this.lblError_phone.Size = new System.Drawing.Size(0, 16);
+            this.lblError_phone.TabIndex = 24;
+            // 
+            // lblError_zip
+            // 
+            this.lblError_zip.AutoSize = true;
+            this.lblError_zip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_zip.ForeColor = System.Drawing.Color.Red;
+            this.lblError_zip.Location = new System.Drawing.Point(188, 241);
+            this.lblError_zip.Name = "lblError_zip";
+            this.lblError_zip.Size = new System.Drawing.Size(0, 16);
+            this.lblError_zip.TabIndex = 23;
+            // 
+            // lblError_state
+            // 
+            this.lblError_state.AutoSize = true;
+            this.lblError_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_state.ForeColor = System.Drawing.Color.Red;
+            this.lblError_state.Location = new System.Drawing.Point(188, 200);
+            this.lblError_state.Name = "lblError_state";
+            this.lblError_state.Size = new System.Drawing.Size(0, 16);
+            this.lblError_state.TabIndex = 22;
+            // 
+            // lblError_city
+            // 
+            this.lblError_city.AutoSize = true;
+            this.lblError_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_city.ForeColor = System.Drawing.Color.Red;
+            this.lblError_city.Location = new System.Drawing.Point(188, 157);
+            this.lblError_city.Name = "lblError_city";
+            this.lblError_city.Size = new System.Drawing.Size(0, 16);
+            this.lblError_city.TabIndex = 21;
+            // 
+            // lblError_address
+            // 
+            this.lblError_address.AutoSize = true;
+            this.lblError_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_address.ForeColor = System.Drawing.Color.Red;
+            this.lblError_address.Location = new System.Drawing.Point(188, 117);
+            this.lblError_address.Name = "lblError_address";
+            this.lblError_address.Size = new System.Drawing.Size(0, 16);
+            this.lblError_address.TabIndex = 20;
+            // 
+            // lblError_ssn
+            // 
+            this.lblError_ssn.AutoSize = true;
+            this.lblError_ssn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_ssn.ForeColor = System.Drawing.Color.Red;
+            this.lblError_ssn.Location = new System.Drawing.Point(341, 73);
+            this.lblError_ssn.Name = "lblError_ssn";
+            this.lblError_ssn.Size = new System.Drawing.Size(0, 16);
+            this.lblError_ssn.TabIndex = 19;
+            // 
+            // lblError_lastName
+            // 
+            this.lblError_lastName.AutoSize = true;
+            this.lblError_lastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_lastName.ForeColor = System.Drawing.Color.Red;
+            this.lblError_lastName.Location = new System.Drawing.Point(188, 75);
+            this.lblError_lastName.Name = "lblError_lastName";
+            this.lblError_lastName.Size = new System.Drawing.Size(0, 16);
+            this.lblError_lastName.TabIndex = 18;
+            // 
+            // lblError_firstName
+            // 
+            this.lblError_firstName.AutoSize = true;
+            this.lblError_firstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_firstName.ForeColor = System.Drawing.Color.Red;
+            this.lblError_firstName.Location = new System.Drawing.Point(34, 75);
+            this.lblError_firstName.Name = "lblError_firstName";
+            this.lblError_firstName.Size = new System.Drawing.Size(0, 16);
+            this.lblError_firstName.TabIndex = 17;
             // 
             // txtZipcode
             // 
-            this.txtZipcode.Location = new System.Drawing.Point(184, 227);
+            this.txtZipcode.Location = new System.Drawing.Point(188, 219);
             this.txtZipcode.MaxLength = 5;
             this.txtZipcode.Name = "txtZipcode";
             this.txtZipcode.Size = new System.Drawing.Size(68, 20);
@@ -123,7 +263,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(362, 319);
+            this.btnCancel.Location = new System.Drawing.Point(362, 332);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
             this.btnCancel.TabIndex = 12;
@@ -133,7 +273,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(124, 319);
+            this.btnRegister.Location = new System.Drawing.Point(124, 332);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(163, 23);
             this.btnRegister.TabIndex = 11;
@@ -194,7 +334,7 @@
             "WI",
             "WV",
             "WY"});
-            this.cbState.Location = new System.Drawing.Point(183, 183);
+            this.cbState.Location = new System.Drawing.Point(188, 176);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(54, 21);
             this.cbState.Sorted = true;
@@ -203,7 +343,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(121, 186);
+            this.label8.Location = new System.Drawing.Point(121, 179);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 12;
@@ -212,7 +352,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(122, 227);
+            this.label9.Location = new System.Drawing.Point(122, 219);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 10;
@@ -220,7 +360,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(184, 139);
+            this.txtCity.Location = new System.Drawing.Point(188, 135);
             this.txtCity.MaxLength = 100;
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(182, 20);
@@ -229,7 +369,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(121, 142);
+            this.label7.Location = new System.Drawing.Point(121, 138);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(24, 13);
             this.label7.TabIndex = 10;
@@ -302,7 +442,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(184, 95);
+            this.txtAddress.Location = new System.Drawing.Point(188, 95);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(314, 20);
             this.txtAddress.TabIndex = 5;
@@ -333,121 +473,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
-            // lblError_firstName
+            // lblError_password
             // 
-            this.lblError_firstName.AutoSize = true;
-            this.lblError_firstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_firstName.ForeColor = System.Drawing.Color.Red;
-            this.lblError_firstName.Location = new System.Drawing.Point(34, 75);
-            this.lblError_firstName.Name = "lblError_firstName";
-            this.lblError_firstName.Size = new System.Drawing.Size(0, 16);
-            this.lblError_firstName.TabIndex = 17;
-            // 
-            // lblError_lastName
-            // 
-            this.lblError_lastName.AutoSize = true;
-            this.lblError_lastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_lastName.ForeColor = System.Drawing.Color.Red;
-            this.lblError_lastName.Location = new System.Drawing.Point(188, 75);
-            this.lblError_lastName.Name = "lblError_lastName";
-            this.lblError_lastName.Size = new System.Drawing.Size(0, 16);
-            this.lblError_lastName.TabIndex = 18;
-            // 
-            // lblError_ssn
-            // 
-            this.lblError_ssn.AutoSize = true;
-            this.lblError_ssn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_ssn.ForeColor = System.Drawing.Color.Red;
-            this.lblError_ssn.Location = new System.Drawing.Point(341, 73);
-            this.lblError_ssn.Name = "lblError_ssn";
-            this.lblError_ssn.Size = new System.Drawing.Size(0, 16);
-            this.lblError_ssn.TabIndex = 19;
-            // 
-            // lblError_address
-            // 
-            this.lblError_address.AutoSize = true;
-            this.lblError_address.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_address.ForeColor = System.Drawing.Color.Red;
-            this.lblError_address.Location = new System.Drawing.Point(188, 118);
-            this.lblError_address.Name = "lblError_address";
-            this.lblError_address.Size = new System.Drawing.Size(0, 16);
-            this.lblError_address.TabIndex = 20;
-            // 
-            // lblError_city
-            // 
-            this.lblError_city.AutoSize = true;
-            this.lblError_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_city.ForeColor = System.Drawing.Color.Red;
-            this.lblError_city.Location = new System.Drawing.Point(188, 162);
-            this.lblError_city.Name = "lblError_city";
-            this.lblError_city.Size = new System.Drawing.Size(0, 16);
-            this.lblError_city.TabIndex = 21;
-            // 
-            // lblError_state
-            // 
-            this.lblError_state.AutoSize = true;
-            this.lblError_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_state.ForeColor = System.Drawing.Color.Red;
-            this.lblError_state.Location = new System.Drawing.Point(188, 207);
-            this.lblError_state.Name = "lblError_state";
-            this.lblError_state.Size = new System.Drawing.Size(0, 16);
-            this.lblError_state.TabIndex = 22;
-            // 
-            // lblError_zip
-            // 
-            this.lblError_zip.AutoSize = true;
-            this.lblError_zip.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_zip.ForeColor = System.Drawing.Color.Red;
-            this.lblError_zip.Location = new System.Drawing.Point(188, 250);
-            this.lblError_zip.Name = "lblError_zip";
-            this.lblError_zip.Size = new System.Drawing.Size(0, 16);
-            this.lblError_zip.TabIndex = 23;
-            // 
-            // lblError_phone
-            // 
-            this.lblError_phone.AutoSize = true;
-            this.lblError_phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_phone.ForeColor = System.Drawing.Color.Red;
-            this.lblError_phone.Location = new System.Drawing.Point(581, 120);
-            this.lblError_phone.Name = "lblError_phone";
-            this.lblError_phone.Size = new System.Drawing.Size(0, 16);
-            this.lblError_phone.TabIndex = 24;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label12.Location = new System.Drawing.Point(728, 102);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "(###) ### - ####";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label13.Location = new System.Drawing.Point(372, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "numbers only";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label14.Location = new System.Drawing.Point(258, 234);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 13);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "#####";
+            this.lblError_password.AutoSize = true;
+            this.lblError_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError_password.ForeColor = System.Drawing.Color.Red;
+            this.lblError_password.Location = new System.Drawing.Point(293, 275);
+            this.lblError_password.Name = "lblError_password";
+            this.lblError_password.Size = new System.Drawing.Size(0, 16);
+            this.lblError_password.TabIndex = 31;
             // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 363);
+            this.Controls.Add(this.lblError_password);
+            this.Controls.Add(this.txtPassword2);
+            this.Controls.Add(this.txtPassword1);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -530,5 +574,9 @@
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox txtPassword1;
+        public System.Windows.Forms.Label label16;
+        public System.Windows.Forms.TextBox txtPassword2;
+        public System.Windows.Forms.Label lblError_password;
     }
 }

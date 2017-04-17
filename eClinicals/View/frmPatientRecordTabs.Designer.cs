@@ -126,13 +126,10 @@
             this.txtSystolic = new System.Windows.Forms.TextBox();
             this.btnCancel_RoutineCheck = new System.Windows.Forms.Button();
             this.btnOk_RoutineCheck = new System.Windows.Forms.Button();
-            this.clbSymptoms_RoutineCheck = new System.Windows.Forms.CheckedListBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
@@ -151,20 +148,29 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
             this.ucAlertTestResults = new eClinicals.View.ucAlert();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.tabDiagnosis = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.rbInitialDiagnosis = new System.Windows.Forms.RadioButton();
+            this.rbFinalDiagnosis = new System.Windows.Forms.RadioButton();
+            this.btnCommitTest = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.dtpTestTime_TestResults = new System.Windows.Forms.DateTimePicker();
+            this.dtpTestDate_TestResults = new System.Windows.Forms.DateTimePicker();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbTest_TestResults = new System.Windows.Forms.ComboBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtpDatePerformed_RoutineCheck = new System.Windows.Forms.DateTimePicker();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -191,12 +197,14 @@
             this.tabOrderTests.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabTestsResults.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
+            this.tabDiagnosis.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -270,6 +278,7 @@
             this.tabPatientRecord.Controls.Add(this.tabRoutineCheck);
             this.tabPatientRecord.Controls.Add(this.tabOrderTests);
             this.tabPatientRecord.Controls.Add(this.tabTestsResults);
+            this.tabPatientRecord.Controls.Add(this.tabDiagnosis);
             this.tabPatientRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPatientRecord.ItemSize = new System.Drawing.Size(100, 30);
             this.tabPatientRecord.Location = new System.Drawing.Point(0, 0);
@@ -899,7 +908,7 @@
             // ucAlertViewApp
             // 
             this.ucAlertViewApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertViewApp.Location = new System.Drawing.Point(999, 256);
+            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 45);
             this.ucAlertViewApp.Name = "ucAlertViewApp";
             this.ucAlertViewApp.Size = new System.Drawing.Size(920, 501);
             this.ucAlertViewApp.TabIndex = 48;
@@ -1197,7 +1206,7 @@
             // ucAlertRoutineCheck
             // 
             this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(810, 146);
             this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
             this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
             this.ucAlertRoutineCheck.TabIndex = 16;
@@ -1205,29 +1214,28 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label14);
+            this.groupBox7.Controls.Add(this.dtpDatePerformed_RoutineCheck);
             this.groupBox7.Controls.Add(this.txtPulse);
             this.groupBox7.Controls.Add(this.txtBodyTemp);
             this.groupBox7.Controls.Add(this.txtDiastolic);
             this.groupBox7.Controls.Add(this.txtSystolic);
             this.groupBox7.Controls.Add(this.btnCancel_RoutineCheck);
             this.groupBox7.Controls.Add(this.btnOk_RoutineCheck);
-            this.groupBox7.Controls.Add(this.clbSymptoms_RoutineCheck);
-            this.groupBox7.Controls.Add(this.label19);
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Controls.Add(this.label16);
             this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Controls.Add(this.label14);
             this.groupBox7.Controls.Add(this.label9);
-            this.groupBox7.Location = new System.Drawing.Point(39, 58);
+            this.groupBox7.Location = new System.Drawing.Point(39, 88);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(755, 251);
+            this.groupBox7.Size = new System.Drawing.Size(755, 221);
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
             // 
             // txtPulse
             // 
-            this.txtPulse.Location = new System.Drawing.Point(235, 175);
+            this.txtPulse.Location = new System.Drawing.Point(409, 134);
             this.txtPulse.MaxLength = 5;
             this.txtPulse.Name = "txtPulse";
             this.txtPulse.Size = new System.Drawing.Size(100, 20);
@@ -1235,7 +1243,7 @@
             // 
             // txtBodyTemp
             // 
-            this.txtBodyTemp.Location = new System.Drawing.Point(235, 141);
+            this.txtBodyTemp.Location = new System.Drawing.Point(409, 100);
             this.txtBodyTemp.MaxLength = 5;
             this.txtBodyTemp.Name = "txtBodyTemp";
             this.txtBodyTemp.Size = new System.Drawing.Size(100, 20);
@@ -1243,7 +1251,7 @@
             // 
             // txtDiastolic
             // 
-            this.txtDiastolic.Location = new System.Drawing.Point(235, 111);
+            this.txtDiastolic.Location = new System.Drawing.Point(409, 70);
             this.txtDiastolic.MaxLength = 5;
             this.txtDiastolic.Name = "txtDiastolic";
             this.txtDiastolic.Size = new System.Drawing.Size(100, 20);
@@ -1251,7 +1259,7 @@
             // 
             // txtSystolic
             // 
-            this.txtSystolic.Location = new System.Drawing.Point(235, 77);
+            this.txtSystolic.Location = new System.Drawing.Point(409, 36);
             this.txtSystolic.MaxLength = 5;
             this.txtSystolic.Name = "txtSystolic";
             this.txtSystolic.Size = new System.Drawing.Size(100, 20);
@@ -1259,7 +1267,7 @@
             // 
             // btnCancel_RoutineCheck
             // 
-            this.btnCancel_RoutineCheck.Location = new System.Drawing.Point(408, 222);
+            this.btnCancel_RoutineCheck.Location = new System.Drawing.Point(409, 181);
             this.btnCancel_RoutineCheck.Name = "btnCancel_RoutineCheck";
             this.btnCancel_RoutineCheck.Size = new System.Drawing.Size(150, 25);
             this.btnCancel_RoutineCheck.TabIndex = 17;
@@ -1268,37 +1276,18 @@
             // 
             // btnOk_RoutineCheck
             // 
-            this.btnOk_RoutineCheck.Location = new System.Drawing.Point(235, 222);
+            this.btnOk_RoutineCheck.Location = new System.Drawing.Point(236, 181);
             this.btnOk_RoutineCheck.Name = "btnOk_RoutineCheck";
             this.btnOk_RoutineCheck.Size = new System.Drawing.Size(150, 25);
             this.btnOk_RoutineCheck.TabIndex = 16;
             this.btnOk_RoutineCheck.Text = "&OK";
             this.btnOk_RoutineCheck.UseVisualStyleBackColor = true;
             // 
-            // clbSymptoms_RoutineCheck
-            // 
-            this.clbSymptoms_RoutineCheck.FormattingEnabled = true;
-            this.clbSymptoms_RoutineCheck.Location = new System.Drawing.Point(484, 77);
-            this.clbSymptoms_RoutineCheck.Name = "clbSymptoms_RoutineCheck";
-            this.clbSymptoms_RoutineCheck.Size = new System.Drawing.Size(219, 139);
-            this.clbSymptoms_RoutineCheck.TabIndex = 8;
-            this.clbSymptoms_RoutineCheck.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(480, 42);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 24);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Symptoms";
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(79, 173);
+            this.label17.Location = new System.Drawing.Point(240, 132);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(93, 20);
             this.label17.TabIndex = 5;
@@ -1308,7 +1297,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(79, 141);
+            this.label18.Location = new System.Drawing.Point(240, 100);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(140, 20);
             this.label18.TabIndex = 4;
@@ -1318,7 +1307,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(79, 109);
+            this.label16.Location = new System.Drawing.Point(240, 68);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(94, 20);
             this.label16.TabIndex = 3;
@@ -1328,21 +1317,11 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(79, 77);
+            this.label15.Location = new System.Drawing.Point(240, 36);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(88, 20);
             this.label15.TabIndex = 2;
             this.label15.Text = "Systolic BP";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(37, 42);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(101, 24);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Check Up";
             // 
             // label9
             // 
@@ -1515,11 +1494,6 @@
             // tabTestsResults
             // 
             this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
-            this.tabTestsResults.Controls.Add(this.groupBox10);
-            this.tabTestsResults.Controls.Add(this.button2);
-            this.tabTestsResults.Controls.Add(this.groupBox9);
-            this.tabTestsResults.Controls.Add(this.groupBox8);
-            this.tabTestsResults.Controls.Add(this.groupBox4);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
             this.tabTestsResults.Name = "tabTestsResults";
@@ -1538,110 +1512,13 @@
             this.ucAlertTestResults.TabIndex = 24;
             this.ucAlertTestResults.Visible = false;
             // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.radioButton2);
-            this.groupBox10.Controls.Add(this.radioButton1);
-            this.groupBox10.Location = new System.Drawing.Point(54, 84);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(212, 57);
-            this.groupBox10.TabIndex = 19;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Diagnosis Type";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 23);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(98, 17);
-            this.radioButton2.TabIndex = 25;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Initial Diagnosis";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(116, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(96, 17);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Final Diagnosis";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(54, 365);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(206, 23);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Commit Test";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.dateTimePicker1);
-            this.groupBox9.Location = new System.Drawing.Point(48, 147);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(218, 56);
-            this.groupBox9.TabIndex = 19;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Performed Date";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 14;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.comboBox1);
-            this.groupBox8.Location = new System.Drawing.Point(48, 283);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(218, 56);
-            this.groupBox8.TabIndex = 18;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Diagnosis";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 16;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.comboBox2);
-            this.groupBox4.Location = new System.Drawing.Point(48, 215);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(218, 56);
-            this.groupBox4.TabIndex = 17;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Test";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 21);
-            this.comboBox2.TabIndex = 16;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgTestResults_TestResults);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(341, 84);
+            this.groupBox3.Location = new System.Drawing.Point(79, 72);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(349, 304);
+            this.groupBox3.Size = new System.Drawing.Size(654, 304);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             // 
@@ -1650,7 +1527,7 @@
             this.dgTestResults_TestResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTestResults_TestResults.Location = new System.Drawing.Point(6, 23);
             this.dgTestResults_TestResults.Name = "dgTestResults_TestResults";
-            this.dgTestResults_TestResults.Size = new System.Drawing.Size(330, 275);
+            this.dgTestResults_TestResults.Size = new System.Drawing.Size(637, 275);
             this.dgTestResults_TestResults.TabIndex = 1;
             // 
             // label8
@@ -1669,6 +1546,202 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // tabDiagnosis
+            // 
+            this.tabDiagnosis.Controls.Add(this.groupBox11);
+            this.tabDiagnosis.Controls.Add(this.groupBox10);
+            this.tabDiagnosis.Controls.Add(this.btnCommitTest);
+            this.tabDiagnosis.Controls.Add(this.groupBox9);
+            this.tabDiagnosis.Controls.Add(this.groupBox8);
+            this.tabDiagnosis.Controls.Add(this.groupBox4);
+            this.tabDiagnosis.Location = new System.Drawing.Point(4, 34);
+            this.tabDiagnosis.Name = "tabDiagnosis";
+            this.tabDiagnosis.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDiagnosis.Size = new System.Drawing.Size(1083, 568);
+            this.tabDiagnosis.TabIndex = 6;
+            this.tabDiagnosis.Text = "Diagnosis";
+            this.tabDiagnosis.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.rbInitialDiagnosis);
+            this.groupBox10.Controls.Add(this.rbFinalDiagnosis);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox10.Location = new System.Drawing.Point(208, 34);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(292, 61);
+            this.groupBox10.TabIndex = 26;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Diagnosis Type";
+            // 
+            // rbInitialDiagnosis
+            // 
+            this.rbInitialDiagnosis.AutoSize = true;
+            this.rbInitialDiagnosis.Checked = true;
+            this.rbInitialDiagnosis.Location = new System.Drawing.Point(6, 23);
+            this.rbInitialDiagnosis.Name = "rbInitialDiagnosis";
+            this.rbInitialDiagnosis.Size = new System.Drawing.Size(137, 20);
+            this.rbInitialDiagnosis.TabIndex = 25;
+            this.rbInitialDiagnosis.TabStop = true;
+            this.rbInitialDiagnosis.Text = "Initial Diagnosis";
+            this.rbInitialDiagnosis.UseVisualStyleBackColor = true;
+            // 
+            // rbFinalDiagnosis
+            // 
+            this.rbFinalDiagnosis.AutoSize = true;
+            this.rbFinalDiagnosis.Location = new System.Drawing.Point(148, 23);
+            this.rbFinalDiagnosis.Name = "rbFinalDiagnosis";
+            this.rbFinalDiagnosis.Size = new System.Drawing.Size(134, 20);
+            this.rbFinalDiagnosis.TabIndex = 24;
+            this.rbFinalDiagnosis.Text = "Final Diagnosis";
+            this.rbFinalDiagnosis.UseVisualStyleBackColor = true;
+            // 
+            // btnCommitTest
+            // 
+            this.btnCommitTest.Location = new System.Drawing.Point(67, 373);
+            this.btnCommitTest.Name = "btnCommitTest";
+            this.btnCommitTest.Size = new System.Drawing.Size(503, 39);
+            this.btnCommitTest.TabIndex = 28;
+            this.btnCommitTest.Text = "Commit Test";
+            this.btnCommitTest.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label36);
+            this.groupBox9.Controls.Add(this.label39);
+            this.groupBox9.Controls.Add(this.dtpTestTime_TestResults);
+            this.groupBox9.Controls.Add(this.dtpTestDate_TestResults);
+            this.groupBox9.Location = new System.Drawing.Point(59, 138);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(218, 131);
+            this.groupBox9.TabIndex = 27;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Performed Date";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(5, 97);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(92, 13);
+            this.label36.TabIndex = 14;
+            this.label36.Text = "Appointment Time";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(5, 22);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(92, 13);
+            this.label39.TabIndex = 13;
+            this.label39.Text = "Appointment Date";
+            // 
+            // dtpTestTime_TestResults
+            // 
+            this.dtpTestTime_TestResults.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTestTime_TestResults.Location = new System.Drawing.Point(103, 94);
+            this.dtpTestTime_TestResults.Name = "dtpTestTime_TestResults";
+            this.dtpTestTime_TestResults.ShowUpDown = true;
+            this.dtpTestTime_TestResults.Size = new System.Drawing.Size(103, 20);
+            this.dtpTestTime_TestResults.TabIndex = 5;
+            this.dtpTestTime_TestResults.Value = new System.DateTime(2017, 4, 1, 23, 40, 0, 0);
+            // 
+            // dtpTestDate_TestResults
+            // 
+            this.dtpTestDate_TestResults.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTestDate_TestResults.Location = new System.Drawing.Point(103, 19);
+            this.dtpTestDate_TestResults.Name = "dtpTestDate_TestResults";
+            this.dtpTestDate_TestResults.Size = new System.Drawing.Size(103, 20);
+            this.dtpTestDate_TestResults.TabIndex = 4;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cbDiagnosis_TestResults);
+            this.groupBox8.Location = new System.Drawing.Point(356, 213);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(218, 56);
+            this.groupBox8.TabIndex = 25;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Diagnosis";
+            // 
+            // cbDiagnosis_TestResults
+            // 
+            this.cbDiagnosis_TestResults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDiagnosis_TestResults.FormattingEnabled = true;
+            this.cbDiagnosis_TestResults.Location = new System.Drawing.Point(6, 19);
+            this.cbDiagnosis_TestResults.Name = "cbDiagnosis_TestResults";
+            this.cbDiagnosis_TestResults.Size = new System.Drawing.Size(200, 21);
+            this.cbDiagnosis_TestResults.TabIndex = 16;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbTest_TestResults);
+            this.groupBox4.Location = new System.Drawing.Point(356, 138);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(218, 56);
+            this.groupBox4.TabIndex = 24;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Test";
+            // 
+            // cbTest_TestResults
+            // 
+            this.cbTest_TestResults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTest_TestResults.FormattingEnabled = true;
+            this.cbTest_TestResults.Location = new System.Drawing.Point(6, 19);
+            this.cbTest_TestResults.Name = "cbTest_TestResults";
+            this.cbTest_TestResults.Size = new System.Drawing.Size(200, 21);
+            this.cbTest_TestResults.TabIndex = 16;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.radioButton1);
+            this.groupBox11.Controls.Add(this.radioButton2);
+            this.groupBox11.Location = new System.Drawing.Point(356, 286);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(218, 57);
+            this.groupBox11.TabIndex = 27;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Test Results";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 23);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(86, 17);
+            this.radioButton1.TabIndex = 25;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Positive Test";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(116, 23);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(92, 17);
+            this.radioButton2.TabIndex = 24;
+            this.radioButton2.Text = "Negative Test";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(31, 73);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "Performed Date";
+            // 
+            // dtpDatePerformed_RoutineCheck
+            // 
+            this.dtpDatePerformed_RoutineCheck.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDatePerformed_RoutineCheck.Location = new System.Drawing.Point(34, 89);
+            this.dtpDatePerformed_RoutineCheck.Name = "dtpDatePerformed_RoutineCheck";
+            this.dtpDatePerformed_RoutineCheck.Size = new System.Drawing.Size(137, 20);
+            this.dtpDatePerformed_RoutineCheck.TabIndex = 22;
             // 
             // frmPatientRecordTabs
             // 
@@ -1708,14 +1781,18 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabTestsResults.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
+            this.tabDiagnosis.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1755,11 +1832,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
         public System.Windows.Forms.Button btnCancel_RoutineCheck;
         public System.Windows.Forms.Button btnOk_RoutineCheck;
-        public System.Windows.Forms.CheckedListBox clbSymptoms_RoutineCheck;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
@@ -1837,19 +1911,28 @@
         public ucAlert ucAlertRoutineCheck;
         public ucAlert ucAlertOrderTest;
         public ucAlert ucAlertViewApp;
-        private System.Windows.Forms.GroupBox groupBox4;
-        public System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.GroupBox groupBox8;
-        public System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         public ucAlert ucAlertTestResults;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         public System.Windows.Forms.Button btnShowPastAppointments;
+        public System.Windows.Forms.TabPage tabDiagnosis;
+        private System.Windows.Forms.GroupBox groupBox10;
+        public System.Windows.Forms.RadioButton rbInitialDiagnosis;
+        public System.Windows.Forms.RadioButton rbFinalDiagnosis;
+        public System.Windows.Forms.Button btnCommitTest;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label39;
+        public System.Windows.Forms.DateTimePicker dtpTestTime_TestResults;
+        public System.Windows.Forms.DateTimePicker dtpTestDate_TestResults;
+        private System.Windows.Forms.GroupBox groupBox8;
+        public System.Windows.Forms.ComboBox cbDiagnosis_TestResults;
+        private System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.ComboBox cbTest_TestResults;
+        private System.Windows.Forms.GroupBox groupBox11;
+        public System.Windows.Forms.RadioButton radioButton1;
+        public System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.DateTimePicker dtpDatePerformed_RoutineCheck;
     }
 }

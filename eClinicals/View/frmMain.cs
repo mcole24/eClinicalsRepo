@@ -117,10 +117,8 @@ namespace eClinicals.View
         // Open Patient information
         private void btnOpen_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                     if (selectedPatient != null)
                     {
                         CloseCurrentOpenView(currentViewOpened);
@@ -132,9 +130,13 @@ namespace eClinicals.View
                         AddToContainer(patientRecordTabsViewController, MIDDLE);
                         AddToContainer(patientInfoRibbonController, RIGHT);
                         patienRibbon = patientInfoRibbonController.ribbon;
-                        frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;             
-                        //add patient ribbon
-                        AddPatientRibonInfo(selectedPatient);//       
+                        frmPatientTabs = patientRecordTabsViewController.frmPatientRecordTabs;
+                    // Disable Tabs
+                        frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabOrderTests);
+                        frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabDiagnosis);
+
+                    //add patient ribbon
+                    AddPatientRibonInfo(selectedPatient);//       
                         patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
                         // add nurse            
                         //Fill View appointments
@@ -143,6 +145,9 @@ namespace eClinicals.View
                     patientRecordTabsViewController.fillPatientInfo(selectedPatient);
 
                      frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
+
+
+
                 }
                 else
                     {
@@ -181,8 +186,8 @@ namespace eClinicals.View
         {
             // "shows" tab page 2
             if (selectedAppointment != null)
-            {
-                frmPatientTabs.tabPatientRecord.TabPages.Add(frmPatientTabs.tabRoutineCheck);
+            {               
+                frmPatientTabs.tabPatientRecord.TabPages.Add(frmPatientTabs.tabRoutineCheck);            
                 frmPatientTabs.tabPatientRecord.SelectedTab = frmPatientTabs.tabRoutineCheck;
             }
             else

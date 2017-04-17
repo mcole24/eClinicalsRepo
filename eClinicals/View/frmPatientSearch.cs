@@ -70,6 +70,14 @@ namespace eClinicals.View
 
         }
 
-       
+        private void lblLastName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

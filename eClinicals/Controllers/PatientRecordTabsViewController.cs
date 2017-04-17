@@ -12,6 +12,7 @@ using eClinicals.Controllers;
 namespace eClinicals.Controllers
 {
     enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4};
+   
 
     class PatientRecordTabsViewController : ControllerBase
     {
@@ -21,12 +22,17 @@ namespace eClinicals.Controllers
         private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
-        public Boolean routineCheckOpen;
+        
         internal frmMain mainForm;
         private List<Appointment> selectedFuturePatientAppointments;
         CURRENT_APP_VIEW CURRENT_APP_VIEW;
         private List<Appointment> selectedPastPatientAppointments;
         private List<Appointment> selectedCurrentPatientAppointments;
+
+        public Boolean isRoutineCheckOpen;
+        private Boolean initDiagnosis;
+        private Boolean finalDiagnosis;
+        private Boolean isOrderTestOpen;
 
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
@@ -37,7 +43,8 @@ namespace eClinicals.Controllers
             mainForm.lblStatus.Text = "Patient Record Tabs active . . .";
             setEventHandlers();
             currentNurse = this.mainForm.currentNurse;
-            routineCheckOpen = false;
+            isRoutineCheckOpen = false;
+            isOrderTestOpen = false;          
            // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
@@ -49,7 +56,6 @@ namespace eClinicals.Controllers
             }
             else {
                 mainForm.Status("Patient cannot be null.", Color.Red);
-
             }          
             frmPatientRecordTabs.txtFirstName.Text = patient.FirstName;
             frmPatientRecordTabs.txtLastName.Text = patient.LastName;
@@ -63,7 +69,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtPhone.Text = patient.Phone;
 
             List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();
-            frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
+           // frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
             frmPatientRecordTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
             frmPatientRecordTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
 
@@ -73,255 +79,7 @@ namespace eClinicals.Controllers
             //returns a routine check
             frmPatientRecordTabs.dgPreviousReadings__RoutineCheck.DataSource =
                 eClinicalsController.GetPreviousReadings(patient.PatientID);
-        }
-        private void btnEditPerson_Click(object sender, EventArgs e)
-        {
-            EnableEdit();
-        }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DisableEdit();
-        }
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {          
-                frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
-                frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
-                frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
-                frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
-                frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
-                frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
-                frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
-                frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
-                frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
-                frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
-
-                if (ValidateFields.patientFields(frmPatientRecordTabs))
-                {
-                    bool isUpdate = false;
-
-                    isUpdate = eClinicalsController.UpdatePatient(patient.PatientID, patient.LastName,
-                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
-
-                    if (isUpdate)
-                    {
-                        DisableEdit();
-                    }
-            }
-            }
-            catch (Exception ex)
-            {
-                this.mainForm.Status(ex.Message, Color.Red);               
-            }
-        }
-        private void btnOrderTest_Click(object sender, EventArgs e)
-        {
-
-            if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
-            {
-                this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
-            }
-            else
-            {
-                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
-            }
-        }
-        private void btnOk_SetAppointment_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Doctor doc = (Doctor)frmPatientRecordTabs.cbDoctor_SetAppointment.SelectedItem;
-                Appointment reason = (Appointment)frmPatientRecordTabs.cbReason_SetAppointment.SelectedItem;
-                DateTime dateOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
-                DateTime timeOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
-                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
-                selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
-
-//CHECK CUrrent DateTime for patient making same appointment time and day
-
-                foreach (Appointment app in selectedPatientAppointments)
-                    {
-                        if (DateTime.Compare( dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
-                        {
-                            mainForm.Status("Patient is already scheduled for that time.", Color.Red);
-                            Console.WriteLine(app.AppointmentDate.Date.ToShortDateString());
-                            Console.WriteLine(dateAndTime.Date.ToShortDateString());
-                        
-                        return;
-                        }                      
-                    }
-                Console.Write("here");
-
-
-
-
-
-                if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
-                {
-                    this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
-                    selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
-                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-
-                       
-                }
-                else
-                {
-                    this.mainForm.Status("Appointment was not Set : Please check the form was properly filled in", Color.Red);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.mainForm.Status(ex.Message, Color.Red);
-            }
-        }
-        private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            //routione checkup        
-            // CheckBox symptoms
-            // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
-            string systolicS = frmPatientRecordTabs.txtSystolic.Text;
-            string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
-            string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
-            string pulseS = frmPatientRecordTabs.txtPulse.Text;
-
-                if (currentNurse == null) {
-                    this.mainForm.Status("Nurse Object is not set. . . ", Color.Red);
-                }
-
-            if (selectedAppointment != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
-            {
-
-                int systolic = Int32.Parse(systolicS);
-                int diastolic = Int32.Parse(diastolicS);
-                decimal bodyTemp = Decimal.Parse(bodyTempS);
-                int pulse = Int32.Parse(pulseS);
-                DateTime visitTime = DateTime.Now;
-                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, visitTime, systolic, diastolic, bodyTemp, pulse))
-                    {
-                        
-                        frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
-                    
-                        EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
-                        EnableTab(frmPatientRecordTabs.tabViewAppointments, true);
-                        EnableTab(frmPatientRecordTabs.tabOrderTests, true);
-                        EnableTab(frmPatientRecordTabs.tabTestsResults, true);
-                        EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
-                        EnableTab(frmPatientRecordTabs.tabPersonal, true);
-                        routineCheckOpen = false;
-                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
-                    }
-                    else {          
-                this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
-                    }
-                }
-            else
-            {
-                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
-            }
-            }
-            catch (Exception ex)
-            {
-
-                Status(ex.Message + "Object [Nurse] was not retrieved from DAL", Color.Red);
-            }
-        }
-        private void btnSelectAppointment_Click(object sender, EventArgs e)
-        {//btnBegin Routine Check
-            // "shows" tab page 2 : start routine check
-            if (!routineCheckOpen)
-            {               
-                if (selectedAppointment != null)
-                {
-                    frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
-                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;                    
-                    EnableTab(frmPatientRecordTabs.tabRoutineCheck, true);
-                    EnableTab(frmPatientRecordTabs.tabViewAppointments, false);
-                    EnableTab(frmPatientRecordTabs.tabOrderTests, false);
-                    EnableTab(frmPatientRecordTabs.tabTestsResults, false);
-                    EnableTab(frmPatientRecordTabs.tabSetAppointments, false);
-                    EnableTab(frmPatientRecordTabs.tabPersonal, false);
-                    mainForm.Status("You must complete the routine check before any other action can be performed.", Color.Yellow);
-                   
-                }
-                else
-                {
-                    this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
-                   
-                }
-            }
-            routineCheckOpen = true;
-        }
-        public void EnableTab(TabPage page, bool enable)
-        {
-            string message = "";
-            foreach (Control ctl in page.Controls) {  
-
-                ctl.Enabled = enable;
-                if (enable)
-                {
-                     message = "";
-                    switch (page.Name)
-                    {
-                        case "tabViewAppointments":
-                            frmPatientRecordTabs.ucAlertViewApp.Visible = false;
-                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
-                            break;
-                        case "tabOrderTests":
-                            frmPatientRecordTabs.ucAlertOrderTest.Visible = false;
-                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
-                            break;
-                        case "tabSetAppointments":
-                            frmPatientRecordTabs.ucAlertSetApp.Visible = false;                         
-                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
-                            break;
-                        case "tabPersonal":
-                            frmPatientRecordTabs.ucAlertPersonal.Visible = false;
-                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
-                            break;
-                        case "tabTestsResults":
-                            frmPatientRecordTabs.ucAlertTestResults.Visible = false;
-                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else {
-                     message = "Must complete routine check.";
-                    switch (page.Name)
-                    {
-                        case "tabViewAppointments":
-                            frmPatientRecordTabs.ucAlertViewApp.Visible = true;
-                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
-                            break;
-                        case "tabOrderTests":
-                            frmPatientRecordTabs.ucAlertOrderTest.Visible = true;
-                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
-                            break;
-                        case "tabSetAppointments":
-                            frmPatientRecordTabs.ucAlertSetApp.Visible = true;
-                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
-                            break;
-                        case "tabPersonal":
-                            frmPatientRecordTabs.ucAlertPersonal.Visible = true;
-                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
-                            break;
-                        case "tabTestsResults":
-                            frmPatientRecordTabs.ucAlertTestResults.Visible = true;
-                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
-                            break;
-                        default:
-                            break;
-                    }               
-                  
-                      }             
-            }
-
-        }       
+        }   
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -509,20 +267,234 @@ namespace eClinicals.Controllers
         }
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
-            routineCheckOpen = false;
+            isRoutineCheckOpen = false;
           
             frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
           
             // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
-            EnableTab(frmPatientRecordTabs.tabViewAppointments, true);
-            EnableTab(frmPatientRecordTabs.tabOrderTests, true);
-            EnableTab(frmPatientRecordTabs.tabTestsResults, true);
-            EnableTab(frmPatientRecordTabs.tabSetAppointments, true);
-            EnableTab(frmPatientRecordTabs.tabPersonal, true);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
             enableDisableEditAppointment("off");
 
         }
+        private void btnCancel_OrderTest_Click(object sender, EventArgs e)
+        {
+            isOrderTestOpen = false;
+
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabOrderTests);
+            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
+
+            // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
+            enableDisableEditAppointment("off");
+        }
+
+
+        private void btnEditPerson_Click(object sender, EventArgs e)
+        {
+            EnableEdit();
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DisableEdit();
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
+                frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
+                frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
+                frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
+                frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
+                frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
+                frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
+                frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
+                frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
+                frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
+
+                if (ValidateFields.patientFields(frmPatientRecordTabs))
+                {
+                    bool isUpdate = false;
+
+                    isUpdate = eClinicalsController.UpdatePatient(patient.PatientID, patient.LastName,
+                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
+                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
+
+                    if (isUpdate)
+                    {
+                        DisableEdit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.mainForm.Status(ex.Message, Color.Red);
+            }
+        }
+        private void btnOrderTest_Click(object sender, EventArgs e)
+        {
+
+            if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
+            {
+                this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+            }
+            else
+            {
+                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+            }
+        }
+        private void btnOk_SetAppointment_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Doctor doc = (Doctor)frmPatientRecordTabs.cbDoctor_SetAppointment.SelectedItem;
+                Appointment reason = (Appointment)frmPatientRecordTabs.cbReason_SetAppointment.SelectedItem;
+                DateTime dateOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
+                DateTime timeOnly = frmPatientRecordTabs.dtpAppointmentTime_SetAppointment.Value;
+                DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
+                selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+
+                //CHECK CUrrent DateTime for patient making same appointment time and day
+
+                foreach (Appointment app in selectedPatientAppointments)
+                {
+                    if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
+                    {
+                        mainForm.Status("Patient is already scheduled for that time.", Color.Red);
+                        Console.WriteLine(app.AppointmentDate.Date.ToShortDateString());
+                        Console.WriteLine(dateAndTime.Date.ToShortDateString());
+
+                        return;
+                    }
+                }
+                Console.Write("Testing");
+
+                if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
+                {
+                    this.mainForm.Status("Appointment Set on : " + dateAndTime + "  With Doctor " + doc.DoctorName, Color.Yellow);
+                    selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
+                    frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+                }
+                else
+                {
+                    this.mainForm.Status("Appointment was not Set : Please check the form was properly filled in", Color.Red);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.mainForm.Status(ex.Message, Color.Red);
+            }
+        }
+        private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //routione checkup        
+                // CheckBox symptoms
+                // frmPatientTabs.clbSymptoms_RoutineCheck.ItemCheck
+                string systolicS = frmPatientRecordTabs.txtSystolic.Text;
+                string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
+                string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
+                string pulseS = frmPatientRecordTabs.txtPulse.Text;
+
+                if (currentNurse == null)
+                {
+                    this.mainForm.Status("Nurse Object is not set. . . ", Color.Red);
+                }
+
+                if (selectedAppointment != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
+                {
+
+                    int systolic = Int32.Parse(systolicS);
+                    int diastolic = Int32.Parse(diastolicS);
+                    decimal bodyTemp = Decimal.Parse(bodyTempS);
+                    int pulse = Int32.Parse(pulseS);
+                    DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
+                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, visitTime, systolic, diastolic, bodyTemp, pulse))
+                    {
+
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+
+                        EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, false);
+                        EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
+                        EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
+                        EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
+                        EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
+                        EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
+                        isRoutineCheckOpen = false;
+                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                    }
+                    else
+                    {
+                        this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
+                    }
+                }
+                else
+                {
+                    this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Status(ex.Message + "Object [Nurse] was not retrieved from DAL", Color.Red);
+            }
+        }
+        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        {//btnBegin Routine Check
+            // "shows" tab page 2 : start routine check
+            if (!isRoutineCheckOpen)
+            {
+                if (selectedAppointment != null)
+                {
+                    frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
+                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
+                    EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, true);
+                    EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, false);
+                    EnableTabAlert(frmPatientRecordTabs.tabOrderTests, false);
+                    EnableTabAlert(frmPatientRecordTabs.tabTestsResults, false);
+                    EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, false);
+                    EnableTabAlert(frmPatientRecordTabs.tabPersonal, false);
+                    mainForm.Status("You must complete the routine check before any other action can be performed.", Color.Yellow);
+
+                }
+                else
+                {
+                    this.mainForm.Status("No Appointment has been selected ", Color.Yellow);
+
+                }
+            }
+            isRoutineCheckOpen = true;
+        }
+        private void btnCommitTest_Click(object sender, EventArgs e)
+        {
+
+           
+            Console.WriteLine("Test  : " + frmPatientRecordTabs.cbTest_TestResults.Text);
+            Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
+            Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
+            Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked );
+            Console.WriteLine("Time : " + frmPatientRecordTabs.dtpTestTime_TestResults.Value.TimeOfDay);
+            Console.WriteLine("Date : " + frmPatientRecordTabs.dtpTestDate_TestResults.Value.ToShortDateString());
+            
+            // order test 
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+        }
+
+
         public void DisableEdit()
         {
             frmPatientRecordTabs.txtLastName.Text = this.patient.LastName;
@@ -574,6 +546,75 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbGender.Enabled = true;
             frmPatientRecordTabs.txtSSN.Enabled = true;
         }
+        public void EnableTabAlert(TabPage page, bool enable)
+        {
+            string message = "";
+            foreach (Control ctl in page.Controls)
+            {
+
+                ctl.Enabled = enable;
+                if (enable)
+                {
+                    message = "";
+                    switch (page.Name)
+                    {
+                        case "tabViewAppointments":
+                            frmPatientRecordTabs.ucAlertViewApp.Visible = false;
+                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
+                            break;
+                        case "tabOrderTests":
+                            frmPatientRecordTabs.ucAlertOrderTest.Visible = false;
+                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
+                            break;
+                        case "tabSetAppointments":
+                            frmPatientRecordTabs.ucAlertSetApp.Visible = false;
+                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
+                            break;
+                        case "tabPersonal":
+                            frmPatientRecordTabs.ucAlertPersonal.Visible = false;
+                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
+                            break;
+                        case "tabTestsResults":
+                            frmPatientRecordTabs.ucAlertTestResults.Visible = false;
+                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    message = "Must complete routine check.";
+                    switch (page.Name)
+                    {
+                        case "tabViewAppointments":
+                            frmPatientRecordTabs.ucAlertViewApp.Visible = true;
+                            frmPatientRecordTabs.ucAlertViewApp.lblAlert.Text = message;
+                            break;
+                        case "tabOrderTests":
+                            frmPatientRecordTabs.ucAlertOrderTest.Visible = true;
+                            frmPatientRecordTabs.ucAlertOrderTest.lblAlert.Text = message;
+                            break;
+                        case "tabSetAppointments":
+                            frmPatientRecordTabs.ucAlertSetApp.Visible = true;
+                            frmPatientRecordTabs.ucAlertSetApp.lblAlert.Text = message;
+                            break;
+                        case "tabPersonal":
+                            frmPatientRecordTabs.ucAlertPersonal.Visible = true;
+                            frmPatientRecordTabs.ucAlertPersonal.lblAlert.Text = message;
+                            break;
+                        case "tabTestsResults":
+                            frmPatientRecordTabs.ucAlertTestResults.Visible = true;
+                            frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
+
+        }
         private void setEventHandlers()
         {
             frmPatientRecordTabs.btnEditPerson.Click += new EventHandler(btnEditPerson_Click);
@@ -593,6 +634,8 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnShowFutureAppointments.Click += new System.EventHandler(this.btnShowFutureAppointments_Click);
             frmPatientRecordTabs.btnShowCurrentAppointments.Click += new System.EventHandler(this.btnShowCurrentAppointments_Click);
             frmPatientRecordTabs.btnShowPastAppointments.Click += new System.EventHandler(this.btnShowPastAppointments_Click);
+            frmPatientRecordTabs.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
+
         }
 
 
