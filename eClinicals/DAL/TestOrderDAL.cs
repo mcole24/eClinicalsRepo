@@ -89,10 +89,10 @@ namespace eClinicals.DAL
 
 
 
-        public static List<TestOrder> GetAllOrders()
+        public static List<TestOrder> GetAllOrders(int visitID)
         {
             List<TestOrder> orderList = new List<TestOrder>();
-            string selectStmt = "SELECT testID, testCode, visitID, result, testDateCompleted FROM visit_lab_test ORDER BY testID ASC";
+            string selectStmt = "SELECT testID, testCode, visitID, result, testDateCompleted FROM visit_lab_test WHERE visitID = @visitID ORDER BY testID ASC";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -100,6 +100,7 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selectStmt, connect))
                     {
+                        cmd.Parameters.AddWithValue("@visitID", visitID);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -107,7 +108,7 @@ namespace eClinicals.DAL
                                 TestOrder newOrder = new TestOrder();
                                 newOrder.TestID = (int)reader["testID"];
                                 newOrder.TestCode = reader["testCode"].ToString();
-                                newOrder.VisitID = (int)reader["visitID"];
+                                newOrder.VisitID = visitID;
                                 newOrder.Result = (Boolean)reader["result"];
                                 newOrder.DateCompleted = (DateTime)reader["testDateCompleted"];
                                 orderList.Add(newOrder);

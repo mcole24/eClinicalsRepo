@@ -70,7 +70,6 @@ namespace eClinicals.DAL
                         SqlCommand getContactCmd = new SqlCommand();
                         getContactCmd.Connection = connect;
                         getContactCmd.CommandText = "SELECT MAX(contactID) AS maxContact FROM contact";
-                        //contactID = Convert.ToInt32(getContactCmd.ExecuteScalar());
                         using (SqlDataReader reader = getContactCmd.ExecuteReader())
                         {
                             while (reader.Read())
