@@ -538,6 +538,7 @@ namespace eClinicals.Controllers
             Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked );
             Console.WriteLine("Time : " + frmPatientRecordTabs.dtpTestTime_TestResults.Value.TimeOfDay);
             Console.WriteLine("Date : " + frmPatientRecordTabs.dtpTestDate_TestResults.Value.ToShortDateString());
+<<<<<<< HEAD
 
             // if  eClinicalsController.addInitialDiagnosis() then
 
@@ -551,6 +552,12 @@ namespace eClinicals.Controllers
             // order test 
             // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
             //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+=======
+          
+            // order test 
+           // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+          //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+>>>>>>> afe25c916759a091bfab994cb98035094ad93418
 
         }
 
