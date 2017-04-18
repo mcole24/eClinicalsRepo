@@ -267,7 +267,7 @@ namespace eClinicals.DAL
 
 
         public static bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
-            string ZIP, string phone, string gender, string SSN)
+            string ZIP, string phone, string gender)
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
