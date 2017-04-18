@@ -371,17 +371,17 @@ namespace eClinicals.Controllers
                 {
                     bool isUpdate = false;
                    
-<<<<<<< HEAD
+
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, frmPatientRecordTabs.lastName,
                        frmPatientRecordTabs.firstName, frmPatientRecordTabs.dob, frmPatientRecordTabs.streetAddress, frmPatientRecordTabs.city, frmPatientRecordTabs.state,
                    frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender);
 
                    //refresh later
-=======
+
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
->>>>>>> parent of 65a70b3... updating
+                patient.Zip, patient.Phone, patient.Gender);
+
 
                     if (isUpdate)
                     {
