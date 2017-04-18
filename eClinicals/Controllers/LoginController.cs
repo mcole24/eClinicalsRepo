@@ -30,17 +30,14 @@ namespace eClinicals.Controllers
         {
             // nurse : cwoods6
             //admin : jwynn1
-<<<<<<< HEAD
+
             frmLoginView.username = "cwoods6"; 
              frmLoginView.password ="testpassword123"; 
             // frmLoginView.username = frmLoginView.txtUserName.Text;
-            // frmLoginView.password = frmLoginView.txtPassword.Text;
-=======
+
             // frmLoginView.username = "cwoods6";  //frmLoginView.txtUserName.Text;
             // frmLoginView.password ="testpassword123"; //frmLoginView.txtPassword.Text;
             frmLoginView.username = frmLoginView.txtUserName.Text;
-            frmLoginView.password = frmLoginView.txtPassword.Text;
->>>>>>> afe25c916759a091bfab994cb98035094ad93418
             LogIn(frmLoginView.username, frmLoginView.password);   
         }
         //define delegate
