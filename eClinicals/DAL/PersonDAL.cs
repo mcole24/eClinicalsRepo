@@ -110,8 +110,8 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 string storedPassword = reader["password"].ToString();
-                                string hashedPassword2 = EncodePasswordToBase64(storedPassword);
-                                if (hashedPassword1 == hashedPassword2)  //change enteredPassword to hashedPassword later
+                                //string hashedPassword2 = EncodePasswordToBase64(storedPassword);
+                                if (hashedPassword1 == storedPassword)  //change enteredPassword to hashedPassword later
                                 {
                                     isMatch = true;
                                 }
@@ -219,26 +219,6 @@ namespace eClinicals.DAL
             }
             return contact;
         }
-
-
-        public static string GetHashedPassword(string userName, string password)
-        {
-            return GetHashData(String.Format("{0}{1}", userName.Substring(0, 4), password));
-        }
-
-        public static string GetHashData(string data)
-
-        {
-            SHA256 passWordHashGenerator = SHA256Managed.Create();
-            byte[] hashedData = passWordHashGenerator.ComputeHash(Encoding.Unicode.GetBytes(data));
-            StringBuilder stringBuild = new StringBuilder(hashedData.Length * 2);
-            foreach (byte b in hashedData)
-            {
-                stringBuild.AppendFormat("{0:x2}", b);
-            }
-            return stringBuild.ToString();
-        }
-
 
         public static string EncodePasswordToBase64(string password)
         {
