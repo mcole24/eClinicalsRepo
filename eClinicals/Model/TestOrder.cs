@@ -14,6 +14,7 @@ namespace eClinicals.Model
         public int VisitID { get; set; }
         public Boolean Result { get; set; }
         public DateTime DateCompleted { get; set; }
+        public string TestType { get; set; }
 
     }
 }
