@@ -462,7 +462,7 @@ namespace eClinicals.Controllers
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
-                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, visitTime, systolic, diastolic, bodyTemp, pulse))
+                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse))
                     {
 
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
