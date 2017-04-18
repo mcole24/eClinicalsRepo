@@ -11,7 +11,7 @@ using eClinicals.Model;
 namespace eClinicals.DAL
 {
     class PersonDAL
-    {       
+    {
 
         public static bool createLogin(int contactID, string username, string password)
         {
@@ -24,7 +24,7 @@ namespace eClinicals.DAL
                     string insertStmt = "INSERT INTO logins (contactID, userName, password) VALUES (@contact, @user, @password);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
-                        string hashedPassword = EncodePasswordToBase64(password);
+                        string hashedPassword = GetHashedPassword(username, password);
                         cmd.Parameters.AddWithValue("@contact", contactID);
                         cmd.Parameters.AddWithValue("@user", username);
                         cmd.Parameters.AddWithValue("@password", hashedPassword);
@@ -40,6 +40,7 @@ namespace eClinicals.DAL
             }
 
         }
+
 
 
 
@@ -92,6 +93,10 @@ namespace eClinicals.DAL
 
         public static bool checkPassword(string username, string enteredPassword)
         {
+<<<<<<< HEAD
+=======
+            //string hashedPassword = GetHashedPassword(username, enteredPassword);
+>>>>>>> b6d08a8405a4904284333c7fedb0e84b342afb9e
             bool isMatch = false;
             try
             {
@@ -109,7 +114,11 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 string storedPassword = reader["password"].ToString();
+<<<<<<< HEAD
                                 if (enteredPassword == storedPassword)
+=======
+                                if (enteredPassword == storedPassword)  //change enteredPassword to hashedPassword later
+>>>>>>> b6d08a8405a4904284333c7fedb0e84b342afb9e
                                 {
                                     isMatch = true;
                                 }
@@ -215,6 +224,24 @@ namespace eClinicals.DAL
                 throw ex;
             }
             return contact;
+        }
+
+        public static string GetHashedPassword(string userName, string password)
+        {
+            return GetHashData(String.Format("{0}{1}", userName.Substring(0, 4), password));
+        }
+
+        public static string GetHashData(string data)
+
+        {
+            SHA256 passWordHashGenerator = SHA256Managed.Create();
+            byte[] hashedData = passWordHashGenerator.ComputeHash(Encoding.Unicode.GetBytes(data));
+            StringBuilder stringBuild = new StringBuilder(hashedData.Length * 2);
+            foreach (byte b in hashedData)
+            {
+                stringBuild.AppendFormat("{0:x2}", b);
+            }
+            return stringBuild.ToString();
         }
 
         public static string EncodePasswordToBase64(string password)
