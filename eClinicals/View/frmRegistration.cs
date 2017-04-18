@@ -129,7 +129,12 @@ namespace eClinicals.View
 
         private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (cbUserType.SelectedIndex == 3) {
+
+                txtPassword1.Visible = false;
+                txtPassword2.Visible = false;
+
+            }
         }
     }
 
