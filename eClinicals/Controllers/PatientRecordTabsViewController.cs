@@ -53,7 +53,7 @@ namespace eClinicals.Controllers
             if (patient != null)
             {
                 this.patient = patient;
-                Console.Write(this.patient.PatientID.ToString());
+               
             }
             else {
                 mainForm.Status("Patient cannot be null.", Color.Red);
@@ -370,8 +370,8 @@ namespace eClinicals.Controllers
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
                     bool isUpdate = false;
-
-                    isUpdate = eClinicalsController.UpdatePatient(patient.PatientID, patient.LastName,
+                   
+                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
                 patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
 
@@ -470,6 +470,8 @@ namespace eClinicals.Controllers
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
+
 
                         EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, false);
                         EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
@@ -479,6 +481,8 @@ namespace eClinicals.Controllers
                         EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
                         isRoutineCheckOpen = false;
                         this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+
+                     
                     }
                     else
                     {
