@@ -169,6 +169,12 @@
     <Compile Include="View\ucAlert.Designer.cs">
       <DependentUpon>ucAlert.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ucAppointmentSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ucAppointmentSummary.Designer.cs">
+      <DependentUpon>ucAppointmentSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="_CS6232_g5DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -220,6 +226,9 @@
     <EmbeddedResource Include="View\ucAlert.resx">
       <DependentUpon>ucAlert.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ucAppointmentSummary.resx">
+      <DependentUpon>ucAppointmentSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\eClinicals.Model.Admin.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.Appointment.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.LabTest.datasource" />
@@ -262,6 +271,8 @@
     <Resource Include="Resources\Alert.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <None Include="Resources\backAppointments.png" />
+    <Content Include="Resources\Done.png" />
     <Content Include="Resources\Image1.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\footer-image.jpg">

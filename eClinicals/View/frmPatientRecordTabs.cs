@@ -13,6 +13,7 @@ namespace eClinicals.View
         List<Diagnosis> listDiagnosis;
         List<LabTest> listTestOrder;
         List<Appointment> listReasons;
+        List<Symptom> listSymptoms;
         eClinicalsController eClinicalsController;
       // Personal Tab
         public string lastName;
@@ -67,6 +68,16 @@ namespace eClinicals.View
                 cbAppReason.Items.Add(reason);
             }
 
+            listSymptoms = eClinicalsController.GetAllSymptoms();
+            foreach (Symptom symptom in listSymptoms)
+            {
+                cbSymptoms_RoutineCheck.Items.Add(symptom);
+             
+            }
+
+
+
+
             listDiagnosis = eClinicalsController.GetAllDiagnosis();
 
             foreach (Diagnosis diagnosis in listDiagnosis)
@@ -89,6 +100,7 @@ namespace eClinicals.View
         {           
             // Selects the member name of the object in the listBox
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
+            cbSymptoms_RoutineCheck.DisplayMember = "SymptomType";
             cbDoctor_SetAppointment.DisplayMember = "DoctorName";
             cbSelectDoctor_OrderTest.DisplayMember = "DoctorName";
             cbSelectTest_OrderTest.DisplayMember = "TestName";
@@ -110,5 +122,6 @@ namespace eClinicals.View
         
 
         }
+
     }
 }
