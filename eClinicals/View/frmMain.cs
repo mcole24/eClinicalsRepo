@@ -41,7 +41,7 @@ namespace eClinicals.View
         public string status { get; set; }
         public bool isLoggedIn { get; set; }
         internal List<Appointment> selectedPatientAppointments;
-        private Patient selectedPatient;
+        internal Patient selectedPatient;
         internal Appointment selectedAppointment;
         public int selectedPatientID;
         public Person currentUser;
@@ -107,6 +107,9 @@ namespace eClinicals.View
             selectedPatient = null;
             currentUser = null;
             OpenLoginView();
+            if (ucAppointmentSummary.Visible) {
+                ucAppointmentSummary.Visible = false;
+            }
         }
 
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
