@@ -72,21 +72,21 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentSummaryVisitDetails(appointmentID);
         }
 
-        public List<Visit> GetAppointmentSummarySymptoms(int appointmentID)
+        public List<AppointmentSummary> GetAppointmentSummarySymptoms(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummarySymptoms(appointmentID);
         }
 
-        public Visit GetAppointmentSummaryCheckupResults(int appointmentID)
+        public AppointmentSummary GetAppointmentSummaryCheckupResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryCheckupResults(appointmentID);
         }
 
-        public List<Visit> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        public List<AppointmentSummary> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryDiagnosisResults(appointmentID);
         }
-        public List<Visit> GetAppointmentSummaryTestResults(int appointmentID)
+        public List<AppointmentSummary> GetAppointmentSummaryTestResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryTestResults(appointmentID);
 

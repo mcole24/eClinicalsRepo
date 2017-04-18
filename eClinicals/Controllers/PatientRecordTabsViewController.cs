@@ -116,13 +116,12 @@ namespace eClinicals.Controllers
         {
             try
             {
-
-
-                mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
-                // mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
-              // mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
-              // mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
-             //  mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
+           
+               mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
 
             }
             catch (Exception ex)
@@ -372,9 +371,17 @@ namespace eClinicals.Controllers
                 {
                     bool isUpdate = false;
                    
+
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, frmPatientRecordTabs.lastName,
                        frmPatientRecordTabs.firstName, frmPatientRecordTabs.dob, frmPatientRecordTabs.streetAddress, frmPatientRecordTabs.city, frmPatientRecordTabs.state,
-                   frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender, frmPatientRecordTabs.ssn);
+                   frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender);
+
+                   //refresh later
+
+                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
+                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
+                patient.Zip, patient.Phone, patient.Gender);
+
 
                     if (isUpdate)
                     {
@@ -528,17 +535,34 @@ namespace eClinicals.Controllers
             isRoutineCheckOpen = true;
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
-        {           
+        {
+
             Console.WriteLine("Test  : " + frmPatientRecordTabs.cbTest_TestResults.Text);
             Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
             Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
             Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked );
             Console.WriteLine("Time : " + frmPatientRecordTabs.dtpTestTime_TestResults.Value.TimeOfDay);
             Console.WriteLine("Date : " + frmPatientRecordTabs.dtpTestDate_TestResults.Value.ToShortDateString());
-            
+
+
+            // if  eClinicalsController.addInitialDiagnosis() then
+
+        
+            if (initDiagnosis) {
+                frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
+
+            }
+
+
             // order test 
-            frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+          
+            // order test 
+           // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+          //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
 
         }
 

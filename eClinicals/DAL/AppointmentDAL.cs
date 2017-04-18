@@ -471,9 +471,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static List<Visit> GetAppointmentSummarySymptoms(int appointmentID)
+        public static List<AppointmentSummary> GetAppointmentSummarySymptoms(int appointmentID)
         {
-            List<Visit> visitSymptomsList = new List<Visit>();
+            List<AppointmentSummary> visitSymptomsList = new List<AppointmentSummary>();
             string selStmt = "SELECT symptomType "
                       + "FROM visit "
                       + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
@@ -492,7 +492,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                Visit visitSymptom = new Visit();
+                                AppointmentSummary visitSymptom = new AppointmentSummary();
                                 visitSymptom.Symptoms = reader["symptomType"].ToString();
                                 visitSymptomsList.Add(visitSymptom);
                             }
@@ -514,9 +514,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static Visit GetAppointmentSummaryCheckupResults(int appointmentID)
+        public static AppointmentSummary GetAppointmentSummaryCheckupResults(int appointmentID)
         {
-            Visit visit = new Visit();
+            AppointmentSummary visit = new AppointmentSummary();
             string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
                 + "FROM visit "
                 + "WHERE visit.appointmentID = @appointmentID";
@@ -554,9 +554,9 @@ namespace eClinicals.DAL
             return visit;
         }
 
-        public static List<Visit> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        public static List<AppointmentSummary> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
-            List<Visit> visitDiagnosisList = new List<Visit>();
+            List<AppointmentSummary> visitDiagnosisList = new List<AppointmentSummary>();
             string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
                           + "FROM visit "
                           + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
@@ -580,7 +580,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                Visit visitDiagnosis = new Visit();
+                                AppointmentSummary visitDiagnosis = new AppointmentSummary();
                                 visitDiagnosis.InitialDiagnosis = reader["initialDiagnosis"].ToString();
                                 visitDiagnosis.FinalDiagnosis = reader["finalDiagnosis"].ToString();
                                 visitDiagnosisList.Add(visitDiagnosis);
@@ -602,9 +602,9 @@ namespace eClinicals.DAL
             return visitDiagnosisList;
         }
 
-        public static List<Visit> GetAppointmentSummaryTestResults(int appointmentID)
+        public static List<AppointmentSummary> GetAppointmentSummaryTestResults(int appointmentID)
         {
-            List<Visit> visitTestResultList = new List<Visit>();
+            List<AppointmentSummary> visitTestResultList = new List<AppointmentSummary>();
             string selStmt = "SELECT testType, result "
            + "FROM visit "
            + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
@@ -623,7 +623,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                Visit visitTestResult = new Visit();
+                                AppointmentSummary visitTestResult = new AppointmentSummary();
                                 visitTestResult.TestName = reader["testType"].ToString();
                                 visitTestResult.ResultRecorded = (bool)reader["result"];
                                 if (visitTestResult.ResultRecorded == true)
