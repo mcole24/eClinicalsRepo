@@ -107,9 +107,6 @@ namespace eClinicals.View
             selectedPatient = null;
             currentUser = null;
             OpenLoginView();
-            if (ucAppointmentSummary.Visible) {
-                ucAppointmentSummary.Visible = false;
-            }
         }
 
         private void btnRegisterAPatient_Click(object sender, EventArgs e)

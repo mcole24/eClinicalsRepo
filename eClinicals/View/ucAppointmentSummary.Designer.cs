@@ -94,13 +94,10 @@
             // 
             // dgCheckupResults
             // 
-            this.dgCheckupResults.AllowUserToAddRows = false;
-            this.dgCheckupResults.AllowUserToDeleteRows = false;
             this.dgCheckupResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCheckupResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCheckupResults.Location = new System.Drawing.Point(3, 22);
             this.dgCheckupResults.Name = "dgCheckupResults";
-            this.dgCheckupResults.ReadOnly = true;
             this.dgCheckupResults.Size = new System.Drawing.Size(424, 79);
             this.dgCheckupResults.TabIndex = 10;
             // 
