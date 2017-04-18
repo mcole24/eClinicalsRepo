@@ -67,7 +67,7 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllCurrentDateAppointmentsByPatientID(patientID);
         }
 
-        public Visit GetAppointmentSummaryVisitDetails(int appointmentID)
+        public AppointmentSummary GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryVisitDetails(appointmentID);
         }
@@ -182,9 +182,9 @@ namespace eClinicals.Controllers
         }
 
         public bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
-         string ZIP, string phone, string gender, string SSN)
+         string ZIP, string phone, string gender)
         {
-            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
+            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
         }
         public bool CreateLogin(int contactID, string username, string password)
         {
