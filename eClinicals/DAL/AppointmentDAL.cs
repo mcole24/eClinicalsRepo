@@ -428,23 +428,22 @@ namespace eClinicals.DAL
         public static Visit GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             Visit visit = new Visit();
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
+                string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
                         + "FROM visit "
                         + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
                         + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                         + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                         + "JOIN contact ON doctor.contactID = contact.contactID "
                         + "WHERE visit.appointmentID = @appointmentID";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        connect.Open();
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-                       
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);    
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -475,19 +474,18 @@ namespace eClinicals.DAL
         public static List<Visit> GetAppointmentSummarySymptoms(int appointmentID)
         {
             List<Visit> visitSymptomsList = new List<Visit>();
+            string selStmt = "SELECT symptomType "
+                      + "FROM visit "
+                      + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
+                      + "JOIN symptom ON visit_symptom.symptomID = symptom.symptomID "
+                      + "WHERE visit.appointmentID = @appointmentID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                   
-                    string selStmt = "SELECT symptomType "
-                        + "FROM visit "
-                        + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
-                        + "JOIN symptom ON visit_symptom.symptomID = symptom.symptomID "
-                        + "WHERE visit.appointmentID = @appointmentID";
+                    connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        connect.Open();
                         cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -519,16 +517,16 @@ namespace eClinicals.DAL
         public static Visit GetAppointmentSummaryCheckupResults(int appointmentID)
         {
             Visit visit = new Visit();
+            string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
+                + "FROM visit "
+                + "WHERE visit.appointmentID = @appointmentID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
-                        + "FROM visit "
-                        + "WHERE visit.appointmentID = @appointmentID";
+                    connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                       connect.Open();
                         cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -559,25 +557,25 @@ namespace eClinicals.DAL
         public static List<Visit> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
             List<Visit> visitDiagnosisList = new List<Visit>();
+            string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
+                          + "FROM visit "
+                          + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                          + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                          + "WHERE appointmentID = @appointmentID AND initialDiagnosis = 1"
+                          +
+                  "SELECT visit.visitID, diagnosisType AS finalDiagnosis "
+                 + " FROM visit "
+                 + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
+                 + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
+                 + "WHERE appointmentID = @appointmentID AND finalDiagnosis = 1";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
-                            + "FROM visit "
-                            + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
-                            + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
-                            + "WHERE appointmentID = @appointmentID AND initialDiagnosis = 1"
-                            +
-                    "SELECT visit.visitID, diagnosisType AS finalDiagnosis "
-                   + " FROM visit "
-                   + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
-                   + "JOIN diagnosis ON visit_has_diagnosis.diagnosisID = diagnosis.diagnosisID "
-                   + "WHERE appointmentID = @appointmentID AND finalDiagnosis = 1";
+                    connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        connect.Open();
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                       cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -607,20 +605,19 @@ namespace eClinicals.DAL
         public static List<Visit> GetAppointmentSummaryTestResults(int appointmentID)
         {
             List<Visit> visitTestResultList = new List<Visit>();
+            string selStmt = "SELECT testType, result "
+           + "FROM visit "
+           + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
+           + "JOIN lab_test ON visit_lab_test.testCode = lab_test.testCode "
+           + "WHERE appointmentID = @appointmentID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                   
-                    string selStmt = "SELECT testType, result "
-                    + "FROM visit "
-                    + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
-                    + "JOIN lab_test ON visit_lab_test.testCode = lab_test.testCode "
-                    + "WHERE appointmentID = @appointmentID";
+                    connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        connect.Open();
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                       cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
