@@ -425,9 +425,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static Visit GetAppointmentSummaryVisitDetails(int appointmentID)
+        public static AppointmentSummary GetAppointmentSummaryVisitDetails(int appointmentID)
         {
-            Visit visit = new Visit();
+            AppointmentSummary visitDetails = new AppointmentSummary();
                 string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
                         + "FROM visit "
                         + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
@@ -448,10 +448,10 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                visit.VisitID = (int)reader["visitID"];
-                                visit.VisitDate = (DateTime)reader["appointmentDate"];
-                                visit.Doctor = reader["lName"].ToString();
-                                visit.ReasonForVisit = reader["appointmentReason"].ToString();
+                                visitDetails.VisitID = (int)reader["visitID"];
+                                visitDetails.VisitDate = (DateTime)reader["appointmentDate"];
+                                visitDetails.Doctor = reader["lName"].ToString();
+                                visitDetails.ReasonForVisit = reader["appointmentReason"].ToString();
                             }
                             reader.Close();
                         }
@@ -467,7 +467,7 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visit;
+            return visitDetails;
         }
 
 

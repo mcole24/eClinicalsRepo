@@ -67,7 +67,7 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllCurrentDateAppointmentsByPatientID(patientID);
         }
 
-        public Visit GetAppointmentSummaryVisitDetails(int appointmentID)
+        public AppointmentSummary GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryVisitDetails(appointmentID);
         }

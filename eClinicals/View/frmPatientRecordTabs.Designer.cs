@@ -121,6 +121,8 @@
             this.tabRoutineCheck = new System.Windows.Forms.TabPage();
             this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.cbSymptoms_RoutineCheck = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtpDatePerformed_RoutineCheck = new System.Windows.Forms.DateTimePicker();
             this.txtPulse = new System.Windows.Forms.TextBox();
@@ -172,8 +174,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbTest_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.cbSymptoms_RoutineCheck = new System.Windows.Forms.ComboBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -195,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgViewAppointments_ViewAppointments)).BeginInit();
             this.tabRoutineCheck.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).BeginInit();
             this.tabOrderTests.SuspendLayout();
@@ -208,7 +209,6 @@
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -1252,6 +1252,25 @@
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.cbSymptoms_RoutineCheck);
+            this.groupBox12.Location = new System.Drawing.Point(531, 36);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(218, 56);
+            this.groupBox12.TabIndex = 26;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Symptoms";
+            // 
+            // cbSymptoms_RoutineCheck
+            // 
+            this.cbSymptoms_RoutineCheck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSymptoms_RoutineCheck.FormattingEnabled = true;
+            this.cbSymptoms_RoutineCheck.Location = new System.Drawing.Point(6, 19);
+            this.cbSymptoms_RoutineCheck.Name = "cbSymptoms_RoutineCheck";
+            this.cbSymptoms_RoutineCheck.Size = new System.Drawing.Size(200, 21);
+            this.cbSymptoms_RoutineCheck.TabIndex = 16;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1762,25 +1781,6 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.cbSymptoms_RoutineCheck);
-            this.groupBox12.Location = new System.Drawing.Point(531, 36);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(218, 56);
-            this.groupBox12.TabIndex = 26;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Symptoms";
-            // 
-            // cbSymptoms_RoutineCheck
-            // 
-            this.cbSymptoms_RoutineCheck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSymptoms_RoutineCheck.FormattingEnabled = true;
-            this.cbSymptoms_RoutineCheck.Location = new System.Drawing.Point(6, 19);
-            this.cbSymptoms_RoutineCheck.Name = "cbSymptoms_RoutineCheck";
-            this.cbSymptoms_RoutineCheck.Size = new System.Drawing.Size(200, 21);
-            this.cbSymptoms_RoutineCheck.TabIndex = 16;
-            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1813,6 +1813,7 @@
             this.tabRoutineCheck.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPreviousReadings__RoutineCheck)).EndInit();
@@ -1832,7 +1833,6 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
