@@ -17,6 +17,7 @@ namespace eClinicals.Model
         public int AbnormalResults { get; set; }
         public decimal PatientsUnder30 { get; set; }
         public decimal PatientsOver30 { get; set; }
+        public decimal PatientsUnder18 { get; set; }
     
       
                     
