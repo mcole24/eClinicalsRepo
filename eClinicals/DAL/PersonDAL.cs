@@ -24,7 +24,7 @@ namespace eClinicals.DAL
                     string insertStmt = "INSERT INTO logins (contactID, userName, password) VALUES (@contact, @user, @password);";
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
-                        string hashedPassword = GetHashedPassword(username, password);
+                        string hashedPassword = EncodePasswordToBase64(password);
                         cmd.Parameters.AddWithValue("@contact", contactID);
                         cmd.Parameters.AddWithValue("@user", username);
                         cmd.Parameters.AddWithValue("@password", hashedPassword);
@@ -92,7 +92,7 @@ namespace eClinicals.DAL
 
         public static bool checkPassword(string username, string enteredPassword)
         {
-            //string hashedPassword = GetHashedPassword(username, enteredPassword);
+            string hashedPassword1 = EncodePasswordToBase64(enteredPassword);
             bool isMatch = false;
             try
             {
@@ -110,7 +110,8 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 string storedPassword = reader["password"].ToString();
-                                if (enteredPassword == storedPassword)  //change enteredPassword to hashedPassword later
+                                string hashedPassword2 = EncodePasswordToBase64(storedPassword);
+                                if (hashedPassword1 == hashedPassword2)  //change enteredPassword to hashedPassword later
                                 {
                                     isMatch = true;
                                 }
@@ -238,6 +239,13 @@ namespace eClinicals.DAL
             return stringBuild.ToString();
         }
 
+
+        public static string EncodePasswordToBase64(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
+        }
 
 
 

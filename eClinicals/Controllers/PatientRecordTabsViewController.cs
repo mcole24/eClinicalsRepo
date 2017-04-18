@@ -370,10 +370,11 @@ namespace eClinicals.Controllers
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
                     bool isUpdate = false;
-                   
-                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
-                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
+
+
+                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, frmPatientRecordTabs.lastName,
+                       frmPatientRecordTabs.firstName, frmPatientRecordTabs.dob, frmPatientRecordTabs.streetAddress, frmPatientRecordTabs.city, frmPatientRecordTabs.state,
+                frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender);
 
                     if (isUpdate)
                     {
