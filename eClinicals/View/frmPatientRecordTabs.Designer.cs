@@ -1671,6 +1671,7 @@
             // rbFinalDiagnosis
             // 
             this.rbFinalDiagnosis.AutoSize = true;
+            this.rbFinalDiagnosis.Enabled = false;
             this.rbFinalDiagnosis.Location = new System.Drawing.Point(148, 23);
             this.rbFinalDiagnosis.Name = "rbFinalDiagnosis";
             this.rbFinalDiagnosis.Size = new System.Drawing.Size(134, 20);
