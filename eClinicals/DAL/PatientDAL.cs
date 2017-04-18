@@ -271,8 +271,8 @@ namespace eClinicals.DAL
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
-                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, ssn = @SSN " + 
-                "WHERE patientID = (SELECT patientID FROM patient WHERE contactID = @contact)";
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender  " +
+                "WHERE contactID = @contactID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -280,7 +280,7 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@contact", contactID);
+                        cmd.Parameters.AddWithValue("@contactID", contactID);
                         cmd.Parameters.AddWithValue("@lastName", lastName);
                         cmd.Parameters.AddWithValue("@firstName", firstName);
                         cmd.Parameters.AddWithValue("@DOB", DOB);
@@ -290,7 +290,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@ZIP", ZIP);
                         cmd.Parameters.AddWithValue("@phone", phone);
                         cmd.Parameters.AddWithValue("@gender", gender);
-                        cmd.Parameters.AddWithValue("@SSN", SSN);
+                        //cmd.Parameters.AddWithValue("@SSN", SSN);
                         isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();
