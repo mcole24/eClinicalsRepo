@@ -41,7 +41,7 @@ namespace eClinicals.View
         public string status { get; set; }
         public bool isLoggedIn { get; set; }
         internal List<Appointment> selectedPatientAppointments;
-        private Patient selectedPatient;
+        internal Patient selectedPatient;
         internal Appointment selectedAppointment;
         public int selectedPatientID;
         public Person currentUser;
