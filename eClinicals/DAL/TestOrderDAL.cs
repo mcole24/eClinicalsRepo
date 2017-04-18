@@ -12,10 +12,10 @@ namespace eClinicals.DAL
     class TestOrderDAL
     {
 
-        public static int OrderTest(TestOrder testOrdered)
+        public static int OrderTest(TestOrder testOrdered, int visitID)
         {
-            string insertStmt = "INSERT INTO visit_lab_test (testCode, visitID, result, testDateCompleted) " + 
-                "VALUES (@code, @vID, @result, @dateCompleted)";
+            string insertStmt = "INSERT INTO visit_lab_test (testCode, visitID, testDateCompleted) " + 
+                "VALUES (@code, @vID, @dateCompleted)";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -24,7 +24,7 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@code", testOrdered.TestCode);
-                        cmd.Parameters.AddWithValue("@vID", testOrdered.VisitID);
+                        cmd.Parameters.AddWithValue("@vID", visitID);
                         cmd.Parameters.AddWithValue("@result", testOrdered.Result);
                         cmd.Parameters.AddWithValue("@dateCompleted", testOrdered.DateCompleted);
                         cmd.ExecuteNonQuery();
@@ -108,7 +108,7 @@ namespace eClinicals.DAL
                                 TestOrder newOrder = new TestOrder();
                                 newOrder.TestID = (int)reader["testID"];
                                 newOrder.TestCode = reader["testCode"].ToString();
-                                newOrder.VisitID = visitID;
+                                newOrder.VisitID = (int)reader["visitID"];
                                 newOrder.Result = (Boolean)reader["result"];
                                 newOrder.DateCompleted = (DateTime)reader["testDateCompleted"];
                                 orderList.Add(newOrder);
