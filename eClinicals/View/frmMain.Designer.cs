@@ -37,6 +37,7 @@
             this.pTop = new System.Windows.Forms.Panel();
             this.pMiddle = new System.Windows.Forms.Panel();
             this.pRight = new System.Windows.Forms.Panel();
+            this.ucAppointmentSummary = new eClinicals.View.ucAppointmentSummary();
             this.statusStripMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.pMiddle.SuspendLayout();
@@ -79,14 +80,14 @@
             // startMenuToolStripMenuItem
             // 
             this.startMenuToolStripMenuItem.Name = "startMenuToolStripMenuItem";
-            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.startMenuToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.startMenuToolStripMenuItem.Text = "&Start Menu";
             this.startMenuToolStripMenuItem.Click += new System.EventHandler(this.startMenuToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -105,6 +106,7 @@
             this.pMiddle.BackColor = System.Drawing.Color.White;
             this.pMiddle.BackgroundImage = global::eClinicals.Properties.Resources.eclinicalLogo;
             this.pMiddle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pMiddle.Controls.Add(this.ucAppointmentSummary);
             this.pMiddle.Controls.Add(this.pRight);
             this.pMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMiddle.Location = new System.Drawing.Point(0, 128);
@@ -120,6 +122,16 @@
             this.pRight.Name = "pRight";
             this.pRight.Size = new System.Drawing.Size(200, 600);
             this.pRight.TabIndex = 0;
+            // 
+            // ucAppointmentSummary
+            // 
+            this.ucAppointmentSummary.BackColor = System.Drawing.Color.White;
+            this.ucAppointmentSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucAppointmentSummary.Location = new System.Drawing.Point(0, 0);
+            this.ucAppointmentSummary.Name = "ucAppointmentSummary";
+            this.ucAppointmentSummary.Size = new System.Drawing.Size(984, 600);
+            this.ucAppointmentSummary.TabIndex = 1;
+            this.ucAppointmentSummary.Visible = false;
             // 
             // frmMain
             // 
@@ -163,5 +175,6 @@
         private System.Windows.Forms.Panel pRight;
         private System.Windows.Forms.ToolStripMenuItem startMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        public ucAppointmentSummary ucAppointmentSummary;
     }
 }

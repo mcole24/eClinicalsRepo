@@ -2,6 +2,7 @@
 using eClinicals.Utils;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace eClinicals.View
@@ -46,7 +47,10 @@ namespace eClinicals.View
             city = txtCity.Text;
             state = cbState.Text;
             zip = txtZipcode.Text;
-            phone = txtPhone.Text;
+
+            string justDigits = new string(txtPhone.Text.Where(char.IsDigit).ToArray());
+            phone = justDigits;
+            Console.WriteLine(phone);
             gender = cbGender.Text;
             ssn = txtSSN.Text;
             userType = cbUserType.SelectedIndex + 1;
@@ -65,9 +69,9 @@ namespace eClinicals.View
                     return;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                mainForm.Status(ex.Message, Color.Red);
             }
             mainForm.lblStatus.BackColor = Color.Transparent;
             mainForm.lblStatus.Text = ("Open Patient Record : With Registered Patient");
@@ -83,6 +87,8 @@ namespace eClinicals.View
         }
         private void createPersonByType(int contactID)
         {
+            try
+            {
 
             if (contactID > 0)
             {
@@ -104,8 +110,18 @@ namespace eClinicals.View
                         MessageBox.Show("There was a problem creating this person");
                         break;
                 }
+
                 eClinicalsController.CreateLogin(contactID, createUserName(firstName, contactID,lastName), password1);
             }
+
+
+            }
+            catch (Exception ex)
+            {
+                mainForm.Status(ex.Message, Color.Red);
+            }
+
+
         }
         private string createUserName(string firstname, int contactId, string lastname) {
             return  (firstname.Substring(0, 1) + lastname + contactId.ToString()).ToLower();

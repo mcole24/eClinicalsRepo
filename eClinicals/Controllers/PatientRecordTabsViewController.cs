@@ -53,6 +53,7 @@ namespace eClinicals.Controllers
             if (patient != null)
             {
                 this.patient = patient;
+                Console.Write(this.patient.PatientID.ToString());
             }
             else {
                 mainForm.Status("Patient cannot be null.", Color.Red);
@@ -95,8 +96,10 @@ namespace eClinicals.Controllers
                     frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
                     frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;                   
                     frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
+
                     checkAppointmentCurrentDate();
                     checkAppointmentFutureDate();
+                    checkAppointmentPastDate();
                 }
                 else
                 {
@@ -108,6 +111,44 @@ namespace eClinicals.Controllers
                 throw;
             }
         }
+
+        private void btnSummary_Click(object sender, EventArgs e)
+        {
+            try
+            {
+           
+               mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
+               mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
+
+            }
+            catch (Exception ex)
+            {
+
+                mainForm.Status(ex.Message, Color.Red);
+            }
+
+
+           // mainForm.ucAppointmentSummary.lblDoctor.Text = selectedAppointment.AppointmentDoctor;
+           // mainForm.ucAppointmentSummary.lblDate.Text = selectedAppointment.AppointmentDate.ToShortDateString();
+           // mainForm.ucAppointmentSummary.lblReason.Text = selectedAppointment.AppointmentReason;
+            mainForm.ucAppointmentSummary.Visible = true;
+        }
+        private void checkAppointmentPastDate()
+        {
+            if (selectedAppointment.AppointmentDate.Date < DateTime.Now.Date)
+            {
+                showSummaryButton(true);
+            }
+            else
+            {
+                showSummaryButton(false);
+                mainForm.Status("NOTE:  Only selected past date us viewed as summary....", Color.Yellow);
+            }
+        }
+
         private void checkAppointmentFutureDate()
         {
             if (selectedAppointment.AppointmentDate.Date > DateTime.Now.Date)
@@ -242,7 +283,7 @@ namespace eClinicals.Controllers
 
                 Status(ex.Message + " Select  future Appoinitment", Color.Red);
             }
-
+            showSummaryButton(false);
 
         }
         private void btnShowCurrentAppointments_Click(object sender, EventArgs e)
@@ -257,14 +298,19 @@ namespace eClinicals.Controllers
             {
 
                 Status(ex.Message + " Select  Current Appoinitment", Color.Red);
-            }         
-           
+            }
+            showSummaryButton(false);
+
         }
         private void btnShowPastAppointments_Click(object sender, EventArgs e)
         {
             selectedPastPatientAppointments = eClinicalsController.GetAllPastAppointmentsByPatientID(patient.PatientID);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
+            showSummaryButton(true);
         }
+
+      
+
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             isRoutineCheckOpen = false;
@@ -370,13 +416,9 @@ namespace eClinicals.Controllers
                     if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
                     {
                         mainForm.Status("Patient is already scheduled for that time.", Color.Red);
-                        Console.WriteLine(app.AppointmentDate.Date.ToShortDateString());
-                        Console.WriteLine(dateAndTime.Date.ToShortDateString());
-
                         return;
                     }
-                }
-                Console.Write("Testing");
+                }        
 
                 if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
                 {
@@ -405,6 +447,7 @@ namespace eClinicals.Controllers
                 string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
                 string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
                 string pulseS = frmPatientRecordTabs.txtPulse.Text;
+                string symptom = frmPatientRecordTabs.cbSymptoms_RoutineCheck.Text;
 
                 if (currentNurse == null)
                 {
@@ -478,9 +521,7 @@ namespace eClinicals.Controllers
             isRoutineCheckOpen = true;
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
-        {
-
-           
+        {           
             Console.WriteLine("Test  : " + frmPatientRecordTabs.cbTest_TestResults.Text);
             Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
             Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
@@ -494,7 +535,11 @@ namespace eClinicals.Controllers
 
         }
 
-
+        private void showSummaryButton(bool status)
+        {
+            frmPatientRecordTabs.btnSummary.Visible = status;
+            frmPatientRecordTabs.lblSummary.Visible = status;
+        }
         public void DisableEdit()
         {
             frmPatientRecordTabs.txtLastName.Text = this.patient.LastName;
@@ -635,6 +680,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnShowCurrentAppointments.Click += new System.EventHandler(this.btnShowCurrentAppointments_Click);
             frmPatientRecordTabs.btnShowPastAppointments.Click += new System.EventHandler(this.btnShowPastAppointments_Click);
             frmPatientRecordTabs.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
+            frmPatientRecordTabs.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
 
         }
 

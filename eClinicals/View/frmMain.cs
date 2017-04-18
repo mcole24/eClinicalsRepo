@@ -195,31 +195,8 @@ namespace eClinicals.View
                 Status("No Appointment has been selected ", Color.Yellow);
 
             }
-        }
-        private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    selectedAppointment = (Appointment)frmPatientTabs.dgViewAppointments_ViewAppointments.CurrentRow.DataBoundItem;
-                    string message = "|Appointment Selected: " + selectedAppointment.AppointmentDoctor +
-                        "  " + selectedAppointment.AppointmentDate + " ID:" + selectedAppointment.AppointmentID +
-                        "...Pressing the start routine checkup Button will select the appointment for checkup.";
-                    Status(message, Color.Transparent);
-                    selectedPatientID = selectedPatient.PatientID;
-                }
-                else
-                {
-                    Status("No appointment has been selection.", Color.Yellow);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        
+        }     
+      
         private void btnSearchPatient_Click(object sender, EventArgs e)
         {
             //when a view is opened it automatically closes the previous view in center panel
