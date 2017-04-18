@@ -116,12 +116,13 @@ namespace eClinicals.Controllers
         {
             try
             {
-           
-               mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
+
+
+                mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
+                // mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
+              // mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
+              // mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
+             //  mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
 
             }
             catch (Exception ex)
@@ -371,9 +372,9 @@ namespace eClinicals.Controllers
                 {
                     bool isUpdate = false;
                    
-                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
-                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
+                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, frmPatientRecordTabs.lastName,
+                       frmPatientRecordTabs.firstName, frmPatientRecordTabs.dob, frmPatientRecordTabs.streetAddress, frmPatientRecordTabs.city, frmPatientRecordTabs.state,
+                   frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender, frmPatientRecordTabs.ssn);
 
                     if (isUpdate)
                     {
