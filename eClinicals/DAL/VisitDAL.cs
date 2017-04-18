@@ -58,7 +58,7 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
-        public static bool CreateCheckup(int appointmentID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        public static bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
         {
             string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
                 "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
@@ -72,7 +72,7 @@ namespace eClinicals.DAL
                     {
                         cmd.Parameters.AddWithValue("@appID", appointmentID);
                         cmd.Parameters.AddWithValue("@nurseID", nurseID);
-                        cmd.Parameters.AddWithValue("@time", visitTime);
+                        cmd.Parameters.AddWithValue("@time", DateTime.Now);
                         cmd.Parameters.AddWithValue("@sBP", systolicBP);
                         cmd.Parameters.AddWithValue("@dBP", diastolicBP);
                         cmd.Parameters.AddWithValue("@temp", bodyTemp);
