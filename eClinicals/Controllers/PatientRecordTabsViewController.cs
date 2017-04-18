@@ -356,15 +356,15 @@ namespace eClinicals.Controllers
         {
             try
             {
-                frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
-                frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
-                frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
-                frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
-                frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
-                frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
-                frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
-                frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
-                frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
+                patient.LastName =  frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
+                patient.FirstName = frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
+                patient.Dob = frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
+                patient.Address = frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
+                patient.City =  frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
+                patient.State = frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
+                patient.Zip = frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
+                patient.Phone = frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
+                patient.Gender = frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
                 frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
 
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
@@ -372,9 +372,9 @@ namespace eClinicals.Controllers
                     bool isUpdate = false;
                    
 
-                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, frmPatientRecordTabs.lastName,
-                       frmPatientRecordTabs.firstName, frmPatientRecordTabs.dob, frmPatientRecordTabs.streetAddress, frmPatientRecordTabs.city, frmPatientRecordTabs.state,
-                   frmPatientRecordTabs.zip, frmPatientRecordTabs.phone, frmPatientRecordTabs.gender);
+                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
+                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
+                   patient.Zip, patient.Phone, patient.Gender);
 
                    //refresh later
 

@@ -92,7 +92,6 @@ namespace eClinicals.DAL
 
         public static bool checkPassword(string username, string enteredPassword)
         {
-            string hashedPassword1 = EncodePasswordToBase64(enteredPassword);
             bool isMatch = false;
             try
             {
@@ -110,8 +109,7 @@ namespace eClinicals.DAL
                             while (reader.Read())
                             {
                                 string storedPassword = reader["password"].ToString();
-                                //string hashedPassword2 = EncodePasswordToBase64(storedPassword);
-                                if (hashedPassword1 == storedPassword)  //change enteredPassword to hashedPassword later
+                                if (enteredPassword == storedPassword)
                                 {
                                     isMatch = true;
                                 }
@@ -133,7 +131,6 @@ namespace eClinicals.DAL
             }
             return isMatch;
         }
-
 
 
         public static Person GetLoggedInUserDetails (string username, string password)
