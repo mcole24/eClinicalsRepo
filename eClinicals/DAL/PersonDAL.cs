@@ -93,10 +93,8 @@ namespace eClinicals.DAL
 
         public static bool checkPassword(string username, string enteredPassword)
         {
-<<<<<<< HEAD
-=======
             //string hashedPassword = GetHashedPassword(username, enteredPassword);
->>>>>>> b6d08a8405a4904284333c7fedb0e84b342afb9e
+
             bool isMatch = false;
             try
             {
@@ -113,12 +111,10 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                string storedPassword = reader["password"].ToString();
-<<<<<<< HEAD
-                                if (enteredPassword == storedPassword)
-=======
+                                string storedPassword = reader["password"].ToString();                             
+
                                 if (enteredPassword == storedPassword)  //change enteredPassword to hashedPassword later
->>>>>>> b6d08a8405a4904284333c7fedb0e84b342afb9e
+
                                 {
                                     isMatch = true;
                                 }

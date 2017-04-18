@@ -125,7 +125,12 @@ namespace eClinicals.View
         }
         private string createUserName(string firstname, int contactId, string lastname) {
             return  (firstname.Substring(0, 1) + lastname + contactId.ToString()).ToLower();
-        } 
+        }
+
+        private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 
