@@ -442,8 +442,9 @@ namespace eClinicals.DAL
                         + "WHERE visit.appointmentID = @appointmentID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         connect.Open();
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                       
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -453,6 +454,7 @@ namespace eClinicals.DAL
                                 visit.Doctor = reader["lName"].ToString();
                                 visit.ReasonForVisit = reader["appointmentReason"].ToString();
                             }
+                            reader.Close();
                         }
                         connect.Close();
                     }
@@ -477,7 +479,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    connect.Open();
+                   
                     string selStmt = "SELECT symptomType "
                         + "FROM visit "
                         + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
@@ -485,8 +487,9 @@ namespace eClinicals.DAL
                         + "WHERE visit.appointmentID = @appointmentID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         connect.Open();
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -495,6 +498,7 @@ namespace eClinicals.DAL
                                 visitSymptom.Symptoms = reader["symptomType"].ToString();
                                 visitSymptomsList.Add(visitSymptom);
                             }
+                            reader.Close();
                         }
                         connect.Close();
                     }
@@ -519,14 +523,13 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    connect.Open();
                     string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
                         + "FROM visit "
                         + "WHERE visit.appointmentID = @appointmentID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
+                       connect.Open();
                         cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-                        connect.Open();
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -536,6 +539,7 @@ namespace eClinicals.DAL
                                 visit.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
                                 visit.PulseReading = (int)reader["pulse"];
                             }
+                            reader.Close();
                         }
                         connect.Close();
                     }
@@ -559,7 +563,6 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    connect.Open();
                     string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
                             + "FROM visit "
                             + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
@@ -573,8 +576,8 @@ namespace eClinicals.DAL
                    + "WHERE appointmentID = @appointmentID AND finalDiagnosis = 1";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         connect.Open();
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -584,6 +587,7 @@ namespace eClinicals.DAL
                                 visitDiagnosis.FinalDiagnosis = reader["finalDiagnosis"].ToString();
                                 visitDiagnosisList.Add(visitDiagnosis);
                             }
+                            reader.Close();
                         }
                         connect.Close();
                     }
@@ -607,7 +611,7 @@ namespace eClinicals.DAL
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
-                    connect.Open();
+                   
                     string selStmt = "SELECT testType, result "
                     + "FROM visit "
                     + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
@@ -615,8 +619,9 @@ namespace eClinicals.DAL
                     + "WHERE appointmentID = @appointmentID";
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         connect.Open();
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -634,6 +639,7 @@ namespace eClinicals.DAL
                                 }
                                 visitTestResultList.Add(visitTestResult);
                             }
+                            reader.Close();
                         }
                         connect.Close();
                     }
