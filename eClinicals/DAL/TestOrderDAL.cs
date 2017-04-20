@@ -92,7 +92,7 @@ namespace eClinicals.DAL
         public static List<TestOrder> GetAllOrders(int visitID)
         {
             List<TestOrder> orderList = new List<TestOrder>();
-            string selectStmt = "SELECT vlt.testID, vlt.testCode, vlt.visitID, vlt.result, vlt.testDateCompleted, lt.testType FROM visit_lab_test vlt " + 
+            string selectStmt = "SELECT vlt.testID, vlt.testCode, vlt.visitID, lt.testType FROM visit_lab_test vlt " + 
                 "INNER JOIN lab_test lt ON vlt.testCode = lt.testCode" +
                 " WHERE vlt.visitID = @visitID ORDER BY vlt.testID ASC";
             try
@@ -111,8 +111,6 @@ namespace eClinicals.DAL
                                 newOrder.TestID = (int)reader["vlt.testID"];
                                 newOrder.TestCode = reader["vlt.testCode"].ToString();
                                 newOrder.VisitID = (int)reader["vlt.visitID"];
-                                newOrder.Result = (Boolean)reader["vlt.result"];
-                                newOrder.DateCompleted = (DateTime)reader["vlt.testDateCompleted"];
                                 newOrder.TestType = reader["lt.testType"].ToString();
                                 orderList.Add(newOrder);
                             }
