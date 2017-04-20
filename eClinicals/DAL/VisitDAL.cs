@@ -77,9 +77,10 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@dBP", diastolicBP);
                         cmd.Parameters.AddWithValue("@temp", bodyTemp);
                         cmd.Parameters.AddWithValue("@pulse", pulse);
+                        connect.Close();
                         return (cmd.ExecuteNonQuery() > 0);
                     }
-                    connect.Close();
+                    
                 }
             }
             catch
