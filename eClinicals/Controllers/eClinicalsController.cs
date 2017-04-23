@@ -111,9 +111,14 @@ namespace eClinicals.Controllers
             return DAL.LabTestDAL.UpdateResult(testID, performedDate, result);
         }
 
-        public  bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        public  int CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
         {
             return DAL.VisitDAL.CreateCheckup(appointmentID, nurseID, systolicBP, diastolicBP, bodyTemp, pulse);
+        }
+
+        public bool CreateVisitSymptom(int visitID, int symptomID)
+        {
+            return DAL.VisitDAL.CreateVisitSymptom(visitID, symptomID);
         }
 
         public  List<Symptom> GetAllSymptoms()
