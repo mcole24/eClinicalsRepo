@@ -82,6 +82,19 @@ namespace eClinicals.View
             {
                 frmPatient.lblError_phone.Text = "";
             }
+
+
+            if (frmPatient.phone.Length > 6 & frmPatient.phone.Length < 11)
+            {
+                frmPatient.lblError_phone.Text = "";
+            }
+            else
+            {
+                errorMessage = "Phone is not valid #######";
+                frmPatient.lblError_phone.Text = errorMessage; 
+            }
+
+
             if (!RegExCheckUtil.IsSSN(frmPatient.ssn) || frmPatient.ssn == "")
             {
                 errorMessage = "SSN is not valid";
@@ -153,26 +166,7 @@ namespace eClinicals.View
             else
             {
                 frmPatient.lblError_address.Text = "";
-            }
-
-            if ( frmPatient.txtPassword2.Text == "")
-            {
-                errorMessage = "Password must not be empty";
-                frmPatient.lblError_password.Text = errorMessage;
-            } else if (frmPatient.txtPassword1.Text != frmPatient.txtPassword2.Text )
-            {
-                errorMessage = "Password does not match";
-                frmPatient.lblError_password.Text = errorMessage;
-            }else if (frmPatient.txtPassword1.Text.Length < 5 || frmPatient.txtPassword1.Text.Length > 20)
-            {
-                errorMessage = "Password must be 6 characters minimum and 20 maximum.";
-                frmPatient.lblError_password.Text = errorMessage;
-
-            }
-            else
-            {
-                frmPatient.lblError_password.Text = "";
-            }
+            }           
             
             if (!RegExCheckUtil.IsPhoneNumber(frmPatient.phone) || frmPatient.phone == "")
             {

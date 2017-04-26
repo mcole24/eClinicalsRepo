@@ -1,6 +1,7 @@
 ﻿Assets
 //contains eClinical logo image
 
+
 Controller
 ControllerBase -- controls the base of the application/passes all forms to the main form
 eClinicalsController.cs -- delegates work (methods) from the DAL methods to the view

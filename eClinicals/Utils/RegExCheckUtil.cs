@@ -12,10 +12,14 @@ namespace eClinicals.Utils
         static string _usZipRegEx = @"^\d{5}(?:[-\s]\d{4})?$";
         static string _caZipRegEx = @"^([ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ])\ {0,1}(\d[ABCEGHJKLMNPRSTVWXYZ]\d)$";
         private static String states = "|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|";
-        private static String phoneReg = @"^[\\(]{0,1}([0-9]){3}[\\)]{0,1}[ ]?([^0-1]){1}([0-9]){2}[ ]?[-]?[ ]?([0-9]){4}[ ]*((x){0,1}([0-9]){1,5}){0,1}$";
+        //  private static String phoneReg = @"^[\\(]{0,1}([0-9]){3}[\\)]{0,1}[ ]?([^0-1]){1}([0-9]){2}[ ]?[-]?[ ]?([0-9]){4}[ ]*((x){0,1}([0-9]){1,5}){0,1}$";
+
+        private static String phoneReg = @"\d+";
         public static bool IsPhoneNumber(string number)
         {
-            return Regex.Match(number, phoneReg).Success;
+            string result = Regex.Replace(number, @"[^\d]", "");
+
+            return Regex.Match(result, phoneReg).Success;
         }      
         public static bool IsSSN(string number)
         {

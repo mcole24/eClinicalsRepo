@@ -35,7 +35,7 @@ namespace eClinicals.View
         {
             cbGender.SelectedIndex = 0;
             cbState.SelectedIndex = 0;
-            cbUserType.SelectedIndex = 0;
+            cbUserType.SelectedIndex = 3;
             eClinicalsController = new eClinicalsController();
         }
         private void btnRegister_Click(object sender, EventArgs e)
@@ -50,12 +50,22 @@ namespace eClinicals.View
 
             string justDigits = new string(txtPhone.Text.Where(char.IsDigit).ToArray());
             phone = justDigits;
-            Console.WriteLine(phone);
+
+            if (justDigits.Length > 6 & justDigits.Length < 11)
+            {
+                lblError_phone.Text = "";
+            }
+            else
+            {
+                errorMessage = "Phone is not valid : 9+ digits #######";
+                mainForm.Status("Only numbers will be used inside for the phone. 9 digits or 10 digits",Color.Yellow);
+                lblError_phone.Text = errorMessage;
+                return;
+            }
             gender = cbGender.Text;
             ssn = txtSSN.Text;
             userType = cbUserType.SelectedIndex + 1;
-            password1 = txtPassword1.Text;
-            password2 = txtPassword2.Text;
+                  
             try
             {               
             if (ValidateFields.patientFields(this)){
@@ -131,9 +141,7 @@ namespace eClinicals.View
         {
             if (cbUserType.SelectedIndex == 3) {
 
-                txtPassword1.Visible = false;
-                txtPassword2.Visible = false;
-
+           
             }
         }
     }

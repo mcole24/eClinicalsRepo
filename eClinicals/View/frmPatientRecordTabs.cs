@@ -123,5 +123,14 @@ namespace eClinicals.View
 
         }
 
+        private void tabPersonal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCommitTest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

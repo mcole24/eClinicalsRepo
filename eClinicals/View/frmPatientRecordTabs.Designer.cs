@@ -348,6 +348,7 @@
             this.tabPersonal.TabIndex = 0;
             this.tabPersonal.Text = "Personal";
             this.tabPersonal.UseVisualStyleBackColor = true;
+            this.tabPersonal.Click += new System.EventHandler(this.tabPersonal_Click);
             // 
             // ucAlertPersonal
             // 
@@ -1482,6 +1483,7 @@
             this.cbSelectDoctor_OrderTest.Name = "cbSelectDoctor_OrderTest";
             this.cbSelectDoctor_OrderTest.Size = new System.Drawing.Size(183, 21);
             this.cbSelectDoctor_OrderTest.TabIndex = 14;
+            this.cbSelectDoctor_OrderTest.Visible = false;
             // 
             // btnCancel_OrderTest
             // 
@@ -1687,6 +1689,7 @@
             this.btnCommitTest.TabIndex = 28;
             this.btnCommitTest.Text = "Commit Test";
             this.btnCommitTest.UseVisualStyleBackColor = true;
+            this.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
             // 
             // groupBox9
             // 

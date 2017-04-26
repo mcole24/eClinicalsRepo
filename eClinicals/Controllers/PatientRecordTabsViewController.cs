@@ -476,8 +476,7 @@ namespace eClinicals.Controllers
                     {
 
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
-                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
-                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);                       
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
 
 
@@ -488,9 +487,7 @@ namespace eClinicals.Controllers
                         EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
                         EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
                         isRoutineCheckOpen = false;
-                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
-
-                     
+                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);                     
                     }
                     else
                     {
@@ -555,8 +552,8 @@ namespace eClinicals.Controllers
 
 
             // order test 
-            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+             frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
 
           
             // order test 
@@ -620,7 +617,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtZipcode.Enabled = true;
             frmPatientRecordTabs.txtPhone.Enabled = true;
             frmPatientRecordTabs.cbGender.Enabled = true;
-            frmPatientRecordTabs.txtSSN.Enabled = true;
+            frmPatientRecordTabs.txtSSN.Enabled = false;
         }
         public void EnableTabAlert(TabPage page, bool enable)
         {

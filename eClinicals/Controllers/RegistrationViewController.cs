@@ -18,11 +18,7 @@ namespace eClinicals.Controllers
 
             frmRegistration = (frmRegistration)base.thisView;
 
-            mainForm.lblStatus.Text = "Registration View Active . . .";
-            
+            mainForm.lblStatus.Text = "Registration View Active . . .";            
         }
-
-
-
     }
 }

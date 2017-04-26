@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPassword2 = new System.Windows.Forms.TextBox();
-            this.txtPassword1 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,34 +63,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblError_password = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtPassword2
-            // 
-            this.txtPassword2.Location = new System.Drawing.Point(124, 299);
-            this.txtPassword2.MaxLength = 45;
-            this.txtPassword2.Name = "txtPassword2";
-            this.txtPassword2.PasswordChar = '*';
-            this.txtPassword2.Size = new System.Drawing.Size(162, 20);
-            this.txtPassword2.TabIndex = 30;
-            // 
-            // txtPassword1
-            // 
-            this.txtPassword1.Location = new System.Drawing.Point(125, 273);
-            this.txtPassword1.MaxLength = 45;
-            this.txtPassword1.Name = "txtPassword1";
-            this.txtPassword1.Size = new System.Drawing.Size(162, 20);
-            this.txtPassword1.TabIndex = 28;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(122, 254);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 13);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "Password";
             // 
             // label14
             // 
@@ -264,7 +234,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(362, 332);
+            this.btnCancel.Location = new System.Drawing.Point(375, 275);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 23);
             this.btnCancel.TabIndex = 12;
@@ -274,7 +244,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(124, 332);
+            this.btnRegister.Location = new System.Drawing.Point(137, 275);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(163, 23);
             this.btnRegister.TabIndex = 11;
@@ -474,25 +444,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "First Name";
             // 
-            // lblError_password
-            // 
-            this.lblError_password.AutoSize = true;
-            this.lblError_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblError_password.ForeColor = System.Drawing.Color.Red;
-            this.lblError_password.Location = new System.Drawing.Point(293, 275);
-            this.lblError_password.Name = "lblError_password";
-            this.lblError_password.Size = new System.Drawing.Size(0, 16);
-            this.lblError_password.TabIndex = 31;
-            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 363);
-            this.Controls.Add(this.lblError_password);
-            this.Controls.Add(this.txtPassword2);
-            this.Controls.Add(this.txtPassword1);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -575,9 +531,5 @@
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label14;
-        public System.Windows.Forms.TextBox txtPassword1;
-        public System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox txtPassword2;
-        public System.Windows.Forms.Label lblError_password;
     }
 }
