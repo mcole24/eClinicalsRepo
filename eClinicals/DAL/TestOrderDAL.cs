@@ -14,8 +14,8 @@ namespace eClinicals.DAL
 
         public static int OrderTest(TestOrder testOrdered, int visitID)
         {
-            string insertStmt = "INSERT INTO visit_lab_test (testCode, visitID, testDateCompleted) " + 
-                "VALUES (@code, @vID, @dateCompleted)";
+            string insertStmt = "INSERT INTO visit_lab_test (testCode, visitID) " + 
+                "VALUES (@code, @vID)";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
@@ -25,8 +25,6 @@ namespace eClinicals.DAL
                     {
                         cmd.Parameters.AddWithValue("@code", testOrdered.TestCode);
                         cmd.Parameters.AddWithValue("@vID", visitID);
-                        cmd.Parameters.AddWithValue("@result", testOrdered.Result);
-                        cmd.Parameters.AddWithValue("@dateCompleted", testOrdered.DateCompleted);
                         cmd.ExecuteNonQuery();
                         SqlCommand idCmd = new SqlCommand();
                         idCmd.Connection = connect;
@@ -92,7 +90,7 @@ namespace eClinicals.DAL
         public static List<TestOrder> GetAllOrders(int visitID)
         {
             List<TestOrder> orderList = new List<TestOrder>();
-            string selectStmt = "SELECT vlt.testID, vlt.testCode, vlt.visitID, vlt.result, vlt.testDateCompleted, lt.testType FROM visit_lab_test vlt " + 
+            string selectStmt = "SELECT vlt.testID, vlt.testCode, vlt.visitID, lt.testType FROM visit_lab_test vlt " + 
                 "INNER JOIN lab_test lt ON vlt.testCode = lt.testCode" +
                 " WHERE vlt.visitID = @visitID ORDER BY vlt.testID ASC";
             try
@@ -111,8 +109,6 @@ namespace eClinicals.DAL
                                 newOrder.TestID = (int)reader["vlt.testID"];
                                 newOrder.TestCode = reader["vlt.testCode"].ToString();
                                 newOrder.VisitID = (int)reader["vlt.visitID"];
-                                newOrder.Result = (Boolean)reader["vlt.result"];
-                                newOrder.DateCompleted = (DateTime)reader["vlt.testDateCompleted"];
                                 newOrder.TestType = reader["lt.testType"].ToString();
                                 orderList.Add(newOrder);
                             }

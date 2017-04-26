@@ -58,8 +58,10 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
-        public static bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        public static int CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
         {
+            bool insertedIntoVisit = false;
+
             string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
                 "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
 
@@ -77,9 +79,51 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@dBP", diastolicBP);
                         cmd.Parameters.AddWithValue("@temp", bodyTemp);
                         cmd.Parameters.AddWithValue("@pulse", pulse);
-                        return (cmd.ExecuteNonQuery() > 0);
+                        
+                        insertedIntoVisit = (cmd.ExecuteNonQuery() > 0);
+
+                        if (insertedIntoVisit == true)
+                        {
+                            SqlCommand idCmd = new SqlCommand();
+                            idCmd.Connection = connect;
+                            idCmd.CommandText = "SELECT IDENT_CURRENT('visitID') FROM visit";
+                            int visitID = Convert.ToInt32(idCmd.ExecuteScalar());
+                            connect.Close();
+                            return visitID;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+
                     }
-                    connect.Close();
+                    
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+
+        public static bool CreateVisitSymptom(int visitID, int symptomID)
+        {
+            bool insertedIntoSymptom = false;
+            string insertStmt = "INSERT INTO visit_symptom (visitID, symptomID) VALUES (@visit, @symptom);";
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@visit", visitID);
+                        cmd.Parameters.AddWithValue("@symptom", symptomID);
+                        insertedIntoSymptom = (cmd.ExecuteNonQuery() > 0);
+                        connect.Close();
+                        return insertedIntoSymptom;
+                    }
                 }
             }
             catch
