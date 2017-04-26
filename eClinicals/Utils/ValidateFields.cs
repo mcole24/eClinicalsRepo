@@ -1,16 +1,16 @@
 ﻿using eClinicals.Utils;
-using System;
 
 namespace eClinicals.View
 {
-     class ValidateFields
+    class ValidateFields
     {
         static string errorMessage;
 
         public static bool patientFields(frmPatientRecordTabs frmPatient)
         {
 
-            if (hasErrors(frmPatient)) {
+            if (hasErrors(frmPatient))
+            {
 
                 return true;
             }
@@ -30,7 +30,8 @@ namespace eClinicals.View
         }
         private static bool hasErrors(frmPatientRecordTabs frmPatient)
         {
-              if (frmPatient == null) {
+            if (frmPatient == null)
+            {
                 throw new System.ArgumentException("Parameter cannot be null", "frmPatient");
             }
             errorMessage = "";
@@ -91,7 +92,7 @@ namespace eClinicals.View
             else
             {
                 errorMessage = "Phone is not valid #######";
-                frmPatient.lblError_phone.Text = errorMessage; 
+                frmPatient.lblError_phone.Text = errorMessage;
             }
 
 
@@ -114,7 +115,8 @@ namespace eClinicals.View
                 frmPatient.lblError_zip.Text = "";
             }
 
-            if (errorMessage == "") {
+            if (errorMessage == "")
+            {
                 return true;
             }
 
@@ -166,8 +168,8 @@ namespace eClinicals.View
             else
             {
                 frmPatient.lblError_address.Text = "";
-            }           
-            
+            }
+
             if (!RegExCheckUtil.IsPhoneNumber(frmPatient.phone) || frmPatient.phone == "")
             {
                 errorMessage = "Phone is not valid";

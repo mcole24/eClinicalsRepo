@@ -1,14 +1,13 @@
 ﻿using eClinicals.View;
-using eClinicals.Controllers;
 using System.Drawing;
 
 namespace eClinicals.Controllers
 {
-   public abstract class ControllerBase : IController
+    public abstract class ControllerBase : IController
     {
         public frmMain mainForm { get; set; }
         public frmBaseView thisView { get; set; }
-       
+
         public string status { get; set; }
 
         public ControllerBase(frmMain mainForm, frmBaseView thisView)
@@ -20,18 +19,19 @@ namespace eClinicals.Controllers
             if (thisView == null)
             {
                 throw new System.ArgumentException("Parameter cannot be null", "thisView");
-            }                      
+            }
             this.GetView(thisView);
 
             this.mainForm = mainForm;
 
             this.thisView = thisView;
             thisView.MdiParent = this.mainForm;
-            thisView.FormClosed += ThisView_FormClosed;          
+            thisView.FormClosed += ThisView_FormClosed;
         }
-      
-        private void GetView(frmBaseView thisView) {
-          
+
+        private void GetView(frmBaseView thisView)
+        {
+
 
             if (thisView is frmLogin)
             {
@@ -61,10 +61,11 @@ namespace eClinicals.Controllers
 
         public void Show()
         {
-           
+
             string message = "";
             // After Connection to database
-            if (thisView == null) {               
+            if (thisView == null)
+            {
 
                 mainForm.lblStatus.Text = "ALL ready active";
             }
@@ -81,8 +82,8 @@ namespace eClinicals.Controllers
         private void ThisView_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             frmBaseView frm = (frmBaseView)sender;
-            
-           
+
+
         }
 
         public void Status(string message, Color color)

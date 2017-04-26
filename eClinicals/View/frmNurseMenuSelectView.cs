@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace eClinicals.View
 {
@@ -14,11 +13,14 @@ namespace eClinicals.View
 
         private void btnFindPatientRecord_Click(object sender, EventArgs e)
         {
-    
+
         }
 
         private void frmNurseMenuSelectView_Load(object sender, EventArgs e)
         {
+
+
+
 
         }
     }

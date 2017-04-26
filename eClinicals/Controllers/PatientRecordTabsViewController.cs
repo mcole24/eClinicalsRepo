@@ -1,63 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using eClinicals.Model;
 using eClinicals.View;
-using eClinicals.Model;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using eClinicals.Controllers;
 
 namespace eClinicals.Controllers
 {
-    enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4};
-   
+    enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4 };
+
 
     class PatientRecordTabsViewController : ControllerBase
     {
         public frmPatientRecordTabs frmPatientRecordTabs;
         eClinicalsController eClinicalsController;
-        private Patient patient;     
+        private Patient patient;
         private Appointment selectedAppointment;
         private List<Appointment> selectedPatientAppointments;
         internal Nurse currentNurse;
-        
+
         internal frmMain mainForm;
         private List<Appointment> selectedFuturePatientAppointments;
         CURRENT_APP_VIEW CURRENT_APP_VIEW;
         private List<Appointment> selectedPastPatientAppointments;
         private List<Appointment> selectedCurrentPatientAppointments;
 
-        public Boolean isRoutineCheckOpen;
-        private Boolean initDiagnosis;
-        private Boolean finalDiagnosis;
-        private Boolean isOrderTestOpen;
+        public bool isRoutineCheckOpen;
+        private bool initDiagnosis;
+        private bool finalDiagnosis;
+        private bool isOrderTestOpen;
 
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
-             eClinicalsController = new eClinicalsController();
+            eClinicalsController = new eClinicalsController();
 
             frmPatientRecordTabs = (frmPatientRecordTabs)base.thisView;
-             this.mainForm = (frmMain)base.mainForm;           
+            this.mainForm = (frmMain)base.mainForm;
             mainForm.lblStatus.Text = "Patient Record Tabs active . . .";
             setEventHandlers();
             currentNurse = this.mainForm.currentNurse;
             isRoutineCheckOpen = false;
-            isOrderTestOpen = false;          
-           // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
+            isOrderTestOpen = false;
+            // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
 
         }
-        public void fillPatientInfo(Patient patient) {
+        public void fillPatientInfo(Patient patient)
+        {
             // *** pateint comes from frmMain ***
             if (patient != null)
             {
                 this.patient = patient;
-               
+
             }
-            else {
+            else
+            {
                 mainForm.Status("Patient cannot be null.", Color.Red);
-            }          
+            }
             frmPatientRecordTabs.txtFirstName.Text = patient.FirstName;
             frmPatientRecordTabs.txtLastName.Text = patient.LastName;
             frmPatientRecordTabs.txtSSN.Text = patient.Ssn;
@@ -70,7 +68,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtPhone.Text = patient.Phone;
 
             List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();
-           // frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
+            // frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
             frmPatientRecordTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
             frmPatientRecordTabs.cbSelectTest_OrderTest.DataSource = eClinicalsController.GetAllTests();
 
@@ -80,7 +78,7 @@ namespace eClinicals.Controllers
             //returns a routine check
             frmPatientRecordTabs.dgPreviousReadings__RoutineCheck.DataSource =
                 eClinicalsController.GetPreviousReadings(patient.PatientID);
-        }   
+        }
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -94,7 +92,7 @@ namespace eClinicals.Controllers
                     this.mainForm.Status(message, Color.Transparent);
                     frmPatientRecordTabs.txtAppID.Text = selectedAppointment.AppointmentID.ToString();
                     frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
-                    frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;                   
+                    frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;
                     frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
 
                     checkAppointmentCurrentDate();
@@ -116,12 +114,12 @@ namespace eClinicals.Controllers
         {
             try
             {
-           
-               mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
-               mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
+
+                mainForm.ucAppointmentSummary.dgDiagnosisResults.DataSource = eClinicalsController.GetAppointmentSummaryDiagnosisResults(selectedAppointment.AppointmentID);
+                mainForm.ucAppointmentSummary.dgTestResults.DataSource = eClinicalsController.GetAppointmentSummaryTestResults(selectedAppointment.AppointmentID);
+                mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
+                mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
+                mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
 
             }
             catch (Exception ex)
@@ -131,9 +129,9 @@ namespace eClinicals.Controllers
             }
 
 
-           // mainForm.ucAppointmentSummary.lblDoctor.Text = selectedAppointment.AppointmentDoctor;
-           // mainForm.ucAppointmentSummary.lblDate.Text = selectedAppointment.AppointmentDate.ToShortDateString();
-           // mainForm.ucAppointmentSummary.lblReason.Text = selectedAppointment.AppointmentReason;
+            // mainForm.ucAppointmentSummary.lblDoctor.Text = selectedAppointment.AppointmentDoctor;
+            // mainForm.ucAppointmentSummary.lblDate.Text = selectedAppointment.AppointmentDate.ToShortDateString();
+            // mainForm.ucAppointmentSummary.lblReason.Text = selectedAppointment.AppointmentReason;
             mainForm.ucAppointmentSummary.Visible = true;
         }
         private void checkAppointmentPastDate()
@@ -175,10 +173,10 @@ namespace eClinicals.Controllers
         }
         private void btnEditAppointment_Click(object sender, EventArgs e)
         {
-            enableDisableEditAppointment("on");           
-          }
+            enableDisableEditAppointment("on");
+        }
         private void enableDisableEditAppointment(string state)
-        {          
+        {
             switch (state)
             {
                 case "on":
@@ -205,7 +203,7 @@ namespace eClinicals.Controllers
                     break;
                 default:
                     break;
-            }   
+            }
         }
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
@@ -219,16 +217,18 @@ namespace eClinicals.Controllers
                 //need to put last parameter as the appointment ID
                 foreach (Appointment app in selectedPatientAppointments)
                 {
-                    if (reason.AppointmentDate == app.AppointmentDate) {
+                    if (reason.AppointmentDate == app.AppointmentDate)
+                    {
                         mainForm.Status("Patient is already scheduled for that time.", Color.Red);
                         return;
                     }
                 }
 
 
-                if (eClinicalsController.UpdateAppointment(dateAndTime,doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID)) {
+                if (eClinicalsController.UpdateAppointment(dateAndTime, doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID))
+                {
 
-                enableDisableEditAppointment("off");
+                    enableDisableEditAppointment("off");
                     switch (CURRENT_APP_VIEW)
                     {
                         case CURRENT_APP_VIEW.ALL:
@@ -249,7 +249,7 @@ namespace eClinicals.Controllers
                             break;
                         default:
                             break;
-                    }                 
+                    }
                     base.mainForm.Status("Appointment has been updated", Color.Yellow);
                 }
             }
@@ -268,15 +268,15 @@ namespace eClinicals.Controllers
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.ALL;
             selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(patient.PatientID);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
-         
+
         }
         private void btnShowFutureAppointments_Click(object sender, EventArgs e)
         {
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.FUTURE;
             try
             {
-             selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
-            frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
+                selectedFuturePatientAppointments = eClinicalsController.GetAllFutureAppointmentsByPatientID(patient.PatientID);
+                frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedFuturePatientAppointments;
             }
             catch (Exception ex)
             {
@@ -290,7 +290,7 @@ namespace eClinicals.Controllers
         {
             CURRENT_APP_VIEW = CURRENT_APP_VIEW.CURRENT;
             try
-            {             
+            {
                 selectedCurrentPatientAppointments = eClinicalsController.GetAllCurrentDateAppointmentsByPatientID(patient.PatientID);
                 frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedCurrentPatientAppointments;
             }
@@ -309,15 +309,15 @@ namespace eClinicals.Controllers
             showSummaryButton(true);
         }
 
-      
+
 
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             isRoutineCheckOpen = false;
-          
+
             frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
-          
+
             // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
             EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
             EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
@@ -356,11 +356,11 @@ namespace eClinicals.Controllers
         {
             try
             {
-                patient.LastName =  frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
+                patient.LastName = frmPatientRecordTabs.lastName = frmPatientRecordTabs.txtLastName.Text;
                 patient.FirstName = frmPatientRecordTabs.firstName = frmPatientRecordTabs.txtFirstName.Text;
                 patient.Dob = frmPatientRecordTabs.dob = (DateTime)frmPatientRecordTabs.dtpDOB.Value;
                 patient.Address = frmPatientRecordTabs.streetAddress = frmPatientRecordTabs.txtAddress.Text;
-                patient.City =  frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
+                patient.City = frmPatientRecordTabs.city = frmPatientRecordTabs.txtCity.Text;
                 patient.State = frmPatientRecordTabs.state = frmPatientRecordTabs.cbState.Text;
                 patient.Zip = frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
                 patient.Phone = frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
@@ -370,13 +370,13 @@ namespace eClinicals.Controllers
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
                     bool isUpdate = false;
-                   
+
 
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
                    patient.Zip, patient.Phone, patient.Gender);
 
-                   //refresh later
+                    //refresh later
 
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
@@ -428,7 +428,7 @@ namespace eClinicals.Controllers
                         mainForm.Status("Patient is already scheduled for that time.", Color.Red);
                         return;
                     }
-                }        
+                }
 
                 if (eClinicalsController.CreateAppointment(dateAndTime, patient.PatientID, doc.DoctorID, reason.AppointmentReasonID))
                 {
@@ -476,7 +476,7 @@ namespace eClinicals.Controllers
                     {
 
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
-                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);                       
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
 
 
@@ -487,7 +487,7 @@ namespace eClinicals.Controllers
                         EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
                         EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
                         isRoutineCheckOpen = false;
-                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);                     
+                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
                     }
                     else
                     {
@@ -537,28 +537,29 @@ namespace eClinicals.Controllers
             Console.WriteLine("Test  : " + frmPatientRecordTabs.cbTest_TestResults.Text);
             Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
             Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-            Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked );
+            Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
             Console.WriteLine("Time : " + frmPatientRecordTabs.dtpTestTime_TestResults.Value.TimeOfDay);
             Console.WriteLine("Date : " + frmPatientRecordTabs.dtpTestDate_TestResults.Value.ToShortDateString());
 
 
             // if  eClinicalsController.addInitialDiagnosis() then
 
-        
-            if (initDiagnosis) {
+
+            if (initDiagnosis)
+            {
                 frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
 
             }
 
 
             // order test 
-             frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
 
-          
+
             // order test 
-           // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-          //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
 
 
         }

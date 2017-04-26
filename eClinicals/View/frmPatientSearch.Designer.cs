@@ -120,7 +120,7 @@
             // 
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(195, 53);
-            this.dtpDate.MaxDate = new System.DateTime(1990, 12, 9, 0, 0, 0, 0);
+            this.dtpDate.MaxDate = new System.DateTime(9998, 12, 9, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(95, 20);
             this.dtpDate.TabIndex = 2;
