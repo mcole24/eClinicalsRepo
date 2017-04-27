@@ -157,22 +157,12 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tabDiagnosis = new System.Windows.Forms.TabPage();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.rbInitialDiagnosis = new System.Windows.Forms.RadioButton();
             this.rbFinalDiagnosis = new System.Windows.Forms.RadioButton();
             this.btnCommitTest = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.dtpTestTime_TestResults = new System.Windows.Forms.DateTimePicker();
-            this.dtpTestDate_TestResults = new System.Windows.Forms.DateTimePicker();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbTest_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
@@ -204,11 +194,8 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.tabDiagnosis.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -1413,9 +1400,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(15, -4);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(197, 24);
+            this.label7.Size = new System.Drawing.Size(185, 24);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Previouse Readings";
+            this.label7.Text = "Previous Readings";
             // 
             // tabOrderTests
             // 
@@ -1599,12 +1586,9 @@
             // 
             // tabDiagnosis
             // 
-            this.tabDiagnosis.Controls.Add(this.groupBox11);
             this.tabDiagnosis.Controls.Add(this.groupBox10);
             this.tabDiagnosis.Controls.Add(this.btnCommitTest);
-            this.tabDiagnosis.Controls.Add(this.groupBox9);
             this.tabDiagnosis.Controls.Add(this.groupBox8);
-            this.tabDiagnosis.Controls.Add(this.groupBox4);
             this.tabDiagnosis.Location = new System.Drawing.Point(4, 34);
             this.tabDiagnosis.Name = "tabDiagnosis";
             this.tabDiagnosis.Padding = new System.Windows.Forms.Padding(3);
@@ -1613,45 +1597,12 @@
             this.tabDiagnosis.Text = "Diagnosis";
             this.tabDiagnosis.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.radioButton1);
-            this.groupBox11.Controls.Add(this.radioButton2);
-            this.groupBox11.Location = new System.Drawing.Point(356, 286);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(218, 57);
-            this.groupBox11.TabIndex = 27;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Test Results";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 17);
-            this.radioButton1.TabIndex = 25;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Positive Test";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(116, 23);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(92, 17);
-            this.radioButton2.TabIndex = 24;
-            this.radioButton2.Text = "Negative Test";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.rbInitialDiagnosis);
             this.groupBox10.Controls.Add(this.rbFinalDiagnosis);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(208, 34);
+            this.groupBox10.Location = new System.Drawing.Point(249, 102);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(292, 61);
             this.groupBox10.TabIndex = 26;
@@ -1683,7 +1634,7 @@
             // 
             // btnCommitTest
             // 
-            this.btnCommitTest.Location = new System.Drawing.Point(67, 373);
+            this.btnCommitTest.Location = new System.Drawing.Point(151, 295);
             this.btnCommitTest.Name = "btnCommitTest";
             this.btnCommitTest.Size = new System.Drawing.Size(503, 39);
             this.btnCommitTest.TabIndex = 28;
@@ -1691,61 +1642,12 @@
             this.btnCommitTest.UseVisualStyleBackColor = true;
             this.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
             // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.label36);
-            this.groupBox9.Controls.Add(this.label39);
-            this.groupBox9.Controls.Add(this.dtpTestTime_TestResults);
-            this.groupBox9.Controls.Add(this.dtpTestDate_TestResults);
-            this.groupBox9.Location = new System.Drawing.Point(59, 138);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(218, 131);
-            this.groupBox9.TabIndex = 27;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Performed Date";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(5, 97);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(92, 13);
-            this.label36.TabIndex = 14;
-            this.label36.Text = "Appointment Time";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(5, 22);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(92, 13);
-            this.label39.TabIndex = 13;
-            this.label39.Text = "Appointment Date";
-            // 
-            // dtpTestTime_TestResults
-            // 
-            this.dtpTestTime_TestResults.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTestTime_TestResults.Location = new System.Drawing.Point(103, 94);
-            this.dtpTestTime_TestResults.Name = "dtpTestTime_TestResults";
-            this.dtpTestTime_TestResults.ShowUpDown = true;
-            this.dtpTestTime_TestResults.Size = new System.Drawing.Size(103, 20);
-            this.dtpTestTime_TestResults.TabIndex = 5;
-            this.dtpTestTime_TestResults.Value = new System.DateTime(2017, 4, 1, 23, 40, 0, 0);
-            // 
-            // dtpTestDate_TestResults
-            // 
-            this.dtpTestDate_TestResults.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTestDate_TestResults.Location = new System.Drawing.Point(103, 19);
-            this.dtpTestDate_TestResults.Name = "dtpTestDate_TestResults";
-            this.dtpTestDate_TestResults.Size = new System.Drawing.Size(103, 20);
-            this.dtpTestDate_TestResults.TabIndex = 4;
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.cbDiagnosis_TestResults);
-            this.groupBox8.Location = new System.Drawing.Point(356, 213);
+            this.groupBox8.Location = new System.Drawing.Point(255, 184);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(218, 56);
+            this.groupBox8.Size = new System.Drawing.Size(286, 56);
             this.groupBox8.TabIndex = 25;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Diagnosis";
@@ -1756,27 +1658,8 @@
             this.cbDiagnosis_TestResults.FormattingEnabled = true;
             this.cbDiagnosis_TestResults.Location = new System.Drawing.Point(6, 19);
             this.cbDiagnosis_TestResults.Name = "cbDiagnosis_TestResults";
-            this.cbDiagnosis_TestResults.Size = new System.Drawing.Size(200, 21);
+            this.cbDiagnosis_TestResults.Size = new System.Drawing.Size(274, 21);
             this.cbDiagnosis_TestResults.TabIndex = 16;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cbTest_TestResults);
-            this.groupBox4.Location = new System.Drawing.Point(356, 138);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(218, 56);
-            this.groupBox4.TabIndex = 24;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Test";
-            // 
-            // cbTest_TestResults
-            // 
-            this.cbTest_TestResults.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTest_TestResults.FormattingEnabled = true;
-            this.cbTest_TestResults.Location = new System.Drawing.Point(6, 19);
-            this.cbTest_TestResults.Name = "cbTest_TestResults";
-            this.cbTest_TestResults.Size = new System.Drawing.Size(200, 21);
-            this.cbTest_TestResults.TabIndex = 16;
             // 
             // tableAdapterManager
             // 
@@ -1829,14 +1712,9 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
             this.tabDiagnosis.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1963,18 +1841,8 @@
         public System.Windows.Forms.RadioButton rbInitialDiagnosis;
         public System.Windows.Forms.RadioButton rbFinalDiagnosis;
         public System.Windows.Forms.Button btnCommitTest;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label39;
-        public System.Windows.Forms.DateTimePicker dtpTestTime_TestResults;
-        public System.Windows.Forms.DateTimePicker dtpTestDate_TestResults;
         private System.Windows.Forms.GroupBox groupBox8;
         public System.Windows.Forms.ComboBox cbDiagnosis_TestResults;
-        private System.Windows.Forms.GroupBox groupBox4;
-        public System.Windows.Forms.ComboBox cbTest_TestResults;
-        private System.Windows.Forms.GroupBox groupBox11;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label14;
         public System.Windows.Forms.DateTimePicker dtpDatePerformed_RoutineCheck;
         public System.Windows.Forms.Button btnSummary;
