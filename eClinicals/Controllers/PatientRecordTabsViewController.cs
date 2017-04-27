@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace eClinicals.Controllers
 {
     enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4 };
-
+    //Current view is used to determin which buttons and ui elements should be active
 
     class PatientRecordTabsViewController : ControllerBase
     {
@@ -309,8 +309,6 @@ namespace eClinicals.Controllers
             showSummaryButton(true);
         }
 
-
-
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             isRoutineCheckOpen = false;
@@ -342,7 +340,6 @@ namespace eClinicals.Controllers
             EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
             enableDisableEditAppointment("off");
         }
-
 
         private void btnEditPerson_Click(object sender, EventArgs e)
         {
@@ -399,6 +396,9 @@ namespace eClinicals.Controllers
 
             if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
             {
+
+
+
                 frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
                 this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
 
@@ -496,7 +496,7 @@ namespace eClinicals.Controllers
                 }
                 else
                 {
-                    this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+                    this.mainForm.Status("error 2: Please fill out all form empty elements : ", Color.Red);
                 }
             }
             catch (Exception ex)
@@ -563,7 +563,6 @@ namespace eClinicals.Controllers
 
 
         }
-
         private void showSummaryButton(bool status)
         {
             frmPatientRecordTabs.btnSummary.Visible = status;

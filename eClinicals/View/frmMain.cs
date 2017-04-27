@@ -76,7 +76,6 @@ namespace eClinicals.View
             ribbonController.LoggedOut += this.OnLoggedOut;
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-            // !!!!!!!!!!!!!!!!!!!!!!!!!NEED NURSE  METHOD  
             currentUser = e.Person;
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
             ribbonController.AddUserInfo(currentUser.LastName + ", " + currentUser.FirstName, currentUser.ContactID, currentUser.UserType);
@@ -136,15 +135,23 @@ namespace eClinicals.View
                     frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabDiagnosis);
 
                     //add patient ribbon
-                    AddPatientRibonInfo(selectedPatient);//       
+                    AddPatientRibonInfo(selectedPatient);
                     patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
                     // add nurse            
                     //Fill View appointments
                     selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID);
                     frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
+
                     patientRecordTabsViewController.fillPatientInfo(selectedPatient);
 
                     frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
+
+
+                    ExtensionGridView.RemoveAppointmentIdColumns(frmPatientTabs.dgViewAppointments_ViewAppointments);
+
+
+
+
 
 
 
@@ -218,7 +225,7 @@ namespace eClinicals.View
                                         selectedPatient.Gender, selectedPatient.ContactID.ToString());
         }
 
-        //*************************************************************************************   Select a patient from grid
+        //******************************************  Select a patient from grid
         private void dgvSearchResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try

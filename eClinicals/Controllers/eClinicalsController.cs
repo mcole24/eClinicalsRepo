@@ -1,11 +1,7 @@
 ﻿
+using eClinicals.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eClinicals.DAL;
-using eClinicals.Model;
 
 namespace eClinicals.Controllers
 {
@@ -21,7 +17,7 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllAppointmentReasons();
         }
 
-        public  List<Doctor> GetAllDoctorNames()
+        public List<Doctor> GetAllDoctorNames()
         {
             return DAL.AppointmentDAL.GetAllDoctorNames();
         }
@@ -52,17 +48,17 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
         }
 
-        public  List<Appointment> GetAllFutureAppointmentsByPatientID(int patientID)
+        public List<Appointment> GetAllFutureAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllFutureAppointmentsByPatientID(patientID);
         }
 
-        public  List<Appointment> GetAllPastAppointmentsByPatientID(int patientID)
+        public List<Appointment> GetAllPastAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllPastAppointmentsByPatientID(patientID);
         }
 
-        public  List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
+        public List<Appointment> GetAllCurrentDateAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllCurrentDateAppointmentsByPatientID(patientID);
         }
@@ -111,7 +107,7 @@ namespace eClinicals.Controllers
             return DAL.LabTestDAL.UpdateResult(testID, performedDate, result);
         }
 
-        public  int CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        public int CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
         {
             return DAL.VisitDAL.CreateCheckup(appointmentID, nurseID, systolicBP, diastolicBP, bodyTemp, pulse);
         }
@@ -121,7 +117,7 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.CreateVisitSymptom(visitID, symptomID);
         }
 
-        public  List<Symptom> GetAllSymptoms()
+        public List<Symptom> GetAllSymptoms()
         {
             return DAL.VisitDAL.GetAllSymptoms();
         }
@@ -216,7 +212,7 @@ namespace eClinicals.Controllers
             return DAL.PersonDAL.GetContactIDWithSsn(ssn);
         }
 
-        public  Admin GetAdminByID(int contactID)
+        public Admin GetAdminByID(int contactID)
         {
             return DAL.AdminDAL.GetAdminByID(contactID);
         }
