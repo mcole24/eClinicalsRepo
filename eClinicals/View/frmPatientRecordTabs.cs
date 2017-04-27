@@ -2,8 +2,6 @@
 using eClinicals.Model;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 
 namespace eClinicals.View
 {
@@ -15,7 +13,7 @@ namespace eClinicals.View
         List<Appointment> listReasons;
         List<Symptom> listSymptoms;
         eClinicalsController eClinicalsController;
-      // Personal Tab
+        // Personal Tab
         public string lastName;
         public string firstName;
         public DateTime dob;
@@ -33,7 +31,7 @@ namespace eClinicals.View
         public DateTime appointmentDate;
         public DateTime appointmentTime;
 
-      
+
 
         public frmPatientRecordTabs()
         {
@@ -47,7 +45,7 @@ namespace eClinicals.View
 
         private void editAppointment()
         {
-          
+
         }
 
         private void fillListBoxElements()
@@ -72,7 +70,7 @@ namespace eClinicals.View
             foreach (Symptom symptom in listSymptoms)
             {
                 cbSymptoms_RoutineCheck.Items.Add(symptom);
-             
+
             }
 
 
@@ -82,22 +80,22 @@ namespace eClinicals.View
 
             foreach (Diagnosis diagnosis in listDiagnosis)
             {
-               cbDiagnosis_TestResults.Items.Add(diagnosis);              
-           
+                cbDiagnosis_TestResults.Items.Add(diagnosis);
+
             }
             listTestOrder = eClinicalsController.GetAllTests();
 
             foreach (LabTest test in listTestOrder)
             {
-                cbTest_TestResults.Items.Add(test);
-               cbSelectTest_OrderTest.Items.Add(test);
+
+                cbSelectTest_OrderTest.Items.Add(test);
             }
 
 
         }
 
         private void fillSetAppointmentTab()
-        {           
+        {
             // Selects the member name of the object in the listBox
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbSymptoms_RoutineCheck.DisplayMember = "SymptomType";
@@ -108,7 +106,7 @@ namespace eClinicals.View
             cbAppReason.DisplayMember = "AppointmentReason";
             cbAppDoctor.DisplayMember = "DoctorName";
             cbDiagnosis_TestResults.DisplayMember = "DiagnosisName";
-            cbTest_TestResults.DisplayMember = "TestName";
+
 
             // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
@@ -116,10 +114,9 @@ namespace eClinicals.View
             cbSelectDoctor_OrderTest.SelectedIndex = 0;
             cbSelectTest_OrderTest.SelectedIndex = 0;
             cbDiagnosis_TestResults.SelectedIndex = 0;
-            cbTest_TestResults.SelectedIndex = 0;
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
-        
+
 
         }
 
@@ -132,5 +129,6 @@ namespace eClinicals.View
         {
 
         }
+
     }
 }

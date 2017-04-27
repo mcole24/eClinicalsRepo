@@ -534,12 +534,11 @@ namespace eClinicals.Controllers
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
 
-            Console.WriteLine("Test  : " + frmPatientRecordTabs.cbTest_TestResults.Text);
+            //TODO: Add Init and Final diagnosis
             Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
             Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
             Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
-            Console.WriteLine("Time : " + frmPatientRecordTabs.dtpTestTime_TestResults.Value.TimeOfDay);
-            Console.WriteLine("Date : " + frmPatientRecordTabs.dtpTestDate_TestResults.Value.ToShortDateString());
+
 
 
             // if  eClinicalsController.addInitialDiagnosis() then

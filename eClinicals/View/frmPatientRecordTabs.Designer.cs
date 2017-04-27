@@ -157,6 +157,9 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tabDiagnosis = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblFinalDiagnosis = new System.Windows.Forms.Label();
+            this.lblInitDiagnosis = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.rbInitialDiagnosis = new System.Windows.Forms.RadioButton();
             this.rbFinalDiagnosis = new System.Windows.Forms.RadioButton();
@@ -164,6 +167,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -194,8 +198,10 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.tabDiagnosis.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -1586,6 +1592,8 @@
             // 
             // tabDiagnosis
             // 
+            this.tabDiagnosis.Controls.Add(this.groupBox9);
+            this.tabDiagnosis.Controls.Add(this.groupBox4);
             this.tabDiagnosis.Controls.Add(this.groupBox10);
             this.tabDiagnosis.Controls.Add(this.btnCommitTest);
             this.tabDiagnosis.Controls.Add(this.groupBox8);
@@ -1597,12 +1605,41 @@
             this.tabDiagnosis.Text = "Diagnosis";
             this.tabDiagnosis.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.lblInitDiagnosis);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(392, 141);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(292, 61);
+            this.groupBox4.TabIndex = 27;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Initial Diagnosis ";
+            // 
+            // lblFinalDiagnosis
+            // 
+            this.lblFinalDiagnosis.AutoSize = true;
+            this.lblFinalDiagnosis.Location = new System.Drawing.Point(29, 33);
+            this.lblFinalDiagnosis.Name = "lblFinalDiagnosis";
+            this.lblFinalDiagnosis.Size = new System.Drawing.Size(216, 16);
+            this.lblFinalDiagnosis.TabIndex = 30;
+            this.lblFinalDiagnosis.Text = "Final Diagnosis will show here";
+            // 
+            // lblInitDiagnosis
+            // 
+            this.lblInitDiagnosis.AutoSize = true;
+            this.lblInitDiagnosis.Location = new System.Drawing.Point(29, 29);
+            this.lblInitDiagnosis.Name = "lblInitDiagnosis";
+            this.lblInitDiagnosis.Size = new System.Drawing.Size(202, 16);
+            this.lblInitDiagnosis.TabIndex = 29;
+            this.lblInitDiagnosis.Text = "Init Diagnosis will show here";
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.rbInitialDiagnosis);
             this.groupBox10.Controls.Add(this.rbFinalDiagnosis);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(249, 102);
+            this.groupBox10.Location = new System.Drawing.Point(23, 141);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(292, 61);
             this.groupBox10.TabIndex = 26;
@@ -1634,9 +1671,9 @@
             // 
             // btnCommitTest
             // 
-            this.btnCommitTest.Location = new System.Drawing.Point(151, 295);
+            this.btnCommitTest.Location = new System.Drawing.Point(23, 306);
             this.btnCommitTest.Name = "btnCommitTest";
-            this.btnCommitTest.Size = new System.Drawing.Size(503, 39);
+            this.btnCommitTest.Size = new System.Drawing.Size(292, 39);
             this.btnCommitTest.TabIndex = 28;
             this.btnCommitTest.Text = "Commit Test";
             this.btnCommitTest.UseVisualStyleBackColor = true;
@@ -1645,9 +1682,9 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.cbDiagnosis_TestResults);
-            this.groupBox8.Location = new System.Drawing.Point(255, 184);
+            this.groupBox8.Location = new System.Drawing.Point(23, 220);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(286, 56);
+            this.groupBox8.Size = new System.Drawing.Size(292, 56);
             this.groupBox8.TabIndex = 25;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Diagnosis";
@@ -1667,6 +1704,17 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.lblFinalDiagnosis);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(392, 284);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(292, 61);
+            this.groupBox9.TabIndex = 30;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Final Diagnosis ";
             // 
             // frmPatientRecordTabs
             // 
@@ -1712,9 +1760,13 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
             this.tabDiagnosis.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox8.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1849,5 +1901,9 @@
         public System.Windows.Forms.Label lblSummary;
         public System.Windows.Forms.ComboBox cbSymptoms_RoutineCheck;
         public System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox9;
+        public System.Windows.Forms.Label lblFinalDiagnosis;
+        public System.Windows.Forms.Label lblInitDiagnosis;
     }
 }
