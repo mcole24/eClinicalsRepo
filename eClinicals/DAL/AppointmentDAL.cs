@@ -148,7 +148,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID";
+                + "WHERE Patient.patientID = @patientID "
+                + "ORDER BY appointmentDate DESC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -199,7 +200,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate > GETDATE()";
+                + "WHERE Patient.patientID = @patientID AND appointmentDate > GETDATE() "
+                + "ORDER BY appointmentDate ASC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -250,7 +252,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate < GETDATE()";
+                + "WHERE Patient.patientID = @patientID AND appointmentDate < GETDATE() "
+                + "ORDER BY appointmentDate DESC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -303,7 +306,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%'";
+                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%' "
+                + "ORDER BY appointmentDate ASC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
