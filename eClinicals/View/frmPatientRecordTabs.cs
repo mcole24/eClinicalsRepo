@@ -41,7 +41,11 @@ namespace eClinicals.View
             fillSetAppointmentTab();
             editAppointment();
             gbEditAppointment.Visible = false;
+            SetUIElementPosition();
+
         }
+
+
 
         private void editAppointment()
         {
@@ -130,5 +134,25 @@ namespace eClinicals.View
 
         }
 
+        private void SetUIElementPosition()
+        {
+            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 45);
+
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
+        }
+
+        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbBeginRoutineCheck_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

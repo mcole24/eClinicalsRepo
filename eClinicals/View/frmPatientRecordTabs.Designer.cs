@@ -35,6 +35,9 @@
             System.Windows.Forms.Label appointmentReasonLabel;
             System.Windows.Forms.Label appointmentDateLabel;
             System.Windows.Forms.Label label35;
+            System.Windows.Forms.Label label40;
+            System.Windows.Forms.Label label41;
+            System.Windows.Forms.Label label42;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
             this.lblSummary = new System.Windows.Forms.Label();
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
@@ -92,6 +95,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabViewAppointments = new System.Windows.Forms.TabPage();
             this.ucAlertViewApp = new eClinicals.View.ucAlert();
+            this.btnPrevCheck = new System.Windows.Forms.Button();
             this.gbEditAppointment = new System.Windows.Forms.GroupBox();
             this.cbAppDoctor = new System.Windows.Forms.ComboBox();
             this.cbAppReason = new System.Windows.Forms.ComboBox();
@@ -119,7 +123,6 @@
             this.dgViewAppointments_ViewAppointments = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.tabRoutineCheck = new System.Windows.Forms.TabPage();
-            this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.cbSymptoms_RoutineCheck = new System.Windows.Forms.ComboBox();
@@ -137,6 +140,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.tabOrderTests = new System.Windows.Forms.TabPage();
@@ -152,13 +156,20 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tabDiagnosis = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.lblFinalDiagnosis = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblInitDiagnosis = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.rbInitialDiagnosis = new System.Windows.Forms.RadioButton();
@@ -167,7 +178,11 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -175,6 +190,9 @@
             appointmentReasonLabel = new System.Windows.Forms.Label();
             appointmentDateLabel = new System.Windows.Forms.Label();
             label35 = new System.Windows.Forms.Label();
+            label40 = new System.Windows.Forms.Label();
+            label41 = new System.Windows.Forms.Label();
+            label42 = new System.Windows.Forms.Label();
             this.tabPatientRecord.SuspendLayout();
             this.tabPersonal.SuspendLayout();
             this.tabSetAppointments.SuspendLayout();
@@ -195,13 +213,16 @@
             this.tabOrderTests.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabTestsResults.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).BeginInit();
             this.tabDiagnosis.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentIDLabel
@@ -266,6 +287,33 @@
             label35.Size = new System.Drawing.Size(92, 13);
             label35.TabIndex = 49;
             label35.Text = "Appointment Time";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Location = new System.Drawing.Point(131, 156);
+            label40.Name = "label40";
+            label40.Size = new System.Drawing.Size(71, 15);
+            label40.TabIndex = 43;
+            label40.Text = "Doctor ID:";
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.Location = new System.Drawing.Point(131, 182);
+            label41.Name = "label41";
+            label41.Size = new System.Drawing.Size(74, 15);
+            label41.TabIndex = 45;
+            label41.Text = "Patient ID:";
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Location = new System.Drawing.Point(6, 36);
+            label42.Name = "label42";
+            label42.Size = new System.Drawing.Size(56, 15);
+            label42.TabIndex = 37;
+            label42.Text = "Test ID:";
             // 
             // lblSummary
             // 
@@ -346,7 +394,7 @@
             // ucAlertPersonal
             // 
             this.ucAlertPersonal.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertPersonal.Location = new System.Drawing.Point(-4, 474);
             this.ucAlertPersonal.Name = "ucAlertPersonal";
             this.ucAlertPersonal.Size = new System.Drawing.Size(1034, 456);
             this.ucAlertPersonal.TabIndex = 65;
@@ -754,7 +802,7 @@
             // ucAlertSetApp
             // 
             this.ucAlertSetApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertSetApp.Location = new System.Drawing.Point(52, 495);
             this.ucAlertSetApp.Name = "ucAlertSetApp";
             this.ucAlertSetApp.Size = new System.Drawing.Size(812, 456);
             this.ucAlertSetApp.TabIndex = 13;
@@ -889,6 +937,7 @@
             // 
             this.tabViewAppointments.AutoScroll = true;
             this.tabViewAppointments.Controls.Add(this.ucAlertViewApp);
+            this.tabViewAppointments.Controls.Add(this.btnPrevCheck);
             this.tabViewAppointments.Controls.Add(this.gbEditAppointment);
             this.tabViewAppointments.Controls.Add(this.gbShowAppontment);
             this.tabViewAppointments.Controls.Add(this.gbBeginRoutineCheck);
@@ -905,11 +954,24 @@
             // ucAlertViewApp
             // 
             this.ucAlertViewApp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertViewApp.Location = new System.Drawing.Point(961, 37);
+            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 493);
             this.ucAlertViewApp.Name = "ucAlertViewApp";
             this.ucAlertViewApp.Size = new System.Drawing.Size(920, 501);
             this.ucAlertViewApp.TabIndex = 48;
             this.ucAlertViewApp.Visible = false;
+            // 
+            // btnPrevCheck
+            // 
+            this.btnPrevCheck.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnPrevCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevCheck.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPrevCheck.Location = new System.Drawing.Point(746, 762);
+            this.btnPrevCheck.Name = "btnPrevCheck";
+            this.btnPrevCheck.Size = new System.Drawing.Size(169, 32);
+            this.btnPrevCheck.TabIndex = 3;
+            this.btnPrevCheck.Text = "Begin Check";
+            this.btnPrevCheck.UseVisualStyleBackColor = true;
+            this.btnPrevCheck.Click += new System.EventHandler(this.btnSelectAppointment_Click);
             // 
             // gbEditAppointment
             // 
@@ -1103,13 +1165,14 @@
             this.gbBeginRoutineCheck.TabIndex = 19;
             this.gbBeginRoutineCheck.TabStop = false;
             this.gbBeginRoutineCheck.Text = "Routine Check";
+            this.gbBeginRoutineCheck.Enter += new System.EventHandler(this.gbBeginRoutineCheck_Enter);
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.label38.Location = new System.Drawing.Point(6, 27);
+            this.label38.Location = new System.Drawing.Point(6, 15);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(187, 16);
             this.label38.TabIndex = 18;
@@ -1120,19 +1183,20 @@
             this.btnSelectAppointment.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
             this.btnSelectAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectAppointment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSelectAppointment.Location = new System.Drawing.Point(6, 46);
+            this.btnSelectAppointment.Location = new System.Drawing.Point(12, 33);
             this.btnSelectAppointment.Name = "btnSelectAppointment";
             this.btnSelectAppointment.Size = new System.Drawing.Size(169, 32);
             this.btnSelectAppointment.TabIndex = 3;
             this.btnSelectAppointment.Text = "Begin Check";
             this.btnSelectAppointment.UseVisualStyleBackColor = true;
+            this.btnSelectAppointment.Click += new System.EventHandler(this.btnSelectAppointment_Click);
             // 
             // gbSelectEditApp
             // 
             this.gbSelectEditApp.Controls.Add(this.label37);
             this.gbSelectEditApp.Controls.Add(this.btnEditAppointment);
             this.gbSelectEditApp.Enabled = false;
-            this.gbSelectEditApp.Location = new System.Drawing.Point(733, 369);
+            this.gbSelectEditApp.Location = new System.Drawing.Point(733, 368);
             this.gbSelectEditApp.Name = "gbSelectEditApp";
             this.gbSelectEditApp.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gbSelectEditApp.Size = new System.Drawing.Size(199, 84);
@@ -1204,7 +1268,6 @@
             // 
             // tabRoutineCheck
             // 
-            this.tabRoutineCheck.Controls.Add(this.ucAlertRoutineCheck);
             this.tabRoutineCheck.Controls.Add(this.groupBox7);
             this.tabRoutineCheck.Controls.Add(this.groupBox5);
             this.tabRoutineCheck.Location = new System.Drawing.Point(4, 34);
@@ -1214,15 +1277,6 @@
             this.tabRoutineCheck.TabIndex = 3;
             this.tabRoutineCheck.Text = "Routine Check";
             this.tabRoutineCheck.UseVisualStyleBackColor = true;
-            // 
-            // ucAlertRoutineCheck
-            // 
-            this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(810, 146);
-            this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
-            this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
-            this.ucAlertRoutineCheck.TabIndex = 16;
-            this.ucAlertRoutineCheck.Visible = false;
             // 
             // groupBox7
             // 
@@ -1384,6 +1438,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.ucAlertRoutineCheck);
             this.groupBox5.Controls.Add(this.dgPreviousReadings__RoutineCheck);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Location = new System.Drawing.Point(39, 315);
@@ -1391,6 +1446,15 @@
             this.groupBox5.Size = new System.Drawing.Size(755, 244);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
+            // 
+            // ucAlertRoutineCheck
+            // 
+            this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(-12, 220);
+            this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
+            this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
+            this.ucAlertRoutineCheck.TabIndex = 16;
+            this.ucAlertRoutineCheck.Visible = false;
             // 
             // dgPreviousReadings__RoutineCheck
             // 
@@ -1425,7 +1489,7 @@
             // ucAlertOrderTest
             // 
             this.ucAlertOrderTest.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertOrderTest.Location = new System.Drawing.Point(43, 508);
             this.ucAlertOrderTest.Name = "ucAlertOrderTest";
             this.ucAlertOrderTest.Size = new System.Drawing.Size(814, 446);
             this.ucAlertOrderTest.TabIndex = 14;
@@ -1543,6 +1607,7 @@
             // 
             // tabTestsResults
             // 
+            this.tabTestsResults.Controls.Add(this.groupBox11);
             this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
@@ -1553,10 +1618,76 @@
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.groupBox14);
+            this.groupBox11.Controls.Add(this.groupBox13);
+            this.groupBox11.Controls.Add(this.button1);
+            this.groupBox11.Controls.Add(this.button2);
+            this.groupBox11.Controls.Add(this.textBox1);
+            this.groupBox11.Controls.Add(label40);
+            this.groupBox11.Controls.Add(label41);
+            this.groupBox11.Controls.Add(this.textBox2);
+            this.groupBox11.Controls.Add(label42);
+            this.groupBox11.Controls.Add(this.textBox3);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(79, 382);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(654, 134);
+            this.groupBox11.TabIndex = 48;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Update Test Result";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(514, 93);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 32);
+            this.button1.TabIndex = 47;
+            this.button1.Text = "Cancel ";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(372, 93);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 32);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "Commit Update";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(260, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 21);
+            this.textBox1.TabIndex = 44;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(9, 57);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(42, 21);
+            this.textBox2.TabIndex = 38;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(260, 179);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(200, 21);
+            this.textBox3.TabIndex = 46;
+            // 
             // ucAlertTestResults
             // 
             this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertTestResults.Location = new System.Drawing.Point(30, 511);
             this.ucAlertTestResults.Name = "ucAlertTestResults";
             this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
             this.ucAlertTestResults.TabIndex = 24;
@@ -1605,6 +1736,26 @@
             this.tabDiagnosis.Text = "Diagnosis";
             this.tabDiagnosis.UseVisualStyleBackColor = true;
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.lblFinalDiagnosis);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(392, 284);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(292, 61);
+            this.groupBox9.TabIndex = 30;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Final Diagnosis ";
+            // 
+            // lblFinalDiagnosis
+            // 
+            this.lblFinalDiagnosis.AutoSize = true;
+            this.lblFinalDiagnosis.Location = new System.Drawing.Point(29, 33);
+            this.lblFinalDiagnosis.Name = "lblFinalDiagnosis";
+            this.lblFinalDiagnosis.Size = new System.Drawing.Size(216, 16);
+            this.lblFinalDiagnosis.TabIndex = 30;
+            this.lblFinalDiagnosis.Text = "Final Diagnosis will show here";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lblInitDiagnosis);
@@ -1615,15 +1766,6 @@
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Initial Diagnosis ";
-            // 
-            // lblFinalDiagnosis
-            // 
-            this.lblFinalDiagnosis.AutoSize = true;
-            this.lblFinalDiagnosis.Location = new System.Drawing.Point(29, 33);
-            this.lblFinalDiagnosis.Name = "lblFinalDiagnosis";
-            this.lblFinalDiagnosis.Size = new System.Drawing.Size(216, 16);
-            this.lblFinalDiagnosis.TabIndex = 30;
-            this.lblFinalDiagnosis.Text = "Final Diagnosis will show here";
             // 
             // lblInitDiagnosis
             // 
@@ -1705,16 +1847,59 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // groupBox9
+            // groupBox13
             // 
-            this.groupBox9.Controls.Add(this.lblFinalDiagnosis);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(392, 284);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(292, 61);
-            this.groupBox9.TabIndex = 30;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Final Diagnosis ";
+            this.groupBox13.Controls.Add(this.radioButton1);
+            this.groupBox13.Controls.Add(this.radioButton2);
+            this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox13.Location = new System.Drawing.Point(370, 29);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(278, 61);
+            this.groupBox13.TabIndex = 54;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Result";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 23);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(82, 20);
+            this.radioButton1.TabIndex = 25;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Positive";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Enabled = false;
+            this.radioButton2.Location = new System.Drawing.Point(148, 23);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(89, 20);
+            this.radioButton2.TabIndex = 24;
+            this.radioButton2.Text = "Negative";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.dateTimePicker3);
+            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox14.Location = new System.Drawing.Point(79, 30);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(278, 61);
+            this.groupBox14.TabIndex = 55;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Performed Date";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(71, 19);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(173, 22);
+            this.dateTimePicker3.TabIndex = 53;
             // 
             // frmPatientRecordTabs
             // 
@@ -1756,17 +1941,22 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabTestsResults.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTestResults_TestResults)).EndInit();
             this.tabDiagnosis.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox8.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1860,7 +2050,6 @@
         public System.Windows.Forms.Label label33;
         public System.Windows.Forms.Label label34;
         public System.Windows.Forms.Label label24;
-        public System.Windows.Forms.Button btnSelectAppointment;
         public System.Windows.Forms.Button btnEditAppointment;
         private System.Windows.Forms.TextBox doctorIDTextBox;
         public System.Windows.Forms.DateTimePicker dtpAppDate;
@@ -1885,7 +2074,6 @@
         public ucAlert ucAlertOrderTest;
         public ucAlert ucAlertViewApp;
         public ucAlert ucAlertTestResults;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         public System.Windows.Forms.Button btnShowPastAppointments;
         public System.Windows.Forms.TabPage tabDiagnosis;
@@ -1905,5 +2093,19 @@
         private System.Windows.Forms.GroupBox groupBox9;
         public System.Windows.Forms.Label lblFinalDiagnosis;
         public System.Windows.Forms.Label lblInitDiagnosis;
+        public System.Windows.Forms.Button btnPrevCheck;
+        private System.Windows.Forms.Label label38;
+        public System.Windows.Forms.Button btnSelectAppointment;
+        public System.Windows.Forms.GroupBox groupBox11;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.GroupBox groupBox14;
+        public System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.GroupBox groupBox13;
+        public System.Windows.Forms.RadioButton radioButton1;
+        public System.Windows.Forms.RadioButton radioButton2;
     }
 }
