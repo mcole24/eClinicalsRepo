@@ -70,7 +70,7 @@ namespace eClinicals.DAL
                     + "SUM(case when lab.result = 0 then 1 else 0 end) as 'normal_results', "
                     + "SUM(case when lab.result = 1 then 1 else 0 end) as 'abnormal_results', "
                     + "CAST(SUM(case when datediff(DAY, contact.dob, lab.testDateCompleted) / 365 BETWEEN 0 and 17.99 then 1 else 0 end) AS DECIMAL(10,2)) AS 'patients_under_18', "
-                    + "CAST(SUM(case when datediff(DAY, contact.dob, lab.testDateCompleted) / 365 BETWEEN 18 and 29 then 1 else 0 end) AS DECIMAL(10, 2)) AS 'patients_under_30', "
+                    + "CAST(SUM(case when datediff(DAY, contact.dob, lab.testDateCompleted) / 365 BETWEEN 18 and 29 then 1 else 0 end) AS DECIMAL(10, 2)) AS 'patients_between_18_and_30', "
                     + "CAST(SUM(case when datediff(DAY, contact.dob, lab.testDateCompleted) / 365 BETWEEN 30 and 150 then 1 else 0 end) AS DECIMAL(10, 2)) AS 'patients_over_30' "
                     + "FROM Visit_Lab_Test lab "
                     + "JOIN Lab_Test test "
@@ -104,7 +104,7 @@ namespace eClinicals.DAL
                                 report.NormalResults = (int)reader["normal_results"];
                                 report.AbnormalResults = (int)reader["abnormal_results"];
                                 report.PatientsUnder18 = (decimal)reader["patients_under_18"];
-                                report.PatientsUnder30 = (decimal)reader["patients_under_30"];
+                                report.PatientsBetween18and30 = (decimal)reader["patients_between_18_and_30"];
                                 report.PatientsOver30 = (decimal)reader["patients_over_30"];
                                 reportList.Add(report);
                             }
