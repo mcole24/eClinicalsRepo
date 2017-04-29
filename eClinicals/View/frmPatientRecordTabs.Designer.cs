@@ -156,6 +156,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.btnUpdateSelectedTestResult = new System.Windows.Forms.Button();
             this.gUpdateSelectedTestResult = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.dtPerformedDate = new System.Windows.Forms.DateTimePicker();
@@ -183,7 +184,6 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.btnUpdateSelectedTestResult = new System.Windows.Forms.Button();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -1250,6 +1250,7 @@
             this.dgViewAppointments_ViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgViewAppointments_ViewAppointments.Location = new System.Drawing.Point(96, 68);
             this.dgViewAppointments_ViewAppointments.Name = "dgViewAppointments_ViewAppointments";
+            this.dgViewAppointments_ViewAppointments.ReadOnly = true;
             this.dgViewAppointments_ViewAppointments.Size = new System.Drawing.Size(462, 228);
             this.dgViewAppointments_ViewAppointments.TabIndex = 1;
             // 
@@ -1458,6 +1459,7 @@
             this.dgPreviousReadings__RoutineCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPreviousReadings__RoutineCheck.Location = new System.Drawing.Point(19, 23);
             this.dgPreviousReadings__RoutineCheck.Name = "dgPreviousReadings__RoutineCheck";
+            this.dgPreviousReadings__RoutineCheck.ReadOnly = true;
             this.dgPreviousReadings__RoutineCheck.Size = new System.Drawing.Size(684, 204);
             this.dgPreviousReadings__RoutineCheck.TabIndex = 1;
             // 
@@ -1616,6 +1618,19 @@
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
+            // btnUpdateSelectedTestResult
+            // 
+            this.btnUpdateSelectedTestResult.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnUpdateSelectedTestResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSelectedTestResult.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdateSelectedTestResult.Location = new System.Drawing.Point(455, 344);
+            this.btnUpdateSelectedTestResult.Name = "btnUpdateSelectedTestResult";
+            this.btnUpdateSelectedTestResult.Size = new System.Drawing.Size(278, 32);
+            this.btnUpdateSelectedTestResult.TabIndex = 56;
+            this.btnUpdateSelectedTestResult.Text = "Update Selected Test";
+            this.btnUpdateSelectedTestResult.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedTestResult.Click += new System.EventHandler(this.btnUpdateSelectedTestResult_Click);
+            // 
             // gUpdateSelectedTestResult
             // 
             this.gUpdateSelectedTestResult.Controls.Add(this.groupBox14);
@@ -1700,9 +1715,9 @@
             this.btnCancelTestResultUpdate.Name = "btnCancelTestResultUpdate";
             this.btnCancelTestResultUpdate.Size = new System.Drawing.Size(136, 32);
             this.btnCancelTestResultUpdate.TabIndex = 47;
-            this.btnCancelTestResultUpdate.Text = "Cancel ";
+            this.btnCancelTestResultUpdate.Text = "Done";
             this.btnCancelTestResultUpdate.UseVisualStyleBackColor = true;
-            this.btnCancelTestResultUpdate.Click += new System.EventHandler(this.btnCancelTestResultUpdate_Click);
+            this.btnCancelTestResultUpdate.Click += new System.EventHandler(this.btnDoneTestResultUpdate_Click);
             // 
             // btnUpdateTestResults
             // 
@@ -1763,6 +1778,7 @@
             this.dgTestResults_TestResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTestResults_TestResults.Location = new System.Drawing.Point(6, 23);
             this.dgTestResults_TestResults.Name = "dgTestResults_TestResults";
+            this.dgTestResults_TestResults.ReadOnly = true;
             this.dgTestResults_TestResults.Size = new System.Drawing.Size(637, 275);
             this.dgTestResults_TestResults.TabIndex = 1;
             // 
@@ -1900,19 +1916,6 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // btnUpdateSelectedTestResult
-            // 
-            this.btnUpdateSelectedTestResult.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
-            this.btnUpdateSelectedTestResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateSelectedTestResult.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnUpdateSelectedTestResult.Location = new System.Drawing.Point(455, 344);
-            this.btnUpdateSelectedTestResult.Name = "btnUpdateSelectedTestResult";
-            this.btnUpdateSelectedTestResult.Size = new System.Drawing.Size(278, 32);
-            this.btnUpdateSelectedTestResult.TabIndex = 56;
-            this.btnUpdateSelectedTestResult.Text = "Update Selected Test";
-            this.btnUpdateSelectedTestResult.UseVisualStyleBackColor = true;
-            this.btnUpdateSelectedTestResult.Click += new System.EventHandler(this.btnUpdateSelectedTestResult_Click);
             // 
             // frmPatientRecordTabs
             // 

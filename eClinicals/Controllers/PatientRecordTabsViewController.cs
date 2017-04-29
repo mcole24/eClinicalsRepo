@@ -613,7 +613,6 @@ namespace eClinicals.Controllers
         }
         private void btnUpdateTestResults_Click(object sender, EventArgs e)
         {
-            //TODO : Complete update test results
 
             try
             {
@@ -623,8 +622,6 @@ namespace eClinicals.Controllers
                 selectedTestResultPerformedDate = frmPatientRecordTabs.dtPerformedDate.Value;
 
                 int rID = Int32.Parse(selectedTestResultId);
-
-
                 if (eClinicalsController.UpdateResult(rID, selectedTestResultPerformedDate, selectedTestResultResult))
                 {
 
@@ -635,7 +632,6 @@ namespace eClinicals.Controllers
                     mainForm.Status("Result was not Updated", Color.Red);
 
                 }
-
 
             }
             catch (Exception ex)

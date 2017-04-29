@@ -131,7 +131,7 @@ namespace eClinicals.View
 
         }
 
-        private void btnCancelTestResultUpdate_Click(object sender, EventArgs e)
+        private void btnDoneTestResultUpdate_Click(object sender, EventArgs e)
         {
             gUpdateSelectedTestResult.Visible = false;
             gUpdateSelectedTestResult.Enabled = false;
