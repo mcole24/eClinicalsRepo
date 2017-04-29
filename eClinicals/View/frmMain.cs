@@ -24,7 +24,7 @@ namespace eClinicals.View
         eClinicalsController eClinicalsController;
         LoginController loginController;
         RibbonController ribbonController;
-        PatientInfoRibbonController patientInfoRibbonController;
+        internal PatientInfoRibbonController patientInfoRibbonController;
         NurseLoggedInViewController nurseLoggedInViewController;
         PatientSearchViewController patientSearchViewController;
         AdminReportController adminReportController;

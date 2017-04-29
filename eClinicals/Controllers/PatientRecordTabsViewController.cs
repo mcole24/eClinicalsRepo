@@ -422,11 +422,7 @@ namespace eClinicals.Controllers
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
                    patient.Zip, patient.Phone, patient.Gender);
 
-                    //refresh later
-
-                    isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
-                       patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                patient.Zip, patient.Phone, patient.Gender);
+                    //refresh later        
 
 
                     if (isUpdate)
@@ -439,6 +435,12 @@ namespace eClinicals.Controllers
             {
                 this.mainForm.Status(ex.Message, Color.Red);
             }
+            mainForm.patientInfoRibbonController.AddContactInfoFull(patient.Phone, patient.Address, patient.City, patient.State, patient.Zip);
+            mainForm.patientInfoRibbonController.AddUserInfo(mainForm.patientInfoRibbonController.getAge(patient.Dob).ToString(), patient.Gender, patient.PatientID.ToString());
+
+            mainForm.patientInfoRibbonController.AddUserInfoTopInfo(patient.FirstName, patient.LastName);
+
+
         }
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
