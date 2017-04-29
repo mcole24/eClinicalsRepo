@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
@@ -37,10 +39,21 @@
             this.pTop = new System.Windows.Forms.Panel();
             this.pMiddle = new System.Windows.Forms.Panel();
             this.pRight = new System.Windows.Forms.Panel();
+            this.cmsNurse = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nurseNotification = new System.Windows.Forms.NotifyIcon(this.components);
+            this.cmsAdmin = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.generateReporToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adminNotification = new System.Windows.Forms.NotifyIcon(this.components);
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ucAppointmentSummary = new eClinicals.View.ucAppointmentSummary();
             this.statusStripMain.SuspendLayout();
             this.menuStripMain.SuspendLayout();
             this.pMiddle.SuspendLayout();
+            this.cmsNurse.SuspendLayout();
+            this.cmsAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStripMain
@@ -67,6 +80,7 @@
             this.menuStripMain.Size = new System.Drawing.Size(1184, 24);
             this.menuStripMain.TabIndex = 8;
             this.menuStripMain.Text = "menuStrip1";
+            this.menuStripMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStripMain_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -123,6 +137,71 @@
             this.pRight.Size = new System.Drawing.Size(200, 600);
             this.pRight.TabIndex = 0;
             // 
+            // cmsNurse
+            // 
+            this.cmsNurse.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.testToolStripMenuItem,
+            this.searchToolStripMenuItem,
+            this.exitToolStripMenuItem1});
+            this.cmsNurse.Name = "contextMenuStrip1";
+            this.cmsNurse.Size = new System.Drawing.Size(138, 70);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.testToolStripMenuItem.Text = "Registration";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            // 
+            // nurseNotification
+            // 
+            this.nurseNotification.ContextMenuStrip = this.cmsNurse;
+            this.nurseNotification.Icon = ((System.Drawing.Icon)(resources.GetObject("nurseNotification.Icon")));
+            this.nurseNotification.Visible = true;
+            this.nurseNotification.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // cmsAdmin
+            // 
+            this.cmsAdmin.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generateReporToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.cmsAdmin.Name = "cmsAdmin";
+            this.cmsAdmin.Size = new System.Drawing.Size(160, 70);
+            // 
+            // generateReporToolStripMenuItem
+            // 
+            this.generateReporToolStripMenuItem.Name = "generateReporToolStripMenuItem";
+            this.generateReporToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.generateReporToolStripMenuItem.Text = "Generate Report";
+            this.generateReporToolStripMenuItem.Click += new System.EventHandler(this.generateReporToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // adminNotification
+            // 
+            this.adminNotification.ContextMenuStrip = this.cmsAdmin;
+            this.adminNotification.Text = "notifyIcon1";
+            this.adminNotification.Visible = true;
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
             // ucAppointmentSummary
             // 
             this.ucAppointmentSummary.BackColor = System.Drawing.Color.White;
@@ -159,6 +238,8 @@
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.pMiddle.ResumeLayout(false);
+            this.cmsNurse.ResumeLayout(false);
+            this.cmsAdmin.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,12 +250,21 @@
         public System.Windows.Forms.StatusStrip statusStripMain;
         public System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        public System.Windows.Forms.MenuStrip menuStripMain;      
+        public System.Windows.Forms.MenuStrip menuStripMain;
         public System.Windows.Forms.Panel pMiddle;
         public System.Windows.Forms.Panel pTop;
         private System.Windows.Forms.Panel pRight;
         private System.Windows.Forms.ToolStripMenuItem startMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         public ucAppointmentSummary ucAppointmentSummary;
+        private System.Windows.Forms.ContextMenuStrip cmsNurse;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon nurseNotification;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsAdmin;
+        private System.Windows.Forms.ToolStripMenuItem generateReporToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon adminNotification;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
     }
 }

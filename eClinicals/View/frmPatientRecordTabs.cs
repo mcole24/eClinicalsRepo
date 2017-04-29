@@ -3,10 +3,10 @@ using eClinicals.Model;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 
 namespace eClinicals.View
 {
+
     public partial class frmPatientRecordTabs : frmBaseView
     {
         List<Doctor> listDocs;
@@ -15,7 +15,7 @@ namespace eClinicals.View
         List<Appointment> listReasons;
         List<Symptom> listSymptoms;
         eClinicalsController eClinicalsController;
-      // Personal Tab
+        // Personal Tab
         public string lastName;
         public string firstName;
         public DateTime dob;
@@ -33,23 +33,21 @@ namespace eClinicals.View
         public DateTime appointmentDate;
         public DateTime appointmentTime;
 
-      
+        const int ALERT_LOCATION_X = 8;
+        private int ALERT_LOCATION_Y = 45;
 
         public frmPatientRecordTabs()
         {
+
             InitializeComponent();
             eClinicalsController = new eClinicalsController();
             fillListBoxElements();
             fillSetAppointmentTab();
-            editAppointment();
             gbEditAppointment.Visible = false;
-        }
+            SetUIElementPosition();
 
-        private void editAppointment()
-        {
-          
-        }
 
+        }
         private void fillListBoxElements()
         {
             listDocs = eClinicalsController.GetAllDoctorNames();
@@ -72,32 +70,29 @@ namespace eClinicals.View
             foreach (Symptom symptom in listSymptoms)
             {
                 cbSymptoms_RoutineCheck.Items.Add(symptom);
-             
+
             }
-
-
-
 
             listDiagnosis = eClinicalsController.GetAllDiagnosis();
 
             foreach (Diagnosis diagnosis in listDiagnosis)
             {
-               cbDiagnosis_TestResults.Items.Add(diagnosis);              
-           
+                cbDiagnosis_TestResults.Items.Add(diagnosis);
+
             }
             listTestOrder = eClinicalsController.GetAllTests();
 
             foreach (LabTest test in listTestOrder)
             {
-                cbTest_TestResults.Items.Add(test);
-               cbSelectTest_OrderTest.Items.Add(test);
+
+                cbSelectTest_OrderTest.Items.Add(test);
             }
 
 
         }
 
         private void fillSetAppointmentTab()
-        {           
+        {
             // Selects the member name of the object in the listBox
             cbReason_SetAppointment.DisplayMember = "AppointmentReason";
             cbSymptoms_RoutineCheck.DisplayMember = "SymptomType";
@@ -108,7 +103,6 @@ namespace eClinicals.View
             cbAppReason.DisplayMember = "AppointmentReason";
             cbAppDoctor.DisplayMember = "DoctorName";
             cbDiagnosis_TestResults.DisplayMember = "DiagnosisName";
-            cbTest_TestResults.DisplayMember = "TestName";
 
             // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
@@ -116,21 +110,39 @@ namespace eClinicals.View
             cbSelectDoctor_OrderTest.SelectedIndex = 0;
             cbSelectTest_OrderTest.SelectedIndex = 0;
             cbDiagnosis_TestResults.SelectedIndex = 0;
-            cbTest_TestResults.SelectedIndex = 0;
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
-        
+
+        }
+        private void SetUIElementPosition()
+        {
+            this.ucAlertPersonal.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertSetApp.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertViewApp.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertRoutineCheck.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertOrderTest.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertTestResults.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+
 
         }
 
-        private void tabPersonal_Click(object sender, EventArgs e)
+        private void btnUpdateTestResults_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnCommitTest_Click(object sender, EventArgs e)
+        private void btnDoneTestResultUpdate_Click(object sender, EventArgs e)
         {
+            gUpdateSelectedTestResult.Visible = false;
+            gUpdateSelectedTestResult.Enabled = false;
+            btnUpdateSelectedTestResult.Visible = true;
+        }
 
+        private void btnUpdateSelectedTestResult_Click(object sender, EventArgs e)
+        {
+            gUpdateSelectedTestResult.Visible = true;
+            gUpdateSelectedTestResult.Enabled = true;
+            btnUpdateSelectedTestResult.Visible = false;
         }
     }
 }
