@@ -143,7 +143,7 @@ namespace eClinicals.View
                     frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
 
                     patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-
+                    //TODO Test Results
                     frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
 
 

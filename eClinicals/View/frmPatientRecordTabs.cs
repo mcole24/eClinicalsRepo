@@ -2,9 +2,11 @@
 using eClinicals.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace eClinicals.View
 {
+    enum RESULT : byte { POSITIVE = 1, NEGATIVE = 0 };
     public partial class frmPatientRecordTabs : frmBaseView
     {
         List<Doctor> listDocs;
@@ -30,28 +32,22 @@ namespace eClinicals.View
         public string doctor;
         public DateTime appointmentDate;
         public DateTime appointmentTime;
-
-
+        public byte result;
+        const int ALERT_LOCATION_X = 8;
+        private int ALERT_LOCATION_Y = 45;
 
         public frmPatientRecordTabs()
         {
+
             InitializeComponent();
             eClinicalsController = new eClinicalsController();
             fillListBoxElements();
             fillSetAppointmentTab();
-            editAppointment();
             gbEditAppointment.Visible = false;
             SetUIElementPosition();
 
-        }
-
-
-
-        private void editAppointment()
-        {
 
         }
-
         private void fillListBoxElements()
         {
             listDocs = eClinicalsController.GetAllDoctorNames();
@@ -76,9 +72,6 @@ namespace eClinicals.View
                 cbSymptoms_RoutineCheck.Items.Add(symptom);
 
             }
-
-
-
 
             listDiagnosis = eClinicalsController.GetAllDiagnosis();
 
@@ -111,7 +104,6 @@ namespace eClinicals.View
             cbAppDoctor.DisplayMember = "DoctorName";
             cbDiagnosis_TestResults.DisplayMember = "DiagnosisName";
 
-
             // Selects the index of the object in the listBox
             cbReason_SetAppointment.SelectedIndex = 0;
             cbDoctor_SetAppointment.SelectedIndex = 0;
@@ -121,37 +113,32 @@ namespace eClinicals.View
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
 
-
         }
-
-        private void tabPersonal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCommitTest_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SetUIElementPosition()
         {
-            this.ucAlertPersonal.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertSetApp.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertViewApp.Location = new System.Drawing.Point(8, 45);
-
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertOrderTest.Location = new System.Drawing.Point(8, 45);
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 45);
+            this.ucAlertPersonal.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertSetApp.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertViewApp.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertRoutineCheck.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertOrderTest.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+            this.ucAlertTestResults.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
         }
 
-        private void btnSelectAppointment_Click(object sender, EventArgs e)
+        private void btnUpdateTestResults_Click(object sender, EventArgs e)
         {
+            if (rbPositive.Checked)
+            {
+                result = (byte)RESULT.POSITIVE;
+            }
+            if (rbNegative.Checked)
+            {
+                result = (byte)RESULT.NEGATIVE;
+            }
 
-        }
 
-        private void gbBeginRoutineCheck_Enter(object sender, EventArgs e)
-        {
+
+
+
 
         }
     }

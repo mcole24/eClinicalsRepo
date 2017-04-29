@@ -30,6 +30,8 @@ namespace eClinicals.Controllers
         private bool finalDiagnosis;
         private bool isOrderTestOpen;
 
+        public LabTest selectedTestResult { get; private set; }
+
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
             eClinicalsController = new eClinicalsController();
@@ -79,6 +81,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.dgPreviousReadings__RoutineCheck.DataSource =
                 eClinicalsController.GetPreviousReadings(patient.PatientID);
         }
+        // DataGrid
         private void dgViewAppointments_ViewAppointments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -110,6 +113,42 @@ namespace eClinicals.Controllers
             }
         }
 
+        private void dgTestResults_TestResults_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //TODO Test Results Data grid selected Test Result
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    selectedTestResult = (LabTest)frmPatientRecordTabs.dgTestResults_TestResults.CurrentRow.DataBoundItem;
+                    string message = "|Selected Test: " + selectedTestResult.TestName + "  Results : " + selectedTestResult.TestResult +
+                        "  " + selectedTestResult.PerformedDate + "  Test ID:" + selectedTestResult.TestID +
+                        "...Pressing the start routine checkup Button will select the appointment for checkup.";
+                    //this.mainForm.Status(message, Color.Transparent);
+                    //frmPatientRecordTabs.txtAppID.Text = selectedAppointment.AppointmentID.ToString();
+                    //frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
+                    //frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;
+                    //frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
+
+                    //checkAppointmentCurrentDate();
+                    //checkAppointmentFutureDate();
+                    //checkAppointmentPastDate();
+                    mainForm.Status(message, Color.Yellow);
+                }
+                else
+                {
+                    this.mainForm.Status("No appointment has been selected.", Color.Yellow);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+        }
+
+
         private void btnSummary_Click(object sender, EventArgs e)
         {
             try
@@ -134,6 +173,7 @@ namespace eClinicals.Controllers
             // mainForm.ucAppointmentSummary.lblReason.Text = selectedAppointment.AppointmentReason;
             mainForm.ucAppointmentSummary.Visible = true;
         }
+        // End Datagrids
         private void checkAppointmentPastDate()
         {
             if (selectedAppointment.AppointmentDate.Date < DateTime.Now.Date)
@@ -205,6 +245,8 @@ namespace eClinicals.Controllers
                     break;
             }
         }
+
+        //Buttons
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
             try
@@ -562,11 +604,13 @@ namespace eClinicals.Controllers
 
 
         }
+        //Setup
         private void showSummaryButton(bool status)
         {
             frmPatientRecordTabs.btnSummary.Visible = status;
             frmPatientRecordTabs.lblSummary.Visible = status;
         }
+
         public void DisableEdit()
         {
             frmPatientRecordTabs.txtLastName.Text = this.patient.LastName;
@@ -599,6 +643,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtSSN.Enabled = false;
 
         }
+
         public void EnableEdit()
         {
             frmPatientRecordTabs.btnUpdate.Enabled = true;
@@ -618,6 +663,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbGender.Enabled = true;
             frmPatientRecordTabs.txtSSN.Enabled = false;
         }
+
         public void EnableTabAlert(TabPage page, bool enable)
         {
             string message = "";
@@ -687,6 +733,7 @@ namespace eClinicals.Controllers
             }
 
         }
+
         private void setEventHandlers()
         {
             frmPatientRecordTabs.btnEditPerson.Click += new EventHandler(btnEditPerson_Click);
@@ -696,6 +743,11 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnAppEditCancel.Click += new System.EventHandler(this.btnAppEditCancel_Click);
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.CellClick +=
                          new DataGridViewCellEventHandler(dgViewAppointments_ViewAppointments_CellClick);
+
+            frmPatientRecordTabs.dgTestResults_TestResults.CellClick +=
+                         new DataGridViewCellEventHandler(dgTestResults_TestResults_CellClick);
+
+
             frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
             frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
             frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
@@ -710,7 +762,6 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
 
         }
-
 
 
     }
