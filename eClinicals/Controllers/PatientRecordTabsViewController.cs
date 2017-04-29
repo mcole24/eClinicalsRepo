@@ -133,7 +133,11 @@ namespace eClinicals.Controllers
                     selectedTestResultPerformedDate = selectedTestResult.PerformedDate;
                     selectedTestResultName = selectedTestResult.TestName;
                     selectedTestResultCode = selectedTestResult.TestCode;
+
                     string resultText = CheckResults(selectedTestResult.TestResult);
+
+
+
                     string message = "Selected Test: " + selectedTestResultName + "  Code: " + selectedTestResultCode + "  Results: " + resultText +
                         "  " + selectedTestResultPerformedDate + "  Test ID:" + selectedTestResultId +
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
@@ -607,23 +611,75 @@ namespace eClinicals.Controllers
 
 
         }
+        private void btnUpdateTestResults_Click(object sender, EventArgs e)
+        {
+            //TODO : Complete update test results
+
+            try
+            {
+
+                selectedTestResultResult = GetResultsAsInt(frmPatientRecordTabs.rbNegative.Checked, frmPatientRecordTabs.rbPositive.Checked);
+
+                selectedTestResultPerformedDate = frmPatientRecordTabs.dtPerformedDate.Value;
+
+                int rID = Int32.Parse(selectedTestResultId);
+
+
+                if (eClinicalsController.UpdateResult(rID, selectedTestResultPerformedDate, selectedTestResultResult))
+                {
+
+                    mainForm.Status("Result Updated", Color.Green);
+                }
+                else
+                {
+                    mainForm.Status("Result was not Updated", Color.Red);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                mainForm.Status(ex.Message, Color.Red);
+            }
+            frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(mainForm.selectedPatientID);
+
+        }
+
+        private int GetResultsAsInt(bool negative, bool positive)
+        {
+
+            if (negative)
+            {
+                return 0;
+
+            }
+            if (positive)
+            {
+
+                return 1;
+            }
+            return -1;
+        }
+
         //Setup
         private string CheckResults(string result)
 
 
         {
-            if (result == results[1])
+            if (result == "positive")
             {
                 frmPatientRecordTabs.rbPositive.Checked = true;
                 selectedTestResultResult = 1;
-                return results[1];
+                return "positive";
 
             }
-            if (result == results[0])
+            if (result == "negative")
             {
                 frmPatientRecordTabs.rbNegative.Checked = true;
                 selectedTestResultResult = 0;
-                return results[0];
+                return "negative";
             }
             return "";
         }
@@ -770,7 +826,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.dgTestResults_TestResults.CellClick +=
                          new DataGridViewCellEventHandler(dgTestResults_TestResults_CellClick);
 
-
+            frmPatientRecordTabs.btnUpdateTestResults.Click += new EventHandler(btnUpdateTestResults_Click);
             frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
             frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);
             frmPatientRecordTabs.btnOrderTest.Click += new EventHandler(btnOrderTest_Click);
