@@ -156,7 +156,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.gUpdateSelectedTestResult = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.dtPerformedDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -165,7 +165,7 @@
             this.btnCancelTestResultUpdate = new System.Windows.Forms.Button();
             this.btnUpdateTestResults = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTestId = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -183,6 +183,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.btnUpdateSelectedTestResult = new System.Windows.Forms.Button();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -213,7 +214,7 @@
             this.tabOrderTests.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabTestsResults.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.gUpdateSelectedTestResult.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -1603,7 +1604,8 @@
             // 
             // tabTestsResults
             // 
-            this.tabTestsResults.Controls.Add(this.groupBox11);
+            this.tabTestsResults.Controls.Add(this.btnUpdateSelectedTestResult);
+            this.tabTestsResults.Controls.Add(this.gUpdateSelectedTestResult);
             this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
@@ -1614,25 +1616,27 @@
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
+            // gUpdateSelectedTestResult
             // 
-            this.groupBox11.Controls.Add(this.groupBox14);
-            this.groupBox11.Controls.Add(this.groupBox13);
-            this.groupBox11.Controls.Add(this.btnCancelTestResultUpdate);
-            this.groupBox11.Controls.Add(this.btnUpdateTestResults);
-            this.groupBox11.Controls.Add(this.textBox1);
-            this.groupBox11.Controls.Add(label40);
-            this.groupBox11.Controls.Add(label41);
-            this.groupBox11.Controls.Add(this.textBox2);
-            this.groupBox11.Controls.Add(label42);
-            this.groupBox11.Controls.Add(this.textBox3);
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(79, 382);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(654, 134);
-            this.groupBox11.TabIndex = 48;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Update Test Result";
+            this.gUpdateSelectedTestResult.Controls.Add(this.groupBox14);
+            this.gUpdateSelectedTestResult.Controls.Add(this.groupBox13);
+            this.gUpdateSelectedTestResult.Controls.Add(this.btnCancelTestResultUpdate);
+            this.gUpdateSelectedTestResult.Controls.Add(this.btnUpdateTestResults);
+            this.gUpdateSelectedTestResult.Controls.Add(this.textBox1);
+            this.gUpdateSelectedTestResult.Controls.Add(label40);
+            this.gUpdateSelectedTestResult.Controls.Add(label41);
+            this.gUpdateSelectedTestResult.Controls.Add(this.txtTestId);
+            this.gUpdateSelectedTestResult.Controls.Add(label42);
+            this.gUpdateSelectedTestResult.Controls.Add(this.textBox3);
+            this.gUpdateSelectedTestResult.Enabled = false;
+            this.gUpdateSelectedTestResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gUpdateSelectedTestResult.Location = new System.Drawing.Point(79, 382);
+            this.gUpdateSelectedTestResult.Name = "gUpdateSelectedTestResult";
+            this.gUpdateSelectedTestResult.Size = new System.Drawing.Size(654, 134);
+            this.gUpdateSelectedTestResult.TabIndex = 48;
+            this.gUpdateSelectedTestResult.TabStop = false;
+            this.gUpdateSelectedTestResult.Text = "Update Test Result";
+            this.gUpdateSelectedTestResult.Visible = false;
             // 
             // groupBox14
             // 
@@ -1698,6 +1702,7 @@
             this.btnCancelTestResultUpdate.TabIndex = 47;
             this.btnCancelTestResultUpdate.Text = "Cancel ";
             this.btnCancelTestResultUpdate.UseVisualStyleBackColor = true;
+            this.btnCancelTestResultUpdate.Click += new System.EventHandler(this.btnCancelTestResultUpdate_Click);
             // 
             // btnUpdateTestResults
             // 
@@ -1719,13 +1724,13 @@
             this.textBox1.Size = new System.Drawing.Size(200, 21);
             this.textBox1.TabIndex = 44;
             // 
-            // textBox2
+            // txtTestId
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(9, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(42, 21);
-            this.textBox2.TabIndex = 38;
+            this.txtTestId.Enabled = false;
+            this.txtTestId.Location = new System.Drawing.Point(9, 49);
+            this.txtTestId.Name = "txtTestId";
+            this.txtTestId.Size = new System.Drawing.Size(42, 21);
+            this.txtTestId.TabIndex = 38;
             // 
             // textBox3
             // 
@@ -1747,7 +1752,7 @@
             // 
             this.groupBox3.Controls.Add(this.dgTestResults_TestResults);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(79, 72);
+            this.groupBox3.Location = new System.Drawing.Point(79, 31);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(654, 304);
             this.groupBox3.TabIndex = 12;
@@ -1896,6 +1901,19 @@
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // btnUpdateSelectedTestResult
+            // 
+            this.btnUpdateSelectedTestResult.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnUpdateSelectedTestResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateSelectedTestResult.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnUpdateSelectedTestResult.Location = new System.Drawing.Point(455, 344);
+            this.btnUpdateSelectedTestResult.Name = "btnUpdateSelectedTestResult";
+            this.btnUpdateSelectedTestResult.Size = new System.Drawing.Size(278, 32);
+            this.btnUpdateSelectedTestResult.TabIndex = 56;
+            this.btnUpdateSelectedTestResult.Text = "Update Selected Test";
+            this.btnUpdateSelectedTestResult.UseVisualStyleBackColor = true;
+            this.btnUpdateSelectedTestResult.Click += new System.EventHandler(this.btnUpdateSelectedTestResult_Click);
+            // 
             // frmPatientRecordTabs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1936,8 +1954,8 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabTestsResults.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.gUpdateSelectedTestResult.ResumeLayout(false);
+            this.gUpdateSelectedTestResult.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
@@ -2091,16 +2109,17 @@
         public System.Windows.Forms.Button btnPrevCheck;
         private System.Windows.Forms.Label label38;
         public System.Windows.Forms.Button btnSelectAppointment;
-        public System.Windows.Forms.GroupBox groupBox11;
+        public System.Windows.Forms.GroupBox gUpdateSelectedTestResult;
         public System.Windows.Forms.Button btnCancelTestResultUpdate;
         public System.Windows.Forms.Button btnUpdateTestResults;
         private System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox txtTestId;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.GroupBox groupBox14;
         public System.Windows.Forms.DateTimePicker dtPerformedDate;
         private System.Windows.Forms.GroupBox groupBox13;
         public System.Windows.Forms.RadioButton rbPositive;
         public System.Windows.Forms.RadioButton rbNegative;
+        public System.Windows.Forms.Button btnUpdateSelectedTestResult;
     }
 }

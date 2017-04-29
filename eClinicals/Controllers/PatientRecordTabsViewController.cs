@@ -24,11 +24,17 @@ namespace eClinicals.Controllers
         CURRENT_APP_VIEW CURRENT_APP_VIEW;
         private List<Appointment> selectedPastPatientAppointments;
         private List<Appointment> selectedCurrentPatientAppointments;
-
+        public bool result;
         public bool isRoutineCheckOpen;
         private bool initDiagnosis;
         private bool finalDiagnosis;
         private bool isOrderTestOpen;
+        private Dictionary<int, string> results;
+        private string selectedTestResultId;
+        private DateTime selectedTestResultPerformedDate;
+        private int selectedTestResultResult;
+        private string selectedTestResultName;
+        private int selectedTestResultCode;
 
         public LabTest selectedTestResult { get; private set; }
 
@@ -44,6 +50,9 @@ namespace eClinicals.Controllers
             isRoutineCheckOpen = false;
             isOrderTestOpen = false;
             // frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(1);
+            results = new Dictionary<int, string>();
+            results.Add(1, "positive");
+            results.Add(0, "negative");
 
         }
         public void fillPatientInfo(Patient patient)
@@ -68,7 +77,6 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.cbState.Text = patient.State;
             frmPatientRecordTabs.txtZipcode.Text = patient.Zip;
             frmPatientRecordTabs.txtPhone.Text = patient.Phone;
-
             List<Symptom> allSymptoms = eClinicalsController.GetAllSymptoms();
             // frmPatientRecordTabs.clbSymptoms_RoutineCheck.DataSource = allSymptoms;
             frmPatientRecordTabs.cbSelectDoctor_OrderTest.DataSource = eClinicalsController.GetAllDoctorNames();
@@ -121,23 +129,21 @@ namespace eClinicals.Controllers
                 if (e.RowIndex >= 0)
                 {
                     selectedTestResult = (LabTest)frmPatientRecordTabs.dgTestResults_TestResults.CurrentRow.DataBoundItem;
-                    string message = "|Selected Test: " + selectedTestResult.TestName + "  Results : " + selectedTestResult.TestResult +
-                        "  " + selectedTestResult.PerformedDate + "  Test ID:" + selectedTestResult.TestID +
+                    selectedTestResultId = selectedTestResult.TestID.ToString();
+                    selectedTestResultPerformedDate = selectedTestResult.PerformedDate;
+                    selectedTestResultName = selectedTestResult.TestName;
+                    selectedTestResultCode = selectedTestResult.TestCode;
+                    string resultText = CheckResults(selectedTestResult.TestResult);
+                    string message = "Selected Test: " + selectedTestResultName + "  Code: " + selectedTestResultCode + "  Results: " + resultText +
+                        "  " + selectedTestResultPerformedDate + "  Test ID:" + selectedTestResultId +
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";
-                    //this.mainForm.Status(message, Color.Transparent);
-                    //frmPatientRecordTabs.txtAppID.Text = selectedAppointment.AppointmentID.ToString();
-                    //frmPatientRecordTabs.dtpAppDate.Value = selectedAppointment.AppointmentDate;
-                    //frmPatientRecordTabs.cbAppDoctor.Text = selectedAppointment.AppointmentDoctor;
-                    //frmPatientRecordTabs.cbAppReason.Text = selectedAppointment.AppointmentReason;
-
-                    //checkAppointmentCurrentDate();
-                    //checkAppointmentFutureDate();
-                    //checkAppointmentPastDate();
-                    mainForm.Status(message, Color.Yellow);
+                    frmPatientRecordTabs.txtTestId.Text = selectedTestResultId;
+                    frmPatientRecordTabs.dtPerformedDate.Value = selectedTestResultPerformedDate;
+                    this.mainForm.Status(message, Color.Transparent);
                 }
                 else
                 {
-                    this.mainForm.Status("No appointment has been selected.", Color.Yellow);
+                    this.mainForm.Status("No Test Result has been selected.", Color.Yellow);
                 }
             }
             catch (Exception)
@@ -145,10 +151,7 @@ namespace eClinicals.Controllers
                 throw;
             }
 
-
         }
-
-
         private void btnSummary_Click(object sender, EventArgs e)
         {
             try
@@ -605,6 +608,26 @@ namespace eClinicals.Controllers
 
         }
         //Setup
+        private string CheckResults(string result)
+
+
+        {
+            if (result == results[1])
+            {
+                frmPatientRecordTabs.rbPositive.Checked = true;
+                selectedTestResultResult = 1;
+                return results[1];
+
+            }
+            if (result == results[0])
+            {
+                frmPatientRecordTabs.rbNegative.Checked = true;
+                selectedTestResultResult = 0;
+                return results[0];
+            }
+            return "";
+        }
+
         private void showSummaryButton(bool status)
         {
             frmPatientRecordTabs.btnSummary.Visible = status;

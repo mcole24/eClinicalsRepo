@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace eClinicals.View
 {
-    enum RESULT : byte { POSITIVE = 1, NEGATIVE = 0 };
+
     public partial class frmPatientRecordTabs : frmBaseView
     {
         List<Doctor> listDocs;
@@ -32,7 +32,7 @@ namespace eClinicals.View
         public string doctor;
         public DateTime appointmentDate;
         public DateTime appointmentTime;
-        public byte result;
+
         const int ALERT_LOCATION_X = 8;
         private int ALERT_LOCATION_Y = 45;
 
@@ -122,24 +122,27 @@ namespace eClinicals.View
             this.ucAlertRoutineCheck.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
             this.ucAlertOrderTest.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
             this.ucAlertTestResults.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
+
+
         }
 
         private void btnUpdateTestResults_Click(object sender, EventArgs e)
         {
-            if (rbPositive.Checked)
-            {
-                result = (byte)RESULT.POSITIVE;
-            }
-            if (rbNegative.Checked)
-            {
-                result = (byte)RESULT.NEGATIVE;
-            }
 
+        }
 
+        private void btnCancelTestResultUpdate_Click(object sender, EventArgs e)
+        {
+            gUpdateSelectedTestResult.Visible = false;
+            gUpdateSelectedTestResult.Enabled = false;
+            btnUpdateSelectedTestResult.Visible = true;
+        }
 
-
-
-
+        private void btnUpdateSelectedTestResult_Click(object sender, EventArgs e)
+        {
+            gUpdateSelectedTestResult.Visible = true;
+            gUpdateSelectedTestResult.Enabled = true;
+            btnUpdateSelectedTestResult.Visible = false;
         }
     }
 }
