@@ -118,3 +118,22 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
