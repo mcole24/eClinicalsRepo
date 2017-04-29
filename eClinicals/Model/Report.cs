@@ -15,9 +15,10 @@ namespace eClinicals.Model
         public decimal PercentageOfTests { get; set; }
         public int NormalResults { get; set; }
         public int AbnormalResults { get; set; }
-        public decimal PatientsUnder30 { get; set; }
-        public decimal PatientsOver30 { get; set; }
         public decimal PatientsUnder18 { get; set; }
+        public decimal PatientsBetween18and30 { get; set; }
+        public decimal PatientsOver30 { get; set; }
+      
     
       
                     

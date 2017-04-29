@@ -17,7 +17,7 @@ namespace eClinicals.DAL
             + "FROM visit LEFT JOIN Appointment ON visit.appointmentID = appointment.appointmentID "
             + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
             + "JOIN symptom ON visit_symptom.symptomID = symptom.symptomID "
-            + "WHERE patientID = @patientID";
+            + "WHERE patientID = @patientID AND visitTime < GETDATE()";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -32,8 +32,8 @@ namespace eClinicals.DAL
                             {
                                 RoutineCheck checkResults = new RoutineCheck();
                                 checkResults.VisitDate = (DateTime)reader["visitTime"];
-                                checkResults.DiastolicBP = (int)reader["diastolicBP"];
                                 checkResults.SystolicBP = (int)reader["systolicBP"];
+                                checkResults.DiastolicBP = (int)reader["diastolicBP"];
                                 checkResults.BodyTemperature = (decimal)reader["bodyTemperature"];
                                 checkResults.Pulse = (int)reader["pulse"];
                                 checkResults.Symptom = reader["symptomType"].ToString();

@@ -148,7 +148,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID";
+                + "WHERE Patient.patientID = @patientID "
+                + "ORDER BY appointmentDate DESC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -199,7 +200,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate > GETDATE()";
+                + "WHERE Patient.patientID = @patientID AND appointmentDate > GETDATE() "
+                + "ORDER BY appointmentDate ASC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -250,7 +252,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND appointmentDate < GETDATE()";
+                + "WHERE Patient.patientID = @patientID AND appointmentDate < GETDATE() "
+                + "ORDER BY appointmentDate DESC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -303,7 +306,8 @@ namespace eClinicals.DAL
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
-                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%'";
+                + "WHERE Patient.patientID = @patientID AND  CONVERT(VARCHAR(25), appointmentDate, 126) LIKE @today+'%' "
+                + "ORDER BY appointmentDate ASC";
             try
             {
                 using (SqlConnection connection = DBConnection.GetConnection())
@@ -425,9 +429,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static AppointmentSummary GetAppointmentSummaryVisitDetails(int appointmentID)
+        public static AppointmentSummaryVisitDetails GetAppointmentSummaryVisitDetails(int appointmentID)
         {
-            AppointmentSummary visitDetails = new AppointmentSummary();
+            AppointmentSummaryVisitDetails visitDetails = new AppointmentSummaryVisitDetails();
                 string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
                         + "FROM visit "
                         + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
@@ -471,9 +475,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static List<AppointmentSummary> GetAppointmentSummarySymptoms(int appointmentID)
+        public static List<AppointmentSummarySymptoms> GetAppointmentSummarySymptoms(int appointmentID)
         {
-            List<AppointmentSummary> visitSymptomsList = new List<AppointmentSummary>();
+            List<AppointmentSummarySymptoms> visitSymptomsList = new List<AppointmentSummarySymptoms>();
             string selStmt = "SELECT symptomType "
                       + "FROM visit "
                       + "JOIN visit_symptom ON visit.visitID = visit_symptom.visitID "
@@ -492,7 +496,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                AppointmentSummary visitSymptom = new AppointmentSummary();
+                                AppointmentSummarySymptoms visitSymptom = new AppointmentSummarySymptoms();
                                 visitSymptom.Symptoms = reader["symptomType"].ToString();
                                 visitSymptomsList.Add(visitSymptom);
                             }
@@ -514,9 +518,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static AppointmentSummary GetAppointmentSummaryCheckupResults(int appointmentID)
+        public static AppointmentSummaryCheckupResults GetAppointmentSummaryCheckupResults(int appointmentID)
         {
-            AppointmentSummary visit = new AppointmentSummary();
+            AppointmentSummaryCheckupResults visitCheckup = new AppointmentSummaryCheckupResults();
             string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
                 + "FROM visit "
                 + "WHERE visit.appointmentID = @appointmentID";
@@ -532,10 +536,10 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                visit.SystolicBPReading = (int)reader["systolicBP"];
-                                visit.DiastolicBPReading = (int)reader["diastolicBP"];
-                                visit.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
-                                visit.PulseReading = (int)reader["pulse"];
+                                visitCheckup.SystolicBPReading = (int)reader["systolicBP"];
+                                visitCheckup.DiastolicBPReading = (int)reader["diastolicBP"];
+                                visitCheckup.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
+                                visitCheckup.PulseReading = (int)reader["pulse"];
                             }
                             reader.Close();
                         }
@@ -551,12 +555,12 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visit;
+            return visitCheckup;
         }
 
-        public static List<AppointmentSummary> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        public static List<AppointmentSummaryDiagnosisResults> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
-            List<AppointmentSummary> visitDiagnosisList = new List<AppointmentSummary>();
+            List<AppointmentSummaryDiagnosisResults> visitDiagnosisList = new List<AppointmentSummaryDiagnosisResults>();
             string selStmt = "SELECT visit.visitID, diagnosisType AS initialDiagnosis "
                           + "FROM visit "
                           + "JOIN visit_has_diagnosis ON visit.visitID = visit_has_diagnosis.visitID "
@@ -580,7 +584,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                AppointmentSummary visitDiagnosis = new AppointmentSummary();
+                                AppointmentSummaryDiagnosisResults visitDiagnosis = new AppointmentSummaryDiagnosisResults();
                                 visitDiagnosis.InitialDiagnosis = reader["initialDiagnosis"].ToString();
                                 visitDiagnosis.FinalDiagnosis = reader["finalDiagnosis"].ToString();
                                 visitDiagnosisList.Add(visitDiagnosis);
@@ -602,9 +606,9 @@ namespace eClinicals.DAL
             return visitDiagnosisList;
         }
 
-        public static List<AppointmentSummary> GetAppointmentSummaryTestResults(int appointmentID)
+        public static List<AppointmentSummaryTestResults> GetAppointmentSummaryTestResults(int appointmentID)
         {
-            List<AppointmentSummary> visitTestResultList = new List<AppointmentSummary>();
+            List<AppointmentSummaryTestResults> visitTestResultList = new List<AppointmentSummaryTestResults>();
             string selStmt = "SELECT testType, result "
            + "FROM visit "
            + "JOIN visit_lab_test ON visit.visitID = visit_lab_test.visitID "
@@ -623,7 +627,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                AppointmentSummary visitTestResult = new AppointmentSummary();
+                                AppointmentSummaryTestResults visitTestResult = new AppointmentSummaryTestResults();
                                 visitTestResult.TestName = reader["testType"].ToString();
                                 visitTestResult.ResultRecorded = (bool)reader["result"];
                                 if (visitTestResult.ResultRecorded == true)

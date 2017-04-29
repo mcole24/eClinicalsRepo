@@ -84,7 +84,11 @@
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Appointment.cs" />
-    <Compile Include="Model\AppointmentSummary.cs" />
+    <Compile Include="Model\AppointmentSummaryCheckupResults.cs" />
+    <Compile Include="Model\AppointmentSummaryDiagnosisResults.cs" />
+    <Compile Include="Model\AppointmentSummarySymptoms.cs" />
+    <Compile Include="Model\AppointmentSummaryTestResults.cs" />
+    <Compile Include="Model\AppointmentSummaryVisitDetails.cs" />
     <Compile Include="Model\Diagnosis.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\LabTest.cs" />
