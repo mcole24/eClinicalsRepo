@@ -20,7 +20,11 @@ namespace eClinicals.DAL
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO appointment (appointmentDate, patientID, doctorID, appointmentReasonID) "
+                   
+                    string insertStmt = "IF NOT EXISTS (SELECT appointmentID "
+                       + "FROM appointment "
+                       + "WHERE patientID = @patientID AND doctorID = @doctorID AND appointmentDate = @appDate) "
+                       + "INSERT INTO appointment (appointmentDate, patientID, doctorID, appointmentReasonID) "
                         + "VALUES (@appDate, @patientID, @doctorID, @appointmentReasonID)";
                        
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
