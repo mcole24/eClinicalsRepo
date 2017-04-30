@@ -31,8 +31,8 @@ namespace eClinicals.Controllers
 
         void OkBtn_Click(Object sender, EventArgs e)
         {
-            // nurse : cwoods6
-            //admin : jwynn1
+            // nurse : cwoods6 - testpassword123
+            //admin : jwynn1 - 123testpassword
             //TODO: PASSWORD - replace this with commented area below
 
             // frmLoginView.username = "cwoods6";
