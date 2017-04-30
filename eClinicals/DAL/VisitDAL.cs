@@ -55,85 +55,10 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
-<<<<<<< HEAD
-        //public static bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
-        //{
-        //    int visitID = 0;
-
-        //    string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
-        //        "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
-        //        "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
-
-
-        //    string selStmt = "SELECT MAX(visitID) AS MaxVisitID FROM visit";
-
-        //    string insertStmt2 = "IF NOT EXISTS (SELECT visitID FROM visit_symptom WHERE visitID = @visit AND symptomID = @symptom) " +
-        //        "INSERT INTO visit_symptom (visitID, symptomID) VALUES (@visit, @symptom)";
-
-
-        //    using (SqlConnection connect = DBConnection.GetConnection())
-        //    {
-        //        connect.Open();
-        //        SqlTransaction tran = connect.BeginTransaction();
-
-        //        try
-        //        {
-
-        //            using (SqlCommand cmd = new SqlCommand(insertStmt1, connect, tran))
-        //            {
-        //                cmd.Parameters.AddWithValue("@appID", appointmentID);
-        //                cmd.Parameters.AddWithValue("@nurseID", nurseID);
-        //                cmd.Parameters.AddWithValue("@time", DateTime.Now);
-        //                cmd.Parameters.AddWithValue("@sBP", systolicBP);
-        //                cmd.Parameters.AddWithValue("@dBP", diastolicBP);
-        //                cmd.Parameters.AddWithValue("@temp", bodyTemp);
-        //                cmd.Parameters.AddWithValue("@pulse", pulse);
-        //                cmd.ExecuteNonQuery();
-        //            }
-
-        //            using (SqlCommand cmd = new SqlCommand(selStmt, connect, tran))
-        //            {
-        //                using (SqlDataReader reader = cmd.ExecuteReader())
-        //                {
-        //                    if (reader.Read())
-        //                    {
-        //                        visitID = (int)reader["MaxVisitID"];
-        //                    }
-        //                }
-        //            }
-
-        //            if (visitID > 0)
-        //            {
-        //                for (int i = 0; i < symptomList.Count; i++)
-        //                {
-        //                    using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
-        //                    {
-        //                        cmd.Parameters.AddWithValue("@visit", visitID);
-        //                        cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
-        //                        cmd.ExecuteNonQuery();
-        //                    }
-        //                }
-        //            }
-        //            tran.Commit();
-        //            connect.Close();
-        //            return true;
-
-        //        }
-        //        catch
-        //        {
-        //            tran.Rollback();
-        //            return false;
-        //        }
-        //    }
-        //}
 
         public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
         {
-            //  int visitID = 0;
-=======
-        public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
-        {
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
+
             Visit visit = new Visit();
             string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
                 "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
@@ -172,30 +97,21 @@ namespace eClinicals.DAL
                         {
                             if (reader.Read())
                             {
-<<<<<<< HEAD
-                                //  visitID = (int)reader["MaxVisitID"];
-=======
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
+
                                 visit.VisitID = (int)reader["MaxVisitID"];
                             }
                         }
                     }
-<<<<<<< HEAD
 
-                    //  if (visitID > 0)
+
+
                     if (visit.VisitID > 0)
-=======
-                  if (visit.VisitID > 0)
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                     {
                         for (int i = 0; i < symptomList.Count; i++)
                         {
                             using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
                             {
-<<<<<<< HEAD
-                                // cmd.Parameters.AddWithValue("@visit", visitID);
-=======
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
+
                                 cmd.Parameters.AddWithValue("@visit", visit.VisitID);
                                 cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
                                 cmd.ExecuteNonQuery();
@@ -204,21 +120,11 @@ namespace eClinicals.DAL
                     }
                     tran.Commit();
                     connect.Close();
-<<<<<<< HEAD
-
-=======
-                   
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
 
                 }
                 catch
                 {
                     tran.Rollback();
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                 }
 
             }

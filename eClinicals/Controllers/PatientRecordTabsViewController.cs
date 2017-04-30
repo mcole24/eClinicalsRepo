@@ -540,14 +540,7 @@ namespace eClinicals.Controllers
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
-<<<<<<< HEAD
-=======
-                    // if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList))
-                   Visit selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
-                    if (selectedVisit.VisitID > 0)
-                    
-                        {
->>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
+
 
                     selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
 
@@ -614,7 +607,7 @@ namespace eClinicals.Controllers
             {
 
                 //TODO: Add Init and Final diagnosis
-                Console.WriteLine("InitialDiagnosis : " + selectedVisit.VisitID);
+                Console.WriteLine("InitialDiagnosis : " + selectedVisit.InitialDiagnosis);
                 // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
                 // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
 
@@ -622,11 +615,12 @@ namespace eClinicals.Controllers
                 selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
 
                 selectedVisitID = selectedVisit.VisitID;
-                if (selectedVisit.InitialDiagnosis == "")
+                if (selectedVisit.InitialDiagnosis == "False")
                 {
                     if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
                     {
                         initDiagnosis = true;
+                        selectedVisit.InitialDiagnosis = "True";
                         frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
                         frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
                         mainForm.Status("Initial Diagnosis Added . . .", Color.Green);
@@ -637,10 +631,37 @@ namespace eClinicals.Controllers
                     }
                     else
                     {
-
-                        Console.WriteLine("Final Diagnosis");
+                        Console.WriteLine("No Init Diagnosis Completed");
 
                     }
+
+
+                }
+                else
+                {
+
+
+                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+                    {
+                        initDiagnosis = true;
+                        finalDiagnosis = true;
+                        selectedVisit.InitialDiagnosis = "True";
+                        selectedVisit.FinalDiagnosis = "True";
+                        frmPatientRecordTabs.rbFinalDiagnosis.Enabled = false;
+                        frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
+                        mainForm.Status("Final Diagnosis Added . . .", Color.Green);
+                        // order test 
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Final Diagnosis Completed");
+
+                    }
+
+
 
 
                 }
