@@ -13,37 +13,6 @@ namespace eClinicals.DAL
     class PersonDAL
     {
 
-        public static bool createLogin(int contactID, string username, string password)
-        {
-
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string insertStmt = "INSERT INTO logins (contactID, userName, password) VALUES (@contact, @user, @password);";
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
-                    {
-                        string hashedPassword = GetHashedPassword(username, password);
-                        cmd.Parameters.AddWithValue("@contact", contactID);
-                        cmd.Parameters.AddWithValue("@user", username);
-                        cmd.Parameters.AddWithValue("@password", hashedPassword);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
-
-
-
         public static int createContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
             int contactID = 0;
@@ -182,68 +151,6 @@ namespace eClinicals.DAL
             }
             return user;
         }
-
-
-        public static int GetContactIDWithSsn(string ssn)
-        {
-            int contact = 0;
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    string selStmt = "SELECT contactID FROM logins WHERE SSN = @social";
-                    connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@social", ssn);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                contact = (int)reader["SSN"];
-                            }
-                            reader.Close();
-                        }
-                    }
-                    connect.Close();
-                }
-            }
-            catch (SqlException sqlex)
-            {
-                throw sqlex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return contact;
-        }
-
-        public static string GetHashedPassword(string userName, string password)
-        {
-            return GetHashData(String.Format("{0}{1}", userName.Substring(0, 4), password));
-        }
-
-        public static string GetHashData(string data)
-
-        {
-            SHA256 passWordHashGenerator = SHA256Managed.Create();
-            byte[] hashedData = passWordHashGenerator.ComputeHash(Encoding.Unicode.GetBytes(data));
-            StringBuilder stringBuild = new StringBuilder(hashedData.Length * 2);
-            foreach (byte b in hashedData)
-            {
-                stringBuild.AppendFormat("{0:x2}", b);
-            }
-            return stringBuild.ToString();
-        }
-
-        public static string EncodePasswordToBase64(string password)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(password);
-            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
-            return Convert.ToBase64String(inArray);
-        }
-
 
 
 

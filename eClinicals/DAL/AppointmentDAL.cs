@@ -78,70 +78,7 @@ namespace eClinicals.DAL
             }
         }
 
-        public static bool DeleteAppointment(int appointmentID)
-        {
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string delStmt = "DELETE FROM appointment WHERE appointmentID = @id";
-                    using (SqlCommand cmd = new SqlCommand(delStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@id", appointmentID);
-                        cmd.ExecuteNonQuery();
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-
-
-
-        public static Appointment GetAppointmentByID(int appointmentID)
-        {
-            Appointment appointment = new Appointment();
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string selStmt = "SELECT * FROM appointment WHERE appointmentID = @appointmentID";
-                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-                        connect.Open();
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-
-                                appointment.AppointmentDate = (DateTime)reader["appointmentDate"];
-                                appointment.PatientID = (int)reader["patientID"];
-                                appointment.DoctorID = (int)reader["doctorID"];
-                                appointment.AppointmentReasonID = (int)reader["appointmentReasonID"];
-                            }
-                        }
-                        connect.Close();
-                    }
-                }
-            }
-            catch (SqlException sqlex)
-            {
-                throw sqlex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return appointment;
-        }
-
+  
         public static List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
