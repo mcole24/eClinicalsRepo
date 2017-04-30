@@ -1,5 +1,4 @@
 ﻿using eClinicals.Controllers;
-using eClinicals.Utils;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Windows.Forms;
 namespace eClinicals.View
 {
     public partial class frmRegistration : frmBaseView
-    {     
+    {
         public frmMain mainForm { get; set; }
         eClinicalsController eClinicalsController;
         public string lastName;
@@ -25,7 +24,6 @@ namespace eClinicals.View
         public string password1;
         public string password2;
         public int userType;
-
         public frmRegistration()
         {
             InitializeComponent();
@@ -58,19 +56,20 @@ namespace eClinicals.View
             else
             {
                 errorMessage = "Phone is not valid : 9+ digits #######";
-                mainForm.Status("Only numbers will be used inside for the phone. 9 digits or 10 digits",Color.Yellow);
+                mainForm.Status("Only numbers will be used inside for the phone. 9 digits or 10 digits", Color.Yellow);
                 lblError_phone.Text = errorMessage;
                 return;
             }
             gender = cbGender.Text;
             ssn = txtSSN.Text;
             userType = cbUserType.SelectedIndex + 1;
-                  
+
             try
-            {               
-            if (ValidateFields.patientFields(this)){
+            {
+                if (ValidateFields.patientFields(this))
+                {
                     int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
-                  
+
                     this.createPersonByType(contactID);
                 }
                 else
@@ -100,29 +99,28 @@ namespace eClinicals.View
             try
             {
 
-            if (contactID > 0)
-            {
-                switch (userType)
+                if (contactID > 0)
                 {
-                    case 1:
-                        //eClinicalsController.createDoctor(contactID);
-                        break;
-                    case 2:
-                        eClinicalsController.CreateAdmin(contactID);
-                        break;
-                    case 3:
-                        eClinicalsController.CreateNurse(contactID);
-                        break;
-                    case 4:
-                        eClinicalsController.CreatePatient(contactID);
-                        break;
-                    default:
-                        MessageBox.Show("There was a problem creating this person");
-                        break;
-                }
+                    switch (userType)
+                    {
+                        case 1:
+                            //eClinicalsController.createDoctor(contactID);
+                            break;
+                        case 2:
+                            eClinicalsController.CreateAdmin(contactID);
+                            break;
+                        case 3:
+                            eClinicalsController.CreateNurse(contactID);
+                            break;
+                        case 4:
+                            eClinicalsController.CreatePatient(contactID);
+                            break;
+                        default:
+                            MessageBox.Show("There was a problem creating this person");
+                            break;
+                    }
 
-                eClinicalsController.CreateLogin(contactID, createUserName(firstName, contactID,lastName), password1);
-            }
+                }
 
 
             }
@@ -133,15 +131,12 @@ namespace eClinicals.View
 
 
         }
-        private string createUserName(string firstname, int contactId, string lastname) {
-            return  (firstname.Substring(0, 1) + lastname + contactId.ToString()).ToLower();
-        }
-
         private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbUserType.SelectedIndex == 3) {
+            if (cbUserType.SelectedIndex == 3)
+            {
 
-           
+
             }
         }
     }

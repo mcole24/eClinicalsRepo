@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label appointmentIDLabel;
-            System.Windows.Forms.Label patientIDLabel;
-            System.Windows.Forms.Label doctorIDLabel;
-            System.Windows.Forms.Label appointmentDoctorLabel;
-            System.Windows.Forms.Label appointmentReasonLabel;
-            System.Windows.Forms.Label appointmentDateLabel;
             System.Windows.Forms.Label label35;
+            System.Windows.Forms.Label appointmentDateLabel;
+            System.Windows.Forms.Label appointmentReasonLabel;
+            System.Windows.Forms.Label appointmentDoctorLabel;
+            System.Windows.Forms.Label doctorIDLabel;
+            System.Windows.Forms.Label patientIDLabel;
+            System.Windows.Forms.Label appointmentIDLabel;
             System.Windows.Forms.Label label40;
             System.Windows.Forms.Label label41;
             System.Windows.Forms.Label label42;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatientRecordTabs));
-            this.lblSummary = new System.Windows.Forms.Label();
+            this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
             this.tabPatientRecord = new System.Windows.Forms.TabControl();
             this.tabPersonal = new System.Windows.Forms.TabPage();
             this.ucAlertPersonal = new eClinicals.View.ucAlert();
@@ -107,6 +107,7 @@
             this.txtAppID = new System.Windows.Forms.TextBox();
             this.patientIDTextBox = new System.Windows.Forms.TextBox();
             this.gbShowAppontment = new System.Windows.Forms.GroupBox();
+            this.lblSummary = new System.Windows.Forms.Label();
             this.btnSummary = new System.Windows.Forms.Button();
             this.btnShowAllAppointments = new System.Windows.Forms.Button();
             this.btnShowFutureAppointments = new System.Windows.Forms.Button();
@@ -156,6 +157,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tabTestsResults = new System.Windows.Forms.TabPage();
+            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.btnUpdateSelectedTestResult = new System.Windows.Forms.Button();
             this.gUpdateSelectedTestResult = new System.Windows.Forms.GroupBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -182,15 +184,13 @@
             this.btnCommitTest = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
-            this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
-            this.ucAlertTestResults = new eClinicals.View.ucAlert();
-            appointmentIDLabel = new System.Windows.Forms.Label();
-            patientIDLabel = new System.Windows.Forms.Label();
-            doctorIDLabel = new System.Windows.Forms.Label();
-            appointmentDoctorLabel = new System.Windows.Forms.Label();
-            appointmentReasonLabel = new System.Windows.Forms.Label();
-            appointmentDateLabel = new System.Windows.Forms.Label();
             label35 = new System.Windows.Forms.Label();
+            appointmentDateLabel = new System.Windows.Forms.Label();
+            appointmentReasonLabel = new System.Windows.Forms.Label();
+            appointmentDoctorLabel = new System.Windows.Forms.Label();
+            doctorIDLabel = new System.Windows.Forms.Label();
+            patientIDLabel = new System.Windows.Forms.Label();
+            appointmentIDLabel = new System.Windows.Forms.Label();
             label40 = new System.Windows.Forms.Label();
             label41 = new System.Windows.Forms.Label();
             label42 = new System.Windows.Forms.Label();
@@ -226,50 +226,14 @@
             this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
-            // appointmentIDLabel
+            // label35
             // 
-            appointmentIDLabel.AutoSize = true;
-            appointmentIDLabel.Location = new System.Drawing.Point(6, 30);
-            appointmentIDLabel.Name = "appointmentIDLabel";
-            appointmentIDLabel.Size = new System.Drawing.Size(83, 13);
-            appointmentIDLabel.TabIndex = 37;
-            appointmentIDLabel.Text = "Appointment ID:";
-            // 
-            // patientIDLabel
-            // 
-            patientIDLabel.AutoSize = true;
-            patientIDLabel.Location = new System.Drawing.Point(131, 182);
-            patientIDLabel.Name = "patientIDLabel";
-            patientIDLabel.Size = new System.Drawing.Size(57, 13);
-            patientIDLabel.TabIndex = 45;
-            patientIDLabel.Text = "Patient ID:";
-            // 
-            // doctorIDLabel
-            // 
-            doctorIDLabel.AutoSize = true;
-            doctorIDLabel.Location = new System.Drawing.Point(131, 156);
-            doctorIDLabel.Name = "doctorIDLabel";
-            doctorIDLabel.Size = new System.Drawing.Size(56, 13);
-            doctorIDLabel.TabIndex = 43;
-            doctorIDLabel.Text = "Doctor ID:";
-            // 
-            // appointmentDoctorLabel
-            // 
-            appointmentDoctorLabel.AutoSize = true;
-            appointmentDoctorLabel.Location = new System.Drawing.Point(375, 48);
-            appointmentDoctorLabel.Name = "appointmentDoctorLabel";
-            appointmentDoctorLabel.Size = new System.Drawing.Size(104, 13);
-            appointmentDoctorLabel.TabIndex = 35;
-            appointmentDoctorLabel.Text = "Appointment Doctor:";
-            // 
-            // appointmentReasonLabel
-            // 
-            appointmentReasonLabel.AutoSize = true;
-            appointmentReasonLabel.Location = new System.Drawing.Point(370, 17);
-            appointmentReasonLabel.Name = "appointmentReasonLabel";
-            appointmentReasonLabel.Size = new System.Drawing.Size(109, 13);
-            appointmentReasonLabel.TabIndex = 39;
-            appointmentReasonLabel.Text = "Appointment Reason:";
+            label35.AutoSize = true;
+            label35.Location = new System.Drawing.Point(128, 43);
+            label35.Name = "label35";
+            label35.Size = new System.Drawing.Size(92, 13);
+            label35.TabIndex = 49;
+            label35.Text = "Appointment Time";
             // 
             // appointmentDateLabel
             // 
@@ -280,14 +244,50 @@
             appointmentDateLabel.TabIndex = 33;
             appointmentDateLabel.Text = "Appointment Date:";
             // 
-            // label35
+            // appointmentReasonLabel
             // 
-            label35.AutoSize = true;
-            label35.Location = new System.Drawing.Point(128, 43);
-            label35.Name = "label35";
-            label35.Size = new System.Drawing.Size(92, 13);
-            label35.TabIndex = 49;
-            label35.Text = "Appointment Time";
+            appointmentReasonLabel.AutoSize = true;
+            appointmentReasonLabel.Location = new System.Drawing.Point(370, 17);
+            appointmentReasonLabel.Name = "appointmentReasonLabel";
+            appointmentReasonLabel.Size = new System.Drawing.Size(109, 13);
+            appointmentReasonLabel.TabIndex = 39;
+            appointmentReasonLabel.Text = "Appointment Reason:";
+            // 
+            // appointmentDoctorLabel
+            // 
+            appointmentDoctorLabel.AutoSize = true;
+            appointmentDoctorLabel.Location = new System.Drawing.Point(375, 48);
+            appointmentDoctorLabel.Name = "appointmentDoctorLabel";
+            appointmentDoctorLabel.Size = new System.Drawing.Size(104, 13);
+            appointmentDoctorLabel.TabIndex = 35;
+            appointmentDoctorLabel.Text = "Appointment Doctor:";
+            // 
+            // doctorIDLabel
+            // 
+            doctorIDLabel.AutoSize = true;
+            doctorIDLabel.Location = new System.Drawing.Point(131, 156);
+            doctorIDLabel.Name = "doctorIDLabel";
+            doctorIDLabel.Size = new System.Drawing.Size(56, 13);
+            doctorIDLabel.TabIndex = 43;
+            doctorIDLabel.Text = "Doctor ID:";
+            // 
+            // patientIDLabel
+            // 
+            patientIDLabel.AutoSize = true;
+            patientIDLabel.Location = new System.Drawing.Point(131, 182);
+            patientIDLabel.Name = "patientIDLabel";
+            patientIDLabel.Size = new System.Drawing.Size(57, 13);
+            patientIDLabel.TabIndex = 45;
+            patientIDLabel.Text = "Patient ID:";
+            // 
+            // appointmentIDLabel
+            // 
+            appointmentIDLabel.AutoSize = true;
+            appointmentIDLabel.Location = new System.Drawing.Point(6, 30);
+            appointmentIDLabel.Name = "appointmentIDLabel";
+            appointmentIDLabel.Size = new System.Drawing.Size(83, 13);
+            appointmentIDLabel.TabIndex = 37;
+            appointmentIDLabel.Text = "Appointment ID:";
             // 
             // label40
             // 
@@ -316,15 +316,12 @@
             label42.TabIndex = 37;
             label42.Text = "Test ID:";
             // 
-            // lblSummary
+            // tableAdapterManager
             // 
-            this.lblSummary.AutoSize = true;
-            this.lblSummary.Location = new System.Drawing.Point(6, 180);
-            this.lblSummary.Name = "lblSummary";
-            this.lblSummary.Size = new System.Drawing.Size(121, 13);
-            this.lblSummary.TabIndex = 52;
-            this.lblSummary.Text = "Show selected summary";
-            this.lblSummary.Visible = false;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.contactTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // tabPatientRecord
             // 
@@ -1091,6 +1088,16 @@
             this.gbShowAppontment.TabStop = false;
             this.gbShowAppontment.Text = "Show Appointments";
             // 
+            // lblSummary
+            // 
+            this.lblSummary.AutoSize = true;
+            this.lblSummary.Location = new System.Drawing.Point(6, 180);
+            this.lblSummary.Name = "lblSummary";
+            this.lblSummary.Size = new System.Drawing.Size(121, 13);
+            this.lblSummary.TabIndex = 52;
+            this.lblSummary.Text = "Show selected summary";
+            this.lblSummary.Visible = false;
+            // 
             // btnSummary
             // 
             this.btnSummary.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSummary.BackgroundImage")));
@@ -1456,7 +1463,10 @@
             // 
             // dgPreviousReadings__RoutineCheck
             // 
+            this.dgPreviousReadings__RoutineCheck.AllowUserToAddRows = false;
+            this.dgPreviousReadings__RoutineCheck.AllowUserToDeleteRows = false;
             this.dgPreviousReadings__RoutineCheck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPreviousReadings__RoutineCheck.Enabled = false;
             this.dgPreviousReadings__RoutineCheck.Location = new System.Drawing.Point(19, 23);
             this.dgPreviousReadings__RoutineCheck.Name = "dgPreviousReadings__RoutineCheck";
             this.dgPreviousReadings__RoutineCheck.ReadOnly = true;
@@ -1617,6 +1627,15 @@
             this.tabTestsResults.TabIndex = 5;
             this.tabTestsResults.Text = "Test Results";
             this.tabTestsResults.UseVisualStyleBackColor = true;
+            // 
+            // ucAlertTestResults
+            // 
+            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 538);
+            this.ucAlertTestResults.Name = "ucAlertTestResults";
+            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
+            this.ucAlertTestResults.TabIndex = 57;
+            this.ucAlertTestResults.Visible = false;
             // 
             // btnUpdateSelectedTestResult
             // 
@@ -1881,6 +1900,7 @@
             this.btnCommitTest.TabIndex = 28;
             this.btnCommitTest.Text = "Commit Test";
             this.btnCommitTest.UseVisualStyleBackColor = true;
+            this.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
             // 
             // groupBox8
             // 
@@ -1900,22 +1920,6 @@
             this.cbDiagnosis_TestResults.Name = "cbDiagnosis_TestResults";
             this.cbDiagnosis_TestResults.Size = new System.Drawing.Size(274, 21);
             this.cbDiagnosis_TestResults.TabIndex = 16;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.contactTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // ucAlertTestResults
-            // 
-            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 538);
-            this.ucAlertTestResults.Name = "ucAlertTestResults";
-            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
-            this.ucAlertTestResults.TabIndex = 57;
-            this.ucAlertTestResults.Visible = false;
             // 
             // frmPatientRecordTabs
             // 

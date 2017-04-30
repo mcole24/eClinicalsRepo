@@ -8,6 +8,7 @@ using System.Windows.Forms;
 namespace eClinicals.Controllers
 {
     enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4 };
+    enum SELECTED_INITIAL_DIAGNOSIS { TRUE = 1, FALSE = 0 };
     //Current view is used to determin which buttons and ui elements should be active
 
     class PatientRecordTabsViewController : ControllerBase
@@ -35,6 +36,12 @@ namespace eClinicals.Controllers
         private int selectedTestResultResult;
         private string selectedTestResultName;
         private int selectedTestResultCode;
+        private int selectedVisitID;
+        private int selectedDiagnosisID;
+
+        private Visit selectedVisit;
+        private Diagnosis selectedDiagnosis;
+        private int testID;
 
         public LabTest selectedTestResult { get; private set; }
 
@@ -263,7 +270,7 @@ namespace eClinicals.Controllers
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
 
-               
+
                 //need to put last parameter as the appointment ID
                 if (eClinicalsController.UpdateAppointment(dateAndTime, doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID))
                 {
@@ -443,13 +450,22 @@ namespace eClinicals.Controllers
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
 
+
+            TestOrder testOrder = (TestOrder)frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedItem;
+            if (testOrder.TestID < 1)
+            {
+                this.mainForm.Status("TestID is 0: ", Color.Red);
+                return;
+            }
+
             if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
             {
 
-
+                //testID is used to get test by id
+                testID = eClinicalsController.OrderTest(testOrder, selectedVisit.VisitID);
 
                 frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
-                this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
 
             }
             else
@@ -472,7 +488,7 @@ namespace eClinicals.Controllers
 
                 foreach (Appointment app in selectedPatientAppointments)
                 {
-                    if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
+                    if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0 & doc.DoctorID == app.DoctorID)
                     {
                         mainForm.Status("Patient is already scheduled for that time.", Color.Red);
                         return;
@@ -518,22 +534,21 @@ namespace eClinicals.Controllers
 
                     List<int> symptomList = new List<int>();
                     symptomList.Add(1);
-                    
+
                     int systolic = Int32.Parse(systolicS);
                     int diastolic = Int32.Parse(diastolicS);
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
-                    // if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList))
-                   Visit selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
-                    if (selectedVisit.VisitID > 0)
-                    
-                        {
 
+
+                    selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
+
+                    if (selectedVisit.VisitID > 0)
+                    {
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
-                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
-
+                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabDiagnosis;
 
                         EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, false);
                         EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
@@ -562,7 +577,7 @@ namespace eClinicals.Controllers
         }
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {//btnBegin Routine Check
-            // "shows" tab page 2 : start routine check
+         // "shows" tab page 2 : start routine check
             if (!isRoutineCheckOpen)
             {
                 if (selectedAppointment != null)
@@ -588,33 +603,80 @@ namespace eClinicals.Controllers
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
-
-            //TODO: Add Init and Final diagnosis
-            Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
-            Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-            Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
-
-
-
-            // if  eClinicalsController.addInitialDiagnosis() then
-
-
-            if (initDiagnosis)
+            try
             {
-                frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
+
+                //TODO: Add Init and Final diagnosis
+                Console.WriteLine("InitialDiagnosis : " + selectedVisit.InitialDiagnosis);
+                // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
+                // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
+
+                selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
+                selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
+
+                selectedVisitID = selectedVisit.VisitID;
+                if (selectedVisit.InitialDiagnosis == "False")
+                {
+                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+                    {
+                        initDiagnosis = true;
+                        selectedVisit.InitialDiagnosis = "True";
+                        frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
+                        frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
+                        mainForm.Status("Initial Diagnosis Added . . .", Color.Green);
+                        // order test 
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Init Diagnosis Completed");
+
+                    }
+
+
+                }
+                else
+                {
+
+
+                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+                    {
+                        initDiagnosis = true;
+                        finalDiagnosis = true;
+                        selectedVisit.InitialDiagnosis = "True";
+                        selectedVisit.FinalDiagnosis = "True";
+                        frmPatientRecordTabs.rbFinalDiagnosis.Enabled = false;
+                        frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
+                        mainForm.Status("Final Diagnosis Added . . .", Color.Green);
+                        // order test 
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                        frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("No Final Diagnosis Completed");
+
+                    }
+
+
+
+
+                }
+
+
+                // order test 
+                // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
 
             }
+            catch (Exception ex)
+            {
 
-
-            // order test 
-            frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
-
-            // order test 
-            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
+                mainForm.Status(ex.Message, Color.Red);
+            }
 
         }
         private void btnUpdateTestResults_Click(object sender, EventArgs e)

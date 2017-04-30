@@ -144,5 +144,10 @@ namespace eClinicals.View
             gUpdateSelectedTestResult.Enabled = true;
             btnUpdateSelectedTestResult.Visible = false;
         }
+
+        private void btnCommitTest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

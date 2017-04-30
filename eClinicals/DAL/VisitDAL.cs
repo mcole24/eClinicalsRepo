@@ -55,8 +55,10 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
+
         public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
         {
+
             Visit visit = new Visit();
             string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
                 "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
@@ -95,16 +97,21 @@ namespace eClinicals.DAL
                         {
                             if (reader.Read())
                             {
+
                                 visit.VisitID = (int)reader["MaxVisitID"];
                             }
                         }
                     }
-                  if (visit.VisitID > 0)
+
+
+
+                    if (visit.VisitID > 0)
                     {
                         for (int i = 0; i < symptomList.Count; i++)
                         {
                             using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
                             {
+
                                 cmd.Parameters.AddWithValue("@visit", visit.VisitID);
                                 cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
                                 cmd.ExecuteNonQuery();
@@ -113,20 +120,16 @@ namespace eClinicals.DAL
                     }
                     tran.Commit();
                     connect.Close();
-                   
 
                 }
                 catch
                 {
                     tran.Rollback();
-                    
                 }
 
             }
             return visit;
         }
-
-
         public static List<Symptom> GetAllSymptoms()
         {
             List<Symptom> symptomList = new List<Symptom>();
