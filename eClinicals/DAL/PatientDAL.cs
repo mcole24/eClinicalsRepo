@@ -16,29 +16,80 @@ namespace eClinicals.DAL
 
 
 
-        public static bool CreatePatient(int contactID)
+        public static bool CreatePatient(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
         {
 
-            try
+            bool isCreated = false;
+            int newContactID = 0;
+
+            string insertStmt1 = "INSERT INTO contact (lName, fName, dob, mailingAddressStreet, mailingAddressCity, mailingAddressState, mailingAddressZip, phoneNumber, gender, SSN, userType) " +
+                        "VALUES (@last, @first, @dob, @street, @city, @state, @zip, @phone, @gender, @ssn, 4)";
+
+            string selStmt = "SELECT MAX(contactID) AS MaxContactID FROM contact";
+
+            string insertStmt2 = "INSERT INTO patient (contactID) VALUES (@contact);";
+
+
+            using (SqlConnection connect = DBConnection.GetConnection())
             {
-                using (SqlConnection connect = DBConnection.GetConnection())
+                connect.Open();
+                SqlTransaction tran = connect.BeginTransaction();
+                try
                 {
-                    connect.Open();
-                    string insertStmt = "INSERT INTO patient (contactID) VALUES (@contact);";
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+
+
+                    using (SqlCommand cmd = new SqlCommand(insertStmt1, connect, tran))
                     {
-                        cmd.Parameters.AddWithValue("@contact", contactID);
+                        cmd.Parameters.AddWithValue("@last", lName);
+                        cmd.Parameters.AddWithValue("@first", fName);
+                        cmd.Parameters.AddWithValue("@dob", dob);
+                        cmd.Parameters.AddWithValue("@street", streetAddress);
+                        cmd.Parameters.AddWithValue("@city", city);
+                        cmd.Parameters.AddWithValue("@state", state);
+                        cmd.Parameters.AddWithValue("@zip", zip);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@gender", gender);
+                        cmd.Parameters.AddWithValue("@ssn", ssn);
                         cmd.ExecuteNonQuery();
-                        connect.Close();
-                        return true;
                     }
+
+
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect, tran))
+                    {
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                newContactID = (int)reader["MaxContactID"];
+                            }
+                        }
+                    }
+
+
+
+
+                    if (newContactID > 0)
+                    {
+                        using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
+                        {
+                            cmd.Parameters.AddWithValue("@contact", newContactID);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    isCreated = true;
+                    tran.Commit();
+                    connect.Close();
+
+
+                }
+                catch
+                {
+                    tran.Rollback();
+                    return false;
                 }
             }
-            catch
-            {
-                return false;
-            }
-
+            return isCreated;
         }
 
 
