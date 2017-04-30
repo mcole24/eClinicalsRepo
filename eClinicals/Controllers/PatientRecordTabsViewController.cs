@@ -35,6 +35,9 @@ namespace eClinicals.Controllers
         private int selectedTestResultResult;
         private string selectedTestResultName;
         private int selectedTestResultCode;
+        private int selectedVisitID;
+        private int selectedDiagnosisID;
+        private int selectedInitialDiagnosis;
 
         public LabTest selectedTestResult { get; private set; }
 
@@ -586,34 +589,42 @@ namespace eClinicals.Controllers
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
-
-            //TODO: Add Init and Final diagnosis
-            Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
-            Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-            Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
-
-
-
-            // if  eClinicalsController.addInitialDiagnosis() then
-
-
-            if (eClinicalsController.addInitialDiagnosis())
+            try
             {
-                initDiagnosis = true;
-                frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
+                //TODO: Add Init and Final diagnosis
+                Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
+                Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
+                Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
+
+
+
+                // if  eClinicalsController.addInitialDiagnosis() then
+                // TODO : Need to get visitId, diagnosisID, initialDiagnosis
+
+
+                if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, selectedInitialDiagnosis))
+                {
+                    initDiagnosis = true;
+                    frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
+                    frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
+                }
+
+
+                // order test 
+                frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+
+                // order test 
+                // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+                //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
 
             }
+            catch (Exception ex)
+            {
 
-
-            // order test 
-            frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
-
-            // order test 
-            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
+                mainForm.Status(ex.Message, Color.Red);
+            }
 
         }
         private void btnUpdateTestResults_Click(object sender, EventArgs e)
