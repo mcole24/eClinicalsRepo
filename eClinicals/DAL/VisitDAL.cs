@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eClinicals.DAL
 {
@@ -63,7 +60,7 @@ namespace eClinicals.DAL
             int visitID = 0;
 
             string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
-                "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
+                "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
                 "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
 
 
@@ -128,8 +125,6 @@ namespace eClinicals.DAL
                 }
             }
         }
-
-
 
 
         public static List<Symptom> GetAllSymptoms()

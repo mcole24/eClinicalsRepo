@@ -115,9 +115,14 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucA
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+<<<<<<< HEAD
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Resources\reports.jpg
+=======
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
@@ -137,3 +142,7 @@ C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\ob
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
+>>>>>>> c96bc8de650c892224ca1ee6a751e40217ca5641

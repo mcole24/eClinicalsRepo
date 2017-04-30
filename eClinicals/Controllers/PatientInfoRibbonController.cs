@@ -17,14 +17,10 @@ namespace eClinicals.Controllers
             ribbon.lblGender.Text = gender;
             ribbon.lblId.Text = id;
             ribbon.lblAge.Text = age;
-
-
         }
         public void AddUserInfoTopInfo(string firstName, string lastName)
         {
-
             ribbon.lblUserName.Text = lastName + "," + firstName;
-
         }
 
         public void AddContactInfo(string phone, string Address)
@@ -47,7 +43,6 @@ namespace eClinicals.Controllers
         public string getAge(DateTime year)
         {
             return (DateTime.Now.Year - year.Year).ToString();
-
 
         }
 

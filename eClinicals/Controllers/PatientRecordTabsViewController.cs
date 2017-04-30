@@ -193,7 +193,6 @@ namespace eClinicals.Controllers
                 mainForm.Status("NOTE:  Only selected past date us viewed as summary....", Color.Yellow);
             }
         }
-
         private void checkAppointmentFutureDate()
         {
             if (selectedAppointment.AppointmentDate.Date > DateTime.Now.Date)
@@ -545,7 +544,7 @@ namespace eClinicals.Controllers
                     }
                     else
                     {
-                        this.mainForm.Status("No Checkup was added. Please fill out all form elements : ", Color.Red);
+                        this.mainForm.Status("error 1 : No Checkup was added. Please fill out all form elements : ", Color.Red);
                     }
                 }
                 else
@@ -556,7 +555,7 @@ namespace eClinicals.Controllers
             catch (Exception ex)
             {
 
-                Status(ex.Message + "Object [Nurse] was not retrieved from DAL", Color.Red);
+                Status(ex.Message, Color.Red);
             }
         }
         private void btnSelectAppointment_Click(object sender, EventArgs e)
