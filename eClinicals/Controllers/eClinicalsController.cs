@@ -31,21 +31,9 @@ namespace eClinicals.Controllers
         {
             return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
-<<<<<<< HEAD
-        public bool DeleteAppointment(int appointmentID)
-        {
-            return DAL.AppointmentDAL.DeleteAppointment(appointmentID);
-        }
 
-        public Appointment GetAppointmentByID(int appointmentID)
-        {
-            return DAL.AppointmentDAL.GetAppointmentByID(appointmentID);
-        }
 
-=======
 
-       
->>>>>>> 8a2dc8308cdb4bcefa5315affd95a9856ca0d863
         public List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
@@ -180,7 +168,8 @@ namespace eClinicals.Controllers
          string ZIP, string phone, string gender)
         {
             return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
-       
+
+
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
             return DAL.PersonDAL.createContactInfo(lName, fName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
