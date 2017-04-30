@@ -252,27 +252,19 @@ namespace eClinicals.Controllers
             }
         }
 
-        //Buttons
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
             try
             {
+
                 Doctor doc = (Doctor)frmPatientRecordTabs.cbAppDoctor.SelectedItem;
                 Appointment reason = (Appointment)frmPatientRecordTabs.cbAppReason.SelectedItem;
                 DateTime dateOnly = frmPatientRecordTabs.dtpAppDate.Value;
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
+
+               
                 //need to put last parameter as the appointment ID
-                foreach (Appointment app in selectedPatientAppointments)
-                {
-                    if (reason.AppointmentDate == app.AppointmentDate)
-                    {
-                        mainForm.Status("Patient is already scheduled for that time.", Color.Red);
-                        return;
-                    }
-                }
-
-
                 if (eClinicalsController.UpdateAppointment(dateAndTime, doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID))
                 {
 
@@ -300,12 +292,19 @@ namespace eClinicals.Controllers
                     }
                     base.mainForm.Status("Appointment has been updated", Color.Yellow);
                 }
+                else
+                {
+                    this.mainForm.Status("Appointment was not Set : Patient has another appointment at that time.", Color.Red);
+                }
+
             }
             catch (Exception ex)
             {
-                base.mainForm.Status(ex.Message, Color.Red);
+
+                mainForm.Status(ex.Message, Color.Red);
             }
         }
+
         private void btnAppEditCancel_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("off");

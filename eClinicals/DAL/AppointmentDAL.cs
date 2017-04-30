@@ -45,7 +45,7 @@ namespace eClinicals.DAL
             }
         }
 
-       
+
         public static bool UpdateAppointment(DateTime appointmentDate, int doctorID, int appointmentReasonID, int appointmentID)
         {
             bool isUpdated = false;
@@ -77,8 +77,6 @@ namespace eClinicals.DAL
                 throw ex;
             }
         }
-    
-    
 
         public static bool DeleteAppointment(int appointmentID)
         {
