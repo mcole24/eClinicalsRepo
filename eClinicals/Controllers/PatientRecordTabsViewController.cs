@@ -518,12 +518,15 @@ namespace eClinicals.Controllers
                 if (selectedAppointment != null & systolicS != "" & diastolicS != "" & bodyTempS != "" & pulseS != "")
                 {
 
+                    List<int> symptomList = new List<int>();
+                    symptomList.Add(1);
+                    
                     int systolic = Int32.Parse(systolicS);
                     int diastolic = Int32.Parse(diastolicS);
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
-                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse) > 0)
+                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList))
                     {
 
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);

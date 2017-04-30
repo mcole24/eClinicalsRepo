@@ -58,19 +58,30 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
-        public static int CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse)
+        public static bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
         {
-            bool insertedIntoVisit = false;
+            int visitID = 0;
 
-            string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
+            string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
+                "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
                 "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
 
-            try
+
+            string selStmt = "SELECT MAX(visitID) AS MaxVisitID FROM visit";
+
+            string insertStmt2 = "IF NOT EXISTS (SELECT visitID FROM visit_symptom WHERE visitID = @visit AND symptomID = @symptom) " +
+                "INSERT INTO visit_symptom (visitID, symptomID) VALUES (@visit, @symptom)";
+
+
+            using (SqlConnection connect = DBConnection.GetConnection())
             {
-                using (SqlConnection connect = DBConnection.GetConnection())
+                connect.Open();
+                SqlTransaction tran = connect.BeginTransaction();
+
+                try
                 {
-                    connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+
+                    using (SqlCommand cmd = new SqlCommand(insertStmt1, connect, tran))
                     {
                         cmd.Parameters.AddWithValue("@appID", appointmentID);
                         cmd.Parameters.AddWithValue("@nurseID", nurseID);
@@ -79,65 +90,46 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@dBP", diastolicBP);
                         cmd.Parameters.AddWithValue("@temp", bodyTemp);
                         cmd.Parameters.AddWithValue("@pulse", pulse);
-                        
-                        insertedIntoVisit = (cmd.ExecuteNonQuery() > 0);
-
-                        if (insertedIntoVisit == true)
-                        {
-                            SqlCommand idCmd = new SqlCommand();
-                            idCmd.Connection = connect;
-                            idCmd.CommandText = "SELECT MAX('visitID') AS MaxID FROM visit";
-                            int visitID = 0;
-                            using (SqlDataReader reader = idCmd.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    visitID = (int)reader["MaxID"];
-                                }
-                            }
-                            connect.Close();
-                            return visitID;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-
+                        cmd.ExecuteNonQuery();
                     }
-                    
-                }
-            }
-            catch
-            {
-                return 0;
-            }
-        }
 
-
-        public static bool CreateVisitSymptom(int visitID, int symptomID)
-        {
-            bool insertedIntoSymptom = false;
-            string insertStmt = "INSERT INTO visit_symptom (visitID, symptomID) VALUES (@visit, @symptom);";
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    using (SqlCommand cmd = new SqlCommand(selStmt, connect, tran))
                     {
-                        cmd.Parameters.AddWithValue("@visit", visitID);
-                        cmd.Parameters.AddWithValue("@symptom", symptomID);
-                        insertedIntoSymptom = (cmd.ExecuteNonQuery() > 0);
-                        connect.Close();
-                        return insertedIntoSymptom;
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                visitID = (int)reader["MaxVisitID"];
+                            }
+                        }
                     }
+
+                    if (visitID > 0)
+                    {
+                        for (int i = 0; i < symptomList.Count; i++)
+                        {
+                            using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
+                            {
+                                cmd.Parameters.AddWithValue("@visit", visitID);
+                                cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    tran.Commit();
+                    return true;
+
+                }
+                catch
+                {
+                    tran.Rollback();
+                    return false;
                 }
             }
-            catch
-            {
-                return false;
-            }
         }
+
+
 
 
         public static List<Symptom> GetAllSymptoms()
