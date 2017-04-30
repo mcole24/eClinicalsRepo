@@ -168,7 +168,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtTestId = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
@@ -184,6 +183,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbDiagnosis_TestResults = new System.Windows.Forms.ComboBox();
             this.tableAdapterManager = new eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager();
+            this.ucAlertTestResults = new eClinicals.View.ucAlert();
             appointmentIDLabel = new System.Windows.Forms.Label();
             patientIDLabel = new System.Windows.Forms.Label();
             doctorIDLabel = new System.Windows.Forms.Label();
@@ -1606,9 +1606,9 @@
             // 
             // tabTestsResults
             // 
+            this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
             this.tabTestsResults.Controls.Add(this.btnUpdateSelectedTestResult);
             this.tabTestsResults.Controls.Add(this.gUpdateSelectedTestResult);
-            this.tabTestsResults.Controls.Add(this.ucAlertTestResults);
             this.tabTestsResults.Controls.Add(this.groupBox3);
             this.tabTestsResults.Location = new System.Drawing.Point(4, 34);
             this.tabTestsResults.Name = "tabTestsResults";
@@ -1753,15 +1753,6 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(200, 21);
             this.textBox3.TabIndex = 46;
-            // 
-            // ucAlertTestResults
-            // 
-            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertTestResults.Location = new System.Drawing.Point(30, 511);
-            this.ucAlertTestResults.Name = "ucAlertTestResults";
-            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
-            this.ucAlertTestResults.TabIndex = 24;
-            this.ucAlertTestResults.Visible = false;
             // 
             // groupBox3
             // 
@@ -1916,6 +1907,15 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.contactTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = eClinicals._CS6232_g5DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // ucAlertTestResults
+            // 
+            this.ucAlertTestResults.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertTestResults.Location = new System.Drawing.Point(8, 538);
+            this.ucAlertTestResults.Name = "ucAlertTestResults";
+            this.ucAlertTestResults.Size = new System.Drawing.Size(833, 490);
+            this.ucAlertTestResults.TabIndex = 57;
+            this.ucAlertTestResults.Visible = false;
             // 
             // frmPatientRecordTabs
             // 
@@ -2089,7 +2089,6 @@
         public ucAlert ucAlertRoutineCheck;
         public ucAlert ucAlertOrderTest;
         public ucAlert ucAlertViewApp;
-        public ucAlert ucAlertTestResults;
         private System.Windows.Forms.Label label37;
         public System.Windows.Forms.Button btnShowPastAppointments;
         public System.Windows.Forms.TabPage tabDiagnosis;
@@ -2124,5 +2123,6 @@
         public System.Windows.Forms.RadioButton rbPositive;
         public System.Windows.Forms.RadioButton rbNegative;
         public System.Windows.Forms.Button btnUpdateSelectedTestResult;
+        public ucAlert ucAlertTestResults;
     }
 }
