@@ -41,6 +41,7 @@ namespace eClinicals.Controllers
 
         private Visit selectedVisit;
         private Diagnosis selectedDiagnosis;
+        private int testID;
 
         public LabTest selectedTestResult { get; private set; }
 
@@ -269,7 +270,7 @@ namespace eClinicals.Controllers
                 DateTime timeOnly = frmPatientRecordTabs.dtAppTime.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
 
-               
+
                 //need to put last parameter as the appointment ID
                 if (eClinicalsController.UpdateAppointment(dateAndTime, doc.DoctorID, reason.AppointmentReasonID, selectedAppointment.AppointmentID))
                 {
@@ -449,15 +450,22 @@ namespace eClinicals.Controllers
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
 
+
+            TestOrder testOrder = (TestOrder)frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedItem;
+            if (testOrder.TestID < 1)
+            {
+                this.mainForm.Status("TestID is 0: ", Color.Red);
+                return;
+            }
+
             if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
             {
-                //TODO : ADD Test ORDER for null
 
-
-                eClinicalsController.OrderTest(null, selectedVisit.VisitID);
+                //testID is used to get test by id
+                testID = eClinicalsController.OrderTest(testOrder, selectedVisit.VisitID);
 
                 frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
-                this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
 
             }
             else
@@ -532,20 +540,14 @@ namespace eClinicals.Controllers
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
-                    if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList))
+
+                    selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
+
+                    if (selectedVisit.VisitID > 0)
                     {
-
-                        //TODO: Need to get Visit
-                        selectedVisit = new Visit();
-
-
-                        Console.WriteLine(selectedVisit.InitialDiagnosis);
-
-
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabDiagnosis;
-
 
                         EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, false);
                         EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
@@ -604,9 +606,9 @@ namespace eClinicals.Controllers
             {
 
                 //TODO: Add Init and Final diagnosis
-                Console.WriteLine("Diagnosis : " + frmPatientRecordTabs.cbDiagnosis_TestResults.Text);
-                Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-                Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
+                Console.WriteLine("InitialDiagnosis : " + selectedVisit.VisitID);
+                // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
+                // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
 
                 selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
                 selectedDiagnosisID = selectedDiagnosis.DiagnosisID;

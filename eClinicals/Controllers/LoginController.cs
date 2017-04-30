@@ -40,13 +40,13 @@ namespace eClinicals.Controllers
             //frmLoginView.password = "123testpassword";
 
 
-            //frmLoginView.username = "cwoods6";
-            //  frmLoginView.password = "testpassword123";
+            frmLoginView.username = "cwoods6";
+            frmLoginView.password = "testpassword123";
 
 
 
-            frmLoginView.username = frmLoginView.txtUserName.Text;
-            frmLoginView.password = frmLoginView.txtPassword.Text;
+            // frmLoginView.username = frmLoginView.txtUserName.Text;
+            // frmLoginView.password = frmLoginView.txtPassword.Text;
             //   frmLoginView.username = frmLoginView.txtUserName.Text;
             LogIn(frmLoginView.username, frmLoginView.password);
         }
