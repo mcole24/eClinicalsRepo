@@ -190,6 +190,11 @@ namespace eClinicals.Controllers
             return DAL.AdminDAL.MostPerformedTestsDuringDates(startDate, endDate);
         }
 
+        public static bool EditCheckup(int visitID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemperature, int pulse)
+        {
+            return DAL.VisitDAL.EditCheckup(visitID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse);
+        }
+
 
     }
 
