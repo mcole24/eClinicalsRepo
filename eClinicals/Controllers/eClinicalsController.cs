@@ -31,14 +31,6 @@ namespace eClinicals.Controllers
         {
             return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
-<<<<<<< HEAD
-
-
-
-=======
-
-       
->>>>>>> 6b70c82e4aebc1c29338665cff95f45c45816cf7
         public List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
@@ -139,16 +131,16 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, finalDiagnosis);
         }
         public static bool CreateAdmin(int contactID)
-       {
+        {
             return DAL.AdminDAL.CreateAdmin(contactID);
         }
 
         public bool CreateNurse(int contactID)
         {
-           return DAL.NurseDAL.CreateNurse(contactID);
+            return DAL.NurseDAL.CreateNurse(contactID);
         }
 
-    public Nurse GetNurseByID(int contactID)
+        public Nurse GetNurseByID(int contactID)
         {
             return DAL.NurseDAL.GetNurseByID(contactID);
         }
@@ -177,12 +169,7 @@ namespace eClinicals.Controllers
          string ZIP, string phone, string gender)
         {
             return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
-<<<<<<< HEAD
-
-=======
         }
->>>>>>> 6b70c82e4aebc1c29338665cff95f45c45816cf7
-
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
             return DAL.PersonDAL.createContactInfo(lName, fName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);

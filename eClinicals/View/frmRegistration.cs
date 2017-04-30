@@ -107,7 +107,7 @@ namespace eClinicals.View
                             //eClinicalsController.createDoctor(contactID);
                             break;
                         case 2:
-                            // eClinicalsController.CreateAdmin(contactID);
+                            eClinicalsController.CreateAdmin(contactID);
                             break;
                         case 3:
                             eClinicalsController.CreateNurse(contactID);
