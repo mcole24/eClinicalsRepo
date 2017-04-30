@@ -12,6 +12,30 @@ namespace eClinicals.DAL
 {
     class NurseDAL
     {
+        public static bool CreateNurse(int contactID)
+        {
+
+           try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+               {
+                   connect.Open();
+                   string insertStmt = "INSERT INTO nurse (contactID) VALUES (@contact);";
+                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    {
+                       cmd.Parameters.AddWithValue("@contact", contactID);
+                       cmd.ExecuteNonQuery();
+                       connect.Close();
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
 
         public static Nurse GetNurseByID(int contactID)
         {
