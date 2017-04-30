@@ -31,7 +31,8 @@ namespace eClinicals.Controllers
             // nurse : cwoods6
             //admin : jwynn1
             //TODO: PASSWORD - replace this with commented area below
-            frmLoginView.username = "cwoods6";
+            frmLoginView.username = "jwynn1";
+            // frmLoginView.username = "cwoods6";
             frmLoginView.password = "testpassword123";
             // frmLoginView.username = frmLoginView.txtUserName.Text;
             //   frmLoginView.password = frmLoginView.txtPassword.Text;

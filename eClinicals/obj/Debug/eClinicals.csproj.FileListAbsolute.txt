@@ -115,6 +115,9 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucA
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Resources\reports.jpg

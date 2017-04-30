@@ -102,6 +102,11 @@
     <Compile Include="Model\TestOrder.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ExtensionGridView.cs" />
     <Compile Include="Utils\RegExCheckUtil.cs" />
     <Compile Include="View\frmAdminReport.cs">
@@ -196,6 +201,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmAdminReport.resx">
       <DependentUpon>frmAdminReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,6 +238,7 @@
     <EmbeddedResource Include="View\frmRibbon.resx">
       <DependentUpon>frmRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Report1.rdlc" />
     <EmbeddedResource Include="View\ucAlert.resx">
       <DependentUpon>ucAlert.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +251,7 @@
     <None Include="Properties\DataSources\eClinicals.Model.Nurse.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.Patient.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.Person.datasource" />
+    <None Include="Properties\DataSources\eClinicals.Model.Report.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.SimpleAES.datasource" />
     <None Include="Properties\DataSources\eClinicals.Model.Visit.datasource" />
     <None Include="Properties\Settings.settings">
@@ -274,6 +285,12 @@
     </Content>
     <Content Include="DB\CS6232-g5.sql" />
     <Content Include="FileStructure.txt" />
+    <None Include="Resources\NoReport.png" />
+    <None Include="Resources\reports1.jpg" />
+    <EmbeddedResource Include="Resources\reports.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="Resources\ReportButton.bmp" />
     <Resource Include="Resources\Alert.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

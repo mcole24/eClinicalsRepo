@@ -193,7 +193,6 @@ namespace eClinicals.Controllers
                 mainForm.Status("NOTE:  Only selected past date us viewed as summary....", Color.Yellow);
             }
         }
-
         private void checkAppointmentFutureDate()
         {
             if (selectedAppointment.AppointmentDate.Date > DateTime.Now.Date)

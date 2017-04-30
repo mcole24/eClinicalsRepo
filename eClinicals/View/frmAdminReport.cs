@@ -1,26 +1,26 @@
-﻿using eClinicals.Controllers;
-using eClinicals.Model;
+﻿using eClinicals.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace eClinicals.View
 {
+
+
     public partial class frmAdminReport : frmBaseView
     {
-       
-      
+        DispatcherTimer timer;
+        TimeSpan time;
+
         public frmAdminReport()
         {
             InitializeComponent();
-           
-        }  
+            timer = new DispatcherTimer();
+            time = TimeSpan.FromSeconds(1);
+            timer.Interval = time;
+            timer.Tick += new EventHandler(timer_Tick);
+        }
 
         private void btnGetReport_Click(object sender, EventArgs e)
         {
@@ -29,15 +29,36 @@ namespace eClinicals.View
                 List<Report> report;
                 DateTime startDate = dtStart.Value.Date;
                 DateTime endDate = dtEnd.Value.Date;
-                //Error
                 report = eController.MostPerformedTestsDuringDates(startDate, endDate);
-                dgReport.DataSource = report;
+                ReportBindingSource.DataSource = report;
+                this.reportViewer.RefreshReport();
+
+                if (report.Count < 1)
+                {
+                    lblNoReportFound.Visible = true;
+                    timer.Start();
+                }
+                else
+                {
+                    lblNoReportFound.Visible = false;
+                }
             }
             catch (Exception ex)
             {
                 controller.Status(ex.Message, Color.Red);
-
             }
+        }
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //Timer activates after time has ellapsed
+            lblNoReportFound.Visible = false;
+            timer.IsEnabled = false;
+        }
+
+        private void frmAdminReport_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer.RefreshReport();
         }
     }
 }
