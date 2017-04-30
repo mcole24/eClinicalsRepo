@@ -99,7 +99,7 @@ namespace eClinicals.View
             try
             {
 
-                if (contactID > 0)
+                if (contactID > 0 && userType != 4)
                 {
                     switch (userType)
                     {
@@ -112,9 +112,6 @@ namespace eClinicals.View
                         case 3:
                             eClinicalsController.CreateNurse(contactID);
                             break;
-                        case 4:
-                            eClinicalsController.CreatePatient(contactID);
-                            break;
                         default:
                             MessageBox.Show("There was a problem creating this person");
                             break;
@@ -122,6 +119,11 @@ namespace eClinicals.View
 
                 }
 
+
+                if (userType == 4)
+                {
+                    eClinicalsController.CreatePatient(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn);
+                }
 
             }
             catch (Exception ex)
