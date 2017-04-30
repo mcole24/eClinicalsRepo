@@ -83,8 +83,15 @@ namespace eClinicals.DAL
                         {
                             SqlCommand idCmd = new SqlCommand();
                             idCmd.Connection = connect;
-                            idCmd.CommandText = "SELECT IDENT_CURRENT('visitID') FROM visit";
-                            int visitID = Convert.ToInt32(idCmd.ExecuteScalar());
+                            idCmd.CommandText = "SELECT MAX('visitID') AS MaxID FROM visit";
+                            int visitID = 0;
+                            using (SqlDataReader reader = idCmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    visitID = (int)reader["MaxID"];
+                                }
+                            }
                             connect.Close();
                             return visitID;
                         }
