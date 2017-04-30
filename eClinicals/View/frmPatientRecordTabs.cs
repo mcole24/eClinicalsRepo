@@ -112,7 +112,7 @@ namespace eClinicals.View
             cbDiagnosis_TestResults.SelectedIndex = 0;
             cbAppReason.SelectedIndex = 0;
             cbAppDoctor.SelectedIndex = 0;
-
+            cbSymptoms_RoutineCheck.SelectedIndex = 0;
         }
         private void SetUIElementPosition()
         {
@@ -145,9 +145,6 @@ namespace eClinicals.View
             btnUpdateSelectedTestResult.Visible = false;
         }
 
-        private void btnCommitTest_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

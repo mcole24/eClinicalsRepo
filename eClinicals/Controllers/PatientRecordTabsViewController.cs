@@ -522,7 +522,7 @@ namespace eClinicals.Controllers
                 string diastolicS = frmPatientRecordTabs.txtDiastolic.Text;
                 string bodyTempS = frmPatientRecordTabs.txtBodyTemp.Text;
                 string pulseS = frmPatientRecordTabs.txtPulse.Text;
-                string symptom = frmPatientRecordTabs.cbSymptoms_RoutineCheck.Text;
+                int symptom = frmPatientRecordTabs.cbSymptoms_RoutineCheck.SelectedIndex;
 
                 if (currentNurse == null)
                 {
@@ -533,7 +533,7 @@ namespace eClinicals.Controllers
                 {
 
                     List<int> symptomList = new List<int>();
-                    symptomList.Add(1);
+                    symptomList.Add(symptom);
 
                     int systolic = Int32.Parse(systolicS);
                     int diastolic = Int32.Parse(diastolicS);
