@@ -55,6 +55,7 @@ namespace eClinicals.DAL
             return checkResultList;
         }
 
+<<<<<<< HEAD
         //public static bool CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
         //{
         //    int visitID = 0;
@@ -129,6 +130,10 @@ namespace eClinicals.DAL
         public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
         {
             //  int visitID = 0;
+=======
+        public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
+        {
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
             Visit visit = new Visit();
             string insertStmt1 = "IF NOT EXISTS (SELECT appointmentID FROM visit WHERE appointmentID = @appID) " +
                 "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
@@ -167,20 +172,30 @@ namespace eClinicals.DAL
                         {
                             if (reader.Read())
                             {
+<<<<<<< HEAD
                                 //  visitID = (int)reader["MaxVisitID"];
+=======
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                                 visit.VisitID = (int)reader["MaxVisitID"];
                             }
                         }
                     }
+<<<<<<< HEAD
 
                     //  if (visitID > 0)
                     if (visit.VisitID > 0)
+=======
+                  if (visit.VisitID > 0)
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                     {
                         for (int i = 0; i < symptomList.Count; i++)
                         {
                             using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
                             {
+<<<<<<< HEAD
                                 // cmd.Parameters.AddWithValue("@visit", visitID);
+=======
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                                 cmd.Parameters.AddWithValue("@visit", visit.VisitID);
                                 cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
                                 cmd.ExecuteNonQuery();
@@ -189,13 +204,21 @@ namespace eClinicals.DAL
                     }
                     tran.Commit();
                     connect.Close();
+<<<<<<< HEAD
 
+=======
+                   
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
 
                 }
                 catch
                 {
                     tran.Rollback();
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
                 }
 
             }

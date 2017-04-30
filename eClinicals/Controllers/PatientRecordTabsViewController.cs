@@ -540,6 +540,14 @@ namespace eClinicals.Controllers
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
                     int pulse = Int32.Parse(pulseS);
                     DateTime visitTime = frmPatientRecordTabs.dtpDatePerformed_RoutineCheck.Value;
+<<<<<<< HEAD
+=======
+                    // if (eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList))
+                   Visit selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
+                    if (selectedVisit.VisitID > 0)
+                    
+                        {
+>>>>>>> 5a4ba18604b3251c2394fdd584bd99085d22983d
 
                     selectedVisit = eClinicalsController.CreateCheckup(selectedAppointment.AppointmentID, currentNurse.NurseID, systolic, diastolic, bodyTemp, pulse, symptomList);
 
