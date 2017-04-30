@@ -100,6 +100,17 @@ namespace eClinicals.Controllers
             return DAL.LabTestDAL.GetTestResults(patientID);
         }
 
+        public int OrderTest(TestOrder testOrdered, int visitID)
+        {
+            return DAL.TestOrderDAL.OrderTest(testOrdered, visitID);
+        }
+
+        public static TestOrder GetTestByID(int testID)
+        {
+            return DAL.TestOrderDAL.GetTestByID(testID);
+        }
+
+
         public bool UpdateResult(int testID, DateTime performedDate, int result)
         {
             return DAL.LabTestDAL.UpdateResult(testID, performedDate, result);
