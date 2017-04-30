@@ -425,7 +425,7 @@ namespace eClinicals.Controllers
 
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                   patient.Zip, patient.Phone, patient.Gender);
+                   patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
 
                     //refresh later        
 

@@ -166,9 +166,9 @@ namespace eClinicals.Controllers
         }
 
         public bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
-         string ZIP, string phone, string gender)
+         string ZIP, string phone, string gender, string SSN)
         {
-            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
+            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
         }
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
