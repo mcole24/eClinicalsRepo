@@ -31,6 +31,7 @@ namespace eClinicals.Controllers
         {
             return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
+<<<<<<< HEAD
         public bool DeleteAppointment(int appointmentID)
         {
             return DAL.AppointmentDAL.DeleteAppointment(appointmentID);
@@ -41,6 +42,10 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentByID(appointmentID);
         }
 
+=======
+
+       
+>>>>>>> 8a2dc8308cdb4bcefa5315affd95a9856ca0d863
         public List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             return DAL.AppointmentDAL.GetAllAppointmentsByPatientID(patientID);
@@ -146,11 +151,6 @@ namespace eClinicals.Controllers
             return DAL.NurseDAL.CreateNurse(contactID);
         }
 
-        public bool DeleteNurse(int nurseID)
-        {
-            return DAL.NurseDAL.DeleteNurse(nurseID);
-        }
-
         public Nurse GetNurseByID(int contactID)
         {
             return DAL.NurseDAL.GetNurseByID(contactID);
@@ -159,16 +159,6 @@ namespace eClinicals.Controllers
         public bool CreatePatient(int contactID)
         {
             return DAL.PatientDAL.CreatePatient(contactID);
-        }
-
-        public bool DeletePatient(int contactID)
-        {
-            return DAL.PatientDAL.DeletePatient(contactID);
-        }
-
-        public Patient GetPatientByID(int contactID)
-        {
-            return DAL.PatientDAL.GetPatientByID(contactID);
         }
 
         public List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)
@@ -190,12 +180,7 @@ namespace eClinicals.Controllers
          string ZIP, string phone, string gender)
         {
             return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
-        }
-        public bool CreateLogin(int contactID, string username, string password)
-        {
-            return DAL.PersonDAL.createLogin(contactID, username, password);
-        }
-
+       
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
             return DAL.PersonDAL.createContactInfo(lName, fName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
@@ -209,21 +194,6 @@ namespace eClinicals.Controllers
         public Person GetLoggedInUserDetails(string username, string password)
         {
             return DAL.PersonDAL.GetLoggedInUserDetails(username, password);
-        }
-
-        public int GetContactIDWithSsn(string ssn)
-        {
-            return DAL.PersonDAL.GetContactIDWithSsn(ssn);
-        }
-
-        public Admin GetAdminByID(int contactID)
-        {
-            return DAL.AdminDAL.GetAdminByID(contactID);
-        }
-
-        public static bool CreateAdmin(int contactID)
-        {
-            return DAL.AdminDAL.CreateAdmin(contactID);
         }
 
         public List<Report> MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)

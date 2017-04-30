@@ -10,53 +10,7 @@ namespace eClinicals.DAL
 {
     class AdminDAL
     {
-        public static Admin GetAdminByID(int contactID)
-        {
-            Admin admin = new Admin();
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string selStmt = "SELECT * FROM contact INNER JOIN admin ON contact.contactID = admin.contactID WHERE admin.contactID = @contactID";
-                    using (SqlCommand cmd = new SqlCommand(selStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@contactID", contactID);
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                admin.AdminID = (int)reader["adminID"];
-                                admin.ContactID = (int)reader["contactID"];
-                                admin.LastName = reader["lName"].ToString();
-                                admin.FirstName = reader["fName"].ToString();
-                                admin.Dob = (DateTime)reader["dob"];
-                                admin.Address = reader["mailingAddressStreet"].ToString();
-                                admin.City = reader["mailingAddressCity"].ToString();
-                                admin.State = reader["mailingAddressState"].ToString();
-                                admin.Zip = reader["mailingAddressZip"].ToString();
-                                admin.Phone = reader["phoneNumber"].ToString();
-                                admin.Gender = reader["gender"].ToString();
-                                admin.Ssn = reader["ssn"].ToString();
-                                admin.UserName = reader["username"].ToString();
-                            }
-                            reader.Close();
-                        }
-                    }
-                    connect.Close();
-                }
-            }
-            catch (SqlException sqlex)
-            {
-                throw sqlex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return admin;
-        }
-
+       
         public static List<Report> MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
         {
             List<Report> reportList = new List<Report>();
@@ -126,32 +80,7 @@ namespace eClinicals.DAL
         }
 
 
-        public static bool CreateAdmin(int contactID)
-        {
-
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string insertStmt = "INSERT INTO clinic_administrator (contactID) VALUES (@contact);";
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@contact", contactID);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-        }
-
-
+      
 
     }
 }
