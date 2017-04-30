@@ -31,8 +31,6 @@ namespace eClinicals.Controllers
         {
             return DAL.AppointmentDAL.UpdateAppointment(appointmentDate, doctorID, appointmentReasonID, appointmentID);
         }
-
-
         public bool DeleteAppointment(int appointmentID)
         {
             return DAL.AppointmentDAL.DeleteAppointment(appointmentID);

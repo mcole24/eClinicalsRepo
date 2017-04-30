@@ -473,7 +473,7 @@ namespace eClinicals.Controllers
 
                 foreach (Appointment app in selectedPatientAppointments)
                 {
-                    if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0)
+                    if (DateTime.Compare(dateAndTime.Date, app.AppointmentDate.Date) == 0 & TimeSpan.Compare(dateAndTime.TimeOfDay, app.AppointmentDate.TimeOfDay) == 0 & doc.DoctorID == app.DoctorID)
                     {
                         mainForm.Status("Patient is already scheduled for that time.", Color.Red);
                         return;
@@ -519,7 +519,7 @@ namespace eClinicals.Controllers
 
                     List<int> symptomList = new List<int>();
                     symptomList.Add(1);
-                    
+
                     int systolic = Int32.Parse(systolicS);
                     int diastolic = Int32.Parse(diastolicS);
                     decimal bodyTemp = Decimal.Parse(bodyTempS);
@@ -597,8 +597,9 @@ namespace eClinicals.Controllers
             // if  eClinicalsController.addInitialDiagnosis() then
 
 
-            if (initDiagnosis)
+            if (eClinicalsController.addInitialDiagnosis())
             {
+                initDiagnosis = true;
                 frmPatientRecordTabs.rbFinalDiagnosis.Enabled = true;
 
             }
