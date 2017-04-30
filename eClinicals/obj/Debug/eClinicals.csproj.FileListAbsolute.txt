@@ -137,3 +137,6 @@ C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\ob
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+\\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
