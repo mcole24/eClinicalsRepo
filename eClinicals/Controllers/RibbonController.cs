@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eClinicals.View;
+﻿using eClinicals.View;
+using System;
 
 namespace eClinicals.Controllers
 {
@@ -21,17 +17,32 @@ namespace eClinicals.Controllers
 
         private void LogoutBtn_Click(object sender, EventArgs e)
         {
-            OnLoggedOut();        
+            OnLoggedOut();
             this.mainForm.isLoggedIn = false;
+            //  ClearUserInfo();
+            ribbon = null;
+         
+
+        }
+
+        private void ClearUserInfo()
+        {
+
+            ribbon.lblUserName.Text = "";
+            ribbon.lblId.Text = "";
+            ribbon.lblUserType.Text = "";
+
+
         }
 
         public void AddUserInfo(string name, int uid, int userType)
         {
-           String  typeToString =  getUidString(userType);
+            String typeToString = getUidString(userType);
             ribbon.lblUserName.Text = name;
             ribbon.lblId.Text = uid.ToString();
             ribbon.lblUserType.Text = typeToString;
 
+            //userType = -1;
         }
 
         private string getUidString(int uid)
@@ -45,9 +56,9 @@ userType definitions --
 */          string userType = "";
             switch (uid)
             {
-               case (int)UserType.Doctor:
-                userType = "Doctor";
-                break;
+                case (int)UserType.Doctor:
+                    userType = "Doctor";
+                    break;
                 case (int)UserType.Administrator:
                     userType = "Administrator";
                     break;
@@ -84,6 +95,9 @@ userType definitions --
             {
                 this.mainForm.status = "logged Out";
                 this.mainForm.isLoggedIn = false;
+                this.mainForm.currentUser = null;
+                this.mainForm.currentNurse = null;
+
                 LoggedOut(this, EventArgs.Empty);
 
             }

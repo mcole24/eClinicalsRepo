@@ -615,7 +615,7 @@ namespace eClinicals.Controllers
                 selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
 
                 selectedVisitID = selectedVisit.VisitID;
-                if (selectedVisit.InitialDiagnosis == "False")
+                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null)
                 {
                     if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
                     {
@@ -637,7 +637,7 @@ namespace eClinicals.Controllers
 
 
                 }
-                else
+                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == null)
                 {
 
 

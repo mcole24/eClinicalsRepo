@@ -20,7 +20,7 @@ namespace eClinicals.Controllers
         {
             //CREAT NEW DATABASE CONNECTION OBJECT
             //send status to main window
-            // isLoggedIn = false;
+            isLoggedIn = false;
             this.mainForm.status = "logged Out";
 
             frmLoginView = (frmLogin)base.thisView;
@@ -34,13 +34,10 @@ namespace eClinicals.Controllers
             // nurse : cwoods6 - testpassword123
             //admin : jwynn1 - 123testpassword
             //TODO: PASSWORD - replace this with commented area below
-            // frmLoginView.username = "jwynn1";
-
+            // frmLoginView.username = "cwoods6";
+            //  frmLoginView.password = "testpassword123";
             //frmLoginView.username = "jwynn1";
             //frmLoginView.password = "123testpassword";
-
-
-
 
 
             frmLoginView.username = frmLoginView.txtUserName.Text;
@@ -62,7 +59,8 @@ namespace eClinicals.Controllers
             if (isLoggedIn)
             {
                 //raise the event OnLOggedIn
-                Person newUser = eClinicalsController.GetLoggedInUserDetails(username, userPasswordEncrypted);
+                Person newUser = null;
+                newUser = eClinicalsController.GetLoggedInUserDetails(username, userPasswordEncrypted);
                 OnLoggedIn(newUser);
                 thisView.Close();
                 this.mainForm.isLoggedIn = true;
@@ -104,6 +102,7 @@ namespace eClinicals.Controllers
             {
                 this.mainForm.status = "logged In";
                 this.mainForm.isLoggedIn = true;
+
                 LoggedIn(this, new UserLoggedInArgs() { Person = person });
             }
 

@@ -32,7 +32,7 @@ namespace eClinicals.View
         PatientRecordTabsViewController patientRecordTabsViewController;
         frmPatientInfoRibbon patienRibbon;
         frmPatientRecordTabs frmPatientTabs;
-
+        frmRibbon frmUserRibbon;
 
         private const int BY_DOB_NAME = 0;
         private const int BY_DOB = 1;
@@ -59,6 +59,7 @@ namespace eClinicals.View
             InitializeComponent();
             pRight.Visible = false;
             eClinicalsController = new eClinicalsController();
+            frmUserRibbon = new frmRibbon();
 
         }
 
@@ -71,19 +72,33 @@ namespace eClinicals.View
         {
             lblStatus.BackColor = System.Drawing.Color.Transparent;
             Status("Logged in successfully.", Color.Green);
-            ribbonController = new RibbonController(this, new frmRibbon());
-            //register the handler for logged on event
+
+            //register the handler for logged on event         
+            currentUser = null;
+            currentUser = e.Person;
+
+
+            ribbonController = new RibbonController(this, frmUserRibbon);
             ribbonController.LoggedOut += this.OnLoggedOut;
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-            currentUser = e.Person;
+            Console.WriteLine(currentUser.FirstName);
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
-            ribbonController.AddUserInfo(currentUser.LastName + ", " + currentUser.FirstName, currentUser.ContactID, currentUser.UserType);
-            ribbonController.AddContactInfo(currentUser.Phone, currentUser.Address + " " + currentUser.City + " ," + currentUser.State + "  " + currentUser.Zip);
+            SetUserInfo();
             ribbonController.AddStatusInfo(this.status);
             //===============================================
             this.menuStripMain.Enabled = true;
             OpenStartMenuView();
+        }
+
+        private void SetUserInfo()
+        {
+            ribbonController.AddUserInfo(currentUser.LastName + ", " +
+                currentUser.FirstName, currentUser.ContactID, currentUser.UserType);
+
+
+            ribbonController.AddContactInfo(currentUser.Phone, currentUser.Address +
+                " " + currentUser.City + " ," + currentUser.State + "  " + currentUser.Zip);
         }
 
         private void OpenLoginView()
@@ -99,14 +114,15 @@ namespace eClinicals.View
         }
         public void OnLoggedOut(object source, EventArgs e)
         {
-            Status("LoggedOut in successfully.", Color.Transparent);
-
             CloseCurrentOpenView(currentViewOpened);
             this.pTop.Visible = false;
             this.pRight.Visible = false;
             selectedPatient = null;
             currentUser = null;
+            currentNurse = null;
             OpenLoginView();
+
+            Status("LoggedOut in successfully.", Color.Transparent);
         }
 
         private void btnRegisterAPatient_Click(object sender, EventArgs e)
