@@ -121,7 +121,6 @@ namespace eClinicals.DAL
                 catch
                 {
                     tran.Rollback();
-                    connect.Close();
                     return false;
                 }
             }
