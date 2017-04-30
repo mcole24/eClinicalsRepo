@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eClinicals.DAL
 {
@@ -62,7 +59,7 @@ namespace eClinicals.DAL
         {
             bool insertedIntoVisit = false;
 
-            string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " + 
+            string insertStmt = "INSERT INTO visit (appointmentID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse) VALUES " +
                 "(@appID, @nurseID, @time, @sBP, @dBP, @temp, @pulse)";
 
             try
@@ -79,7 +76,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@dBP", diastolicBP);
                         cmd.Parameters.AddWithValue("@temp", bodyTemp);
                         cmd.Parameters.AddWithValue("@pulse", pulse);
-                        
+
                         insertedIntoVisit = (cmd.ExecuteNonQuery() > 0);
 
                         if (insertedIntoVisit == true)
@@ -97,12 +94,12 @@ namespace eClinicals.DAL
                         }
 
                     }
-                    
+
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return 0;
+                throw ex;
             }
         }
 
