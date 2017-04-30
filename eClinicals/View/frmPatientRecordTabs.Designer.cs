@@ -1900,6 +1900,7 @@
             this.btnCommitTest.TabIndex = 28;
             this.btnCommitTest.Text = "Commit Test";
             this.btnCommitTest.UseVisualStyleBackColor = true;
+            this.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
             // 
             // groupBox8
             // 
