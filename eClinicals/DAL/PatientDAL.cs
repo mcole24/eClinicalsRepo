@@ -199,7 +199,7 @@ namespace eClinicals.DAL
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
-                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender  " +
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, SSN = @SSN  " +
                 "WHERE contactID = @contactID";
             try
             {

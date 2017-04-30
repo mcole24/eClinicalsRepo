@@ -416,7 +416,7 @@ namespace eClinicals.Controllers
                 patient.Zip = frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
                 patient.Phone = frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
                 patient.Gender = frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
-                frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
+                patient.Ssn = frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
 
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
@@ -804,7 +804,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtZipcode.Enabled = true;
             frmPatientRecordTabs.txtPhone.Enabled = true;
             frmPatientRecordTabs.cbGender.Enabled = true;
-            frmPatientRecordTabs.txtSSN.Enabled = false;
+            frmPatientRecordTabs.txtSSN.Enabled = true;
         }
 
         public void EnableTabAlert(TabPage page, bool enable)
