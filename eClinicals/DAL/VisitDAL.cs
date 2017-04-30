@@ -113,14 +113,15 @@ namespace eClinicals.DAL
                             }
                         }
                     }
-
                     tran.Commit();
+                    connect.Close();
                     return true;
 
                 }
                 catch
                 {
                     tran.Rollback();
+                    connect.Close();
                     return false;
                 }
             }
