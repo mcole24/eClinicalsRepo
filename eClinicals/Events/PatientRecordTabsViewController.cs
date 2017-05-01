@@ -45,7 +45,6 @@ namespace eClinicals.Controllers
         private bool routineCheckCompleted;
 
         public LabTest selectedTestResult { get; private set; }
-
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
             eClinicalsController = new eClinicalsController();
@@ -129,7 +128,6 @@ namespace eClinicals.Controllers
                 throw;
             }
         }
-
         private void dgTestResults_TestResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //TODO Test Results Data grid selected Test Result
@@ -259,7 +257,6 @@ namespace eClinicals.Controllers
                     break;
             }
         }
-
         private void btnCommitEdit_Click(object sender, EventArgs e)
         {
             try
@@ -312,7 +309,6 @@ namespace eClinicals.Controllers
                 mainForm.Status(ex.Message, Color.Red);
             }
         }
-
         private void btnAppEditCancel_Click(object sender, EventArgs e)
         {
             enableDisableEditAppointment("off");
@@ -363,7 +359,6 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPastPatientAppointments;
             showSummaryButton(true);
         }
-
         private void btnCancel_RoutineCheck_Click(object sender, EventArgs e)
         {
             isRoutineCheckOpen = false;
@@ -395,7 +390,6 @@ namespace eClinicals.Controllers
             EnableTabAlert(frmPatientRecordTabs.tabPersonal, true, message);
             enableDisableEditAppointment("off");
         }
-
         private void btnEditPerson_Click(object sender, EventArgs e)
         {
             EnableEdit();
@@ -610,8 +604,6 @@ namespace eClinicals.Controllers
 
 
         }
-
-
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {//btnBegin Routine Check
          // "shows" tab page 2 : start routine check
@@ -659,7 +651,6 @@ namespace eClinicals.Controllers
             }
 
         }
-
         private void btnAlert_Click(object sender, EventArgs e)
         {
             frmPatientRecordTabs.ucAlertRoutineCheck.btnLeft.Visible = false;
@@ -668,7 +659,6 @@ namespace eClinicals.Controllers
             AllAlertsOnExceptOne(TAB.ROUTINE_CHECK, message);
 
         }
-
         private void AllAlertsOnExceptOne(TAB tab, string message)
         {
             bool visibleOn = false;
@@ -858,7 +848,6 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(mainForm.selectedPatientID);
 
         }
-
         private int GetResultsAsInt(bool negative, bool positive)
         {
 
@@ -874,7 +863,6 @@ namespace eClinicals.Controllers
             }
             return -1;
         }
-
         //Setup
         private string CheckResults(string result)
 
@@ -895,13 +883,11 @@ namespace eClinicals.Controllers
             }
             return "";
         }
-
         private void showSummaryButton(bool status)
         {
             frmPatientRecordTabs.btnSummary.Visible = status;
             frmPatientRecordTabs.lblSummary.Visible = status;
         }
-
         public void DisableEdit()
         {
             frmPatientRecordTabs.txtLastName.Text = this.patient.LastName;

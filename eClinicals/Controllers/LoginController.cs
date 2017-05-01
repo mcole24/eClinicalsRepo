@@ -28,7 +28,6 @@ namespace eClinicals.Controllers
             mainForm.lblStatus.Text = "You must login to us this application . . .";
             eClinicalsController = new eClinicalsController();
         }
-
         void OkBtn_Click(Object sender, EventArgs e)
         {
             // nurse : cwoods6 - testpassword123
@@ -41,8 +40,8 @@ namespace eClinicals.Controllers
 
 
             // frmLoginView.username = frmLoginView.txtUserName.Text;
-            // frmLoginView.password = frmLoginView.txtPassword.Text;
-            //   frmLoginView.username = frmLoginView.txtUserName.Text;
+            frmLoginView.password = frmLoginView.txtPassword.Text;
+            frmLoginView.username = frmLoginView.txtUserName.Text;
             LogIn(frmLoginView.username, frmLoginView.password);
         }
         //define delegate
@@ -50,7 +49,6 @@ namespace eClinicals.Controllers
         // Define event
         public event LogInEventHandler LoggedIn;
         //raise event : Event publisher methods'''
-
         public void LogIn(String username, string password)
         {
 
@@ -73,7 +71,6 @@ namespace eClinicals.Controllers
                 frmLoginView.lblError.Text = "Login failed :\n Check your username and password.";
             }
         }
-
         private string EncryptPassword(string passwordEntered)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
@@ -95,7 +92,6 @@ namespace eClinicals.Controllers
             }
             return passwordEntered;
         }
-
         protected virtual void OnLoggedIn(Person person)
         {
             if (LoggedIn != null)
