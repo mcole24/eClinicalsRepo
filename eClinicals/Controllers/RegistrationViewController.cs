@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eClinicals.View;
+﻿using eClinicals.View;
 
 namespace eClinicals.Controllers
 {
@@ -18,7 +13,7 @@ namespace eClinicals.Controllers
 
             frmRegistration = (frmRegistration)base.thisView;
 
-            mainForm.lblStatus.Text = "Registration View Active . . .";            
+            mainForm.lblStatus.Text = "Registration View Active . . .";
         }
     }
 }

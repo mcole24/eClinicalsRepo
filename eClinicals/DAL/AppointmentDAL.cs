@@ -1,7 +1,12 @@
-﻿using eClinicals.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.IO;
+using eClinicals.Model;
 
 namespace eClinicals.DAL
 {
@@ -15,13 +20,13 @@ namespace eClinicals.DAL
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-
+                   
                     string insertStmt = "IF NOT EXISTS (SELECT appointmentID "
                        + "FROM appointment "
                        + "WHERE patientID = @patientID AND doctorID = @doctorID AND appointmentDate = @appDate) "
                        + "INSERT INTO appointment (appointmentDate, patientID, doctorID, appointmentReasonID) "
                         + "VALUES (@appDate, @patientID, @doctorID, @appointmentReasonID)";
-
+                       
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@appDate", appointmentDate);
@@ -29,7 +34,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@doctorID", doctorID);
                         cmd.Parameters.AddWithValue("@appointmentReasonID", appointmentReasonID);
                         cmd.ExecuteNonQuery();
-
+                        
                         return true;
                     }
                 }
@@ -72,11 +77,13 @@ namespace eClinicals.DAL
                 throw ex;
             }
         }
+
+  
         public static List<Appointment> GetAllAppointmentsByPatientID(int patientID)
         {
             List<Appointment> appointmentList = new List<Appointment>();
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
-                + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
+                + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID " 
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
                 + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
                 + "JOIN contact ON doctor.contactID = contact.contactID "
@@ -94,7 +101,7 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-
+                                
                                 Appointment appointment = new Appointment();
                                 appointment.PatientID = (int)reader["patientID"];
                                 appointment.DoctorID = (int)reader["doctorID"];
@@ -232,7 +239,7 @@ namespace eClinicals.DAL
         {
             List<Appointment> appointmentList = new List<Appointment>();
             //   string today = "2017-04-16";
-            string today = DateTime.Now.ToString("yyyy-MM-dd");
+             string today = DateTime.Now.ToString("yyyy-MM-dd");
             string selectStatement = "SELECT patient.patientID, doctor.doctorID, appointment.appointmentID, appointment.appointmentReasonID, appointmentDate, appointmentReason, contact.lName "
                 + "FROM Patient LEFT JOIN Appointment ON Patient.patientID = Appointment.PatientID "
                 + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
@@ -248,7 +255,7 @@ namespace eClinicals.DAL
                     using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
                     {
                         selectCommand.Parameters.AddWithValue("@patientID", patientID);
-                        selectCommand.Parameters.AddWithValue("@today", today);
+                       selectCommand.Parameters.AddWithValue("@today", today);
                         using (SqlDataReader reader = selectCommand.ExecuteReader())
                         {
                             while (reader.Read())
@@ -360,25 +367,26 @@ namespace eClinicals.DAL
             return doctorNameList;
         }
 
+
         public static AppointmentSummaryVisitDetails GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             AppointmentSummaryVisitDetails visitDetails = new AppointmentSummaryVisitDetails();
-            string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
-                    + "FROM visit "
-                    + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
-                    + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
-                    + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
-                    + "JOIN contact ON doctor.contactID = contact.contactID "
-                    + "WHERE visit.appointmentID = @appointmentID";
+                string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
+                        + "FROM visit "
+                        + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
+                        + "JOIN appointment_reason ON appointment.appointmentReasonID = appointment_reason.appointmentReasonID "
+                        + "JOIN doctor ON appointment.doctorID = doctor.doctorID "
+                        + "JOIN contact ON doctor.contactID = contact.contactID "
+                        + "WHERE visit.appointmentID = @appointmentID";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-
+                
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);    
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -405,6 +413,7 @@ namespace eClinicals.DAL
             return visitDetails;
         }
 
+
         public static List<AppointmentSummarySymptoms> GetAppointmentSummarySymptoms(int appointmentID)
         {
             List<AppointmentSummarySymptoms> visitSymptomsList = new List<AppointmentSummarySymptoms>();
@@ -421,7 +430,7 @@ namespace eClinicals.DAL
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -446,6 +455,7 @@ namespace eClinicals.DAL
             }
             return visitSymptomsList;
         }
+
 
         public static AppointmentSummaryCheckupResults GetAppointmentSummaryCheckupResults(int appointmentID)
         {
@@ -486,6 +496,7 @@ namespace eClinicals.DAL
             }
             return visitCheckup;
         }
+
         public static List<AppointmentSummaryDiagnosisResults> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
             List<AppointmentSummaryDiagnosisResults> visitDiagnosisList = new List<AppointmentSummaryDiagnosisResults>();
@@ -507,7 +518,7 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                       cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -533,6 +544,7 @@ namespace eClinicals.DAL
             }
             return visitDiagnosisList;
         }
+
         public static List<AppointmentSummaryTestResults> GetAppointmentSummaryTestResults(int appointmentID)
         {
             List<AppointmentSummaryTestResults> visitTestResultList = new List<AppointmentSummaryTestResults>();
@@ -548,8 +560,8 @@ namespace eClinicals.DAL
                     connect.Open();
                     using (SqlCommand cmd = new SqlCommand(selStmt, connect))
                     {
-                        cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
-
+                       cmd.Parameters.AddWithValue("@appointmentID", appointmentID);
+                        
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
@@ -583,6 +595,8 @@ namespace eClinicals.DAL
             }
             return visitTestResultList;
         }
+
+
 
     }
 }
