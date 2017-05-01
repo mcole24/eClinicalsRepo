@@ -16,29 +16,36 @@ namespace eClinicals.DAL
 
 
 
-        public static bool CreatePatient(int contactID)
+        public static bool CreatePatient(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
         {
-
-            try
+            using (SqlConnection connect = DBConnection.GetConnection())
             {
-                using (SqlConnection connect = DBConnection.GetConnection())
+                try
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO patient (contactID) VALUES (@contact);";
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
+                    using (SqlCommand cmd = new SqlCommand("uspCreatePatient", connect))
                     {
-                        cmd.Parameters.AddWithValue("@contact", contactID);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@last", lName);
+                        cmd.Parameters.AddWithValue("@first", fName);
+                        cmd.Parameters.AddWithValue("@dob", dob);
+                        cmd.Parameters.AddWithValue("@street", streetAddress);
+                        cmd.Parameters.AddWithValue("@city", city);
+                        cmd.Parameters.AddWithValue("@state", state);
+                        cmd.Parameters.AddWithValue("@zip", zip);
+                        cmd.Parameters.AddWithValue("@phone", phone);
+                        cmd.Parameters.AddWithValue("@gender", gender);
+                        cmd.Parameters.AddWithValue("@ssn", ssn);
                         cmd.ExecuteNonQuery();
-                        connect.Close();
-                        return true;
                     }
+                    connect.Close();
+                    return true;
+                }
+                catch
+                {
+                    return false;
                 }
             }
-            catch
-            {
-                return false;
-            }
-
         }
 
 
@@ -195,11 +202,11 @@ namespace eClinicals.DAL
 
 
         public static bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
-            string ZIP, string phone, string gender)
+            string ZIP, string phone, string gender, string SSN)
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
-                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender  " +
+                "mailingAddressCity = @city, mailingAddressState = @state, mailingAddressZip = @ZIP, phoneNumber = @phone, gender = @gender, SSN = @SSN  " +
                 "WHERE contactID = @contactID";
             try
             {
@@ -218,7 +225,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@ZIP", ZIP);
                         cmd.Parameters.AddWithValue("@phone", phone);
                         cmd.Parameters.AddWithValue("@gender", gender);
-                        //cmd.Parameters.AddWithValue("@SSN", SSN);
+                        cmd.Parameters.AddWithValue("@SSN", SSN);
                         isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();

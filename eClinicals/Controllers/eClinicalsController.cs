@@ -149,9 +149,9 @@ namespace eClinicals.Controllers
             return DAL.NurseDAL.GetNurseByID(contactID);
         }
 
-        public bool CreatePatient(int contactID)
+        public static bool CreatePatient(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
         {
-            return DAL.PatientDAL.CreatePatient(contactID);
+            return DAL.PatientDAL.CreatePatient(lName, fName, dob, streetAddress, city, state, zip, phone, gender, ssn);
         }
 
         public List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)
@@ -170,9 +170,9 @@ namespace eClinicals.Controllers
         }
 
         public bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
-         string ZIP, string phone, string gender)
+         string ZIP, string phone, string gender, string SSN)
         {
-            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
+            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
         }
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
@@ -192,6 +192,11 @@ namespace eClinicals.Controllers
         public List<Report> MostPerformedTestsDuringDates(DateTime startDate, DateTime endDate)
         {
             return DAL.AdminDAL.MostPerformedTestsDuringDates(startDate, endDate);
+        }
+
+        public static bool EditCheckup(int visitID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemperature, int pulse)
+        {
+            return DAL.VisitDAL.EditCheckup(visitID, nurseID, visitTime, systolicBP, diastolicBP, bodyTemperature, pulse);
         }
 
 

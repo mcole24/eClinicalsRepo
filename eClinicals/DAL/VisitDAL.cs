@@ -259,5 +259,44 @@ namespace eClinicals.DAL
             }
         }
 
+
+
+        public static bool EditCheckup(int visitID, int nurseID, DateTime visitTime, int systolicBP, int diastolicBP, decimal bodyTemperature, int pulse)
+        {
+            string updateStmt = "UPDATE visit SET nurseID = @nurse, visitTime = @time, systolicBP = @sBP, " + 
+                "diastolicBP = @dBP, bodyTemperature = @temp, pulse = @pulse" + 
+                "WHERE visitID = @visit";
+
+            bool isUpdated = false;
+
+            try
+            {
+                using (SqlConnection connect = DBConnection.GetConnection())
+                {
+                    connect.Open();
+                    using (SqlCommand cmd = new SqlCommand(updateStmt, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@nurse", nurseID);
+                        cmd.Parameters.AddWithValue("@time", visitTime);
+                        cmd.Parameters.AddWithValue("@sBP", systolicBP);
+                        cmd.Parameters.AddWithValue("@dBP", diastolicBP);
+                        cmd.Parameters.AddWithValue("@temp", bodyTemperature);
+                        cmd.Parameters.AddWithValue("@pulse", pulse);
+                        cmd.Parameters.AddWithValue("@visit", visitID);
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
+                    }
+                    connect.Close();
+                    return isUpdated;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+
+
     }
 }
