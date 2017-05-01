@@ -494,7 +494,7 @@
 
         #endregion
 
-
+      
         public System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.TextBox txtFirstName;
@@ -505,7 +505,7 @@
         public System.Windows.Forms.TextBox txtCity;
         public System.Windows.Forms.ComboBox cbState;
         public System.Windows.Forms.ComboBox cbUserType;
-
+    
         public System.Windows.Forms.TextBox txtPhone;
         public System.Windows.Forms.TextBox txtSSN;
         public System.Windows.Forms.TextBox txtZipcode;
