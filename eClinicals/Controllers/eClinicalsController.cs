@@ -51,6 +51,8 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAllCurrentDateAppointmentsByPatientID(patientID);
         }
 
+
+
         public AppointmentSummaryVisitDetails GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryVisitDetails(appointmentID);
@@ -75,6 +77,8 @@ namespace eClinicals.Controllers
             return DAL.AppointmentDAL.GetAppointmentSummaryTestResults(appointmentID);
 
         }
+
+
         public List<RoutineCheck> GetPreviousReadings(int patientID)
         {
             return DAL.VisitDAL.GetPreviousReadings(patientID);
