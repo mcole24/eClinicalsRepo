@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eClinicals.View;
+﻿using eClinicals.View;
 
 namespace eClinicals.Controllers
 {
@@ -15,31 +10,11 @@ namespace eClinicals.Controllers
         public PatientSearchViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
         {
             frmPatientSearch = (frmPatientSearch)base.thisView;
-            mainForm.lblStatus.Text = "Patient Search active . . .";           
+            mainForm.lblStatus.Text = "Patient Search active . . .";
 
-        }  
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-              
+
+        }
+
+
     }
 }
