@@ -122,15 +122,8 @@ namespace eClinicals.View
             this.ucAlertRoutineCheck.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
             this.ucAlertOrderTest.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
             this.ucAlertTestResults.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
-
-
+            this.ucAlertRoutineCheck.Location = new Point(ALERT_LOCATION_X, ALERT_LOCATION_Y);
         }
-
-        private void btnUpdateTestResults_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDoneTestResultUpdate_Click(object sender, EventArgs e)
         {
             gUpdateSelectedTestResult.Visible = false;
@@ -144,7 +137,6 @@ namespace eClinicals.View
             gUpdateSelectedTestResult.Enabled = true;
             btnUpdateSelectedTestResult.Visible = false;
         }
-
 
     }
 }

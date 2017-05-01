@@ -65,7 +65,7 @@
     <Compile Include="Controllers\NurseLoggedInViewController.cs" />
     <Compile Include="Controllers\AdminLoggedInViewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PatientRecordTabsViewController.cs" />
+    <Compile Include="Events\PatientRecordTabsViewController.cs" />
     <Compile Include="Controllers\PatientSearchViewController.cs" />
     <Compile Include="Controllers\Program.cs" />
     <Compile Include="Controllers\RegistrationViewController.cs" />

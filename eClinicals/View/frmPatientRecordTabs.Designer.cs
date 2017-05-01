@@ -174,6 +174,7 @@
             this.dgTestResults_TestResults = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.tabDiagnosis = new System.Windows.Forms.TabPage();
+            this.btnCancelDiagnosis = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.lblFinalDiagnosis = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -1273,6 +1274,7 @@
             // 
             // tabRoutineCheck
             // 
+            this.tabRoutineCheck.Controls.Add(this.ucAlertRoutineCheck);
             this.tabRoutineCheck.Controls.Add(this.groupBox7);
             this.tabRoutineCheck.Controls.Add(this.groupBox5);
             this.tabRoutineCheck.Location = new System.Drawing.Point(4, 34);
@@ -1443,7 +1445,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.ucAlertRoutineCheck);
             this.groupBox5.Controls.Add(this.dgPreviousReadings__RoutineCheck);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Location = new System.Drawing.Point(39, 315);
@@ -1455,7 +1456,7 @@
             // ucAlertRoutineCheck
             // 
             this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(-12, 220);
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(19, 548);
             this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
             this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
             this.ucAlertRoutineCheck.TabIndex = 16;
@@ -1749,7 +1750,6 @@
             this.btnUpdateTestResults.TabIndex = 18;
             this.btnUpdateTestResults.Text = "Commit Update";
             this.btnUpdateTestResults.UseVisualStyleBackColor = true;
-            this.btnUpdateTestResults.Click += new System.EventHandler(this.btnUpdateTestResults_Click);
             // 
             // textBox1
             // 
@@ -1804,6 +1804,7 @@
             // 
             // tabDiagnosis
             // 
+            this.tabDiagnosis.Controls.Add(this.btnCancelDiagnosis);
             this.tabDiagnosis.Controls.Add(this.groupBox9);
             this.tabDiagnosis.Controls.Add(this.groupBox4);
             this.tabDiagnosis.Controls.Add(this.groupBox10);
@@ -1816,6 +1817,15 @@
             this.tabDiagnosis.TabIndex = 6;
             this.tabDiagnosis.Text = "Diagnosis";
             this.tabDiagnosis.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelDiagnosis
+            // 
+            this.btnCancelDiagnosis.Location = new System.Drawing.Point(23, 376);
+            this.btnCancelDiagnosis.Name = "btnCancelDiagnosis";
+            this.btnCancelDiagnosis.Size = new System.Drawing.Size(292, 39);
+            this.btnCancelDiagnosis.TabIndex = 31;
+            this.btnCancelDiagnosis.Text = "Cancel";
+            this.btnCancelDiagnosis.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -2127,5 +2137,6 @@
         public System.Windows.Forms.RadioButton rbNegative;
         public System.Windows.Forms.Button btnUpdateSelectedTestResult;
         public ucAlert ucAlertTestResults;
+        public System.Windows.Forms.Button btnCancelDiagnosis;
     }
 }

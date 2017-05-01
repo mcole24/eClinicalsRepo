@@ -9,6 +9,7 @@ namespace eClinicals.Controllers
 {
     enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4 };
     enum SELECTED_INITIAL_DIAGNOSIS { TRUE = 1, FALSE = 0 };
+    enum TAB { PERSONAL = 0, SET_APPONTMENT = 1, VIEW_APPOINTMENT = 2, ROUTINE_CHECK = 3, ORDER_TEST = 4, TEST_RESULTS = 5, DIAGNOSIS = 6 };
     //Current view is used to determin which buttons and ui elements should be active
 
     class PatientRecordTabsViewController : ControllerBase
@@ -38,10 +39,10 @@ namespace eClinicals.Controllers
         private int selectedTestResultCode;
         private int selectedVisitID;
         private int selectedDiagnosisID;
-
         private Visit selectedVisit;
         private Diagnosis selectedDiagnosis;
         private int testID;
+        private bool routineCheckCompleted;
 
         public LabTest selectedTestResult { get; private set; }
 
@@ -60,6 +61,7 @@ namespace eClinicals.Controllers
             results = new Dictionary<int, string>();
             results.Add(1, "positive");
             results.Add(0, "negative");
+            routineCheckCompleted = false;
 
         }
         public void fillPatientInfo(Patient patient)
@@ -368,29 +370,29 @@ namespace eClinicals.Controllers
 
             frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
-
+            string message = "";
             // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
-            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
-            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
-            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
-            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
-            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true, message);
             enableDisableEditAppointment("off");
 
         }
         private void btnCancel_OrderTest_Click(object sender, EventArgs e)
         {
             isOrderTestOpen = false;
-
+            string message = "";
             frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabOrderTests);
             frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
 
             // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
-            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
-            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
-            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
-            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
-            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true, message);
             enableDisableEditAppointment("off");
         }
 
@@ -512,6 +514,25 @@ namespace eClinicals.Controllers
         }
         private void btnOk_RoutineCheck_Click(object sender, EventArgs e)
         {
+
+            Button button = sender as Button;
+            if (button.Name == "btnRight")
+            {
+                string message = "Must Complete Diagnosis...";
+                //If Alert is False all others are off
+                frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
+                frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabDiagnosis);
+
+                frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
+                frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabDiagnosis;
+
+                AllAlertsOnExceptOne(TAB.DIAGNOSIS, message);
+                isRoutineCheckOpen = false;
+                mainForm.Status("You must complete the Diagnosis before any other action can be performed.", Color.Yellow);
+                return;
+            }
+
+
             try
             {
                 //routione checkup        
@@ -545,22 +566,20 @@ namespace eClinicals.Controllers
 
                     if (selectedVisit.VisitID > 0)
                     {
+                        string message = "Must Complete Diagnosis...";
+                        //If Alert is False all others are off
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabRoutineCheck);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabDiagnosis);
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabDiagnosis;
 
-                        EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, false);
-                        EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true);
-                        EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true);
-                        EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true);
-                        EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true);
-                        EnableTabAlert(frmPatientRecordTabs.tabPersonal, true);
+                        AllAlertsOnExceptOne(TAB.DIAGNOSIS, message);
                         isRoutineCheckOpen = false;
-                        this.mainForm.Status("Routine CheckUp Added : ", Color.Yellow);
+                        mainForm.Status("You must complete the Diagnosis before any other action can be performed.", Color.Yellow);
+                        routineCheckCompleted = true;
                     }
                     else
                     {
-                        this.mainForm.Status("error 1 : No Checkup was added. Please fill out all form elements : ", Color.Red);
+                        this.mainForm.Status("error 1 : Setting diagnosis. Please fill out all form elements : ", Color.Red);
                     }
                 }
                 else
@@ -574,21 +593,39 @@ namespace eClinicals.Controllers
                 Status(ex.Message, Color.Red);
             }
         }
+        private void btnCancelDiagnosis_Click(object sender, EventArgs e)
+        {
+
+            frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabDiagnosis);
+            frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabViewAppointments;
+            string message = "";
+            // EnableTab(frmPatientRecordTabs.tabRoutineCheck, false);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, true, message);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, true, message);
+            enableDisableEditAppointment("off");
+
+
+
+        }
+
+
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {//btnBegin Routine Check
          // "shows" tab page 2 : start routine check
+            string message = "Must complete the routine check.";
+
+
             if (!isRoutineCheckOpen)
             {
                 if (selectedAppointment != null)
                 {
+
                     frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabRoutineCheck);
                     frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabRoutineCheck;
-                    EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, true);
-                    EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, false);
-                    EnableTabAlert(frmPatientRecordTabs.tabOrderTests, false);
-                    EnableTabAlert(frmPatientRecordTabs.tabTestsResults, false);
-                    EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, false);
-                    EnableTabAlert(frmPatientRecordTabs.tabPersonal, false);
+                    AllAlertsOnExceptOne(TAB.ROUTINE_CHECK, message);
                     mainForm.Status("You must complete the routine check before any other action can be performed.", Color.Yellow);
 
                 }
@@ -599,6 +636,118 @@ namespace eClinicals.Controllers
                 }
             }
             isRoutineCheckOpen = true;
+
+
+            if (routineCheckCompleted)
+            {
+                message = "You already completed a check. Continue? \n Or would you like to begin a diagnosis.";
+                AllAlertsOFFExceptOne(TAB.ROUTINE_CHECK, message);
+
+                Button btnContinue = frmPatientRecordTabs.ucAlertRoutineCheck.btnLeft;
+                Button btnDiagnosis = frmPatientRecordTabs.ucAlertRoutineCheck.btnRight;
+
+                btnContinue.Text = "Continue";
+                btnContinue.Visible = true;
+                btnContinue.Click += new EventHandler(btnAlert_Click);
+
+                btnDiagnosis.Text = "Go to Diagnosis";
+                btnDiagnosis.Visible = true;
+                btnDiagnosis.Click += new EventHandler(btnOk_RoutineCheck_Click);
+
+                frmPatientRecordTabs.ucAlertRoutineCheck.Enabled = true;
+
+            }
+
+        }
+
+        private void btnAlert_Click(object sender, EventArgs e)
+        {
+            frmPatientRecordTabs.ucAlertRoutineCheck.btnLeft.Visible = false;
+            frmPatientRecordTabs.ucAlertRoutineCheck.Enabled = false;
+            string message = "Must complete the routine check.";
+            AllAlertsOnExceptOne(TAB.ROUTINE_CHECK, message);
+
+        }
+
+        private void AllAlertsOnExceptOne(TAB tab, string message)
+        {
+            bool visibleOn = false;
+            bool visibleOff = true;
+            EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, visibleOn, message);
+            EnableTabAlert(frmPatientRecordTabs.tabDiagnosis, visibleOn, message);
+            switch (tab)
+            {
+                case TAB.PERSONAL:
+                    EnableTabAlert(frmPatientRecordTabs.tabPersonal, visibleOff, message);
+                    break;
+                case TAB.SET_APPONTMENT:
+                    EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, visibleOff, message);
+                    break;
+                case TAB.VIEW_APPOINTMENT:
+                    EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, visibleOff, message);
+                    break;
+                case TAB.ROUTINE_CHECK:
+                    EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, visibleOff, message);
+                    break;
+                case TAB.ORDER_TEST:
+                    EnableTabAlert(frmPatientRecordTabs.tabOrderTests, visibleOff, message);
+                    break;
+                case TAB.TEST_RESULTS:
+                    EnableTabAlert(frmPatientRecordTabs.tabTestsResults, visibleOff, message);
+                    break;
+                case TAB.DIAGNOSIS:
+                    EnableTabAlert(frmPatientRecordTabs.tabDiagnosis, visibleOff, message);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        private void AllAlertsOFFExceptOne(TAB tab, string message)
+        {
+
+            bool visibleOn = false;
+            bool visibleOff = true;
+
+            EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabOrderTests, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabTestsResults, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabPersonal, visibleOff, message);
+            EnableTabAlert(frmPatientRecordTabs.tabDiagnosis, visibleOff, message);
+            switch (tab)
+            {
+                case TAB.PERSONAL:
+                    EnableTabAlert(frmPatientRecordTabs.tabPersonal, visibleOn, message);
+                    break;
+                case TAB.SET_APPONTMENT:
+                    EnableTabAlert(frmPatientRecordTabs.tabSetAppointments, visibleOn, message);
+                    break;
+                case TAB.VIEW_APPOINTMENT:
+                    EnableTabAlert(frmPatientRecordTabs.tabViewAppointments, visibleOn, message);
+                    break;
+                case TAB.ROUTINE_CHECK:
+                    EnableTabAlert(frmPatientRecordTabs.tabRoutineCheck, visibleOn, message);
+                    break;
+                case TAB.ORDER_TEST:
+                    EnableTabAlert(frmPatientRecordTabs.tabOrderTests, visibleOn, message);
+                    break;
+                case TAB.TEST_RESULTS:
+                    EnableTabAlert(frmPatientRecordTabs.tabTestsResults, visibleOn, message);
+                    break;
+                case TAB.DIAGNOSIS:
+                    EnableTabAlert(frmPatientRecordTabs.tabDiagnosis, visibleOn, message);
+                    break;
+                default:
+                    break;
+            }
+
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
@@ -806,9 +955,9 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtSSN.Enabled = false;
         }
 
-        public void EnableTabAlert(TabPage page, bool enable)
+        public void EnableTabAlert(TabPage page, bool enable, string newMessage)
         {
-            string message = "";
+            string message = newMessage;
             foreach (Control ctl in page.Controls)
             {
 
@@ -838,13 +987,17 @@ namespace eClinicals.Controllers
                             frmPatientRecordTabs.ucAlertTestResults.Visible = false;
                             frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
                             break;
+                        case "tabRoutineCheck":
+                            frmPatientRecordTabs.ucAlertRoutineCheck.Visible = false;
+                            frmPatientRecordTabs.ucAlertRoutineCheck.lblAlert.Text = message;
+                            break;
                         default:
                             break;
                     }
                 }
                 else
                 {
-                    message = "Must complete routine check.";
+
                     switch (page.Name)
                     {
                         case "tabViewAppointments":
@@ -867,6 +1020,10 @@ namespace eClinicals.Controllers
                             frmPatientRecordTabs.ucAlertTestResults.Visible = true;
                             frmPatientRecordTabs.ucAlertTestResults.lblAlert.Text = message;
                             break;
+                        case "tabRoutineCheck":
+                            frmPatientRecordTabs.ucAlertRoutineCheck.Visible = true;
+                            frmPatientRecordTabs.ucAlertRoutineCheck.lblAlert.Text = message;
+                            break;
                         default:
                             break;
                     }
@@ -888,7 +1045,7 @@ namespace eClinicals.Controllers
 
             frmPatientRecordTabs.dgTestResults_TestResults.CellClick +=
                          new DataGridViewCellEventHandler(dgTestResults_TestResults_CellClick);
-
+            frmPatientRecordTabs.btnCancelDiagnosis.Click += new System.EventHandler(this.btnCancelDiagnosis_Click);
             frmPatientRecordTabs.btnUpdateTestResults.Click += new EventHandler(btnUpdateTestResults_Click);
             frmPatientRecordTabs.btnSelectAppointment.Click += new EventHandler(btnSelectAppointment_Click);
             frmPatientRecordTabs.btnOk_RoutineCheck.Click += new EventHandler(btnOk_RoutineCheck_Click);

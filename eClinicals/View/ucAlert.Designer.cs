@@ -31,12 +31,16 @@
             this.bgAlert = new System.Windows.Forms.GroupBox();
             this.lblAlert = new System.Windows.Forms.Label();
             this.pbAlert = new System.Windows.Forms.PictureBox();
+            this.btnLeft = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
             this.bgAlert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlert)).BeginInit();
             this.SuspendLayout();
             // 
             // bgAlert
             // 
+            this.bgAlert.Controls.Add(this.btnRight);
+            this.bgAlert.Controls.Add(this.btnLeft);
             this.bgAlert.Controls.Add(this.lblAlert);
             this.bgAlert.Controls.Add(this.pbAlert);
             this.bgAlert.Location = new System.Drawing.Point(16, 18);
@@ -67,6 +71,26 @@
             this.pbAlert.TabIndex = 66;
             this.pbAlert.TabStop = false;
             // 
+            // btnLeft
+            // 
+            this.btnLeft.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnLeft.Location = new System.Drawing.Point(97, 164);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(200, 57);
+            this.btnLeft.TabIndex = 68;
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Visible = false;
+            // 
+            // btnRight
+            // 
+            this.btnRight.BackgroundImage = global::eClinicals.Properties.Resources.footer_image;
+            this.btnRight.Location = new System.Drawing.Point(458, 164);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(200, 57);
+            this.btnRight.TabIndex = 69;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Visible = false;
+            // 
             // ucAlert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,5 +110,7 @@
         public System.Windows.Forms.GroupBox bgAlert;
         public System.Windows.Forms.Label lblAlert;
         public System.Windows.Forms.PictureBox pbAlert;
+        public System.Windows.Forms.Button btnRight;
+        public System.Windows.Forms.Button btnLeft;
     }
 }
