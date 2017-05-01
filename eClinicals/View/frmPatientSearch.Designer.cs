@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.lblErrorTitle = new System.Windows.Forms.Label();
             this.picNoUserFound = new System.Windows.Forms.PictureBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
@@ -41,27 +40,17 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.cbSearch = new System.Windows.Forms.ComboBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picNoUserFound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblErrorMessage
-            // 
-            this.lblErrorMessage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorMessage.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblErrorMessage.Location = new System.Drawing.Point(135, 206);
-            this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(408, 71);
-            this.lblErrorMessage.TabIndex = 109;
-            this.lblErrorMessage.Visible = false;
-            // 
             // lblErrorTitle
             // 
-            this.lblErrorTitle.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblErrorTitle.BackColor = System.Drawing.Color.White;
             this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorTitle.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lblErrorTitle.Location = new System.Drawing.Point(139, 146);
+            this.lblErrorTitle.Location = new System.Drawing.Point(130, 140);
             this.lblErrorTitle.Name = "lblErrorTitle";
             this.lblErrorTitle.Size = new System.Drawing.Size(404, 31);
             this.lblErrorTitle.TabIndex = 105;
@@ -72,12 +61,13 @@
             // picNoUserFound
             // 
             this.picNoUserFound.Image = global::eClinicals.Properties.Resources.NoUserFound;
-            this.picNoUserFound.Location = new System.Drawing.Point(15, 94);
+            this.picNoUserFound.Location = new System.Drawing.Point(12, 94);
             this.picNoUserFound.Name = "picNoUserFound";
             this.picNoUserFound.Size = new System.Drawing.Size(547, 227);
             this.picNoUserFound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picNoUserFound.TabIndex = 107;
             this.picNoUserFound.TabStop = false;
+            this.picNoUserFound.Visible = false;
             // 
             // txtFirstName
             // 
@@ -178,6 +168,17 @@
             this.cbSearch.TabIndex = 0;
             this.cbSearch.SelectedIndexChanged += new System.EventHandler(this.cbSearch_SelectedIndexChanged);
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.BackColor = System.Drawing.Color.White;
+            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorMessage.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblErrorMessage.Location = new System.Drawing.Point(131, 204);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(408, 71);
+            this.lblErrorMessage.TabIndex = 110;
+            this.lblErrorMessage.Visible = false;
+            // 
             // frmPatientSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,17 +186,17 @@
             this.ClientSize = new System.Drawing.Size(723, 381);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.lblErrorTitle);
-            this.Controls.Add(this.picNoUserFound);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblDate_FirstName);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.dgvSearchResults);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.cbSearch);
+            this.Controls.Add(this.picNoUserFound);
+            this.Controls.Add(this.dgvSearchResults);
             this.Name = "frmPatientSearch";
             this.Text = "Search Patient by ...";
             this.Load += new System.EventHandler(this.frmPatientSearch_Load);
