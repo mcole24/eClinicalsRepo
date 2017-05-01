@@ -43,6 +43,7 @@ namespace eClinicals.Controllers
         private Diagnosis selectedDiagnosis;
         private int testID;
         private bool routineCheckCompleted;
+        private Appointment reason;
 
         public LabTest selectedTestResult { get; private set; }
         public PatientRecordTabsViewController(frmMain mainForm, frmBaseView thisView) : base(mainForm, thisView)
@@ -423,6 +424,10 @@ namespace eClinicals.Controllers
                    patient.Zip, patient.Phone, patient.Gender);
 
                     //refresh later        
+                    mainForm.patientInfoRibbonController.AddUserInfoTopInfo(patient.FirstName, patient.LastName);
+                    string age = (patient.Dob.Year - DateTime.Now.Year).ToString();
+                    mainForm.patientInfoRibbonController.AddUserInfo(age, patient.Gender, patient.PatientID.ToString());
+                    mainForm.patientInfoRibbonController.AddAppointmentInfo(reason.AppointmentReason, "Headache \n Cough");
 
 
                     if (isUpdate)
@@ -473,7 +478,7 @@ namespace eClinicals.Controllers
             try
             {
                 Doctor doc = (Doctor)frmPatientRecordTabs.cbDoctor_SetAppointment.SelectedItem;
-                Appointment reason = (Appointment)frmPatientRecordTabs.cbReason_SetAppointment.SelectedItem;
+                reason = (Appointment)frmPatientRecordTabs.cbReason_SetAppointment.SelectedItem;
                 DateTime dateOnly = frmPatientRecordTabs.dtpAppointmentDate_SetAppointment.Value;
                 DateTime timeOnly = frmPatientRecordTabs.dtpAppointmentTime_SetAppointment.Value;
                 DateTime dateAndTime = dateOnly.Date.Add(timeOnly.TimeOfDay);
@@ -843,7 +848,7 @@ namespace eClinicals.Controllers
             catch (Exception ex)
             {
 
-                mainForm.Status(ex.Message, Color.Red);
+                mainForm.Status("You must select a record." + ex.Message, Color.Red);
             }
             frmPatientRecordTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(mainForm.selectedPatientID);
 

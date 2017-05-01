@@ -40,8 +40,8 @@ namespace eClinicals.Controllers
 
 
             // frmLoginView.username = frmLoginView.txtUserName.Text;
-            frmLoginView.password = frmLoginView.txtPassword.Text;
-            frmLoginView.username = frmLoginView.txtUserName.Text;
+            // frmLoginView.password = frmLoginView.txtPassword.Text;
+            // frmLoginView.username = frmLoginView.txtUserName.Text;
             LogIn(frmLoginView.username, frmLoginView.password);
         }
         //define delegate

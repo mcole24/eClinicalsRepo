@@ -5,7 +5,6 @@ using eClinicals.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Windows.Threading;
 
@@ -297,11 +296,6 @@ namespace eClinicals.View
                 }
                 if (myPatientsList.Count < 1)
                 {
-                    // The encoding.
-                    UnicodeEncoding unicode = new UnicodeEncoding();
-                    // Encode the string.
-                    Byte[] encodedBytes = unicode.GetBytes("\u2705");
-
 
                     string title = "No Patient Found";
                     string message = "\n+ Check your search parameters for mistakes. \n";

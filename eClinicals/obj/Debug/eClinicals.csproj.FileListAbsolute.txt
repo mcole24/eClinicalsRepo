@@ -78,6 +78,25 @@ C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\ob
 \\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
 \\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.g.resources
 \\vmware-host\Shared Folders\Documents\UWG classes\CS6232\eClinicals Project\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmMain.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmNurseMenuSelectView.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientInfoRibbon.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientRecordTabs.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientSearch.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRegistration.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRibbon.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Assets\images\logo\eclinicalLogo.png
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\Resources\reports.jpg
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\View\frmBaseView.cs
@@ -100,25 +119,5 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\pt\Microsoft.SqlSer
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmMain.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmNurseMenuSelectView.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientInfoRibbon.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientRecordTabs.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientSearch.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRegistration.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRibbon.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
