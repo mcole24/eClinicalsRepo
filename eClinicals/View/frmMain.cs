@@ -5,7 +5,9 @@ using eClinicals.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace eClinicals.View
 {
@@ -33,7 +35,7 @@ namespace eClinicals.View
         frmPatientInfoRibbon patienRibbon;
         frmPatientRecordTabs frmPatientTabs;
         frmRibbon frmUserRibbon;
-
+        DispatcherTimer noUser;
         private const int BY_DOB_NAME = 0;
         private const int BY_DOB = 1;
         private const int BY_NAME = 2;
@@ -293,6 +295,29 @@ namespace eClinicals.View
                     default:
                         break;
                 }
+                if (myPatientsList.Count < 1)
+                {
+                    // The encoding.
+                    UnicodeEncoding unicode = new UnicodeEncoding();
+                    // Encode the string.
+                    Byte[] encodedBytes = unicode.GetBytes("\u2705");
+
+
+                    string title = "No Patient Found";
+                    string message = "\n+ Check your search parameters for mistakes. \n";
+                    message += "+ You may have to register a new patient.";
+                    title.ToUpper();
+
+
+
+                    noUser = new DispatcherTimer();
+                    noUser.Interval = TimeSpan.FromSeconds(3);
+                    noUser.Tick += new EventHandler(noUser_Tick);
+                    noUser.Start();
+                    patientSearchViewController.frmPatientSearch.NoPatientFound(true, title, message);
+
+                }
+
 
                 patientSearchViewController.frmPatientSearch.dgvSearchResults.DataSource = myPatientsList;
                 ExtensionGridView.RemoveEmptyColumns(patientSearchViewController.frmPatientSearch.dgvSearchResults);
@@ -303,6 +328,13 @@ namespace eClinicals.View
                 Status(ex.Message, Color.Red);
             }
         }
+
+        private void noUser_Tick(object sender, EventArgs e)
+        {
+            patientSearchViewController.frmPatientSearch.NoPatientFound(false);
+            noUser.Stop();
+        }
+
         private void OpenRegistrationView()
         {
             frmRegistration frmReg = new frmRegistration();

@@ -283,6 +283,7 @@
     <Content Include="Assets\images\logo\eclinicalLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\NoUserFound.png" />
     <None Include="DB\CS6232-g5.sql" />
     <Content Include="FileStructure.txt" />
     <None Include="Resources\NoReport.png" />

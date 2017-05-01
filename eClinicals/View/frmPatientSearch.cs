@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eClinicals.View
 {
@@ -30,7 +22,7 @@ namespace eClinicals.View
 
         private void cbSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
-        string selectedValue =  cbSearch.SelectedItem.ToString();
+            string selectedValue = cbSearch.SelectedItem.ToString();
 
             switch (selectedValue)
             {
@@ -56,7 +48,7 @@ namespace eClinicals.View
                     txtLastName.Visible = true;
                     txtFirstName.Visible = false;
                     dtpDate.Visible = true;
-                    break;   
+                    break;
                 default:
                     lblDate_FirstName.Text = "Select Appointment Date";
                     txtFirstName.Visible = false;
@@ -66,7 +58,7 @@ namespace eClinicals.View
             if (cbSearch.SelectedIndex == -1)
             {
                 lblDate_FirstName.Text = "Select Appointment Date";
-            }          
+            }
 
         }
 
@@ -79,5 +71,22 @@ namespace eClinicals.View
         {
 
         }
+
+        public void NoPatientFound(bool visible, string title, string message)
+        {
+            picNoUserFound.Visible = visible;
+            lblErrorMessage.Visible = visible;
+            lblErrorTitle.Visible = visible;
+            lblErrorMessage.Text = message;
+            lblErrorTitle.Text = title;
+        }
+        public void NoPatientFound(bool visible)
+        {
+            picNoUserFound.Visible = visible;
+            lblErrorMessage.Visible = visible;
+            lblErrorTitle.Visible = visible;
+        }
+
     }
+
 }

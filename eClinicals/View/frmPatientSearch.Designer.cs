@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.lblErrorTitle = new System.Windows.Forms.Label();
+            this.picNoUserFound = new System.Windows.Forms.PictureBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblDate_FirstName = new System.Windows.Forms.Label();
@@ -38,8 +41,43 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.cbSearch = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picNoUserFound)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorMessage.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblErrorMessage.Location = new System.Drawing.Point(135, 206);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(408, 71);
+            this.lblErrorMessage.TabIndex = 109;
+            this.lblErrorMessage.Visible = false;
+            // 
+            // lblErrorTitle
+            // 
+            this.lblErrorTitle.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblErrorTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorTitle.ForeColor = System.Drawing.Color.DarkOrange;
+            this.lblErrorTitle.Location = new System.Drawing.Point(139, 146);
+            this.lblErrorTitle.Name = "lblErrorTitle";
+            this.lblErrorTitle.Size = new System.Drawing.Size(404, 31);
+            this.lblErrorTitle.TabIndex = 105;
+            this.lblErrorTitle.Text = " Tester";
+            this.lblErrorTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorTitle.Visible = false;
+            // 
+            // picNoUserFound
+            // 
+            this.picNoUserFound.Image = global::eClinicals.Properties.Resources.NoUserFound;
+            this.picNoUserFound.Location = new System.Drawing.Point(15, 94);
+            this.picNoUserFound.Name = "picNoUserFound";
+            this.picNoUserFound.Size = new System.Drawing.Size(547, 227);
+            this.picNoUserFound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNoUserFound.TabIndex = 107;
+            this.picNoUserFound.TabStop = false;
             // 
             // txtFirstName
             // 
@@ -145,6 +183,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 381);
+            this.Controls.Add(this.lblErrorMessage);
+            this.Controls.Add(this.lblErrorTitle);
+            this.Controls.Add(this.picNoUserFound);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblDate_FirstName);
@@ -158,6 +199,7 @@
             this.Name = "frmPatientSearch";
             this.Text = "Search Patient by ...";
             this.Load += new System.EventHandler(this.frmPatientSearch_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picNoUserFound)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,5 +217,8 @@
         public System.Windows.Forms.TextBox txtFirstName;
         public System.Windows.Forms.DateTimePicker dtpDate;
         public System.Windows.Forms.DataGridView dgvSearchResults;
+        public System.Windows.Forms.Label lblErrorTitle;
+        private System.Windows.Forms.PictureBox picNoUserFound;
+        public System.Windows.Forms.Label lblErrorMessage;
     }
 }
