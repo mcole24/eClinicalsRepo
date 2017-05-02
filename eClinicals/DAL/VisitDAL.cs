@@ -127,6 +127,7 @@ namespace eClinicals.DAL
             }
             return visit;
         }
+
         public static List<Symptom> GetAllSymptoms()
         {
             List<Symptom> symptomList = new List<Symptom>();

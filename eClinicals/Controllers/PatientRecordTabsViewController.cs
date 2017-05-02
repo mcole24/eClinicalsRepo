@@ -962,7 +962,7 @@ namespace eClinicals.Controllers
             frmPatientRecordTabs.txtZipcode.Enabled = true;
             frmPatientRecordTabs.txtPhone.Enabled = true;
             frmPatientRecordTabs.cbGender.Enabled = true;
-            frmPatientRecordTabs.txtSSN.Enabled = false;
+            frmPatientRecordTabs.txtSSN.Enabled = true;
         }
 
         public void EnableTabAlert(TabPage page, bool enable, string newMessage)
