@@ -32,7 +32,7 @@ namespace eClinicals.View
         {
             cbGender.SelectedIndex = 0;
             cbState.SelectedIndex = 0;
-            cbUserType.SelectedIndex = 3;
+
             eClinicalsController = new eClinicalsController();
         }
         private void btnRegister_Click(object sender, EventArgs e)
@@ -61,7 +61,6 @@ namespace eClinicals.View
             }
             gender = cbGender.Text;
             ssn = txtSSN.Text;
-            userType = cbUserType.SelectedIndex + 1;
 
             try
             {
