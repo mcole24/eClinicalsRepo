@@ -2,8 +2,7 @@
 using System;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-
+enum USER_TYPE { PATIENT = 4 };
 namespace eClinicals.View
 {
     public partial class frmRegistration : frmBaseView
@@ -33,7 +32,7 @@ namespace eClinicals.View
         {
             cbGender.SelectedIndex = 0;
             cbState.SelectedIndex = 0;
-            cbUserType.SelectedIndex = 3;
+
             eClinicalsController = new eClinicalsController();
         }
         private void btnRegister_Click(object sender, EventArgs e)
@@ -62,15 +61,12 @@ namespace eClinicals.View
             }
             gender = cbGender.Text;
             ssn = txtSSN.Text;
-            userType = cbUserType.SelectedIndex + 1;
 
             try
             {
                 if (ValidateFields.patientFields(this))
                 {
-                    int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
-
-                    this.createPersonByType(contactID);
+                    this.createPerson();
                 }
                 else
                 {
@@ -94,51 +90,23 @@ namespace eClinicals.View
             this.Close();
             mainForm.OpenStartMenuView();
         }
-        private void createPersonByType(int contactID)
+        private void createPerson()
         {
             try
             {
-
-                if (contactID > 0)
-                {
-                    switch (userType)
-                    {
-                        case 1:
-                            //eClinicalsController.createDoctor(contactID);
-                            break;
-                        case 2:
-                            eClinicalsController.CreateAdmin(contactID);
-                            break;
-                        case 3:
-                            eClinicalsController.CreateNurse(contactID);
-                            break;
-                        case 4:
-                            eClinicalsController.CreatePatient(contactID);
-                            break;
-                        default:
-                            MessageBox.Show("There was a problem creating this person");
-                            break;
-                    }
-
-                }
-
-
+                eClinicalsController.CreatePatient(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn);
             }
             catch (Exception ex)
             {
                 mainForm.Status(ex.Message, Color.Red);
+
             }
+
+
 
 
         }
-        private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbUserType.SelectedIndex == 3)
-            {
 
-
-            }
-        }
     }
 
 
