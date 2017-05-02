@@ -416,7 +416,7 @@ namespace eClinicals.Controllers
                 patient.Zip = frmPatientRecordTabs.zip = frmPatientRecordTabs.txtZipcode.Text;
                 patient.Phone = frmPatientRecordTabs.phone = frmPatientRecordTabs.txtPhone.Text;
                 patient.Gender = frmPatientRecordTabs.gender = frmPatientRecordTabs.cbGender.Text;
-                frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
+                patient.Ssn = frmPatientRecordTabs.ssn = frmPatientRecordTabs.txtSSN.Text;
 
                 if (ValidateFields.patientFields(frmPatientRecordTabs))
                 {
@@ -425,7 +425,7 @@ namespace eClinicals.Controllers
 
                     isUpdate = eClinicalsController.UpdatePatient(patient.ContactID, patient.LastName,
                        patient.FirstName, patient.Dob, patient.Address, patient.City, patient.State,
-                   patient.Zip, patient.Phone, patient.Gender);
+                   patient.Zip, patient.Phone, patient.Gender, patient.Ssn);
 
                     //refresh later        
                     mainForm.patientInfoRibbonController.AddUserInfoTopInfo(patient.FirstName, patient.LastName);
