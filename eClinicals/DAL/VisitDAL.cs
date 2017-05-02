@@ -127,6 +127,7 @@ namespace eClinicals.DAL
             }
             return visit;
         }
+
         public static List<Symptom> GetAllSymptoms()
         {
             List<Symptom> symptomList = new List<Symptom>();
@@ -243,7 +244,7 @@ namespace eClinicals.DAL
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    
+
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@visitID", visitID);
