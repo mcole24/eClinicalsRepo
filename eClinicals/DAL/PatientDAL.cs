@@ -203,7 +203,7 @@ namespace eClinicals.DAL
 
 
         public static bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state, 
-            string ZIP, string phone, string gender)
+            string ZIP, string phone, string gender, string SSN)
         {
             bool isUpdated = false;
             string updateStmt = "UPDATE contact SET lName = @lastName, fName = @firstName, dob = @DOB, mailingAddressStreet = @street, " +
@@ -226,7 +226,7 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@ZIP", ZIP);
                         cmd.Parameters.AddWithValue("@phone", phone);
                         cmd.Parameters.AddWithValue("@gender", gender);
-                        //cmd.Parameters.AddWithValue("@SSN", SSN);
+                        cmd.Parameters.AddWithValue("@SSN", SSN);
                         isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();
