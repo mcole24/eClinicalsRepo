@@ -133,7 +133,7 @@ namespace eClinicals.Controllers
 
         private void dgTestResults_TestResults_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //TODO Test Results Data grid selected Test Result
+
             try
             {
                 if (e.RowIndex >= 0)
@@ -777,7 +777,7 @@ namespace eClinicals.Controllers
 
 
                 selectedVisitID = selectedVisit.VisitID;
-                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null && frmPatientRecordTabs.rbInitialDiagnosis.Checked)
+                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == "" && frmPatientRecordTabs.rbInitialDiagnosis.Checked)
                 {
 
                     bool test = eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT);
@@ -800,7 +800,7 @@ namespace eClinicals.Controllers
 
 
                 }
-                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == null && frmPatientRecordTabs.rbFinalDiagnosis.Checked)
+                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == "" && frmPatientRecordTabs.rbFinalDiagnosis.Checked)
                 {
                     if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL))
                     {

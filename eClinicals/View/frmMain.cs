@@ -154,13 +154,12 @@ namespace eClinicals.View
                     //add patient ribbon
                     AddPatientRibonInfo(selectedPatient);
                     patienRibbon.btnSearchPatient.Click += new EventHandler(btnSearchPatient_Click);
-                    // add nurse            
+
                     //Fill View appointments
                     selectedPatientAppointments = eClinicalsController.GetAllAppointmentsByPatientID(selectedPatientID);
                     frmPatientTabs.dgViewAppointments_ViewAppointments.DataSource = selectedPatientAppointments;
 
                     patientRecordTabsViewController.fillPatientInfo(selectedPatient);
-                    //TODO Test Results
                     frmPatientTabs.dgTestResults_TestResults.DataSource = eClinicalsController.GetTestResults(selectedPatientID);
 
 

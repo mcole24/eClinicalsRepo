@@ -20,7 +20,6 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\pt\Microsoft.SqlSer
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
-C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
