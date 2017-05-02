@@ -204,25 +204,27 @@ namespace eClinicals.DAL
             }
         }
 
-        public static int addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
         {
+            bool isUpdated = false;
+            string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                + "VALUES (@visitID, @diagnosisID, initialDiagnosis, 0)";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
-                        + "VALUES (@visitID, @diagnosisID, initialDiagnosis, 0)";
 
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@visitID", visitID);
                         cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
                         cmd.Parameters.AddWithValue("@initialDiagnosis", initialDiagnosis);
-                        cmd.ExecuteNonQuery();
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();
                 }
+                return isUpdated;
             }
             catch (SqlException sqlex)
             {
@@ -232,29 +234,29 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visitID;
         }
 
-
-        public static int addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        public static bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
         {
+            bool isUpdated = false;
+            string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                        + "VALUES (@visitID, @diagnosisID, 0, @finalDiagnosis)";
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
-                        + "VALUES (@visitID, @diagnosisID, 0, @finalDiagnosis)";
-
+                    
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@visitID", visitID);
                         cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
                         cmd.Parameters.AddWithValue("@finalDiagnosis", finalDiagnosis);
-                        cmd.ExecuteNonQuery();
+                        isUpdated = (cmd.ExecuteNonQuery() > 0);
                     }
                     connect.Close();
                 }
+                return isUpdated;
             }
             catch (SqlException sqlex)
             {
@@ -264,7 +266,6 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visitID;
         }
 
     }
