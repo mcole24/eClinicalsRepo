@@ -125,12 +125,12 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.GetAllDiagnosis();
         }
 
-        public int addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        public bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
         {
             return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, initialDiagnosis);
         }
 
-        public int addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        public bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
         {
             return DAL.VisitDAL.addFinalDiagnosis(visitID, diagnosisID, finalDiagnosis);
         }
