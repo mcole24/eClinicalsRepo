@@ -772,7 +772,7 @@ namespace eClinicals.Controllers
                 if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null)
                 {
 
-                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT))
+                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT) > 0)
                     {
                         initDiagnosis = true;
                         selectedVisit.InitialDiagnosis = "True";
@@ -795,7 +795,7 @@ namespace eClinicals.Controllers
                 {
 
 
-                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL))
+                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL) > 0)
                     {
                         initDiagnosis = true;
                         finalDiagnosis = true;
