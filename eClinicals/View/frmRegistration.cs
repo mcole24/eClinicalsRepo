@@ -66,8 +66,6 @@ namespace eClinicals.View
             {
                 if (ValidateFields.patientFields(this))
                 {
-                    int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
-
                     this.createPerson();
                 }
                 else
@@ -96,7 +94,7 @@ namespace eClinicals.View
         {
             try
             {
-                eClinicalsController.CreatePatient((int)USER_TYPE.PATIENT);
+                eClinicalsController.CreatePatient(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn);
             }
             catch (Exception ex)
             {
