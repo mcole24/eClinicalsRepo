@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace eClinicals.Controllers
 {
     enum CURRENT_APP_VIEW { ALL = 0, FUTURE = 1, PAST = 3, CURRENT = 4 };
-    enum SELECTED_INITIAL_DIAGNOSIS { TRUE = 1, FALSE = 0 };
+    enum SELECTED_INITIAL_DIAGNOSIS { FINAL = 1, INIT = 1 };
     enum TAB { PERSONAL = 0, SET_APPONTMENT = 1, VIEW_APPOINTMENT = 2, ROUTINE_CHECK = 3, ORDER_TEST = 4, TEST_RESULTS = 5, DIAGNOSIS = 6 };
     //Current view is used to determin which buttons and ui elements should be active
 
@@ -758,18 +758,21 @@ namespace eClinicals.Controllers
             {
 
                 //TODO: Add Init and Final diagnosis
-                Console.WriteLine("InitialDiagnosis : " + selectedVisit.InitialDiagnosis);
+
                 // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
                 // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
 
                 selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
                 selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
                 Console.WriteLine(selectedDiagnosis.DiagnosisName);
+                Console.WriteLine("InitialDiagnosis : " + selectedVisit.InitialDiagnosis);
+
 
                 selectedVisitID = selectedVisit.VisitID;
                 if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null)
                 {
-                    if (!eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+
+                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT))
                     {
                         initDiagnosis = true;
                         selectedVisit.InitialDiagnosis = "True";
@@ -779,7 +782,6 @@ namespace eClinicals.Controllers
                         // order test 
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
                     }
                     else
                     {
@@ -793,7 +795,7 @@ namespace eClinicals.Controllers
                 {
 
 
-                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL))
                     {
                         initDiagnosis = true;
                         finalDiagnosis = true;
