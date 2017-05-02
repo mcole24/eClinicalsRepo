@@ -85,3 +85,4 @@ C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\ob
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
 C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
+C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache

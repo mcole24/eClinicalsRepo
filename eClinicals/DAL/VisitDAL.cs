@@ -243,7 +243,7 @@ namespace eClinicals.DAL
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    
+
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
                         cmd.Parameters.AddWithValue("@visitID", visitID);

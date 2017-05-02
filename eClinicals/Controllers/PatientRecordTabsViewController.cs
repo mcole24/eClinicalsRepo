@@ -759,26 +759,21 @@ namespace eClinicals.Controllers
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
-            try
+            //TODO: Add Init and Final diagnosis
+
+            // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
+            // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
+
+            selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
+            selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
+
+            selectedVisitID = selectedVisit.VisitID;
+            if (frmPatientRecordTabs.rbInitialDiagnosis.Checked)
             {
-
-                //TODO: Add Init and Final diagnosis
-
-                // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-                // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
-
-                selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
-                selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
-                Console.WriteLine(selectedDiagnosis.DiagnosisName);
-                Console.WriteLine("InitialDiagnosis : " + selectedVisit.InitialDiagnosis);
-
-
-                selectedVisitID = selectedVisit.VisitID;
-                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == "" && frmPatientRecordTabs.rbInitialDiagnosis.Checked)
+                try
                 {
 
-                    bool test = eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT);
-                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT))
+                    if (eClinicalsController.addInitialDiagnosis(1018, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT))
                     {
                         initDiagnosis = true;
                         selectedVisit.InitialDiagnosis = "True";
@@ -786,6 +781,7 @@ namespace eClinicals.Controllers
                         frmPatientRecordTabs.rbInitialDiagnosis.Enabled = false;
                         mainForm.Status("Initial Diagnosis Added . . .", Color.Green);
                         // order test 
+                        frmPatientRecordTabs.tabPatientRecord.TabPages.Remove(frmPatientRecordTabs.tabOrderTests);
                         frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
                         frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
                     }
@@ -795,10 +791,21 @@ namespace eClinicals.Controllers
                         mainForm.Status("No Init Diagnosis Completed", Color.Red);
                     }
 
-
                 }
-                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == "" && frmPatientRecordTabs.rbFinalDiagnosis.Checked)
+                catch (Exception ex)
                 {
+
+                    mainForm.Status(ex.Message, Color.Red);
+                }
+
+            }
+            else if (frmPatientRecordTabs.rbFinalDiagnosis.Checked)
+            {
+
+                try
+                {
+
+
                     if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL))
                     {
                         initDiagnosis = true;
@@ -819,22 +826,22 @@ namespace eClinicals.Controllers
                         mainForm.Status("No Final Diagnosis Completed", Color.Red);
                     }
 
+                }
+                catch (Exception ex)
+                {
 
-
-
+                    mainForm.Status(ex.Message, Color.Red);
                 }
 
 
-                // order test 
-                // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
-                //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
-
             }
-            catch (Exception ex)
-            {
 
-                mainForm.Status(ex.Message, Color.Red);
-            }
+
+            // order test 
+            // frmPatientRecordTabs.tabPatientRecord.TabPages.Add(frmPatientRecordTabs.tabOrderTests);
+            //  frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabOrderTests;
+
+
 
         }
         private void btnUpdateTestResults_Click(object sender, EventArgs e)
