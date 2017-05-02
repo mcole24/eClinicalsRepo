@@ -42,3 +42,47 @@ C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
 C:\Users\Admin\Documents\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe.config
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.exe
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.pdb
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Assets\images\logo\eclinicalLogo.png
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Resources\reports.jpg
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\View\frmBaseView.cs
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Resources\footer-image.jpg
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Resources\eclinicalLogo.png
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.exe
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\eClinicals.pdb
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csprojResolveAssemblyReference.cache
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.g.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Properties.Resources.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.Resources.Resource1.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminReport.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmBaseView.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmLogin.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmMain.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmAdminMenuSelectView.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmNurseMenuSelectView.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientInfoRibbon.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientRecordTabs.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmPatientSearch.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRegistration.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.frmRibbon.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAlert.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.View.ucAppointmentSummary.resources
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\eClinicals.csproj.GenerateResource.Cache
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.cache
+C:\Users\Matt\Documents\Visual Studio 2015\Projects\eclinicalsrepo\eClinicals\obj\Debug\RdlCompile.compiled
