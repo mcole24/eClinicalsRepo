@@ -47,7 +47,7 @@ namespace eClinicals.DAL
                 connect.Close();
             }
             return isCreated;
-        }
+        } 
 
 
         public static List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)
