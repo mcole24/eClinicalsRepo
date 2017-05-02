@@ -212,7 +212,7 @@ namespace eClinicals.DAL
                 {
                     connect.Open();
                     string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
-                        + "VALUES (@visitID, @diagnosisID, @initialDiagnosis, 0)";
+                        + "VALUES (@visitID, @diagnosisID, initialDiagnosis, 0)";
 
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {

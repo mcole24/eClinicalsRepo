@@ -132,7 +132,7 @@ namespace eClinicals.Controllers
 
         public int addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
         {
-            return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, finalDiagnosis);
+            return DAL.VisitDAL.addFinalDiagnosis(visitID, diagnosisID, finalDiagnosis);
         }
         public static bool CreateAdmin(int contactID)
         {
@@ -149,9 +149,9 @@ namespace eClinicals.Controllers
             return DAL.NurseDAL.GetNurseByID(contactID);
         }
 
-        public bool CreatePatient(string lastName, string firstName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
+        public bool CreatePatient(int contactID)
         {
-            return DAL.PatientDAL.CreatePatient(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn);
+            return DAL.PatientDAL.CreatePatient(contactID);
         }
 
         public List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)
@@ -170,9 +170,9 @@ namespace eClinicals.Controllers
         }
 
         public bool UpdatePatient(int contactID, string lastName, string firstName, DateTime DOB, string street, string city, string state,
-         string ZIP, string phone, string gender, string SSN)
+         string ZIP, string phone, string gender)
         {
-            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender, SSN);
+            return DAL.PatientDAL.UpdatePatient(contactID, lastName, firstName, DOB, street, city, state, ZIP, phone, gender);
         }
         public int CreateContactInfo(string lName, string fName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn, int userType)
         {
