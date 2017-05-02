@@ -393,7 +393,7 @@ namespace eClinicals.DAL
                             {
                                 AppointmentSummaryVisitDetails visitDetail = new AppointmentSummaryVisitDetails();
                                 visitDetail.VisitID = (int)reader["visitID"];
-                                visitDetail.VisitDate = (DateTime)reader["appointmentDate"];
+                                visitDetail.VisitDate = (DateTime)reader["visitTime"];
                                 visitDetail.Doctor = reader["lName"].ToString();
                                 visitDetail.ReasonForVisit = reader["appointmentReason"].ToString();
                                 visitDetailsList.Add(visitDetail);
