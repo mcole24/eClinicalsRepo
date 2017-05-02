@@ -145,9 +145,6 @@ namespace eClinicals.Controllers
                     selectedTestResultCode = selectedTestResult.TestCode;
 
                     string resultText = CheckResults(selectedTestResult.TestResult);
-
-
-
                     string message = "Selected Test: " + selectedTestResultName + "  Code: " + selectedTestResultCode + "  Results: " + resultText +
                         "  " + selectedTestResultPerformedDate + "  Test ID:" + selectedTestResultId +
                         "...Pressing the start routine checkup Button will select the appointment for checkup.";

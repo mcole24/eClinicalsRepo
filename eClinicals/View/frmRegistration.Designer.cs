@@ -62,8 +62,6 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbUserType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label14
@@ -431,29 +429,6 @@
             this.lblTitle.TabIndex = 28;
             this.lblTitle.Text = "Register a patient";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(515, 175);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "User Type";
-            // 
-            // cbUserType
-            // 
-            this.cbUserType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUserType.FormattingEnabled = true;
-            this.cbUserType.Items.AddRange(new object[] {
-            "Doctor",
-            "Administrator",
-            "Nurse",
-            "Patient"});
-            this.cbUserType.Location = new System.Drawing.Point(577, 171);
-            this.cbUserType.Name = "cbUserType";
-            this.cbUserType.Size = new System.Drawing.Size(97, 21);
-            this.cbUserType.TabIndex = 10;
-            // 
             // frmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,8 +449,6 @@
             this.Controls.Add(this.txtZipcode);
             this.Controls.Add(this.txtSSN);
             this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.cbUserType);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnRegister);
@@ -541,7 +514,5 @@
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblTitle;
-        public System.Windows.Forms.Label label11;
-        public System.Windows.Forms.ComboBox cbUserType;
     }
 }
