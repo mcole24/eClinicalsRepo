@@ -785,8 +785,8 @@ namespace eClinicals.Controllers
                     }
                     else
                     {
-                        Console.WriteLine("No Init Diagnosis Completed");
 
+                        mainForm.Status("No Init Diagnosis Completed", Color.Red);
                     }
 
 
@@ -811,8 +811,8 @@ namespace eClinicals.Controllers
                     }
                     else
                     {
-                        Console.WriteLine("No Final Diagnosis Completed");
 
+                        mainForm.Status("No Final Diagnosis Completed", Color.Red);
                     }
 
 
