@@ -149,9 +149,9 @@ namespace eClinicals.Controllers
             return DAL.NurseDAL.GetNurseByID(contactID);
         }
 
-        public bool CreatePatient(int contactID)
+        public bool CreatePatient(string lastName, string firstName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
         {
-            return DAL.PatientDAL.CreatePatient(contactID);
+            return DAL.PatientDAL.CreatePatient(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn);
         }
 
         public List<Patient> SearchPatientByFirstAndLastName(string fName, string lName)

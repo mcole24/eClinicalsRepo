@@ -16,29 +16,37 @@ namespace eClinicals.DAL
 
 
 
-        public static bool CreatePatient(int contactID)
+        public static bool CreatePatient(string lastName, string firstName, DateTime dob, string streetAddress, string city, string state, string zip, string phone, string gender, string ssn)
         {
 
-            try
-            {
-                using (SqlConnection connect = DBConnection.GetConnection())
-                {
-                    connect.Open();
-                    string insertStmt = "INSERT INTO patient (contactID) VALUES (@contact);";
-                    using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@contact", contactID);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
-                        return true;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
+            bool isCreated = false;
 
+            string sqlStmt = "DECLARE @contact INT; " +
+                "INSERT INTO contact (lName, fName, dob, mailingAddressStreet, mailingAddressCity, mailingAddressState, mailingAddressZip, phoneNumber, gender, SSN, userType) " +
+                "VALUES (@last, @first, @dob, @street, @city, @state, @zip, @phone, @gender, @ssn, 4); " +
+                "SET @contact = SCOPE_IDENTITY(); " +
+                "INSERT INTO patient (contactID) VALUES (@contact);";
+
+            using (SqlConnection connect = DBConnection.GetConnection())
+            {
+                connect.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlStmt, connect))
+                {
+                    cmd.Parameters.AddWithValue("@last", lastName);
+                    cmd.Parameters.AddWithValue("@first", firstName);
+                    cmd.Parameters.AddWithValue("@dob", dob);
+                    cmd.Parameters.AddWithValue("@street", streetAddress);
+                    cmd.Parameters.AddWithValue("@city", city);
+                    cmd.Parameters.AddWithValue("@state", state);
+                    cmd.Parameters.AddWithValue("@zip", zip);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    cmd.Parameters.AddWithValue("@ssn", ssn);
+                    isCreated = (cmd.ExecuteNonQuery() > 0);
+                }
+                connect.Close();
+            }
+            return isCreated;
         }
 
 
