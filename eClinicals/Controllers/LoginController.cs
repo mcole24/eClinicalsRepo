@@ -18,8 +18,7 @@ namespace eClinicals.Controllers
         public LoginController(frmMain mainForm, frmBaseView thisView) :
             base(mainForm, thisView)
         {
-            //CREAT NEW DATABASE CONNECTION OBJECT
-            //send status to main window
+
             isLoggedIn = false;
             this.mainForm.status = "logged Out";
 
@@ -32,16 +31,9 @@ namespace eClinicals.Controllers
         void OkBtn_Click(Object sender, EventArgs e)
         {
 
-            //TODO: PASSWORD - replace this with commented area below
-            frmLoginView.username = "cwoods6";
-            frmLoginView.password = "testpassword123";
 
-            //frmLoginView.username = "jwynn1";
-            // frmLoginView.password = "123testpassword";
-
-
-            //frmLoginView.username = frmLoginView.txtUserName.Text;
-            //frmLoginView.password = frmLoginView.txtPassword.Text;           
+            frmLoginView.username = frmLoginView.txtUserName.Text;
+            frmLoginView.password = frmLoginView.txtPassword.Text;
 
             LogIn(frmLoginView.username, frmLoginView.password);
         }

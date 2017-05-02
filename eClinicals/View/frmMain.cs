@@ -83,7 +83,7 @@ namespace eClinicals.View
             ribbonController.LoggedOut += this.OnLoggedOut;
             AddToContainer(ribbonController, TOP);
             this.pTop.Visible = true;
-            Console.WriteLine(currentUser.FirstName);
+
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   USER INFO
             SetUserInfo();
             ribbonController.AddStatusInfo(this.status);
@@ -200,6 +200,7 @@ namespace eClinicals.View
         {
             if (frmPatientTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
             {
+
                 Status("Routine CheckUp Added : ", Color.Yellow);
             }
             else
@@ -209,9 +210,10 @@ namespace eClinicals.View
         }
         private void btnSelectAppointment_Click(object sender, EventArgs e)
         {
-            // "shows" tab page 2
+
             if (selectedAppointment != null)
             {
+                frmPatientTabs.tabPatientRecord.TabPages.Remove(frmPatientTabs.tabRoutineCheck);
                 frmPatientTabs.tabPatientRecord.TabPages.Add(frmPatientTabs.tabRoutineCheck);
                 frmPatientTabs.tabPatientRecord.SelectedTab = frmPatientTabs.tabRoutineCheck;
             }

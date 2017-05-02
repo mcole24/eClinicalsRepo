@@ -167,7 +167,7 @@ namespace eClinicals.Controllers
         {
             try
             {
-                Console.WriteLine(selectedAppointment.AppointmentID.ToString());
+
                 mainForm.ucAppointmentSummary.dgVisitDetails.DataSource = eClinicalsController.GetAppointmentSummaryVisitDetails(selectedAppointment.AppointmentID);
                 mainForm.ucAppointmentSummary.dgSymptoms.DataSource = eClinicalsController.GetAppointmentSummarySymptoms(selectedAppointment.AppointmentID);
                 mainForm.ucAppointmentSummary.dgCheckupResults.DataSource = eClinicalsController.GetAppointmentSummaryCheckupResults(selectedAppointment.AppointmentID);
@@ -470,8 +470,9 @@ namespace eClinicals.Controllers
                     testID = eClinicalsController.OrderTest(testOrder, selectedVisit.VisitID);
 
                     frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
-                    this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
 
+
+                    this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
                 }
                 else
                 {
@@ -759,10 +760,6 @@ namespace eClinicals.Controllers
         }
         private void btnCommitTest_Click(object sender, EventArgs e)
         {
-            //TODO: Add Init and Final diagnosis
-
-            // Console.WriteLine("Init test : " + frmPatientRecordTabs.rbInitialDiagnosis.Checked);
-            // Console.WriteLine("Final  test: " + frmPatientRecordTabs.rbFinalDiagnosis.Checked);
 
             selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
             selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
