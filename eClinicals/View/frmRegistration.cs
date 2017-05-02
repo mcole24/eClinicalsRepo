@@ -2,8 +2,7 @@
 using System;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-
+enum USER_TYPE { PATIENT = 4 };
 namespace eClinicals.View
 {
     public partial class frmRegistration : frmBaseView
@@ -70,7 +69,7 @@ namespace eClinicals.View
                 {
                     int contactID = eClinicalsController.CreateContactInfo(lastName, firstName, dob, streetAddress, city, state, zip, phone, gender, ssn, userType);
 
-                    this.createPersonByType(contactID);
+                    this.createPerson();
                 }
                 else
                 {
@@ -94,51 +93,23 @@ namespace eClinicals.View
             this.Close();
             mainForm.OpenStartMenuView();
         }
-        private void createPersonByType(int contactID)
+        private void createPerson()
         {
             try
             {
-
-                if (contactID > 0)
-                {
-                    switch (userType)
-                    {
-                        case 1:
-                            //eClinicalsController.createDoctor(contactID);
-                            break;
-                        case 2:
-                            eClinicalsController.CreateAdmin(contactID);
-                            break;
-                        case 3:
-                            eClinicalsController.CreateNurse(contactID);
-                            break;
-                        case 4:
-                            eClinicalsController.CreatePatient(contactID);
-                            break;
-                        default:
-                            MessageBox.Show("There was a problem creating this person");
-                            break;
-                    }
-
-                }
-
-
+                eClinicalsController.CreatePatient((int)USER_TYPE.PATIENT);
             }
             catch (Exception ex)
             {
                 mainForm.Status(ex.Message, Color.Red);
+
             }
+
+
 
 
         }
-        private void cbUserType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbUserType.SelectedIndex == 3)
-            {
 
-
-            }
-        }
     }
 
 
