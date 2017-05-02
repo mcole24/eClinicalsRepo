@@ -53,26 +53,26 @@ namespace eClinicals.Controllers
 
 
 
-        public AppointmentSummaryVisitDetails GetAppointmentSummaryVisitDetails(int appointmentID)
+        public List<AppointmentSummaryVisitDetails> GetAppointmentSummaryVisitDetails(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryVisitDetails(appointmentID);
         }
 
-        public static List<AppointmentSummarySymptoms> GetAppointmentSummarySymptoms(int appointmentID)
+        public List<AppointmentSummarySymptoms> GetAppointmentSummarySymptoms(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummarySymptoms(appointmentID);
         }
 
-        public static AppointmentSummaryCheckupResults GetAppointmentSummaryCheckupResults(int appointmentID)
+        public List <AppointmentSummaryCheckupResults> GetAppointmentSummaryCheckupResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryCheckupResults(appointmentID);
         }
 
-        public static List<AppointmentSummaryDiagnosisResults> GetAppointmentSummaryDiagnosisResults(int appointmentID)
+        public List<AppointmentSummaryDiagnosisResults> GetAppointmentSummaryDiagnosisResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryDiagnosisResults(appointmentID);
         }
-        public static List<AppointmentSummaryTestResults> GetAppointmentSummaryTestResults(int appointmentID)
+        public List<AppointmentSummaryTestResults> GetAppointmentSummaryTestResults(int appointmentID)
         {
             return DAL.AppointmentDAL.GetAppointmentSummaryTestResults(appointmentID);
 
@@ -99,7 +99,7 @@ namespace eClinicals.Controllers
             return DAL.TestOrderDAL.OrderTest(testOrdered, visitID);
         }
 
-        public static TestOrder GetTestByID(int testID)
+        public TestOrder GetTestByID(int testID)
         {
             return DAL.TestOrderDAL.GetTestByID(testID);
         }
@@ -125,12 +125,12 @@ namespace eClinicals.Controllers
             return DAL.VisitDAL.GetAllDiagnosis();
         }
 
-        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        public bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
         {
             return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, initialDiagnosis);
         }
 
-        public static bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        public bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
         {
             return DAL.VisitDAL.addInitialDiagnosis(visitID, diagnosisID, finalDiagnosis);
         }
