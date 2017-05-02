@@ -56,7 +56,7 @@ namespace eClinicals.DAL
         }
 
 
-        public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, List<int> symptomList)
+        public static Visit CreateCheckup(int appointmentID, int nurseID, int systolicBP, int diastolicBP, decimal bodyTemp, int pulse, int symptomID)
         {
 
             Visit visit = new Visit();
@@ -107,15 +107,12 @@ namespace eClinicals.DAL
 
                     if (visit.VisitID > 0)
                     {
-                        for (int i = 0; i < symptomList.Count; i++)
+                        using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
                         {
-                            using (SqlCommand cmd = new SqlCommand(insertStmt2, connect, tran))
-                            {
 
-                                cmd.Parameters.AddWithValue("@visit", visit.VisitID);
-                                cmd.Parameters.AddWithValue("@symptom", symptomList[i]);
-                                cmd.ExecuteNonQuery();
-                            }
+                            cmd.Parameters.AddWithValue("@visit", visit.VisitID);
+                            cmd.Parameters.AddWithValue("@symptom", symptomID);
+                            cmd.ExecuteNonQuery();
                         }
                     }
                     tran.Commit();
