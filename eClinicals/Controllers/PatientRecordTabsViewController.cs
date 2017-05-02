@@ -454,27 +454,35 @@ namespace eClinicals.Controllers
         private void btnOrderTest_Click(object sender, EventArgs e)
         {
 
-
-            TestOrder testOrder = (TestOrder)frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedItem;
-            if (testOrder.TestID < 1)
+            try
             {
-                this.mainForm.Status("TestID is 0: ", Color.Red);
-                return;
+                TestOrder testOrder = (TestOrder)frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedItem;
+                if (testOrder.TestID < 1)
+                {
+                    this.mainForm.Status("TestID is 0: ", Color.Red);
+                    return;
+                }
+
+                if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
+                {
+
+                    //testID is used to get test by id
+                    testID = eClinicalsController.OrderTest(testOrder, selectedVisit.VisitID);
+
+                    frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
+                    this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
+
+                }
+                else
+                {
+                    this.mainForm.Status("Please fill out all form elements : ", Color.Red);
+                }
+
             }
-
-            if (frmPatientRecordTabs.cbSelectTest_OrderTest.SelectedIndex > -1 & frmPatientRecordTabs.cbSelectDoctor_OrderTest.SelectedIndex > -1)
+            catch (Exception ex)
             {
+                this.mainForm.Status(ex.Message, Color.Red);
 
-                //testID is used to get test by id
-                testID = eClinicalsController.OrderTest(testOrder, selectedVisit.VisitID);
-
-                frmPatientRecordTabs.tabPatientRecord.SelectedTab = frmPatientRecordTabs.tabTestsResults;
-                this.mainForm.Status(testOrder.TestCode + " Ordered: ", Color.Yellow);
-
-            }
-            else
-            {
-                this.mainForm.Status("Please fill out all form elements : ", Color.Red);
             }
         }
         private void btnOk_SetAppointment_Click(object sender, EventArgs e)
@@ -769,10 +777,11 @@ namespace eClinicals.Controllers
 
 
                 selectedVisitID = selectedVisit.VisitID;
-                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null)
+                if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null && frmPatientRecordTabs.rbInitialDiagnosis.Checked)
                 {
 
-                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT) > 0)
+                    bool test = eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT);
+                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.INIT))
                     {
                         initDiagnosis = true;
                         selectedVisit.InitialDiagnosis = "True";
@@ -791,11 +800,9 @@ namespace eClinicals.Controllers
 
 
                 }
-                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == null)
+                else if (selectedVisit.FinalDiagnosis == "False" || selectedVisit.FinalDiagnosis == null && frmPatientRecordTabs.rbFinalDiagnosis.Checked)
                 {
-
-
-                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL) > 0)
+                    if (eClinicalsController.addFinalDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.FINAL))
                     {
                         initDiagnosis = true;
                         finalDiagnosis = true;
