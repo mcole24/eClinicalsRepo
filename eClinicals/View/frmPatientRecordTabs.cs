@@ -138,5 +138,9 @@ namespace eClinicals.View
             btnUpdateSelectedTestResult.Visible = false;
         }
 
+        private void btnCommitTest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

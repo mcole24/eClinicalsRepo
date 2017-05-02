@@ -124,6 +124,7 @@
             this.dgViewAppointments_ViewAppointments = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.tabRoutineCheck = new System.Windows.Forms.TabPage();
+            this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.cbSymptoms_RoutineCheck = new System.Windows.Forms.ComboBox();
@@ -141,7 +142,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.ucAlertRoutineCheck = new eClinicals.View.ucAlert();
             this.dgPreviousReadings__RoutineCheck = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.tabOrderTests = new System.Windows.Forms.TabPage();
@@ -1285,6 +1285,15 @@
             this.tabRoutineCheck.Text = "Routine Check";
             this.tabRoutineCheck.UseVisualStyleBackColor = true;
             // 
+            // ucAlertRoutineCheck
+            // 
+            this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(19, 548);
+            this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
+            this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
+            this.ucAlertRoutineCheck.TabIndex = 16;
+            this.ucAlertRoutineCheck.Visible = false;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.groupBox12);
@@ -1452,15 +1461,6 @@
             this.groupBox5.Size = new System.Drawing.Size(755, 244);
             this.groupBox5.TabIndex = 14;
             this.groupBox5.TabStop = false;
-            // 
-            // ucAlertRoutineCheck
-            // 
-            this.ucAlertRoutineCheck.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ucAlertRoutineCheck.Location = new System.Drawing.Point(19, 548);
-            this.ucAlertRoutineCheck.Name = "ucAlertRoutineCheck";
-            this.ucAlertRoutineCheck.Size = new System.Drawing.Size(843, 508);
-            this.ucAlertRoutineCheck.TabIndex = 16;
-            this.ucAlertRoutineCheck.Visible = false;
             // 
             // dgPreviousReadings__RoutineCheck
             // 
@@ -1910,6 +1910,7 @@
             this.btnCommitTest.TabIndex = 28;
             this.btnCommitTest.Text = "Commit Test";
             this.btnCommitTest.UseVisualStyleBackColor = true;
+            this.btnCommitTest.Click += new System.EventHandler(this.btnCommitTest_Click);
             // 
             // groupBox8
             // 
