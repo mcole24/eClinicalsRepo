@@ -764,11 +764,12 @@ namespace eClinicals.Controllers
 
                 selectedDiagnosis = (Diagnosis)frmPatientRecordTabs.cbDiagnosis_TestResults.SelectedItem;
                 selectedDiagnosisID = selectedDiagnosis.DiagnosisID;
+                Console.WriteLine(selectedDiagnosis.DiagnosisName);
 
                 selectedVisitID = selectedVisit.VisitID;
                 if (selectedVisit.InitialDiagnosis == "False" || selectedVisit.InitialDiagnosis == null)
                 {
-                    if (eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
+                    if (!eClinicalsController.addInitialDiagnosis(selectedVisitID, selectedDiagnosisID, (int)SELECTED_INITIAL_DIAGNOSIS.TRUE))
                     {
                         initDiagnosis = true;
                         selectedVisit.InitialDiagnosis = "True";
