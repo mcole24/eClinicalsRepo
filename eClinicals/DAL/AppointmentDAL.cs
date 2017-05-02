@@ -368,9 +368,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static AppointmentSummaryVisitDetails GetAppointmentSummaryVisitDetails(int appointmentID)
+        public static List<AppointmentSummaryVisitDetails> GetAppointmentSummaryVisitDetails(int appointmentID)
         {
-            AppointmentSummaryVisitDetails visitDetails = new AppointmentSummaryVisitDetails();
+            List<AppointmentSummaryVisitDetails> visitDetailsList = new List<AppointmentSummaryVisitDetails>();
                 string selStmt = "SELECT visit.visitID, visitTime, lName, appointmentReason "
                         + "FROM visit "
                         + "JOIN appointment ON visit.appointmentID = appointment.appointmentID "
@@ -391,10 +391,12 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
-                                visitDetails.VisitID = (int)reader["visitID"];
-                                visitDetails.VisitDate = (DateTime)reader["appointmentDate"];
-                                visitDetails.Doctor = reader["lName"].ToString();
-                                visitDetails.ReasonForVisit = reader["appointmentReason"].ToString();
+                                AppointmentSummaryVisitDetails visitDetail = new AppointmentSummaryVisitDetails();
+                                visitDetail.VisitID = (int)reader["visitID"];
+                                visitDetail.VisitDate = (DateTime)reader["appointmentDate"];
+                                visitDetail.Doctor = reader["lName"].ToString();
+                                visitDetail.ReasonForVisit = reader["appointmentReason"].ToString();
+                                visitDetailsList.Add(visitDetail);
                             }
                             reader.Close();
                         }
@@ -410,7 +412,7 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visitDetails;
+            return visitDetailsList;
         }
 
 
@@ -457,9 +459,9 @@ namespace eClinicals.DAL
         }
 
 
-        public static AppointmentSummaryCheckupResults GetAppointmentSummaryCheckupResults(int appointmentID)
+        public static List<AppointmentSummaryCheckupResults> GetAppointmentSummaryCheckupResults(int appointmentID)
         {
-            AppointmentSummaryCheckupResults visitCheckup = new AppointmentSummaryCheckupResults();
+            List<AppointmentSummaryCheckupResults> visitCheckupList = new List<AppointmentSummaryCheckupResults>();
             string selStmt = "SELECT systolicBP, diastolicBP, bodyTemperature, pulse "
                 + "FROM visit "
                 + "WHERE visit.appointmentID = @appointmentID";
@@ -475,10 +477,12 @@ namespace eClinicals.DAL
                         {
                             while (reader.Read())
                             {
+                                AppointmentSummaryCheckupResults visitCheckup = new AppointmentSummaryCheckupResults();
                                 visitCheckup.SystolicBPReading = (int)reader["systolicBP"];
                                 visitCheckup.DiastolicBPReading = (int)reader["diastolicBP"];
                                 visitCheckup.BodyTemperatureReading = (decimal)reader["bodyTemperature"];
                                 visitCheckup.PulseReading = (int)reader["pulse"];
+                                visitCheckupList.Add(visitCheckup);
                             }
                             reader.Close();
                         }
@@ -494,7 +498,7 @@ namespace eClinicals.DAL
             {
                 throw ex;
             }
-            return visitCheckup;
+            return visitCheckupList;
         }
 
         public static List<AppointmentSummaryDiagnosisResults> GetAppointmentSummaryDiagnosisResults(int appointmentID)
