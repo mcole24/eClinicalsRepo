@@ -204,15 +204,15 @@ namespace eClinicals.DAL
             }
         }
 
-        public static bool addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
+        public static int addInitialDiagnosis(int visitID, int diagnosisID, int initialDiagnosis)
         {
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO appointment (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
-                        + "VALUES (@visitID, @diagnosisID, @initialDiagnosis, 0)";
+                    string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                        + "VALUES (@visitID, @diagnosisID, initialDiagnosis, 0)";
 
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
                     {
@@ -220,26 +220,30 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
                         cmd.Parameters.AddWithValue("@initialDiagnosis", initialDiagnosis);
                         cmd.ExecuteNonQuery();
-
-                        return true;
                     }
+                    connect.Close();
                 }
             }
-            catch
+            catch (SqlException sqlex)
             {
-                return false;
+                throw sqlex;
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitID;
         }
 
 
-        public static bool addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
+        public static int addFinalDiagnosis(int visitID, int diagnosisID, int finalDiagnosis)
         {
             try
             {
                 using (SqlConnection connect = DBConnection.GetConnection())
                 {
                     connect.Open();
-                    string insertStmt = "INSERT INTO appointment (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
+                    string insertStmt = "INSERT INTO visit_has_diagnosis (visitID, diagnosisID, initialDiagnosis, finalDiagnosis) "
                         + "VALUES (@visitID, @diagnosisID, 0, @finalDiagnosis)";
 
                     using (SqlCommand cmd = new SqlCommand(insertStmt, connect))
@@ -248,15 +252,19 @@ namespace eClinicals.DAL
                         cmd.Parameters.AddWithValue("@diagnosisID", diagnosisID);
                         cmd.Parameters.AddWithValue("@finalDiagnosis", finalDiagnosis);
                         cmd.ExecuteNonQuery();
-
-                        return true;
                     }
+                    connect.Close();
                 }
             }
-            catch
+            catch (SqlException sqlex)
             {
-                return false;
+                throw sqlex;
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visitID;
         }
 
     }
